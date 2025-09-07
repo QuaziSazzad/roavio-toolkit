@@ -25,7 +25,7 @@ class Roavio_Icons_Manager
 
 	public function add_icons_tab($tabs)
 	{
-		$icon_css = RT_VENDOR . '/flaticon/flaticon.min.css';
+		$icon_css = RT_VENDOR . '/flaticon/flaticon.css';
 
 		$tabs['roavio-flaticon'] = [
 			'name'          => 'roavio-flaticon',
@@ -45,46 +45,29 @@ class Roavio_Icons_Manager
 	public function icon_list()
 	{
 		return [
-			"flaticon-nanotechnology",
-			"flaticon-technology",
-			"flaticon-it",
-			"flaticon-network-security",
-			"flaticon-cloud",
-			"flaticon-data-management",
-			"flaticon-idea",
-			"flaticon-grow",
-			"flaticon-data-protection",
-			"flaticon-graphic-design",
-			"flaticon-flexibility",
-			"flaticon-layers",
-			"flaticon-globe-grid",
-			"flaticon-technical-support",
-			"flaticon-big-data-analytics",
-			"flaticon-integrations",
-			"flaticon-nanotechnology-1",
-			"flaticon-expert-team",
-			"flaticon-experts",
-			"flaticon-loyal-customer",
-			"flaticon-human-resources",
-			"flaticon-algorithm",
-			"flaticon-troubleshooting",
-			"flaticon-service",
-			"flaticon-technical-support-1",
-			"flaticon-technical-support-2",
-			"flaticon-cloud-network",
-			"flaticon-cyber-security",
-			"flaticon-layer",
-			"flaticon-cloud-1",
-			"flaticon-cyber-security-1",
-			"flaticon-cloud-computing",
-			"flaticon-data",
-			"flaticon-cyber-security-2",
-			"flaticon-recovery",
-			"flaticon-protection",
-			"flaticon-protection-1",
-			"flaticon-quality",
-			"flaticon-experience",
-			"flaticon-professional-success",
+			"flaticon-travel-agency",
+			"flaticon-travel",
+			"flaticon-traveling",
+			"flaticon-roadmap",
+			"flaticon-mouse",
+			"flaticon-promotion",
+			"flaticon-tourist",
+			"flaticon-insurance",
+			"flaticon-traveling-1",
+			"flaticon-hot-air-balloon",
+			"flaticon-passport",
+			"flaticon-tent",
+			"flaticon-costumer",
+			"flaticon-suitcase",
+			"flaticon-excursion",
+			"flaticon-quote",
+			"flaticon-left-quote",
+			"flaticon-travel-agency-1",
+			"flaticon-price-tag",
+			"flaticon-booking",
+			"flaticon-destination",
+			"flaticon-man",
+			"flaticon-holiday-trip"
 		];
 	}
 }

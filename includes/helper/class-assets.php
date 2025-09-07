@@ -43,7 +43,7 @@ class Roavio_Assets
 		wp_register_style('swiper', RT_VENDOR . '/swiper/swiper-bundle.min.css', [], '8.3.2');
 		wp_register_script('swiper', RT_VENDOR . '/swiper/swiper-bundle.min.js', ['jquery'], '8.3.2', true);
 
-		wp_register_style('roavio-flat-icons', RT_VENDOR . '/flaticon/flaticon.min.css', [], '1.8.1');
+		wp_register_style('roavio-flat-icons', RT_VENDOR . '/flaticon/flaticon.css', [], '1.0.0');
 
 		wp_register_script('imagesloaded', RT_VENDOR . '/isotope/imagesloaded.pkgd.min.js', ['jquery'], '1.8.1', true);
 		wp_register_script('isotope', RT_VENDOR . '/isotope/isotope.pkgd.min.js', ['jquery'], '1.8.1', true);

@@ -63,6 +63,8 @@ class Roavio_Elementor_Addon
 		// include_once RT_ELEMENTOR . '/widgets/funfact.php';
 		include_once RT_ELEMENTOR . '/widgets/about.php';
 		include_once RT_ELEMENTOR . '/widgets/gallery.php';
+		include_once RT_ELEMENTOR . '/widgets/benefit.php';
+		include_once RT_ELEMENTOR . '/widgets/infos.php';
 		// include_once RT_ELEMENTOR . '/widgets/why-choose-us.php';
 		// include_once RT_ELEMENTOR . '/widgets/service.php';
 		// include_once RT_ELEMENTOR . '/widgets/service-details.php';
@@ -101,6 +103,8 @@ class Roavio_Elementor_Addon
 		// $widgets_manager->register(new Widgets\FunFact());
 		$widgets_manager->register(new Widgets\About());
 		$widgets_manager->register(new Widgets\Gallery());
+		$widgets_manager->register(new Widgets\Benefit());
+		$widgets_manager->register(new Widgets\Infos());
 		// $widgets_manager->register(new Widgets\Why_Choose_Us());
 		// $widgets_manager->register(new Widgets\Service());
 		// $widgets_manager->register(new Widgets\Service_Details());
