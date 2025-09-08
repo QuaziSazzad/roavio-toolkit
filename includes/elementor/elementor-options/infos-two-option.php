@@ -19,6 +19,7 @@ $this->add_control(
 		'type' => \Elementor\Controls_Manager::TEXT,
 		'default' => esc_html__('Unlimited travel experience', 'roavio-toolkit'),
 		'placeholder' => esc_html__('Type your title here', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
@@ -72,17 +73,6 @@ $this->add_control(
 	]
 );
 
-$this->add_control(
-	'layout_two_background_image',
-	[
-		'label' => esc_html__('Background Image', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [
-			'url' => \Elementor\Utils::get_placeholder_image_src(),
-		],
-	]
-);
-
 $repeater = new \Elementor\Repeater();
 
 $repeater->add_control(
@@ -104,6 +94,7 @@ $repeater->add_control(
 		'type' => \Elementor\Controls_Manager::TEXT,
 		'default' => esc_html__('30', 'roavio-toolkit'),
 		'placeholder' => esc_html__('Type your number here', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
@@ -114,6 +105,7 @@ $repeater->add_control(
 		'type' => \Elementor\Controls_Manager::TEXT,
 		'default' => esc_html__('k+', 'roavio-toolkit'),
 		'placeholder' => esc_html__('Type your suffix here', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
@@ -124,6 +116,7 @@ $repeater->add_control(
 		'type' => \Elementor\Controls_Manager::TEXT,
 		'default' => esc_html__('Total worldwide satisfied clients', 'roavio-toolkit'),
 		'placeholder' => esc_html__('Type your title here', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
@@ -166,6 +159,17 @@ $this->add_control(
 	]
 );
 
+
+$this->add_control(
+	'layout_two_background_image',
+	[
+		'label' => esc_html__('Background Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [
+			'url' => \Elementor\Utils::get_placeholder_image_src(),
+		],
+	]
+);
 
 
 

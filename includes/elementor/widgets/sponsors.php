@@ -84,9 +84,9 @@ class Sponsors extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 		include rt_get_elementor_template('sponsors-one.php');
-		include rt_get_elementor_template('sponsors-two.php');
-		include rt_get_elementor_template('sponsors-three.php');
-		include rt_get_elementor_template('sponsors-four.php');
-		include rt_get_elementor_template('sponsors-five.php');
+		// include rt_get_elementor_template('sponsors-two.php');
+		// include rt_get_elementor_template('sponsors-three.php');
+		// include rt_get_elementor_template('sponsors-four.php');
+		// include rt_get_elementor_template('sponsors-five.php');
 	}
 }

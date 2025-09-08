@@ -1,15 +1,23 @@
 <?php if ('layout_one' == $settings['layout_type']) : ?>
-    <!-- Client Logo Area start -->
-    <div class="client-logo-area">
-        <div class="container-fluid">
-            <div class="client-logo-active pt-70 pb-40">
-                <?php foreach ($settings['layout_one_sponsors'] as $item) : ?>
-                    <div class="client-logo-item" data-aos="flip-up" data-aos-duration="1500" data-aos-offset="50">
-                        <a href="<?php echo esc_url($item['url']['url']); ?>" <?php if (!empty($item['url']['is_external'])) : ?> target="_blank" <?php endif; ?>><?php rt_elementor_rendered_image($item, 'image'); ?></a>
+    <!-- Brand Section Start -->
+    <section class="brand-section section-padding fix">
+        <div class="container custom-container-2">
+            <div class="brand-wrapper">
+                <?php if ($settings['layout_one_title']) : ?>
+                    <<?php echo esc_attr($settings['layout_one_title_tag']); ?>><?php echo rt_kses_basic($settings['layout_one_title']); ?></<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
+                <?php endif; ?>
+                <div class="swiper brand-slider">
+                    <div class="swiper-wrapper">
+                        <?php foreach ($settings['layout_one_sponsors'] as $item) : ?>
+                            <div class="swiper-slide">
+                                <div class="brand-image text-center">
+                                    <?php rt_elementor_rendered_image($item, 'image'); ?>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
-                <?php endforeach; ?>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- Client Logo Area end -->
+    </section>
 <?php endif; ?>

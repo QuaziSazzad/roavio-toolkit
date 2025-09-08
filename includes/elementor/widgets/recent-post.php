@@ -123,37 +123,20 @@ class Recent_Post extends Widget_Base
 		$this->add_control(
 			'layout_one_title_tag',
 			[
-				'label'       => esc_html__('Title Tag', 'roavio-toolkit'),
-				'type'        => \Elementor\Controls_Manager::CHOOSE,
-				'label_block' => false,
-				'options'     => [
-					'h1' => [
-						'title' => esc_html__('H1', 'roavio-toolkit'),
-						'icon'  => 'eicon-editor-h1',
-					],
-					'h2' => [
-						'title' => esc_html__('H2', 'roavio-toolkit'),
-						'icon'  => 'eicon-editor-h2',
-					],
-					'h3' => [
-						'title' => esc_html__('H3', 'roavio-toolkit'),
-						'icon'  => 'eicon-editor-h3',
-					],
-					'h4' => [
-						'title' => esc_html__('H4', 'roavio-toolkit'),
-						'icon'  => 'eicon-editor-h4',
-					],
-					'h5' => [
-						'title' => esc_html__('H5', 'roavio-toolkit'),
-						'icon'  => 'eicon-editor-h5',
-					],
-					'h6' => [
-						'title' => esc_html__('H6', 'roavio-toolkit'),
-						'icon'  => 'eicon-editor-h6',
-					],
+				'label' => esc_html__('Section Title Tag', 'roavio-toolkit'),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'h2',
+				'options' => [
+					'h1' => esc_html__('H1', 'roavio-toolkit'),
+					'h2' => esc_html__('H2', 'roavio-toolkit'),
+					'h3' => esc_html__('H3', 'roavio-toolkit'),
+					'h4' => esc_html__('H4', 'roavio-toolkit'),
+					'h5' => esc_html__('H5', 'roavio-toolkit'),
+					'h6' => esc_html__('H6', 'roavio-toolkit'),
+					'div' => esc_html__('div', 'roavio-toolkit'),
+					'span' => esc_html__('span', 'roavio-toolkit'),
+					'p' => esc_html__('p', 'roavio-toolkit'),
 				],
-				'default'     => 'h2',
-				'toggle'      => false,
 			]
 		);
 
@@ -164,6 +147,26 @@ class Recent_Post extends Widget_Base
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'placeholder' => esc_html__('Add Sub title', 'roavio-toolkit'),
 				'default' => esc_html__('Default Sub Title', 'roavio-toolkit'),
+			]
+		);
+
+		$this->add_control(
+			'layout_one_sub_title_tag',
+			[
+				'label' => esc_html__('Sub Title Tag', 'roavio-toolkit'),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'p',
+				'options' => [
+					'h1' => esc_html__('H1', 'roavio-toolkit'),
+					'h2' => esc_html__('H2', 'roavio-toolkit'),
+					'h3' => esc_html__('H3', 'roavio-toolkit'),
+					'h4' => esc_html__('H4', 'roavio-toolkit'),
+					'h5' => esc_html__('H5', 'roavio-toolkit'),
+					'h6' => esc_html__('H6', 'roavio-toolkit'),
+					'div' => esc_html__('div', 'roavio-toolkit'),
+					'span' => esc_html__('span', 'roavio-toolkit'),
+					'p' => esc_html__('p', 'roavio-toolkit'),
+				],
 			]
 		);
 
@@ -250,7 +253,7 @@ class Recent_Post extends Widget_Base
 						'icon'  => 'eicon-editor-h6',
 					],
 				],
-				'default'     => 'h4',
+				'default'     => 'h3',
 				'toggle'      => false,
 			]
 		);
@@ -540,19 +543,6 @@ class Recent_Post extends Widget_Base
 			]
 		);
 
-		$layout_one_post_list->add_control(
-			'summary_text',
-			[
-				'label' => esc_html__('Summary Text', 'roavio-toolkit'),
-				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'rows' => '2',
-				'placeholder' => esc_html__('Add Summary Text', 'roavio-toolkit'),
-				'default' => esc_html__('Default Summary Text', 'roavio-toolkit'),
-				'description' => esc_html__('Keep empty to use default Summary', 'roavio-toolkit'),
-				'label_block' => true
-			]
-		);
-
 
 		$layout_one_post_list->add_control(
 			'image',
@@ -663,9 +653,9 @@ class Recent_Post extends Widget_Base
 		$settings = $this->get_settings_for_display();
 
 		include rt_get_elementor_template('recent-post-one.php');
-		include rt_get_elementor_template('recent-post-two.php');
-		include rt_get_elementor_template('recent-post-three.php');
-		include rt_get_elementor_template('recent-post-four.php');
-		include rt_get_elementor_template('recent-post-five.php');
+		// include rt_get_elementor_template('recent-post-two.php');
+		// include rt_get_elementor_template('recent-post-three.php');
+		// include rt_get_elementor_template('recent-post-four.php');
+		// include rt_get_elementor_template('recent-post-five.php');
 	}
 }

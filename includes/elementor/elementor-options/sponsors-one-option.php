@@ -12,6 +12,36 @@ $this->start_controls_section(
 	]
 );
 
+$this->add_control(
+	'layout_one_title',
+	[
+		'label' => esc_html__('Title', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('How to benefit our Tours', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+$this->add_control(
+	'layout_one_title_tag',
+	[
+		'label' => esc_html__('Section Title Tag', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::SELECT,
+		'default' => 'h2',
+		'options' => [
+			'h1' => esc_html__('H1', 'roavio-toolkit'),
+			'h2' => esc_html__('H2', 'roavio-toolkit'),
+			'h3' => esc_html__('H3', 'roavio-toolkit'),
+			'h4' => esc_html__('H4', 'roavio-toolkit'),
+			'h5' => esc_html__('H5', 'roavio-toolkit'),
+			'h6' => esc_html__('H6', 'roavio-toolkit'),
+			'div' => esc_html__('div', 'roavio-toolkit'),
+			'span' => esc_html__('span', 'roavio-toolkit'),
+			'p' => esc_html__('p', 'roavio-toolkit'),
+		],
+	]
+);
+
 
 $layout_one_sponsors = new \Elementor\Repeater();
 
@@ -21,22 +51,6 @@ $layout_one_sponsors->add_control(
 		'label' => esc_html__('Image', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
 		'default' => [],
-	]
-);
-
-$layout_one_sponsors->add_control(
-	'url',
-	[
-		'label' => esc_html__('Url', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::URL,
-		'placeholder' => esc_html__('#', 'roavio-toolkit'),
-		'show_external' => false,
-		'default' => [
-			'url' => '#',
-			'is_external' => false,
-			'nofollow' => false,
-		],
-		'show_label' => false,
 	]
 );
 

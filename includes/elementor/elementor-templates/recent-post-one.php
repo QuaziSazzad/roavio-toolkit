@@ -3,22 +3,22 @@
 use RoavioTheme\Classes\Roavio_Post_Helper;
 
 if ('layout_one' == $settings['layout_type']) : ?>
-    <!-- Blog Area start -->
-    <section class="blog-area pt-130 rpt-100 pb-100 rpb-70 rel z-1">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-8 col-lg-10">
-                    <div class="section-title text-center mb-50" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                        <?php if (!empty($settings['layout_one_sub_title'])) : ?>
-                            <span class="sub-title color-primary mb-10"><?php echo esc_html($settings['layout_one_sub_title']); ?></span>
-                        <?php endif; ?>
-                        <?php if (!empty($settings['layout_one_title'])) : ?>
-                            <<?php echo esc_attr($settings['layout_one_title_tag']); ?>><?php echo esc_html($settings['layout_one_title']); ?></<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
-                        <?php endif; ?>
-                    </div>
-                </div>
+    <!-- News Section Start -->
+    <section class="news-section section-padding fix">
+        <div class="container custom-container-2">
+            <div class="section-title text-center">
+                <?php if (!empty($settings['layout_one_title'])) : ?>
+                    <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="wow fadeInUp" data-wow-delay=".3s">
+                        <?php echo esc_html($settings['layout_one_title']); ?>
+                    </<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
+                <?php endif; ?>
+                <?php if (!empty($settings['layout_one_sub_title'])) : ?>
+                    <<?php echo esc_attr($settings['layout_one_sub_title_tag']); ?> class="wow fadeInUp" data-wow-delay=".5s">
+                        <?php echo esc_html($settings['layout_one_sub_title']); ?>
+                    </<?php echo esc_attr($settings['layout_one_sub_title_tag']); ?>>
+                <?php endif; ?>
             </div>
-            <div class="row justify-content-center">
+            <div class="row">
                 <?php if ('cpt' == $settings['post_type']) :
 
                     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -61,42 +61,29 @@ if ('layout_one' == $settings['layout_type']) : ?>
                         $excerpt_count = $settings['excerpt_count'];
 
                 ?>
-                        <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="blog-item hover-content">
+                        <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                            <div class="news-card-items">
                                 <?php if (has_post_thumbnail() && 'yes' === $settings['show_thumbnail']): ?>
-                                    <div class="image">
+                                    <div class="news-image">
                                         <?php echo get_the_post_thumbnail($idd, $settings['post_thumbnail_size']); ?>
+                                        <span><?php the_time('d F'); ?></span>
                                     </div>
                                 <?php endif; ?>
-                                <div class="content">
-                                    <ul class="blog-meta">
-                                        <?php
-                                        if (has_category()) :
-                                            $categories = get_the_category();
-                                        ?>
-                                            <li><a href="<?php echo esc_url(get_category_link($categories[0]->term_id)); ?>"><?php echo esc_html($categories[0]->name); ?></a></li>
-                                        <?php endif; ?>
-
-                                        <li><a href="<?php the_permalink(); ?>"><?php the_time('d F Y'); ?></a></li>
-
-                                    </ul>
-                                    <<?php echo rt_escape_tags($settings['title_tag'], 'h4'); ?> class="title">
-                                        <a href="<?php the_permalink(); ?>"><?php echo esc_html($the_title); ?></a>
-                                    </<?php echo rt_escape_tags($settings['title_tag'], 'h4'); ?>>
-                                    <div class="inner-content">
-                                        <p>
-                                            <?php
-                                            if (has_excerpt()) {
-                                                echo wp_trim_words(get_the_excerpt(), $excerpt_count, '...');
-                                            } else {
-                                                echo wp_trim_words(get_the_content(), $excerpt_count, '...');
-                                            }
-                                            ?>
-                                        </p>
-                                        <?php if ('yes' === $settings['show_read_more'] && ! empty($settings['read_more_text'])) : ?>
-                                            <a class="theme-btn btn-small" href="<?php the_permalink(); ?>"><?php echo esc_html($settings['read_more_text']); ?></a>
-                                        <?php endif; ?>
-                                    </div>
+                                <div class="news-content">
+                                    <?php
+                                    if (has_category()) :
+                                        $categories = get_the_category();
+                                    ?>
+                                        <span><?php echo esc_html($categories[0]->name); ?></span>
+                                    <?php endif; ?>
+                                    <<?php echo rt_escape_tags($settings['title_tag'], 'h3'); ?>>
+                                        <a href="<?php the_permalink(); ?>">
+                                            <?php echo esc_html($the_title); ?>
+                                        </a>
+                                    </<?php echo rt_escape_tags($settings['title_tag'], 'h3'); ?>>
+                                    <?php if ('yes' === $settings['show_read_more'] && ! empty($settings['read_more_text'])) : ?>
+                                        <a href="<?php the_permalink(); ?>" class="link-btn"><?php echo esc_html($settings['read_more_text']); ?> <i class="fa fa-chevron-right"></i></a>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -133,22 +120,20 @@ if ('layout_one' == $settings['layout_type']) : ?>
                                 $categories_list = get_the_terms($idd, 'category', '', '', '');
 
                             ?>
-                                <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
-                                    <div class="blog-item hover-content">
-                                        <div class="image">
+                                <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".4s">
+                                    <div class="news-card-items">
+                                        <div class="news-image">
                                             <?php rt_elementor_rendered_image($post, 'image'); ?>
+                                            <span><?php the_time('d F'); ?></span>
                                         </div>
-                                        <div class="content">
-                                            <ul class="blog-meta">
-                                                <?php
-                                                if (has_category()) :
-                                                    $categories = get_the_category();
-                                                ?>
-                                                    <li><a href="<?php echo esc_url(get_category_link($categories[0]->term_id)); ?>"><?php echo esc_html($categories[0]->name); ?></a></li>
-                                                <?php endif; ?>
-                                                <li><a href="<?php the_permalink(); ?>"><?php the_time('d F Y'); ?></a></li>
-                                            </ul>
-                                            <<?php echo rt_escape_tags($settings['title_tag'], 'h4'); ?> class="title">
+                                        <div class="news-content">
+                                            <?php
+                                            if (has_category()) :
+                                                $categories = get_the_category();
+                                            ?>
+                                                <span><?php echo esc_html($categories_list[0]->name); ?></span>
+                                            <?php endif; ?>
+                                            <<?php echo rt_escape_tags($settings['title_tag'], 'h3'); ?>>
                                                 <a href="<?php the_permalink(); ?>">
                                                     <?php
                                                     if (!empty($post['title'])):
@@ -158,24 +143,10 @@ if ('layout_one' == $settings['layout_type']) : ?>
                                                     endif;
                                                     ?>
                                                 </a>
-                                            </<?php echo rt_escape_tags($settings['title_tag'], 'h4'); ?>>
-                                            <div class="inner-content">
-                                                <p>
-                                                    <?php if (!empty($post['summary_text'])):
-                                                        echo rt_kses_basic($post['summary_text']);
-                                                    else:
-                                                        if (has_excerpt()) :
-                                                            echo wp_trim_words(get_the_excerpt(), $excerpt_count, '...');
-                                                        else :
-                                                            echo wp_trim_words(get_the_content(), $excerpt_count, '...');
-                                                        endif;
-                                                    endif;
-                                                    ?>
-                                                </p>
-                                                <?php if ('yes' === $settings['show_read_more'] && ! empty($settings['read_more_text'])) : ?>
-                                                    <a class="theme-btn btn-small" href="<?php the_permalink(); ?>"><?php echo esc_html($settings['read_more_text']); ?></a>
-                                                <?php endif; ?>
-                                            </div>
+                                            </<?php echo rt_escape_tags($settings['title_tag'], 'h3'); ?>>
+                                            <?php if ('yes' === $settings['show_read_more'] && ! empty($settings['read_more_text'])) : ?>
+                                                <a href="<?php the_permalink(); ?>" class="link-btn"><?php echo esc_html($settings['read_more_text']); ?><i class="fa-solid fa-chevron-right"></i></a>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>
@@ -188,5 +159,4 @@ if ('layout_one' == $settings['layout_type']) : ?>
             </div>
         </div>
     </section>
-    <!-- Blog Area end -->
 <?php endif; ?>

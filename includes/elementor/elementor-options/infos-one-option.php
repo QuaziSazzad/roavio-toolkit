@@ -75,18 +75,6 @@ $this->add_control(
 
 $repeater = new \Elementor\Repeater();
 
-$repeater->add_control(
-	'layout_one_item_icon_style',
-	[
-		'label' => esc_html__('Icon Style', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::SELECT,
-		'default' => '',
-		'options' => [
-			'' => esc_html__('Default', 'roavio-toolkit'),
-			'style-2' => esc_html__('Style 2', 'roavio-toolkit'),
-		],
-	]
-);
 
 $repeater->add_control(
 	'layout_one_item_title',
@@ -120,6 +108,18 @@ $repeater->add_control(
 	]
 );
 
+$repeater->add_control(
+	'layout_one_item_icon_style',
+	[
+		'label' => esc_html__('Icon Style', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::SELECT,
+		'default' => '',
+		'options' => [
+			'' => esc_html__('Default', 'roavio-toolkit'),
+			'style-2' => esc_html__('Style 2', 'roavio-toolkit'),
+		],
+	]
+);
 
 $this->add_control(
 	'layout_one_info_items',

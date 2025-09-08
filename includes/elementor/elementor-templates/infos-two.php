@@ -1,6 +1,6 @@
-<?php if ('layout_one' == $settings['layout_type']) : ?>
+<?php if ('layout_two' == $settings['layout_type']) : ?>
     <!-- Counter Section Start -->
-    <section class="counter-section section-padding fix bg-cover" style="background-image: url(assets/img/home-1/bg.png);">
+    <section class="counter-section section-padding fix bg-cover" style="background-image: url(<?php echo esc_url($settings['layout_two_background_image']['url']); ?>);">
         <div class="container">
             <div class="counter-wrapper">
                 <?php if (!empty($settings['layout_two_title']) || !empty($settings['layout_two_sub_title'])) : ?>
