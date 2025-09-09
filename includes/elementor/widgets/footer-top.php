@@ -50,10 +50,10 @@ class Footer_Top extends Widget_Base
 				'default' => 'layout_one',
 				'options' => [
 					'layout_one' => __('Layout One', 'roavio-toolkit'),
-					'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					'layout_three' => __('Layout Three', 'roavio-toolkit'),
-					'layout_four' => __('Layout Four', 'roavio-toolkit'),
-					'layout_five' => __('Layout Five', 'roavio-toolkit'),
+					// 'layout_two' => __('Layout Two', 'roavio-toolkit'),
+					// 'layout_three' => __('Layout Three', 'roavio-toolkit'),
+					// 'layout_four' => __('Layout Four', 'roavio-toolkit'),
+					// 'layout_five' => __('Layout Five', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -160,9 +160,9 @@ class Footer_Top extends Widget_Base
 		$settings = $this->get_settings_for_display();
 
 		include rt_get_elementor_template('footer-top-one.php');
-		include rt_get_elementor_template('footer-top-two.php');
-		include rt_get_elementor_template('footer-top-three.php');
-		include rt_get_elementor_template('footer-top-four.php');
-		include rt_get_elementor_template('footer-top-five.php');
+		// include rt_get_elementor_template('footer-top-two.php');
+		// include rt_get_elementor_template('footer-top-three.php');
+		// include rt_get_elementor_template('footer-top-four.php');
+		// include rt_get_elementor_template('footer-top-five.php');
 	}
 }

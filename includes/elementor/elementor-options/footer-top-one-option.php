@@ -12,20 +12,21 @@ $this->start_controls_section(
 	]
 );
 
+
 $this->add_control(
 	'layout_one_title',
 	[
 		'label' => esc_html__('Title', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'default' => esc_html__('Ready to Get IT Consultations ?', 'roavio-toolkit'),
-		'placeholder' => esc_html__('Type your title here', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('Adventure is calling – are you ready?', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
 $this->add_control(
 	'layout_one_title_tag',
 	[
-		'label' => esc_html__('Title HTML Tag', 'roavio-toolkit'),
+		'label' => esc_html__('Title Tag', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::SELECT,
 		'default' => 'h2',
 		'options' => [
@@ -40,43 +41,21 @@ $this->add_control(
 );
 
 $this->add_control(
-	'layout_one_sub_title',
+	'layout_one_description',
 	[
-		'label' => esc_html__('Sub Title', 'roavio-toolkit'),
+		'label' => esc_html__('Description', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'default' => esc_html__('Get Consultations', 'roavio-toolkit'),
-		'placeholder' => esc_html__('Type your sub title here', 'roavio-toolkit'),
+		'default' => esc_html__('Get ready to embark on unforgettable journeys with us. whether you\'re seeking thrilling adventures, relaxing escapes', 'roavio-toolkit'),
+		'rows' => 4,
 	]
 );
 
 $this->add_control(
-	'layout_one_email_text',
+	'layout_one_button_text',
 	[
-		'label' => esc_html__('Email Text', 'roavio-toolkit'),
+		'label' => esc_html__('Button Text', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Email Address', 'roavio-toolkit'),
-		'label_block' => true,
-	]
-);
-
-$this->add_control(
-	'layout_one_email_address',
-	[
-		'label' => esc_html__('Email Address', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('techinfo@gmail.com', 'roavio-toolkit'),
-		'label_block' => true,
-	]
-);
-
-$this->add_control(
-	'layout_one_button_label',
-	[
-		'label' => esc_html__('Button Label', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Get Consultation', 'roavio-toolkit'),
-		'placeholder' => esc_html__('Type your button label here', 'roavio-toolkit'),
-		'label_block' => true,
+		'default' => esc_html__('Explore Our Tours', 'roavio-toolkit'),
 	]
 );
 
@@ -85,23 +64,34 @@ $this->add_control(
 	[
 		'label' => esc_html__('Button URL', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::URL,
-		'placeholder' => esc_html__('https://your-link.com', 'roavio-toolkit'),
 		'default' => [
 			'url' => '#',
-			'is_external' => false,
-			'nofollow' => false,
 		],
-		'label_block' => true,
 	]
 );
 
 $this->add_control(
-	'layout_one_bg_image',
+	'layout_one_logo_image',
 	[
-		'label' => esc_html__('Background  Image', 'roavio-toolkit'),
+		'label' => esc_html__('Logo Image', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [],
+		'default' => [
+			'url' => \Elementor\Utils::get_placeholder_image_src(),
+		],
 	]
 );
+
+$this->add_control(
+	'layout_one_contact_image',
+	[
+		'label' => esc_html__('Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [
+			'url' => \Elementor\Utils::get_placeholder_image_src(),
+		],
+	]
+);
+
+
 
 $this->end_controls_section();

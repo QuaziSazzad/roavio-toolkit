@@ -14,6 +14,7 @@ class Roavio_Metaboxes
 	private $post_prefix = 'roavio_post_meta';
 	private $page_prefix = 'roavio_page_meta';
 	private $portfolio_prefix = 'roavio_portfolio_meta';
+	private $booking_location_prefix = 'roavio_booking_location_meta';
 	private $nav_menu_prefix = 'roavio_nav_menu_meta';
 	private $template_builder_url;
 
@@ -37,6 +38,7 @@ class Roavio_Metaboxes
 		$this->page_metaboxes();
 		$this->post_metaboxes();
 		$this->portfolio_metaboxes();
+		$this->booking_location_metaboxes();
 		$this->nav_menu_metaboxes();
 	}
 
@@ -947,6 +949,26 @@ class Roavio_Metaboxes
 						'==',
 						'disabled',
 					],
+				],
+			],
+		]);
+	}
+
+	public function booking_location_metaboxes()
+	{
+		CSF::createTaxonomyOptions($this->booking_location_prefix, [
+			'title'        => esc_html__('Location Options', 'roavio-toolkit'),
+			'taxonomy'  => 'ba_location',
+			'show_restore' => true,
+		]);
+
+		CSF::createSection($this->booking_location_prefix, [
+			'fields' => [
+				[
+					'id'          => 'address',
+					'type'        => 'text',
+					'title'       => esc_html__('Address', 'roavio-toolkit'),
+					'placeholder' => esc_html__('Address', 'roavio-toolkit'),
 				],
 			],
 		]);

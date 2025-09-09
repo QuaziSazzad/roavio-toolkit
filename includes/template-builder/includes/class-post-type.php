@@ -70,6 +70,58 @@ class Template_Post_Type
 		];
 
 		register_post_type($this->type, $args);
+
+		// Location Taxonomy
+		$location_labels = array(
+			'name'              => _x('Booking Locations', 'taxonomy general name', 'roavio-toolkit'),
+			'singular_name'     => _x('Booking Location', 'taxonomy singular name', 'roavio-toolkit'),
+			'search_items'      => __('Search Booking Locations', 'roavio-toolkit'),
+			'all_items'         => __('All Booking Locations', 'roavio-toolkit'),
+			'parent_item'       => __('Parent Location', 'roavio-toolkit'),
+			'parent_item_colon' => __('Parent Location:', 'roavio-toolkit'),
+			'edit_item'         => __('Edit Location', 'roavio-toolkit'),
+			'update_item'       => __('Update Booking Location', 'roavio-toolkit'),
+			'add_new_item'      => __('Add New Booking Location', 'roavio-toolkit'),
+			'new_item_name'     => __('New Booking Location Name', 'roavio-toolkit'),
+			'menu_name'         => __('Booking Locations', 'roavio-toolkit'),
+		);
+
+		$location_args = array(
+			'hierarchical'      => true, // Set to true for categories, false for tags
+			'labels'            => $location_labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => array('slug' => 'ba_location'),
+		);
+
+		register_taxonomy('ba_location', array('to_book'), $location_args);
+
+		// Type Taxonomy
+		$type_labels = array(
+			'name'              => _x('Booking Types', 'taxonomy general name', 'roavio-toolkit'),
+			'singular_name'     => _x('Booking Type', 'taxonomy singular name', 'roavio-toolkit'),
+			'search_items'      => __('Search Booking Types', 'roavio-toolkit'),
+			'all_items'         => __('All Booking Types', 'roavio-toolkit'),
+			'parent_item'       => __('Parent Booking Type', 'roavio-toolkit'),
+			'parent_item_colon' => __('Parent Booking Type:', 'roavio-toolkit'),
+			'edit_item'         => __('Edit Booking Type', 'roavio-toolkit'),
+			'update_item'       => __('Update Booking Type', 'roavio-toolkit'),
+			'add_new_item'      => __('Add New Booking Type', 'roavio-toolkit'),
+			'new_item_name'     => __('New Booking Type Name', 'roavio-toolkit'),
+			'menu_name'         => __('Booking Types', 'roavio-toolkit'),
+		);
+
+		$type_args = array(
+			'hierarchical'      => true, // Set to true for categories, false for tags
+			'labels'            => $type_labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => array('slug' => 'ba_type'),
+		);
+
+		register_taxonomy('ba_type', array('to_book'), $type_args);
 	}
 
 	public function custom_templates($single_template)

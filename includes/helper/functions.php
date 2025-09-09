@@ -707,3 +707,22 @@ if (!function_exists('roavio_elementor_button_style_options')) :
 		$init->end_controls_tabs();
 	}
 endif;
+
+
+/**
+ *  Taxonomy List
+ * @return array
+ */
+function rt_taxonomy_list($taxonomy = 'category')
+{
+	$terms = get_terms(array(
+		'taxonomy' => $taxonomy,
+		'hide_empty' => true,
+	));
+	if (!empty($terms) && !is_wp_error($terms)) {
+		foreach ($terms as $term) {
+			$options[$term->slug] = $term->name;
+		}
+		return $options;
+	}
+}

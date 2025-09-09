@@ -82,6 +82,7 @@ class Roavio_Elementor_Addon
 		// include_once RT_ELEMENTOR . '/widgets/video.php';
 		// include_once RT_ELEMENTOR . '/widgets/sliding-text.php';
 		include_once RT_ELEMENTOR . '/widgets/sponsors.php';
+		include_once RT_ELEMENTOR . '/widgets/destination.php';
 		// include_once RT_ELEMENTOR . '/widgets/contact.php';
 		// include_once RT_ELEMENTOR . '/widgets/latest-work.php';
 		// include_once RT_ELEMENTOR . '/widgets/pricing.php';
@@ -92,7 +93,7 @@ class Roavio_Elementor_Addon
 		// include_once RT_ELEMENTOR . '/widgets/footer-contact.php';
 		//include_once RT_ELEMENTOR . '/widgets/footer-about.php';
 		// include_once RT_ELEMENTOR . '/widgets/footer-nav.php';
-		// include_once RT_ELEMENTOR . '/widgets/footer-top.php';
+		include_once RT_ELEMENTOR . '/widgets/footer-top.php';
 		// include_once RT_ELEMENTOR . '/widgets/footer-newsletter.php';
 		// include_once RT_ELEMENTOR . '/widgets/footer-shape.php';
 		// include_once RT_ELEMENTOR . '/widgets/copyright.php';
@@ -118,6 +119,7 @@ class Roavio_Elementor_Addon
 		$widgets_manager->register(new Widgets\Recent_Post());
 		// $widgets_manager->register(new Widgets\Video());
 		$widgets_manager->register(new Widgets\Sponsors());
+		$widgets_manager->register(new Widgets\Destination());
 		// $widgets_manager->register(new Widgets\Features());
 		// $widgets_manager->register(new Widgets\Contact());
 		// $widgets_manager->register(new Widgets\Latest_Work());
@@ -125,7 +127,7 @@ class Roavio_Elementor_Addon
 		// $widgets_manager->register(new Widgets\Portfolio_Details());
 		// $widgets_manager->register(new Widgets\Footer_Contact());
 		// $widgets_manager->register(new Widgets\Footer_Nav());
-		// $widgets_manager->register(new Widgets\Footer_Top());
+		$widgets_manager->register(new Widgets\Footer_Top());
 		// $widgets_manager->register(new Widgets\Footer_About());
 		// $widgets_manager->register(new Widgets\Footer_Newsletter());
 		// $widgets_manager->register(new Widgets\Footer_Shape());

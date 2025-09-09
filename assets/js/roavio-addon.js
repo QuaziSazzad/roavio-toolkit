@@ -72,6 +72,39 @@
         // ## Nice Select
         $('select').niceSelect();
 
+          //>> Brand Slider Start <<//
+          if($('.brand-slider').length > 0) {
+            const BrandSlider = new Swiper(".brand-slider", {
+               spaceBetween: 30,
+               speed: 1300,
+               loop: true,
+               centeredSlides: true,
+               autoplay: {
+                   delay: 2000,
+                   disableOnInteraction: false,
+               },
+   
+               breakpoints: {
+                   1199: {
+                       slidesPerView: 7,
+                   },
+                   991: {
+                       slidesPerView: 4,
+                   },
+                   767: {
+                       slidesPerView: 3,
+                   },
+                   575: {
+                       slidesPerView: 2,
+                   },
+                   0: {
+                       slidesPerView: 2,
+                   },
+               },
+           });
+       }
+   
+
 
     };
 
