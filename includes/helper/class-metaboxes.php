@@ -15,6 +15,7 @@ class Roavio_Metaboxes
 	private $page_prefix = 'roavio_page_meta';
 	private $portfolio_prefix = 'roavio_portfolio_meta';
 	private $booking_location_prefix = 'roavio_booking_location_meta';
+	private $booking_tour_prefix = 'roavio_booking_tour_meta';
 	private $nav_menu_prefix = 'roavio_nav_menu_meta';
 	private $template_builder_url;
 
@@ -39,6 +40,7 @@ class Roavio_Metaboxes
 		$this->post_metaboxes();
 		$this->portfolio_metaboxes();
 		$this->booking_location_metaboxes();
+		$this->booking_tour_info();
 		$this->nav_menu_metaboxes();
 	}
 
@@ -960,6 +962,7 @@ class Roavio_Metaboxes
 			'title'        => esc_html__('Location Options', 'roavio-toolkit'),
 			'taxonomy'  => 'ba_location',
 			'show_restore' => true,
+			'data_type' => 'unserialize',
 		]);
 
 		CSF::createSection($this->booking_location_prefix, [
@@ -970,6 +973,55 @@ class Roavio_Metaboxes
 					'title'       => esc_html__('Address', 'roavio-toolkit'),
 					'placeholder' => esc_html__('Address', 'roavio-toolkit'),
 				],
+			],
+		]);
+	}
+
+	public function booking_tour_info()
+	{
+		CSF::createMetabox($this->booking_tour_prefix, [
+			'title'        => esc_html__('Tour Info', 'roavio-toolkit'),
+			'post_type'  => 'to_book',
+			'show_restore' => true,
+		]);
+
+		CSF::createSection($this->booking_tour_prefix, [
+			'fields' => [
+				[
+					'id'    => 'tour_featured',
+					'type'  => 'checkbox',
+					'title' => esc_html__('Featured Tour', 'roavio-toolkit'),
+					'desc'  => esc_html__('Toggle to mark this tour as featured', 'roavio-toolkit'),
+					'default' => false
+				],
+				[
+					'id'    => 'tour_video_url',
+					'type'  => 'text',
+					'title' => esc_html__('Tour Video URL', 'roavio-toolkit'),
+					'desc'  => esc_html__('Enter YouTube or Vimeo video URL', 'roavio-toolkit'),
+					'default' => 'https://www.youtube.com/watch?v=G49_MdP0klg'
+				],
+				[
+					'id'    => 'tour_address',
+					'type'  => 'text',
+					'title' => esc_html__('Tour Address', 'roavio-toolkit'),
+					'desc'  => esc_html__('Enter the full address for this tour', 'roavio-toolkit'),
+					'default' => esc_html__('Ella, Sri Lanka', 'roavio-toolkit')
+				],
+				[
+					'id'    => 'tour_duration',
+					'type'  => 'text',
+					'title' => esc_html__('Duration', 'roavio-toolkit'),
+					'desc'  => esc_html__('Enter the duration for this tour', 'roavio-toolkit'),
+					'default' => esc_html__('1 - 3 days', 'roavio-toolkit')
+				],
+				[
+					'id'    => 'people_count',
+					'type'  => 'text',
+					'title' => esc_html__('People Count', 'roavio-toolkit'),
+					'desc'  => esc_html__('Enter the people count for this tour', 'roavio-toolkit'),
+					'default' => esc_html__('3 persons', 'roavio-toolkit')
+				]
 			],
 		]);
 	}

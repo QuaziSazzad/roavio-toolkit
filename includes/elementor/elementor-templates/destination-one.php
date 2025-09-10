@@ -17,12 +17,17 @@
                                 $image_url = !empty($item['image']['url']) ? $item['image']['url'] : '';
                                 $image_alt = !empty($item['image']['alt']) ? $item['image']['alt'] : $item['location'];
 
-                                $url = '#';
+                                $taxonomy = 'ba_location';
+                                $link_term = '#';
+                                $term = get_term_by('slug', $item['select_category'], $taxonomy);
+                                if ($term) {
+                                    $link_term = get_term_link($term->term_id, $taxonomy);
+                                }
+                                $url = $link_term;
                                 if (!empty($item['custom_url']['url'])) {
                                     $url = $item['custom_url']['url'];
-                                } elseif (!empty($item['select_category'])) {
-                                    $url = get_term_link($item['select_category']);
                                 }
+                                $address = get_term_meta($term->term_id, 'address', true);
                             ?>
                                 <div class="col-xl-6 col-lg-6 wow fadeInUp" data-wow-delay=".3s">
                                     <div class="tour-card-item">
@@ -31,16 +36,15 @@
                                                 <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
                                             <?php endif; ?>
                                             <?php if (!empty($item['listing_text'])) : ?>
-                                                <span><?php echo esc_html($item['listing_text']); ?></span>
+                                                <span><?php echo esc_html($term->count); ?> <?php echo esc_html($item['listing_text']); ?></span>
                                             <?php endif; ?>
                                             <div class="tour-content">
                                                 <?php if (!empty($item['location'])) : ?>
                                                     <h3>
-                                                        <a href="<?php //echo esc_url($url); 
-                                                                    ?>"><?php echo esc_html($item['location']); ?></a>
+                                                        <a href="<?php echo esc_url($url); ?>"><?php echo esc_html($item['location']); ?></a>
                                                     </h3>
                                                 <?php endif; ?>
-                                                <p>Bol, Croatia</p>
+                                                <p><?php echo esc_html($address); ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -55,12 +59,17 @@
                                     $image_url = !empty($item['image']['url']) ? $item['image']['url'] : '';
                                     $image_alt = !empty($item['image']['alt']) ? $item['image']['alt'] : $item['location'];
 
-                                    $url = '#';
+                                    $taxonomy = 'ba_location';
+                                    $link_term = '#';
+                                    $term = get_term_by('slug', $item['select_category'], $taxonomy);
+                                    if ($term) {
+                                        $link_term = get_term_link($term->term_id, $taxonomy);
+                                    }
+                                    $url = $link_term;
                                     if (!empty($item['custom_url']['url'])) {
                                         $url = $item['custom_url']['url'];
-                                    } elseif (!empty($item['select_category'])) {
-                                        $url = get_term_link($item['select_category']);
                                     }
+                                    $address = get_term_meta($term->term_id, 'address', true);
                                 ?>
                                     <div class="tour-card-item wow fadeInRight" data-wow-delay=".3s">
                                         <div class="tour-image style-3">
@@ -68,16 +77,15 @@
                                                 <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
                                             <?php endif; ?>
                                             <?php if (!empty($item['listing_text'])) : ?>
-                                                <span><?php echo esc_html($item['listing_text']); ?></span>
+                                                <span><?php echo esc_html($term->count); ?> <?php echo esc_html($item['listing_text']); ?></span>
                                             <?php endif; ?>
                                             <div class="tour-content">
                                                 <?php if (!empty($item['location'])) : ?>
                                                     <h3>
-                                                        <a href="<?php //echo esc_url($url); 
-                                                                    ?>"><?php echo esc_html($item['location']); ?></a>
+                                                        <a href="<?php echo esc_url($url); ?>"><?php echo esc_html($item['location']); ?></a>
                                                     </h3>
                                                 <?php endif; ?>
-                                                <p>Bol, Croatia</p>
+                                                <p><?php echo esc_html($address); ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -89,12 +97,18 @@
                                     $image_url = !empty($item['image']['url']) ? $item['image']['url'] : '';
                                     $image_alt = !empty($item['image']['alt']) ? $item['image']['alt'] : $item['location'];
 
-                                    $url = '#';
+                                    $taxonomy = 'ba_location';
+                                    $link_term = '#';
+                                    $term = get_term_by('slug', $item['select_category'], $taxonomy);
+                                    if ($term) {
+                                        $link_term = get_term_link($term->term_id, $taxonomy);
+                                    }
+                                    $url = $link_term;
                                     if (!empty($item['custom_url']['url'])) {
                                         $url = $item['custom_url']['url'];
-                                    } elseif (!empty($item['select_category'])) {
-                                        $url = get_term_link($item['select_category']);
                                     }
+
+                                    $address = get_term_meta($term->term_id, 'address', true);
                                 ?>
                                     <div class="tour-card-item mt-1 wow fadeInRight" data-wow-delay=".5s">
                                         <div class="tour-image style-3">
@@ -102,16 +116,15 @@
                                                 <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
                                             <?php endif; ?>
                                             <?php if (!empty($item['listing_text'])) : ?>
-                                                <span><?php echo esc_html($item['listing_text']); ?></span>
+                                                <span><?php echo esc_html($term->count); ?> <?php echo esc_html($item['listing_text']); ?></span>
                                             <?php endif; ?>
                                             <div class="tour-content">
                                                 <?php if (!empty($item['location'])) : ?>
                                                     <h3>
-                                                        <a href="<?php //echo esc_url($url); 
-                                                                    ?>"><?php echo esc_html($item['location']); ?></a>
+                                                        <a href="<?php echo esc_url($url); ?>"><?php echo esc_html($item['location']); ?></a>
                                                     </h3>
                                                 <?php endif; ?>
-                                                <p>Bol, Croatia</p>
+                                                <p><?php echo esc_html($address); ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -129,12 +142,18 @@
                                 $image_url = !empty($item['image']['url']) ? $item['image']['url'] : '';
                                 $image_alt = !empty($item['image']['alt']) ? $item['image']['alt'] : $item['location'];
 
-                                $url = '#';
+                                $taxonomy = 'ba_location';
+                                $link_term = '#';
+                                $term = get_term_by('slug', $item['select_category'], $taxonomy);
+                                if ($term) {
+                                    $link_term = get_term_link($term->term_id, $taxonomy);
+                                }
+                                $url = $link_term;
                                 if (!empty($item['custom_url']['url'])) {
                                     $url = $item['custom_url']['url'];
-                                } elseif (!empty($item['select_category'])) {
-                                    $url = get_term_link($item['select_category']);
                                 }
+
+                                $address = get_term_meta($term->term_id, 'address', true);
                             ?>
                                 <div class="col-xl-8 col-lg-6 wow fadeInUp" data-wow-delay=".3s">
                                     <div class="tour-card-item">
@@ -143,16 +162,15 @@
                                                 <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
                                             <?php endif; ?>
                                             <?php if (!empty($item['listing_text'])) : ?>
-                                                <span><?php echo esc_html($item['listing_text']); ?></span>
+                                                <span><?php echo esc_html($term->count); ?> <?php echo esc_html($item['listing_text']); ?></span>
                                             <?php endif; ?>
                                             <div class="tour-content">
                                                 <?php if (!empty($item['location'])) : ?>
                                                     <h3>
-                                                        <a href="<?php //echo esc_url($url); 
-                                                                    ?>"><?php echo esc_html($item['location']); ?></a>
+                                                        <a href="<?php echo esc_url($url); ?>"><?php echo esc_html($item['location']); ?></a>
                                                     </h3>
                                                 <?php endif; ?>
-                                                <p>Bol, Croatia</p>
+                                                <p><?php echo esc_html($address); ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -167,12 +185,17 @@
                                     $image_url = !empty($item['image']['url']) ? $item['image']['url'] : '';
                                     $image_alt = !empty($item['image']['alt']) ? $item['image']['alt'] : $item['location'];
 
-                                    $url = '#';
+                                    $taxonomy = 'ba_location';
+                                    $link_term = '#';
+                                    $term = get_term_by('slug', $item['select_category'], $taxonomy);
+                                    if ($term) {
+                                        $link_term = get_term_link($term->term_id, $taxonomy);
+                                    }
+                                    $url = $link_term;
                                     if (!empty($item['custom_url']['url'])) {
                                         $url = $item['custom_url']['url'];
-                                    } elseif (!empty($item['select_category'])) {
-                                        $url = get_term_link($item['select_category']);
                                     }
+                                    $address = get_term_meta($term->term_id, 'address', true);
                                 ?>
                                     <div class="tour-card-item wow fadeInRight" data-wow-delay=".3s">
                                         <div class="tour-image style-3">
@@ -180,16 +203,15 @@
                                                 <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
                                             <?php endif; ?>
                                             <?php if (!empty($item['listing_text'])) : ?>
-                                                <span><?php echo esc_html($item['listing_text']); ?></span>
+                                                <span><?php echo esc_html($term->count); ?> <?php echo esc_html($item['listing_text']); ?></span>
                                             <?php endif; ?>
                                             <div class="tour-content style-4">
                                                 <?php if (!empty($item['location'])) : ?>
                                                     <h3>
-                                                        <a href="<?php //echo esc_url($url); 
-                                                                    ?>"><?php echo esc_html($item['location']); ?></a>
+                                                        <a href="<?php echo esc_url($url); ?>"><?php echo esc_html($item['location']); ?></a>
                                                     </h3>
                                                 <?php endif; ?>
-                                                <p>Bol, Croatia</p>
+                                                <p><?php echo esc_html($address); ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -201,12 +223,18 @@
                                     $image_url = !empty($item['image']['url']) ? $item['image']['url'] : '';
                                     $image_alt = !empty($item['image']['alt']) ? $item['image']['alt'] : $item['location'];
 
-                                    $url = '#';
+                                    $taxonomy = 'ba_location';
+                                    $link_term = '#';
+                                    $term = get_term_by('slug', $item['select_category'], $taxonomy);
+                                    if ($term) {
+                                        $link_term = get_term_link($term->term_id, $taxonomy);
+                                    }
+                                    $url = $link_term;
                                     if (!empty($item['custom_url']['url'])) {
                                         $url = $item['custom_url']['url'];
-                                    } elseif (!empty($item['select_category'])) {
-                                        $url = get_term_link($item['select_category']);
                                     }
+
+                                    $address = get_term_meta($term->term_id, 'address', true);
                                 ?>
                                     <div class="tour-card-item mt-1 wow fadeInRight" data-wow-delay=".5s">
                                         <div class="tour-image style-3">
@@ -214,16 +242,15 @@
                                                 <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
                                             <?php endif; ?>
                                             <?php if (!empty($item['listing_text'])) : ?>
-                                                <span><?php echo esc_html($item['listing_text']); ?></span>
+                                                <span><?php echo esc_html($term->count); ?> <?php echo esc_html($item['listing_text']); ?></span>
                                             <?php endif; ?>
                                             <div class="tour-content style-5">
                                                 <?php if (!empty($item['location'])) : ?>
                                                     <h3>
-                                                        <a href="<?php //echo esc_url($url); 
-                                                                    ?>"><?php echo esc_html($item['location']); ?></a>
+                                                        <a href="<?php echo esc_url($url); ?>"><?php echo esc_html($item['location']); ?></a>
                                                     </h3>
                                                 <?php endif; ?>
-                                                <p>Bol, Croatia</p>
+                                                <p><?php echo esc_html($address); ?></p>
                                             </div>
                                         </div>
                                     </div>

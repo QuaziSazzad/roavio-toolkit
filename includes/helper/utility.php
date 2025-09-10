@@ -20,10 +20,10 @@ class Utility
 	}
 	public function set_image_size()
 	{
-		add_image_size('roavio_blog_90X90', 90, 90, true); //in use
 		add_image_size('roavio_blog_410X270', 410, 270, true); //in use
-		add_image_size('roavio_blog_80X64', 80, 64, true); //in use
-		add_image_size('roavio_blog_100X80', 100, 80, true); //in use
+		// add_image_size('roavio_blog_410X270', 410, 270, true); //in use
+		// add_image_size('roavio_blog_80X64', 80, 64, true); //in use
+		// add_image_size('roavio_blog_100X80', 100, 80, true); //in use
 	}
 
 	public function after_breadcrumb()
