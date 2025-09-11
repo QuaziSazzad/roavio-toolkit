@@ -204,6 +204,7 @@ final class Roavio_Toolkit
 			include_once RT_INCLUDES . '/helper/class-maintenance.php';
 			include_once RT_INCLUDES . '/helper/class-admin-menu.php';
 			include_once RT_INCLUDES . '/helper/utility.php';
+			include_once RT_INCLUDES . '/helper/wishlist.php';
 
 
 			if (did_action('elementor/loaded')) {

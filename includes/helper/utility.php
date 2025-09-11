@@ -85,13 +85,31 @@ class Utility
 
 	public function subscribe_user()
 	{
+		// Set proper content type for JSON response
+		header('Content-Type: application/json');
+
 		// Mailchimp API credentials
 		$apiKey = Helper::get_option('api');
 		$listId = Helper::get_option('subscribe_list_id');
+
+		// Check if API credentials are configured
+		if (empty($apiKey) || empty($listId)) {
+			wp_send_json_error(array(
+				'message' => esc_html__('Newsletter service is not configured. Please contact the administrator.', 'roavio-toolkit')
+			));
+		}
+
 		$dataCenter = substr($apiKey, strpos($apiKey, '-') + 1);
 		$url = 'https://' . $dataCenter . '.api.mailchimp.com/3.0/lists/' . $listId . '/members/';
 
 		$email = sanitize_email($_POST['email']);
+
+		// Validate email
+		if (!is_email($email)) {
+			wp_send_json_error(array(
+				'message' => esc_html__('Please enter a valid email address.', 'roavio-toolkit')
+			));
+		}
 
 		// User data
 		$userData = [
@@ -115,20 +133,28 @@ class Utility
 
 		// Check the response code
 		if ($httpCode == 200) {
-			echo esc_html(Helper::get_option('success_message'));
+			wp_send_json_success(array(
+				'message' => esc_html(Helper::get_option('success_message') ?: esc_html__('Successfully subscribed to newsletter!', 'roavio-toolkit'))
+			));
 		} else {
 			// Decode the JSON response
 			$response = json_decode($result, true);
 
 			// Check if the response contains an error and display a human-readable message
 			if ($httpCode == 400 && isset($response['title']) && $response['title'] == 'Member Exists') {
-				echo esc_html(Helper::get_option('already_subscribed_message'));
+				wp_send_json_error(array(
+					'message' => esc_html(Helper::get_option('already_subscribed_message') ?: esc_html__('This email is already subscribed.', 'roavio-toolkit'))
+				));
 			} else {
-				echo esc_html(Helper::get_option('error_message')) .  $response['detail'];
+				$error_message = esc_html(Helper::get_option('error_message') ?: esc_html__('An error occurred. Please try again.', 'roavio-toolkit'));
+				if (isset($response['detail'])) {
+					$error_message .= ' ' . esc_html($response['detail']);
+				}
+				wp_send_json_error(array(
+					'message' => $error_message
+				));
 			}
 		}
-
-		wp_die(); // End AJAX
 	}
 }
 

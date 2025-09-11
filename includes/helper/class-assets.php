@@ -88,6 +88,9 @@ class Roavio_Assets
 			[
 				'ajax_url' => admin_url('admin-ajax.php'),
 				'error_text' => esc_html__('An error occurred. Please try again.', 'roavio-toolkit'),
+				'check_login' => is_user_logged_in() ? 'yes' : 'no',
+				'str_login' => esc_html__('Please Sign In', 'roavio-toolkit'),
+				'security_nonce' => wp_create_nonce("roavio-ajax-security-nonce")
 			]
 		);
 	}

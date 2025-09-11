@@ -726,3 +726,19 @@ function rt_taxonomy_list($taxonomy = 'category')
 		return $options;
 	}
 }
+add_action('wp_footer', 'roavio_wishlist_notice');
+function roavio_wishlist_notice()
+{
+?>
+	<div id="roavio-popup" class="roavio-popup">
+		<div class="popup-content">
+			<?php if (!is_user_logged_in()) : ?>
+				<p>Please Sign In</p>
+			<?php else : ?>
+				<p class="roavio-added-wishlist">Added Wishlist</p>
+				<p class="roavio-removed-wishlist">Removed From Wishlist</p>
+			<?php endif; ?>
+		</div>
+	</div>
+<?php
+}
