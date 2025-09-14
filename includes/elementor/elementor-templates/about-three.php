@@ -1,58 +1,100 @@
 <?php if ('layout_three' == $settings['layout_type']) : ?>
-    <!-- Service Area start -->
-    <section class="service-area rel z-1">
-        <div class="container pt-130 rpt-100 pb-100 rpb-70">
-            <?php if (!empty($settings['layout_three_subtitle']) || !empty($settings['layout_three_title']) || !empty($settings['layout_three_description'])) : ?>
-                <div class="row justify-content-center">
-                    <div class="col-xl-8 col-lg-10">
-                        <div class="section-title text-center mb-45" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                            <?php if (!empty($settings['layout_three_subtitle'])) : ?>
-                                <span class="sub-title color-primary mb-10"><?php echo esc_html($settings['layout_three_subtitle']); ?></span>
-                            <?php endif; ?>
-                            <?php if (!empty($settings['layout_three_title'])) : ?>
-                                <<?php echo esc_attr($settings['layout_three_title_tag']); ?>><?php echo esc_html($settings['layout_three_title']); ?></<?php echo esc_attr($settings['layout_three_title_tag']); ?>>
-                            <?php endif; ?>
-                            <?php if (!empty($settings['layout_three_description'])) : ?>
-                                <p class="summary-text"><?php echo esc_html($settings['layout_three_description']); ?></p>
-                            <?php endif; ?>
+    <!-- Feature-exprience Section-2 Start -->
+    <section class="feature-exprience-section-2 fix header-bg">
+        <div class="container custom-container-4">
+            <div class="feature-exprience-wrapper">
+                <div class="row g-4">
+                    <div class="col-xl-4 col-lg-6 wow img-custom-anim-left">
+                        <div class="left-image">
+                            <?php rt_elementor_rendered_image($settings, 'layout_three_left_image'); ?>
                         </div>
                     </div>
-                </div>
-            <?php endif; ?>
-            <div class="row justify-content-center">
-                <div class="col-xl-6">
-                    <div class="row">
-                        <?php
-                        $delay = 100;
-                        foreach ($settings['layout_three_services'] as $index => $service) :
-                            $delay_value = ($index % 3 + 1) * 100;
-                        ?>
-                            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="<?php echo esc_attr($delay_value); ?>" data-aos-duration="1500" data-aos-offset="50">
-                                <div class="service-item-two">
-                                    <div class="icon">
-                                        <i class="<?php echo esc_attr($service['service_icon']); ?>"></i>
+                    <div class="col-xl-4 col-lg-6">
+                        <?php if (!empty($settings['layout_three_counter_one_number']) || !empty($settings['layout_three_counter_two_number'])) : ?>
+                            <div class="counter-main-box wow img-custom-anim-top">
+                                <?php if (!empty($settings['layout_three_counter_one_number']) || !empty($settings['layout_three_counter_one_text'])) : ?>
+                                    <div class="content">
+                                        <?php if (!empty($settings['layout_three_counter_one_number'])) : ?>
+                                            <h2><span class="count"><?php echo esc_html($settings['layout_three_counter_one_number']); ?></span><?php echo esc_html($settings['layout_three_counter_one_suffix']); ?></h2>
+                                        <?php endif; ?>
+                                        <?php if (!empty($settings['layout_three_counter_one_text'])) : ?>
+                                            <p><?php echo esc_html($settings['layout_three_counter_one_text']); ?></p>
+                                        <?php endif; ?>
+                                        <?php if (!empty($settings['layout_three_group_image']['url'])) : ?>
+                                            <div class="group-image">
+                                                <?php rt_elementor_rendered_image($settings, 'layout_three_group_image'); ?>
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
-                                    <h5><a href="<?php echo esc_url($service['service_link']['url']); ?>"><?php echo esc_html($service['service_title']); ?></a></h5>
-                                </div>
+                                <?php endif; ?>
+                                <?php if (!empty($settings['layout_three_counter_two_number']) || !empty($settings['layout_three_counter_two_text'])) : ?>
+                                    <div class="right-box">
+                                        <?php if (!empty($settings['layout_three_counter_two_number'])) : ?>
+                                            <h2><span class="count"><?php echo esc_html($settings['layout_three_counter_two_number']); ?></span><?php echo esc_html($settings['layout_three_counter_two_suffix']); ?></h2>
+                                        <?php endif; ?>
+                                        <?php if (!empty($settings['layout_three_counter_two_text'])) : ?>
+                                            <p><?php echo esc_html($settings['layout_three_counter_two_text']); ?></p>
+                                        <?php endif; ?>
+                                        <?php if (!empty($settings['layout_three_star_image']['url'])) : ?>
+                                            <div class="star-item">
+                                                <?php rt_elementor_rendered_image($settings, 'layout_three_star_image'); ?>
+                                                <div class="star">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </div>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
                             </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-8">
-                    <div class="service-video-part mb-30 rel" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
-                        <?php if (!empty($settings['layout_three_video_image']['url'])) : ?>
-                            <?php rt_elementor_rendered_image($settings, 'layout_three_video_image'); ?>
                         <?php endif; ?>
-                        <div class="content" data-aos="fade-down" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="video-wrap">
-                                <a href="<?php echo esc_url($settings['layout_three_video_url']); ?>" class="mfp-iframe video-play"><i class="fas fa-play"></i></a> <span><?php echo esc_html($settings['layout_three_video_title']); ?></span>
+                        <?php if (!empty($settings['layout_three_experience_title']) || !empty($settings['layout_three_client_name']) || !empty($settings['layout_three_client_designation'])) : ?>
+                            <div class="adventure-box-2 wow img-custom-anim-bottom">
+                                <?php if (!empty($settings['layout_three_shape_bg_image']['url'])) : ?>
+                                    <div class="shape-2">
+                                        <?php rt_elementor_rendered_image($settings, 'layout_three_shape_bg_image'); ?>
+                                    </div>
+                                <?php endif; ?>
+                                <?php if (!empty($settings['layout_three_experience_title'])) : ?>
+                                    <h3>
+                                        <a href="<?php echo esc_url($settings['layout_three_experience_url']['url']); ?>"
+                                            <?php echo ($settings['layout_three_experience_url']['is_external']) ? 'target="_blank"' : ''; ?>
+                                            <?php echo ($settings['layout_three_experience_url']['nofollow']) ? 'rel="nofollow"' : ''; ?>>
+                                            <?php echo wp_kses_post($settings['layout_three_experience_title']); ?>
+                                        </a>
+                                    </h3>
+                                <?php endif; ?>
+                                <?php if (!empty($settings['layout_three_client_name']) || !empty($settings['layout_three_client_designation'])) : ?>
+                                    <div class="info-item">
+                                        <?php rt_elementor_rendered_image($settings, 'layout_three_client_image'); ?>
+                                        <div class="content">
+                                            <?php if (!empty($settings['layout_three_client_name'])) : ?>
+                                                <h5><?php echo esc_html($settings['layout_three_client_name']); ?></h5>
+                                            <?php endif; ?>
+                                            <?php if (!empty($settings['layout_three_client_designation'])) : ?>
+                                                <span><?php echo esc_html($settings['layout_three_client_designation']); ?></span>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                                <?php if (!empty($settings['layout_three_shape_image']['url'])) : ?>
+                                    <div class="shape">
+                                        <?php rt_elementor_rendered_image($settings, 'layout_three_shape_image'); ?>
+                                    </div>
+                                <?php endif; ?>
                             </div>
-                            <h5><?php echo esc_html($settings['layout_three_video_description']); ?></h5>
+                        <?php endif; ?>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 wow img-custom-anim-right">
+                        <div class="left-image">
+                            <?php rt_elementor_rendered_image($settings, 'layout_three_right_image'); ?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Service Area end -->
 <?php endif; ?>

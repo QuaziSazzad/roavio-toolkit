@@ -1,25 +1,34 @@
 <?php if ('layout_one' == $settings['layout_type']) : ?>
-    <!-- CTA Area start -->
-    <section class="cta-area-two rel z-1">
-        <div class="container px-sm-0 bordered-x py-130 rpy-100" style="background-image: url(<?php echo esc_url($settings['layout_one_shape']['url']); ?>);">
+    <!-- Feature Section-2 Start -->
+    <section class="feature-section-2 bg-cover" <?php if (!empty($settings['layout_one_background_image']['url'])) : ?>style="background-image: url(<?php echo esc_url($settings['layout_one_background_image']['url']); ?>);" <?php endif; ?>>
+        <div class="container-fluid">
             <div class="row justify-content-center">
-                <div class="col-xl-7 col-lg-9 col-md-11 text-center" data-aos="zoom-in" data-aos-duration="1500" data-aos-offset="50">
-                    <div class="section-title mx-xl-3 mb-30">
-                        <?php if ($settings['layout_one_title']) : ?>
-                            <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="sec-title"><?php echo rt_kses_basic($settings['layout_one_title']); ?></<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
+                <div class="col-xl-7 col-lg-9">
+                    <div class="feature-bg-content">
+                        <?php if (!empty($settings['layout_one_title'])) : ?>
+                            <h2 class="wow fadeInUp" data-wow-delay=".3s">
+                                <?php echo esc_html($settings['layout_one_title']); ?>
+                                <?php rt_elementor_rendered_image($settings, 'layout_one_client_image'); ?>
+                                <?php echo esc_html($settings['layout_one_title_second_part']); ?>
+                            </h2>
                         <?php endif; ?>
-                        <?php if ($settings['layout_one_sub_title']) : ?>
-                            <p><?php echo rt_kses_basic($settings['layout_one_sub_title']); ?></p>
+                        <?php if (!empty($settings['layout_one_subtitle'])) : ?>
+                            <h2 class="text wow fadeInUp" data-wow-delay=".5s"><?php echo esc_html($settings['layout_one_subtitle']); ?></h2>
                         <?php endif; ?>
+                        <div class="feature-bottom-content wow fadeInUp" data-wow-delay=".3s">
+                            <?php if (!empty($settings['layout_one_description'])) : ?>
+                                <p><?php echo esc_html($settings['layout_one_description']); ?></p>
+                            <?php endif; ?>
+                            <?php if (!empty($settings['layout_one_price'])) : ?>
+                                <h3><?php echo esc_html($settings['layout_one_price']); ?></h3>
+                            <?php endif; ?>
+                            <?php if (!empty($settings['layout_one_button_text']) && !empty($settings['layout_one_button_url']['url'])) : ?>
+                                <a href="<?php echo esc_url($settings['layout_one_button_url']['url']); ?>" class="theme-btn" data-animation="fadeInUp" data-delay="1.3s" <?php if (!empty($settings['layout_one_button_url']['is_external'])) : ?>target="_blank" <?php endif; ?>><?php echo esc_html($settings['layout_one_button_text']); ?></a>
+                            <?php endif; ?>
+                        </div>
                     </div>
-                    <?php if (!empty($settings['layout_one_button_label'])) : ?>
-                        <a href="<?php echo esc_url($settings['layout_one_button_url']['url']); ?>" <?php if (!empty($settings['layout_one_button_url']['is_external'])) : ?> target="_blank" <?php endif; ?> class="theme-btn hover-primary" data-hover="<?php echo esc_attr($settings['layout_one_button_label']); ?>">
-                            <span><?php echo esc_html($settings['layout_one_button_label']); ?></span>
-                        </a>
-                    <?php endif; ?>
                 </div>
             </div>
         </div>
     </section>
-    <!-- CTA Area end -->
 <?php endif; ?>

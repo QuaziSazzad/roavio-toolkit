@@ -79,11 +79,13 @@
                                         </div>
 
                                         <h5><span><?php esc_html_e('Tours Price', 'roavio-toolkit'); ?></span>
-                                            <?php if (!empty($discount_price_from)) :
+                                            <?php if (!empty($discount_price_from)) {
                                                 echo BABE_Currency::get_currency_price($prices['discount_price_from']);
-                                            else :
+                                            } elseif (!empty($price_from)) {
                                                 echo BABE_Currency::get_currency_price($prices['price_from']);
-                                            endif;
+                                            } else {
+                                                echo BABE_Currency::get_currency_price(0);
+                                            }
                                             ?>
                                         </h5>
 

@@ -59,9 +59,9 @@ class About extends Widget_Base
 				'options' => [
 					'layout_one' => __('Layout One', 'roavio-toolkit'),
 					'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					// 'layout_three' => __('Layout Three', 'roavio-toolkit'),
-					// 'layout_four' => __('Layout Four', 'roavio-toolkit'),
-					// 'layout_five' => __('Layout Five', 'roavio-toolkit'),
+					'layout_three' => __('Layout Three', 'roavio-toolkit'),
+					'layout_four' => __('Layout Four', 'roavio-toolkit'),
+					'layout_five' => __('Layout Five', 'roavio-toolkit'),
 					// 'layout_six' => __('Layout Six', 'roavio-toolkit'),
 					// 'layout_seven' => __('Layout Seven', 'roavio-toolkit'),
 					// 'layout_eight' => __('Layout Eight', 'roavio-toolkit'),
@@ -75,9 +75,9 @@ class About extends Widget_Base
 
 		include rt_get_elementor_option('about-one-option.php');
 		include rt_get_elementor_option('about-two-option.php');
-		// include rt_get_elementor_option('about-three-option.php');
-		// include rt_get_elementor_option('about-four-option.php');
-		// include rt_get_elementor_option('about-five-option.php');
+		include rt_get_elementor_option('about-three-option.php');
+		include rt_get_elementor_option('about-four-option.php');
+		include rt_get_elementor_option('about-five-option.php');
 		// include rt_get_elementor_option('about-six-option.php');
 		// include rt_get_elementor_option('about-seven-option.php');
 		// include rt_get_elementor_option('about-eight-option.php');
@@ -202,9 +202,9 @@ class About extends Widget_Base
 		$settings = $this->get_settings_for_display();
 		include rt_get_elementor_template('about-one.php');
 		include rt_get_elementor_template('about-two.php');
-		// include rt_get_elementor_template('about-three.php');
-		// include rt_get_elementor_template('about-four.php');
-		// include rt_get_elementor_template('about-five.php');
+		include rt_get_elementor_template('about-three.php');
+		include rt_get_elementor_template('about-four.php');
+		include rt_get_elementor_template('about-five.php');
 		// include rt_get_elementor_template('about-six.php');
 		// include rt_get_elementor_template('about-seven.php');
 		// include rt_get_elementor_template('about-eight.php');

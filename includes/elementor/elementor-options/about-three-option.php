@@ -12,98 +12,125 @@ $this->start_controls_section(
 	]
 );
 
-
 $this->add_control(
-	'layout_three_title',
+	'layout_three_left_image',
 	[
-		'label' => esc_html__('Title', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Growth Advanced IT Solutions', 'roavio-toolkit'),
-	]
-);
-
-$this->add_control(
-	'layout_three_title_tag',
-	[
-		'label'       => esc_html__('Title Tag', 'roavio-toolkit'),
-		'type'        => \Elementor\Controls_Manager::CHOOSE,
-		'label_block' => false,
-		'options'     => [
-			'h1' => [
-				'title' => esc_html__('H1', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h1',
-			],
-			'h2' => [
-				'title' => esc_html__('H2', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h2',
-			],
-			'h3' => [
-				'title' => esc_html__('H3', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h3',
-			],
-			'h4' => [
-				'title' => esc_html__('H4', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h4',
-			],
-			'h5' => [
-				'title' => esc_html__('H5', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h5',
-			],
-			'h6' => [
-				'title' => esc_html__('H6', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h6',
-			],
+		'label' => esc_html__('Left Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [
+			'url' => \Elementor\Utils::get_placeholder_image_src(),
 		],
-		'default'     => 'h2',
-		'toggle'      => false,
 	]
 );
 
 $this->add_control(
-	'layout_three_subtitle',
+	'layout_three_counter_one_number',
 	[
-		'label' => esc_html__('Subtitle', 'roavio-toolkit'),
+		'label' => esc_html__('Counter One Number', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('What We Provide', 'roavio-toolkit'),
+		'default' => esc_html__('10', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Type counter number here', 'roavio-toolkit'),
+		'label_block' => true
 	]
 );
 
-
+$this->add_control(
+	'layout_three_counter_one_suffix',
+	[
+		'label' => esc_html__('Counter One Suffix', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('m+', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Type counter suffix here', 'roavio-toolkit'),
+		'label_block' => true
+	]
+);
 
 $this->add_control(
-	'layout_three_description',
+	'layout_three_counter_one_text',
 	[
-		'label' => esc_html__('Description', 'roavio-toolkit'),
+		'label' => esc_html__('Counter One Text', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('Trusted clients / happy clients', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Type counter text here', 'roavio-toolkit'),
+		'label_block' => true
+	]
+);
+
+$this->add_control(
+	'layout_three_group_image',
+	[
+		'label' => esc_html__('Group Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [],
+	]
+);
+
+$this->add_control(
+	'layout_three_counter_two_number',
+	[
+		'label' => esc_html__('Counter Two Number', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('150', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Type counter number here', 'roavio-toolkit'),
+		'label_block' => true
+	]
+);
+
+$this->add_control(
+	'layout_three_counter_two_suffix',
+	[
+		'label' => esc_html__('Counter Two Suffix', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('+', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Type counter suffix here', 'roavio-toolkit'),
+		'label_block' => true
+	]
+);
+
+$this->add_control(
+	'layout_three_counter_two_text',
+	[
+		'label' => esc_html__('Counter Two Text', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('by over 2500+ global satisfied clients', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Type counter text here', 'roavio-toolkit'),
+		'label_block' => true
+	]
+);
+
+$this->add_control(
+	'layout_three_star_image',
+	[
+		'label' => esc_html__('Star Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [],
+	]
+);
+
+$this->add_control(
+	'layout_three_shape_bg_image',
+	[
+		'label' => esc_html__('Shape Background Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [],
+	]
+);
+
+$this->add_control(
+	'layout_three_experience_title',
+	[
+		'label' => esc_html__('Experience Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'default' => esc_html__('IT services encompass a wide range of solutions designed to support businesses in managing their technology infrastructure, enhancing productivity, and achieving their goals through innovative technology these services include everything from system maintenance network.', 'roavio-toolkit'),
+		'default' => esc_html__('18+ years of experience in travel services', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Type experience title here', 'roavio-toolkit'),
+		'label_block' => true
 	]
 );
 
-$repeater = new \Elementor\Repeater();
-
-$repeater->add_control(
-	'service_icon',
+$this->add_control(
+	'layout_three_experience_url',
 	[
-		'label' => esc_html__('Icon Class', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('flaticon-troubleshooting', 'roavio-toolkit'),
-		'description' => esc_html__('Enter flaticon class (e.g. flaticon-troubleshooting)', 'roavio-toolkit'),
-	]
-);
-
-$repeater->add_control(
-	'service_title',
-	[
-		'label' => esc_html__('Service Title', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Managed IT Solutions', 'roavio-toolkit'),
-	]
-);
-
-$repeater->add_control(
-	'service_link',
-	[
-		'label' => esc_html__('Service Link', 'roavio-toolkit'),
+		'label' => esc_html__('Experience URL', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::URL,
 		'placeholder' => esc_html__('https://your-link.com', 'roavio-toolkit'),
 		'default' => [
@@ -111,55 +138,56 @@ $repeater->add_control(
 			'is_external' => false,
 			'nofollow' => false,
 		],
+		'label_block' => true
 	]
 );
 
 $this->add_control(
-	'layout_three_services',
+	'layout_three_client_image',
 	[
-		'label' => esc_html__('Services', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::REPEATER,
-		'fields' => $repeater->get_controls(),
+		'label' => esc_html__('Client Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [],
+	]
+);
+
+$this->add_control(
+	'layout_three_client_name',
+	[
+		'label' => esc_html__('Client Name', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('Mickel z Ponkoz', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Type client name here', 'roavio-toolkit'),
+		'label_block' => true
+	]
+);
+
+$this->add_control(
+	'layout_three_client_designation',
+	[
+		'label' => esc_html__('Client Designation', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('Travel guide', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Type client designation here', 'roavio-toolkit'),
+		'label_block' => true
+	]
+);
+
+$this->add_control(
+	'layout_three_shape_image',
+	[
+		'label' => esc_html__('Shape Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
 		'default' => [
-			[
-				'service_icon' => 'flaticon-troubleshooting',
-				'service_title' => 'Managed IT Solutions',
-				'service_link' => ['url' => '#'],
-			],
-			[
-				'service_icon' => 'flaticon-service',
-				'service_title' => 'IT Consulting Solutions',
-				'service_link' => ['url' => '#'],
-			],
-			[
-				'service_icon' => 'flaticon-technical-support-2',
-				'service_title' => 'IT Support & Helpdesk',
-				'service_link' => ['url' => '#'],
-			],
-			[
-				'service_icon' => 'flaticon-cloud-network',
-				'service_title' => 'Hosting and Cloud Services',
-				'service_link' => ['url' => '#'],
-			],
-			[
-				'service_icon' => 'flaticon-cyber-security',
-				'service_title' => 'Cyber Security Services',
-				'service_link' => ['url' => '#'],
-			],
-			[
-				'service_icon' => 'flaticon-layer',
-				'service_title' => 'Software Development',
-				'service_link' => ['url' => '#'],
-			],
+			'url' => \Elementor\Utils::get_placeholder_image_src(),
 		],
-		'title_field' => '{{{ service_title }}}',
 	]
 );
 
 $this->add_control(
-	'layout_three_video_image',
+	'layout_three_right_image',
 	[
-		'label' => esc_html__('Video Background Image', 'roavio-toolkit'),
+		'label' => esc_html__('Right Image', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
 		'default' => [
 			'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -169,47 +197,5 @@ $this->add_control(
 
 
 
-$this->end_controls_section();
-
-$this->start_controls_section(
-	'layout_three_video_content',
-	[
-		'label' => esc_html__('Video', 'roavio-toolkit'),
-		'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-		'condition' => [
-			'layout_type' => 'layout_three'
-		]
-	]
-);
-
-$this->add_control(
-	'layout_three_video_url',
-	[
-		'label' => esc_html__('Video URL', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('https://www.youtube.com/watch?v=TfU0qjuZkJ4', 'roavio-toolkit'),
-		'label_block' => true,
-	]
-);
-
-$this->add_control(
-	'layout_three_video_title',
-	[
-		'label' => esc_html__('Video Title', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('How It Works', 'roavio-toolkit'),
-		'label_block' => true,
-	]
-);
-
-$this->add_control(
-	'layout_three_video_description',
-	[
-		'label' => esc_html__('Video Description', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'default' => esc_html__('Seamless IT Solutions for a Digital Future', 'roavio-toolkit'),
-		'label_block' => true,
-	]
-);
 
 $this->end_controls_section();
