@@ -32,9 +32,7 @@
                                 <div class="col-xl-6 col-lg-6 wow fadeInUp" data-wow-delay=".3s">
                                     <div class="tour-card-item">
                                         <div class="tour-image">
-                                            <?php if ($image_url) : ?>
-                                                <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
-                                            <?php endif; ?>
+                                            <?php rt_elementor_rendered_image($item, 'image'); ?>
                                             <?php if (!empty($item['listing_text'])) : ?>
                                                 <span><?php echo esc_html($term->count); ?> <?php echo esc_html($item['listing_text']); ?></span>
                                             <?php endif; ?>

@@ -16,7 +16,7 @@ $this->start_controls_section(
 $this->add_control(
 	'layout_two_title',
 	[
-		'label' => esc_html__('Section Title', 'roavio-toolkit'),
+		'label' => esc_html__('Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
 		'default' => esc_html__('How to benefit our Tours', 'roavio-toolkit'),
 		'placeholder' => esc_html__('Type your title here', 'roavio-toolkit'),
@@ -36,6 +36,9 @@ $this->add_control(
 			'h4' => esc_html__('H4', 'roavio-toolkit'),
 			'h5' => esc_html__('H5', 'roavio-toolkit'),
 			'h6' => esc_html__('H6', 'roavio-toolkit'),
+			'div' => esc_html__('div', 'roavio-toolkit'),
+			'span' => esc_html__('span', 'roavio-toolkit'),
+			'p' => esc_html__('p', 'roavio-toolkit'),
 		],
 	]
 );
@@ -46,7 +49,7 @@ $this->add_control(
 		'label' => esc_html__('Sub Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXTAREA,
 		'default' => esc_html__('Make the most of your travel experience with our carefully curated tours designed to offer convenience', 'roavio-toolkit'),
-		'placeholder' => esc_html__('Type your description here', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Type your sub title here', 'roavio-toolkit'),
 	]
 );
 
@@ -70,23 +73,47 @@ $this->add_control(
 	]
 );
 
-$repeater = new \Elementor\Repeater();
+// Repeater for benefit items
+$layout_two_benefit_items = new \Elementor\Repeater();
 
-$repeater->add_control(
-	'item_type',
+
+$layout_two_benefit_items->add_control(
+	'layout_two_item_title',
 	[
-		'label' => esc_html__('Item Type', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::SELECT,
-		'default' => 'benefit_item',
-		'options' => [
-			'benefit_item' => esc_html__('Benefit Item', 'roavio-toolkit'),
-			'benefit_image' => esc_html__('Benefit Image', 'roavio-toolkit'),
+		'label' => esc_html__('Title', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('Expert Travel Guide', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+
+$layout_two_benefit_items->add_control(
+	'layout_two_item_description',
+	[
+		'label' => esc_html__('Description', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXTAREA,
+		'default' => esc_html__('Travel professionals who help destinations, accommodations, and activities tailored.', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+$layout_two_benefit_items->add_control(
+	'layout_two_url',
+	[
+		'label' => esc_html__('URL', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::URL,
+		'placeholder' => esc_html__('https://your-link.com', 'roavio-toolkit'),
+		'default' => [
+			'url' => '#',
+			'is_external' => false,
+			'nofollow' => false,
 		],
 	]
 );
 
-$repeater->add_control(
-	'benefit_icon',
+$layout_two_benefit_items->add_control(
+	'layout_two_icon',
 	[
 		'label' => esc_html__('Icon', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::ICONS,
@@ -94,91 +121,66 @@ $repeater->add_control(
 			'value' => 'flaticon-traveling',
 			'library' => 'flaticon',
 		],
-		'condition' => [
-			'item_type' => 'benefit_item'
-		]
 	]
 );
 
-$repeater->add_control(
-	'benefit_title',
-	[
-		'label' => esc_html__('Title', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Expert Travel Guide', 'roavio-toolkit'),
-		'placeholder' => esc_html__('Type your title here', 'roavio-toolkit'),
-		'condition' => [
-			'item_type' => 'benefit_item'
-		]
-	]
-);
-
-$repeater->add_control(
-	'benefit_description',
-	[
-		'label' => esc_html__('Description', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'default' => esc_html__('Travel professionals who help destinations, accommodations, and activities tailored.', 'roavio-toolkit'),
-		'placeholder' => esc_html__('Type your description here', 'roavio-toolkit'),
-		'condition' => [
-			'item_type' => 'benefit_item'
-		]
-	]
-);
-
-$repeater->add_control(
-	'benefit_url',
-	[
-		'label' => esc_html__('Link', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::URL,
-		'placeholder' => esc_html__('https://your-link.com', 'roavio-toolkit'),
-		'condition' => [
-			'item_type' => 'benefit_item'
-		]
-	]
-);
-
-$repeater->add_control(
-	'benefit_image',
+$layout_two_benefit_items->add_control(
+	'layout_two_image',
 	[
 		'label' => esc_html__('Image', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
 		'default' => [
 			'url' => \Elementor\Utils::get_placeholder_image_src(),
 		],
-		'condition' => [
-			'item_type' => 'benefit_image'
-		]
 	]
 );
-
 
 $this->add_control(
 	'layout_two_benefit_items',
 	[
 		'label' => esc_html__('Benefit Items', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::REPEATER,
-		'fields' => $repeater->get_controls(),
+		'fields' => $layout_two_benefit_items->get_controls(),
 		'default' => [
 			[
-				'item_type' => 'benefit_item',
-				'benefit_icon' => [
-					'value' => 'flaticon-traveling',
-					'library' => 'solid',
-				],
-				'benefit_title' => esc_html__('Expert Travel Guide', 'roavio-toolkit'),
-				'benefit_description' => esc_html__('Travel professionals who help destinations, accommodations, and activities tailored.', 'roavio-toolkit'),
+				'layout_two_icon' => 'flaticon-traveling',
+				'layout_two_item_title' => esc_html__('Expert Travel Guide', 'roavio-toolkit'),
+				'layout_two_item_description' => esc_html__('Travel professionals who help destinations, accommodations, and activities tailored.', 'roavio-toolkit'),
 			],
 			[
-				'item_type' => 'benefit_image',
-				'benefit_image' => [
-					'url' => \Elementor\Utils::get_placeholder_image_src(),
-				],
+				'layout_two_icon' => 'flaticon-promotion',
+				'layout_two_item_title' => esc_html__('Deals & Discounts', 'roavio-toolkit'),
+				'layout_two_item_description' => esc_html__('Access special rates and offers not available to general public, ensuring the best value', 'roavio-toolkit'),
+			],
+			[
+				'layout_two_icon' => 'flaticon-roadmap',
+				'layout_two_item_title' => esc_html__('Custom Tour Plan', 'roavio-toolkit'),
+				'layout_two_item_description' => esc_html__('Enjoy trips designed around your preferences, whether you want a relaxing beach holiday, transportation', 'roavio-toolkit'),
+			],
+			[
+				'layout_two_icon' => 'flaticon-tourist',
+				'layout_two_item_title' => esc_html__('Local Guides Authentic', 'roavio-toolkit'),
+				'layout_two_item_description' => esc_html__('Immerse yourself local culture with trusted guides who provide insider tips and hidden', 'roavio-toolkit'),
+			],
+			[
+				'layout_two_icon' => 'flaticon-mouse',
+				'layout_two_item_title' => esc_html__('Hassle-Free Booking', 'roavio-toolkit'),
+				'layout_two_item_description' => esc_html__('Save time and effort with a single platform to book flights, hotels, activities, transportation', 'roavio-toolkit'),
 			],
 		],
-		'title_field' => '{{{ item_type === "benefit_item" ? benefit_title : "Image Item" }}}',
+		'title_field' => '{{{ layout_two_item_title }}}',
 	]
 );
 
+$this->add_control(
+	'layout_two_center_image',
+	[
+		'label' => esc_html__('Center Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [
+			'url' => \Elementor\Utils::get_placeholder_image_src(),
+		],
+	]
+);
 
 $this->end_controls_section();

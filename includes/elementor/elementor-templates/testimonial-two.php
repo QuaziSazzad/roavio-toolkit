@@ -1,71 +1,57 @@
 <?php if ('layout_two' == $settings['layout_type']) : ?>
-    <!-- Testimonial Area start -->
-    <section class="testimonial-area rel z-1">
-        <div class="container-fluid">
-            <div class="testimonial-wrap bgc-gray py-130 rpy-100">
-                <div class="container">
-                    <div class="testimonial-top-wrap pb-30 mb-60">
-                        <div class="row align-items-center justify-content-between">
-                            <div class="col-xl-5 col-lg-6">
-                                <div class="section-title" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                                    <?php if ($settings['layout_two_sub_title']) : ?>
-                                        <span class="sub-title mb-10"><?php echo rt_kses_basic($settings['layout_two_sub_title']); ?></span>
-                                    <?php endif; ?>
-                                    <?php if ($settings['layout_two_title']) : ?>
-                                        <<?php echo esc_attr($settings['layout_two_title_tag']); ?> class="sec-title"><?php echo rt_kses_basic($settings['layout_two_title']); ?></<?php echo esc_attr($settings['layout_two_title_tag']); ?>>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="trusted-clients-wrap" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                                    <?php if ($settings['layout_two_client_title']) : ?>
-                                        <h5><?php echo rt_kses_basic($settings['layout_two_client_title']); ?></h5>
-                                    <?php endif; ?>
-                                    <div class="trusted-clients mt-15">
-                                        <?php if (is_array($settings['layout_two_client_image'])) : ?>
-                                            <?php foreach ($settings['layout_two_client_image'] as $image) : ?>
-                                                <img data-aos="fade-right" data-aos-duration="1500" data-aos-delay="50" src="<?php echo esc_url($image['url']); ?>" alt="<?php //echo esc_attr($image['alt']); 
-                                                                                                                                                                            ?>">
-                                            <?php endforeach; ?>
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-inner">
-                        <div class="testimonials-two-active">
-                            <?php
-                            if (is_array($settings['layout_two_testimonial'])) :
-                                foreach ($settings['layout_two_testimonial'] as $item) :
-                            ?>
-                                    <div class="testimonial-item-two">
-                                        <div class="ratting">
-                                            <?php for ($i = 1; $i <= $item['rating']; $i++) : ?>
-                                                <i class="fas fa-star"></i>
-                                            <?php endfor; ?>
-                                        </div>
-                                        <div class="testi-text">
-                                            <?php echo rt_kses_basic($item['testimonial']); ?>
-                                        </div>
-                                        <div class="testi-author">
-                                            <?php rt_elementor_rendered_image($item, 'image'); ?>
-                                            <span><b><?php echo esc_html($item['name']); ?> </b> /<?php echo esc_html($item['designation']); ?></span>
-                                        </div>
-                                    </div>
-                            <?php
-                                endforeach;
-                            endif;
-                            ?>
-                        </div>
-                        <div class="testi-arrows style-two mt-70 rmt-50">
-                            <button class="testi-arrow-left"><i class="far fa-arrow-left"></i></button>
-                            <button class="testi-arrow-right"><i class="far fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                </div>
+    <!-- Testimonial Section-2 Start -->
+    <section class="testimonial-section-2 section-padding fix pt-0">
+        <div class="container">
+            <div class="section-title text-center">
+                <?php if (!empty($settings['layout_two_section_title'])) : ?>
+                    <<?php echo esc_attr($settings['layout_two_title_tag']); ?> class="wow fadeInUp" data-wow-delay=".3s"><?php echo esc_html($settings['layout_two_section_title']); ?></<?php echo esc_attr($settings['layout_two_title_tag']); ?>>
+                <?php endif; ?>
+                <?php if (!empty($settings['layout_two_sub_title'])) : ?>
+                    <<?php echo esc_attr($settings['layout_two_sub_title_tag']); ?> class="wow fadeInUp" data-wow-delay=".5s"><?php echo esc_html($settings['layout_two_sub_title']); ?></<?php echo esc_attr($settings['layout_two_sub_title_tag']); ?>>
+                <?php endif; ?>
             </div>
         </div>
+        <?php if (!empty($settings['layout_two_testimonials'])) : ?>
+            <div class="swiper testimonial-slider-2">
+                <div class="swiper-wrapper">
+                    <?php foreach ($settings['layout_two_testimonials'] as $testimonial) : ?>
+                        <div class="swiper-slide">
+                            <div class="testimonial-info-items">
+                                <?php if (!empty($testimonial['client_image']['url'])) : ?>
+                                    <div class="client-image">
+                                        <?php rt_elementor_rendered_image($testimonial, 'client_image'); ?>
+                                    </div>
+                                <?php endif; ?>
+                                <div class="info-content">
+                                    <?php if (!empty($testimonial['icon']['value'])) : ?>
+                                        <div class="icon">
+                                            <?php \Elementor\Icons_Manager::render_icon($testimonial['icon'], ['aria-hidden' => 'true'], 'i'); ?>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if (!empty($testimonial['testimonial_text'])) : ?>
+                                        <h3>
+                                            <?php echo esc_html($testimonial['testimonial_text']); ?>
+                                        </h3>
+                                    <?php endif; ?>
+                                    <?php if (!empty($testimonial['client_name']) || !empty($testimonial['client_designation'])) : ?>
+                                        <h6>
+                                            <?php if (!empty($testimonial['client_name'])) : ?>
+                                                <?php echo esc_html($testimonial['client_name']); ?>
+                                            <?php endif; ?>
+                                            <?php if (!empty($testimonial['client_designation'])) : ?>
+                                                , <span><?php echo esc_html($testimonial['client_designation']); ?></span>
+                                            <?php endif; ?>
+                                        </h6>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <div class="swiper-dot-style">
+                <div class="dot2"></div>
+            </div>
+        <?php endif; ?>
     </section>
-    <!-- Testimonial Area end -->
 <?php endif; ?>
