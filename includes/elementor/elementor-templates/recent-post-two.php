@@ -4,23 +4,18 @@ use RoavioTheme\Classes\Roavio_Post_Helper;
 
 if ('layout_two' == $settings['layout_type']) :
 ?>
-    <!-- Blog Area start -->
-    <section class="blog-area pt-130 rpt-100 pb-100 rpb-70 rel z-1">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-8 col-lg-10">
-                    <div class="section-title text-center mb-50" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                        <?php if (!empty($settings['layout_one_sub_title'])) : ?>
-                            <span class="sub-title color-primary mb-10"><?php echo rt_kses_basic($settings['layout_one_sub_title']); ?></span>
-                        <?php endif; ?>
-                        <?php if (!empty($settings['layout_one_title'])) : ?>
-                            <<?php echo esc_attr($settings['layout_one_title_tag']); ?>><?php echo rt_kses_basic($settings['layout_one_title']); ?></<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
-                        <?php endif; ?>
-
-                    </div>
-                </div>
+    <!-- News Section-2 Start -->
+    <section class="news-section-2 section-padding fix">
+        <div class="container custom-container-2">
+            <div class="section-title text-center">
+                <?php if (!empty($settings['layout_one_title'])) : ?>
+                    <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="wow fadeInUp" data-wow-delay=".3s"><?php echo esc_html($settings['layout_one_title']); ?></<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
+                <?php endif; ?>
+                <?php if (!empty($settings['layout_one_sub_title'])) : ?>
+                    <<?php echo esc_attr($settings['layout_one_sub_title_tag']); ?> class="wow fadeInUp" data-wow-delay=".5s"><?php echo esc_html($settings['layout_one_sub_title']); ?></<?php echo esc_attr($settings['layout_one_sub_title_tag']); ?>>
+                <?php endif; ?>
             </div>
-            <div class="row justify-content-center">
+            <div class="row">
                 <?php if ('cpt' == $settings['post_type']) :
 
                     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -63,41 +58,27 @@ if ('layout_two' == $settings['layout_type']) :
                         $excerpt_count = $settings['excerpt_count'];
 
                 ?>
-                        <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="blog-item-two">
+                        <div class="col-xl-6 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                            <div class="news-card-items-2">
                                 <?php if (has_post_thumbnail() && 'yes' === $settings['show_thumbnail']): ?>
-                                    <div class="image">
+                                    <div class="news-image">
                                         <?php echo get_the_post_thumbnail($idd, $settings['post_thumbnail_size']); ?>
                                     </div>
                                 <?php endif; ?>
-                                <div class="content">
-                                    <ul class="blog-meta">
-                                        <?php
-                                        if (has_category()) :
-                                            $categories = get_the_category();
-                                        ?>
-                                            <li><a href="<?php echo esc_url(get_category_link($categories[0]->term_id)); ?>"><?php echo esc_html($categories[0]->name); ?></a></li>
-                                        <?php endif; ?>
-                                        <li><a href="<?php the_permalink(); ?>"><?php the_time('d F Y'); ?></a></li>
-                                    </ul>
-                                    <h4 class="title"><a href="<?php the_permalink(); ?>"><?php echo esc_html($the_title); ?></a></h4>
-                                    <div class="admin-info">
-                                        <div class="image">
-                                            <?php echo get_avatar(get_the_author_meta('ID'), 35); ?>
-                                        </div>
-                                        <div class="name"><?php esc_html_e('Post by', 'roavio-toolkit'); ?> <a href="<?php the_permalink(); ?>"><?php the_author(); ?></a></div>
-                                    </div>
-                                    <p class="summary-text">
-                                        <?php
-                                        if (has_excerpt()) {
-                                            echo wp_trim_words(get_the_excerpt(), $excerpt_count, '...');
-                                        } else {
-                                            echo wp_trim_words(get_the_content(), $excerpt_count, '...');
-                                        }
-                                        ?>
-                                    </p>
+                                <div class="news-content">
+                                    <?php
+                                    if (has_category()) :
+                                        $categories = get_the_category();
+                                    ?>
+                                        <span><?php echo esc_html($categories[0]->name); ?></span>
+                                    <?php endif; ?>
+                                    <<?php echo rt_escape_tags($settings['title_tag'], 'h3'); ?>>
+                                        <a href="<?php the_permalink(); ?>">
+                                            <?php echo esc_html($the_title); ?>
+                                        </a>
+                                    </<?php echo rt_escape_tags($settings['title_tag'], 'h3'); ?>>
                                     <?php if ('yes' === $settings['show_read_more'] && ! empty($settings['read_more_text'])) : ?>
-                                        <a class="read-more" href="<?php the_permalink(); ?>"><?php echo esc_html($settings['read_more_text']); ?> <i class="far fa-arrow-right"></i></a>
+                                        <a href="<?php the_permalink(); ?>" class="link-btn"><?php echo esc_html($settings['read_more_text']); ?><i class="fa-solid fa-chevron-right"></i></a>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -111,88 +92,25 @@ if ('layout_two' == $settings['layout_type']) :
                     }
                     ?>
                 <?php endif; ?>
-                <?php if ('elementor-field' == $settings['post_type']) : ?>
-                    <?php
-                    if (is_array($settings['layout_one_post_list'])) :
-                        foreach ($settings['layout_one_post_list'] as $post) :
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="news-card-items-2">
+                        <div class="news-image">
+                            <img src="assets/img/home-2/news/news-2.jpg" alt="img">
+                        </div>
+                        <div class="news-content">
+                            <span>Tours & travel</span>
+                            <h3>
+                                <a href="news-details.html">
+                                    Focus on destinations suitable for families with kids.
+                                </a>
+                            </h3>
+                            <a href="news-details.html" class="link-btn">Read More <i class="fa-solid fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
 
-                            $custom_post_post_query_args = array(
-                                'post_type' => 'post',
-                                'post_status' => 'publish',
-                                'posts_per_page'      => 1,
-                                'post__in' => array($post['select_post']),
-                            );
-                            $custom_post_post_query = new \WP_Query($custom_post_post_query_args);
-                    ?>
-                            <?php while ($custom_post_post_query->have_posts()) :
-                                $custom_post_post_query->the_post();
-                                $idd             = get_the_ID();
-                                if ($settings['title_word']) {
-                                    $the_title = wp_trim_words(get_the_title(), $settings['title_word'], '..');
-                                } else {
-                                    $the_title = get_the_title();
-                                }
-                                $categories_list = get_the_terms($idd, 'category', '', '', '');
 
-                            ?>
-                                <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
-                                    <div class="blog-item-two">
-                                        <div class="image">
-                                            <?php rt_elementor_rendered_image($post, 'image'); ?>
-                                        </div>
-                                        <div class="content">
-                                            <ul class="blog-meta">
-                                                <?php
-                                                if (has_category()) :
-                                                    $categories = get_the_category();
-                                                ?>
-                                                    <li><a href="<?php echo esc_url(get_category_link($categories[0]->term_id)); ?>"><?php echo esc_html($categories[0]->name); ?></a></li>
-                                                <?php endif; ?>
-                                                <li><a href="<?php the_permalink(); ?>"><?php the_time('d F Y'); ?></a></li>
-                                            </ul>
-                                            <h4 class="title">
-                                                <a href="<?php the_permalink(); ?>">
-                                                    <?php
-                                                    if (!empty($post['title'])):
-                                                        echo rt_kses_basic($post['title']);
-                                                    else:
-                                                        echo rt_kses_basic($the_title);
-                                                    endif;
-                                                    ?>
-                                                </a>
-                                            </h4>
-                                            <div class="admin-info">
-                                                <div class="image">
-                                                    <?php echo get_avatar(get_the_author_meta('ID'), 35); ?>
-                                                </div>
-                                                <div class="name"><?php esc_html_e('Post by', 'roavio-toolkit'); ?> <a href="<?php the_permalink(); ?>"><?php the_author(); ?></a></div>
-                                            </div>
-                                            <p class="summary-text">
-                                                <?php if (!empty($post['summary_text'])):
-                                                    echo rt_kses_basic($post['summary_text']);
-                                                else:
-                                                    if (has_excerpt()) :
-                                                        echo wp_trim_words(get_the_excerpt(), $excerpt_count, '...');
-                                                    else :
-                                                        echo wp_trim_words(get_the_content(), $excerpt_count, '...');
-                                                    endif;
-                                                endif;
-                                                ?>
-                                            </p>
-                                            <?php if ('yes' === $settings['show_read_more'] && ! empty($settings['read_more_text'])) : ?>
-                                                <a class="read-more" href="<?php the_permalink(); ?>"><?php echo esc_html($settings['read_more_text']); ?> <i class="far fa-arrow-right"></i></a>
-                                            <?php endif; ?>
-                                        </div>
-                                    </div>
-                                </div>
-                    <?php
-                            endwhile;
-                            wp_reset_postdata();
-                        endforeach;
-                    endif; ?>
-                <?php endif; ?>
             </div>
         </div>
     </section>
-    <!-- Blog Area end -->
 <?php endif; ?>

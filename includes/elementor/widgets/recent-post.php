@@ -653,7 +653,7 @@ class Recent_Post extends Widget_Base
 		$settings = $this->get_settings_for_display();
 
 		include rt_get_elementor_template('recent-post-one.php');
-		// include rt_get_elementor_template('recent-post-two.php');
+		include rt_get_elementor_template('recent-post-two.php');
 		// include rt_get_elementor_template('recent-post-three.php');
 		// include rt_get_elementor_template('recent-post-four.php');
 		// include rt_get_elementor_template('recent-post-five.php');

@@ -103,6 +103,40 @@
                },
            });
        }
+
+           //>> Testimonial Slider Start <<//
+           if($('.testimonial-slider-2').length > 0) {
+            const TestimonialSlider2 = new Swiper(".testimonial-slider-2", {
+            spaceBetween: 30,
+            speed: 1300,
+            loop: true,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".dot2",
+                clickable: true,
+            },
+            breakpoints: {
+                1199: {
+                    slidesPerView: 3,
+                },
+                991: {
+                    slidesPerView: 2,
+                },
+                767: {
+                    slidesPerView: 2,
+                },
+                575: {
+                    slidesPerView: 1,
+                },
+                0: {
+                    slidesPerView: 1,
+                },
+            },
+        });
+    }
    
       //>> Hero-1 Slider Start <<//
         if($('.adventure-slider').length > 0) {
