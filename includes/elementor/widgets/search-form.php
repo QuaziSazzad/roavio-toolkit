@@ -5,21 +5,21 @@ namespace RoavioToolkit\ElementorAddon\Widgets;
 
 use Elementor\Widget_Base;
 
-class Newsletter extends Widget_Base
+class Search_Form extends Widget_Base
 {
 	public function get_name()
 	{
-		return 'roavio-newsletter';
+		return 'roavio-search-form';
 	}
 
 	public function get_title()
 	{
-		return esc_html__('Newsletter', 'roavio-toolkit');
+		return esc_html__('Search Form', 'roavio-toolkit');
 	}
 
 	public function get_icon()
 	{
-		return 'eicon-mailchimp webtend-logo';
+		return 'eicon-search webtend-logo';
 	}
 
 	public function get_categories()
@@ -29,7 +29,7 @@ class Newsletter extends Widget_Base
 
 	public function get_keywords()
 	{
-		return ['roavio', 'toolkit', 'webtend', 'section', 'newsletter'];
+		return ['roavio', 'toolkit', 'webtend', 'section', 'search form'];
 	}
 
 	protected function register_controls()
@@ -52,18 +52,14 @@ class Newsletter extends Widget_Base
 				'options' => [
 					'layout_one' => __('Layout One', 'roavio-toolkit'),
 					'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					'layout_three' => __('Layout Three', 'roavio-toolkit'),
-					'layout_four' => __('Layout Four', 'roavio-toolkit'),
 				]
 			]
 		);
 
 		$this->end_controls_section();
 
-		include rt_get_elementor_option('newsletter-one-option.php');
-		include rt_get_elementor_option('newsletter-two-option.php');
-		// include rt_get_elementor_option('newsletter-three-option.php');
-		// include rt_get_elementor_option('newsletter-four-option.php');
+		include rt_get_elementor_option('search-form-one-option.php');
+		include rt_get_elementor_option('search-form-two-option.php');
 
 		//Content style
 		$this->start_controls_section(
@@ -93,9 +89,7 @@ class Newsletter extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 
-		include rt_get_elementor_template('newsletter-one.php');
-		// include rt_get_elementor_template('newsletter-two.php');
-		// include rt_get_elementor_template('newsletter-three.php');
-		// include rt_get_elementor_template('newsletter-four.php');
+		include rt_get_elementor_template('search-form-one.php');
+		include rt_get_elementor_template('search-form-two.php');
 	}
 }

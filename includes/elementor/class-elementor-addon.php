@@ -78,7 +78,8 @@ class Roavio_Elementor_Addon
 		// include_once RT_ELEMENTOR . '/widgets/integrating.php';
 		// include_once RT_ELEMENTOR . '/widgets/portfolio.php';
 		include_once RT_ELEMENTOR . '/widgets/recent-post.php';
-		// include_once RT_ELEMENTOR . '/widgets/newsletter.php';
+		include_once RT_ELEMENTOR . '/widgets/newsletter.php';
+		include_once RT_ELEMENTOR . '/widgets/search-form.php';
 		// include_once RT_ELEMENTOR . '/widgets/video.php';
 		// include_once RT_ELEMENTOR . '/widgets/sliding-text.php';
 		include_once RT_ELEMENTOR . '/widgets/sponsors.php';
@@ -123,6 +124,8 @@ class Roavio_Elementor_Addon
 		$widgets_manager->register(new Widgets\Destination());
 		$widgets_manager->register(new Widgets\Tour());
 		$widgets_manager->register(new Widgets\Call_To_Action());
+		$widgets_manager->register(new Widgets\Newsletter());
+		$widgets_manager->register(new Widgets\Search_Form());
 		// $widgets_manager->register(new Widgets\Features());
 		// $widgets_manager->register(new Widgets\Contact());
 		// $widgets_manager->register(new Widgets\Latest_Work());

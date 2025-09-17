@@ -50,6 +50,7 @@ class Tour extends Widget_Base
 				'default' => 'layout_one',
 				'options' => [
 					'layout_one' => __('Layout One', 'roavio-toolkit'),
+					'layout_two' => __('Layout Two', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -198,5 +199,6 @@ class Tour extends Widget_Base
 			$posts_query = new \WP_Query($args);
 		}
 		include rt_get_elementor_template('tour-one.php');
+		include rt_get_elementor_template('tour-two.php');
 	}
 }

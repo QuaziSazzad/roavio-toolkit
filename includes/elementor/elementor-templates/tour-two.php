@@ -1,10 +1,8 @@
-<?php if ('layout_one' == $settings['layout_type']) : ?>
-    <!-- Tour-place Section Start -->
-    <section class="tour-place-section section-padding fix">
+<?php if ('layout_two' == $settings['layout_type']) : ?>
+    <!-- Tour-place Section-2 Start -->
+    <section class="tour-place-section-2 section-padding fix">
         <div class="container custom-container-2">
-            <?php
-            if ($settings['section_title'] || $settings['sub_title']) :
-            ?>
+            <?php if (!empty($settings['section_title']) || !empty($settings['section_sub_title'])) : ?>
                 <div class="section-title text-center">
                     <?php if ($settings['section_title']) : ?>
                         <<?php echo esc_attr($settings['title_tag']); ?> class="wow fadeInUp" data-wow-delay=".3s"><?php echo rt_kses_basic($settings['section_title']); ?></<?php echo esc_attr($settings['title_tag']); ?>>
@@ -14,6 +12,7 @@
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
+
             <div class="row">
                 <?php
 
@@ -41,55 +40,20 @@
                         $price_from = isset($prices['price_from']) ? $prices['price_from'] : false;
                 ?>
                         <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".2s">
-                            <div class="tour-place-item">
+                            <div class="tour-place-item-2">
                                 <div class="tour-place-image">
                                     <?php the_post_thumbnail('roavio_blog_410X270'); ?>
-                                    <?php if ($discount) : ?>
-                                        <span><?php echo esc_html($discount); ?> <?php esc_html_e('% off', 'roavio-toolkit'); ?></span>
-                                    <?php endif; ?>
-
                                     <div class="icon">
                                         <?php if (class_exists('RoavioToolkit\Helper\Wishlist')) {
                                             echo RoavioToolkit\Helper\Wishlist::html_icon($post_id);
                                         }
                                         ?>
                                     </div>
+                                    <?php if ($discount) : ?>
+                                        <span><?php echo esc_html($discount); ?> <?php esc_html_e('% off', 'roavio-toolkit'); ?></span>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="tour-place-content">
-                                    <div class="rating-item">
-                                        <div class="star">
-                                            <?php
-                                            $total_vote = get_post_meta(get_the_ID(), '_rating_votes_base', true);
-                                            $rating = get_post_meta(get_the_ID(), '_rating', true);
-                                            if (empty($total_vote)) {
-                                                $vote_base = esc_html__('0 Rating', 'roavio-toolkit');
-                                            } elseif ($total_vote == 1) {
-                                                $vote_base = esc_html__('1 Rating', 'roavio-toolkit');
-                                            } else {
-                                                $vote_base = $total_vote . esc_html__(' Ratings', 'roavio-toolkit');
-                                            }
-
-                                            if (empty($rating)) {
-                                                $rating = 0;
-                                            }
-                                            $rating = number_format((float) $rating, 1);
-                                            ?>
-                                            <span><?php echo esc_html(!empty($total_vote) ? __('Rating', 'roavio-toolkit') : __('No Rating', 'roavio-toolkit')); ?></span>
-                                            <?php echo BABE_Rating::post_stars_rendering(get_the_ID()); ?>
-                                        </div>
-
-                                        <h5><span><?php esc_html_e('Tours Price', 'roavio-toolkit'); ?></span>
-                                            <?php if (!empty($discount_price_from)) {
-                                                echo BABE_Currency::get_currency_price($prices['discount_price_from']);
-                                            } elseif (!empty($price_from)) {
-                                                echo BABE_Currency::get_currency_price($prices['price_from']);
-                                            } else {
-                                                echo BABE_Currency::get_currency_price(0);
-                                            }
-                                            ?>
-                                        </h5>
-
-                                    </div>
                                     <h3>
                                         <a href="<?php the_permalink(); ?>">
                                             <?php the_title(); ?>
@@ -115,6 +79,34 @@
                                             </li>
                                         <?php endif; ?>
                                     </ul>
+                                    <div class="tour-place-bottom">
+                                        <div class="price">
+                                            <p><?php esc_html_e('Start Price', 'roavio-toolkit'); ?></p>
+                                            <h5>
+                                                <?php if (!empty($discount_price_from)) {
+                                                    echo BABE_Currency::get_currency_price($prices['discount_price_from']);
+                                                } elseif (!empty($price_from)) {
+                                                    echo BABE_Currency::get_currency_price($prices['price_from']);
+                                                } else {
+                                                    echo BABE_Currency::get_currency_price(0);
+                                                }
+                                                ?>
+                                            </h5>
+                                        </div>
+                                        <div class="rating">
+                                            <?php
+                                            $total_vote = get_post_meta(get_the_ID(), '_rating_votes_base', true);
+                                            $rating = get_post_meta(get_the_ID(), '_rating', true);
+                                            if (empty($rating)) {
+                                                $rating = 0;
+                                            }
+                                            $rating = number_format((float) $rating, 1);
+                                            ?>
+                                            <span><?php esc_html_e('Rating', 'roavio-toolkit'); ?></span>
+                                            <h6><i class="fa-solid fa-star"></i><?php echo esc_html($rating); ?> (<?php echo esc_html($total_vote); ?>)</h6>
+                                        </div>
+                                        <a href="<?php the_permalink(); ?>" class="theme-btn"><?php esc_html_e('View Tour', 'roavio-toolkit'); ?></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -151,8 +143,8 @@
                             $discount_price_from = isset($prices['discount_price_from']) ? $prices['discount_price_from'] : false;
                             $price_from = isset($prices['price_from']) ? $prices['price_from'] : false;
                 ?>
-                            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".4s">
-                                <div class="tour-place-item">
+                            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                                <div class="tour-place-item-2">
                                     <div class="tour-place-image">
                                         <?php
                                         if (!empty($post['image']['url'])):
@@ -161,47 +153,17 @@
                                             the_post_thumbnail('roavio_blog_410X270');
                                         endif;
                                         ?>
-                                        <?php if ($discount) : ?>
-                                            <span><?php echo esc_html($discount); ?> <?php esc_html_e('% off', 'roavio-toolkit'); ?></span>
-                                        <?php endif; ?>
                                         <div class="icon">
                                             <?php if (class_exists('RoavioToolkit\Helper\Wishlist')) {
                                                 echo RoavioToolkit\Helper\Wishlist::html_icon($post_id);
                                             }
                                             ?>
                                         </div>
+                                        <?php if ($discount) : ?>
+                                            <span><?php echo esc_html($discount); ?> <?php esc_html_e('% off', 'roavio-toolkit'); ?></span>
+                                        <?php endif; ?>
                                     </div>
                                     <div class="tour-place-content">
-                                        <div class="rating-item">
-                                            <div class="star">
-                                                <?php
-                                                $total_vote = get_post_meta(get_the_ID(), '_rating_votes_base', true);
-                                                $rating = get_post_meta(get_the_ID(), '_rating', true);
-                                                if (empty($total_vote)) {
-                                                    $vote_base = esc_html__('0 Rating', 'roavio-toolkit');
-                                                } elseif ($total_vote == 1) {
-                                                    $vote_base = esc_html__('1 Rating', 'roavio-toolkit');
-                                                } else {
-                                                    $vote_base = $total_vote . esc_html__(' Ratings', 'roavio-toolkit');
-                                                }
-
-                                                if (empty($rating)) {
-                                                    $rating = 0;
-                                                }
-                                                $rating = number_format((float) $rating, 1);
-                                                ?>
-                                                <span><?php echo esc_html(!empty($total_vote) ? __('Rating', 'roavio-toolkit') : __('No Rating', 'roavio-toolkit')); ?></span>
-                                                <?php echo BABE_Rating::post_stars_rendering(get_the_ID()); ?>
-                                            </div>
-                                            <h5><span><?php esc_html_e('Tours Price', 'roavio-toolkit'); ?></span>
-                                                <?php if (!empty($discount_price_from)) :
-                                                    echo BABE_Currency::get_currency_price($prices['discount_price_from']);
-                                                else :
-                                                    echo BABE_Currency::get_currency_price($prices['price_from']);
-                                                endif;
-                                                ?>
-                                            </h5>
-                                        </div>
                                         <h3>
                                             <a href="<?php the_permalink(); ?>">
                                                 <?php
@@ -233,6 +195,34 @@
                                                 </li>
                                             <?php endif; ?>
                                         </ul>
+                                        <div class="tour-place-bottom">
+                                            <div class="price">
+                                                <p><?php esc_html_e('Start Price', 'roavio-toolkit'); ?></p>
+                                                <h5>
+                                                    <?php if (!empty($discount_price_from)) {
+                                                        echo BABE_Currency::get_currency_price($prices['discount_price_from']);
+                                                    } elseif (!empty($price_from)) {
+                                                        echo BABE_Currency::get_currency_price($prices['price_from']);
+                                                    } else {
+                                                        echo BABE_Currency::get_currency_price(0);
+                                                    }
+                                                    ?>
+                                                </h5>
+                                            </div>
+                                            <div class="rating">
+                                                <?php
+                                                $total_vote = get_post_meta(get_the_ID(), '_rating_votes_base', true);
+                                                $rating = get_post_meta(get_the_ID(), '_rating', true);
+                                                if (empty($rating)) {
+                                                    $rating = 0;
+                                                }
+                                                $rating = number_format((float) $rating, 1);
+                                                ?>
+                                                <span><?php esc_html_e('Rating', 'roavio-toolkit'); ?></span>
+                                                <h6><i class="fa-solid fa-star"></i><?php echo esc_html($rating); ?> (<?php echo esc_html($total_vote); ?>)</h6>
+                                            </div>
+                                            <a href="<?php the_permalink(); ?>" class="theme-btn"><?php esc_html_e('View Tour', 'roavio-toolkit'); ?></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -241,9 +231,7 @@
                         wp_reset_postdata();
                     endforeach;
                 endif; ?>
-
             </div>
         </div>
     </section>
-
 <?php endif; ?>

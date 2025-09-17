@@ -561,15 +561,15 @@ class Recent_Post extends Widget_Base
 				'fields' => $layout_one_post_list->get_controls(),
 				'prevent_empty' => false,
 				'condition' => [
-					'layout_type' => ['layout_one', 'layout_two', 'layout_three'],
+					'layout_type' => ['layout_one'],
 				],
 				'title_field' => '{{{ title }}}',
 			]
 		);
 
-		$layout_four_post_list = new \Elementor\Repeater();
+		$layout_two_post_list = new \Elementor\Repeater();
 
-		$layout_four_post_list->add_control(
+		$layout_two_post_list->add_control(
 			'select_post',
 			[
 				'label'       => esc_html__('Select Post', 'roavio-toolkit'),
@@ -579,7 +579,7 @@ class Recent_Post extends Widget_Base
 			]
 		);
 
-		$layout_four_post_list->add_control(
+		$layout_two_post_list->add_control(
 			'title',
 			[
 				'label' => esc_html__('Custom Title', 'roavio-toolkit'),
@@ -592,8 +592,25 @@ class Recent_Post extends Widget_Base
 			]
 		);
 
+		$layout_two_post_list->add_control(
+			'column',
+			[
+				'label' => __('Select Column Class', 'roavio-toolkit'),
+				'type' => \Elementor\Controls_Manager::SELECT2,
+				'default' => 'col-xl-3',
+				'options' => [
+					'col-xl-6' => __('col-xl-6', 'roavio-toolkit'),
+					'col-xl-5' => __('col-xl-5', 'roavio-toolkit'),
+					'col-xl-4' => __('col-xl-4', 'roavio-toolkit'),
+					'col-xl-3' => __('col-xl-3', 'roavio-toolkit'),
+					'col-xl-2' => __('col-xl-2', 'roavio-toolkit'),
+					'col-xl-1' => __('col-xl-1', 'roavio-toolkit'),
+				]
+			]
+		);
 
-		$layout_four_post_list->add_control(
+
+		$layout_two_post_list->add_control(
 			'image',
 			[
 				'label' => esc_html__('image', 'roavio-toolkit'),
@@ -603,14 +620,14 @@ class Recent_Post extends Widget_Base
 		);
 
 		$this->add_control(
-			'layout_four_post_list',
+			'layout_two_post_list',
 			[
 				'label' => esc_html__('Post List', 'roavio-toolkit'),
 				'type' => \Elementor\Controls_Manager::REPEATER,
-				'fields' => $layout_four_post_list->get_controls(),
+				'fields' => $layout_two_post_list->get_controls(),
 				'prevent_empty' => false,
 				'condition' => [
-					'layout_type' => ['layout_four', 'layout_five'],
+					'layout_type' => ['layout_two'],
 				],
 				'title_field' => '{{{ title }}}',
 			]

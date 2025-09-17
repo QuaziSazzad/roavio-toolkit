@@ -55,7 +55,7 @@ $this->add_control(
 				'icon'  => 'eicon-editor-h6',
 			],
 		],
-		'default'     => 'h2',
+		'default'     => 'h3',
 		'toggle'      => false,
 	]
 );
@@ -90,32 +90,36 @@ $this->add_control(
 	]
 );
 
+
 $this->add_control(
-	'layout_one_input_label',
+	'layout_one_count_number',
 	[
-		'label' => esc_html__('Input Label', 'roavio-toolkit'),
+		'label' => esc_html__('Count Number', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Default Text', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Add Count Number', 'roavio-toolkit'),
+		'default' => esc_html__('10', 'roavio-toolkit'),
 		'label_block' => true,
 	]
 );
 
 $this->add_control(
-	'layout_one_input_placeholder',
+	'layout_one_count_symbol',
 	[
-		'label' => esc_html__('Input Placeholder', 'roavio-toolkit'),
+		'label' => esc_html__('Count Symbol', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Email Address', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Add Count Symbol', 'roavio-toolkit'),
+		'default' => esc_html__('m+', 'roavio-toolkit'),
 		'label_block' => true,
 	]
 );
 
 $this->add_control(
-	'layout_one_button_label',
+	'layout_one_count_text',
 	[
-		'label' => esc_html__('Button Label', 'roavio-toolkit'),
+		'label' => esc_html__('Count Text', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Subscribe', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Add Count Text', 'roavio-toolkit'),
+		'default' => esc_html__('Trusted clients / happy clients', 'roavio-toolkit'),
 		'label_block' => true,
 	]
 );
@@ -135,6 +139,14 @@ $this->start_controls_section(
 );
 
 
+$this->add_control(
+	'layout_one_group_image',
+	[
+		'label' => esc_html__('Group Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [],
+	]
+);
 $this->add_control(
 	'layout_one_bg_image',
 	[

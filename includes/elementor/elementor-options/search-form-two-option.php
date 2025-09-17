@@ -2,19 +2,19 @@
 
 //content
 $this->start_controls_section(
-	'layout_one_content',
+	'layout_two_content',
 	[
 		'label' => esc_html__('Content', 'roavio-toolkit'),
 		'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 		'condition' => [
-			'layout_type' => 'layout_one'
+			'layout_type' => 'layout_two'
 		]
 	]
 );
 
 
 $this->add_control(
-	'layout_one_title',
+	'layout_two_title',
 	[
 		'label' => esc_html__('Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXTAREA,
@@ -24,7 +24,7 @@ $this->add_control(
 );
 
 $this->add_control(
-	'layout_one_title_tag',
+	'layout_two_title_tag',
 	[
 		'label'       => esc_html__('Title Tag', 'roavio-toolkit'),
 		'type'        => \Elementor\Controls_Manager::CHOOSE,
@@ -55,13 +55,13 @@ $this->add_control(
 				'icon'  => 'eicon-editor-h6',
 			],
 		],
-		'default'     => 'h2',
+		'default'     => 'h1',
 		'toggle'      => false,
 	]
 );
 
 $this->add_control(
-	'layout_one_sub_title',
+	'layout_two_sub_title',
 	[
 		'label' => esc_html__('Sub Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXTAREA,
@@ -71,11 +71,11 @@ $this->add_control(
 );
 
 $this->add_control(
-	'layout_one_sub_title_tag',
+	'layout_two_sub_title_tag',
 	[
 		'label' => esc_html__('Sub Title Tag', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::SELECT,
-		'default' => 'p',
+		'default' => 'h3',
 		'options' => [
 			'h1' => esc_html__('H1', 'roavio-toolkit'),
 			'h2' => esc_html__('H2', 'roavio-toolkit'),
@@ -91,32 +91,12 @@ $this->add_control(
 );
 
 $this->add_control(
-	'layout_one_input_label',
+	'layout_two_search_title',
 	[
-		'label' => esc_html__('Input Label', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Default Text', 'roavio-toolkit'),
-		'label_block' => true,
-	]
-);
-
-$this->add_control(
-	'layout_one_input_placeholder',
-	[
-		'label' => esc_html__('Input Placeholder', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Email Address', 'roavio-toolkit'),
-		'label_block' => true,
-	]
-);
-
-$this->add_control(
-	'layout_one_button_label',
-	[
-		'label' => esc_html__('Button Label', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Subscribe', 'roavio-toolkit'),
-		'label_block' => true,
+		'label' => esc_html__('Search Title', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXTAREA,
+		'placeholder' => esc_html__('Add Search Title', 'roavio-toolkit'),
+		'default' => esc_html__('Default Search Title', 'roavio-toolkit'),
 	]
 );
 
@@ -129,14 +109,22 @@ $this->start_controls_section(
 		'label' => esc_html__('Images', 'roavio-toolkit'),
 		'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 		'condition' => [
-			'layout_type' => 'layout_one'
+			'layout_type' => 'layout_two'
 		]
 	]
 );
 
 
 $this->add_control(
-	'layout_one_bg_image',
+	'layout_two_group_image',
+	[
+		'label' => esc_html__('Group Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [],
+	]
+);
+$this->add_control(
+	'layout_two_bg_image',
 	[
 		'label' => esc_html__('Background Image', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
