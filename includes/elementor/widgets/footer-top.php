@@ -75,13 +75,8 @@ class Footer_Top extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .section-title h2, {{WRAPPER}} .footer-text .h1', ['layout_one', 'layout_three', 'layout_four', 'layout_five']);
-		roavio_elementor_style_options($this, 'Sub Title', '{{WRAPPER}} .text-white .sub-title,{{WRAPPER}}  .section-title .sub-title', ['layout_one', 'layout_three', 'layout_five']);
-		roavio_elementor_style_options($this, 'Summary Text', '{{WRAPPER}} .get-consultation-content p', ['layout_three']);
-		roavio_elementor_style_options($this, 'Email Text', '{{WRAPPER}} .content, {{WRAPPER}} .footer-contact p,{{WRAPPER}} .hotline .content span', ['layout_one', 'layout_three', 'layout_four', 'layout_five']);
-		roavio_elementor_style_options($this, 'Email Address', '{{WRAPPER}} .content a, {{WRAPPER}} .section-title a', ['layout_one', 'layout_three', 'layout_four', 'layout_five']);
-
-		roavio_elementor_style_options($this, 'Social Icon', '{{WRAPPER}} .social-style-two a i', ['layout_four']);
+		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one', 'layout_two']);
+		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .contact-content .text', ['layout_one', 'layout_two']);
 
 		$this->end_controls_section();
 

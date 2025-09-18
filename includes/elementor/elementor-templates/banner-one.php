@@ -9,7 +9,7 @@
                             <span class="sub-title mb-15"><?php echo esc_html($settings['layout_one_sub_title']); ?></span>
                         <?php endif; ?>
                         <?php if (!empty($settings['layout_one_title'])) : ?>
-                            <<?php echo esc_attr($settings['layout_one_title_tag']); ?>><?php echo rt_kses_basic($settings['layout_one_title']); ?></<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
+                            <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="title"><?php echo rt_kses_basic($settings['layout_one_title']); ?></<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
                         <?php endif; ?>
                         <?php if (!empty($settings['layout_one_description'])) : ?>
                             <p><?php echo esc_html($settings['layout_one_description']); ?></p>

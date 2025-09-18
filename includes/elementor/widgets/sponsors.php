@@ -75,7 +75,7 @@ class Sponsors extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title,{{WRAPPER}} .client-logo-wrap h6,{{WRAPPER}} .section-title h4,{{WRAPPER}} .section-title h2', ['layout_one', 'layout_two', 'layout_three', 'layout_four']);
+		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .brand-wrapper h6', ['layout_one']);
 
 		$this->end_controls_section();
 	}

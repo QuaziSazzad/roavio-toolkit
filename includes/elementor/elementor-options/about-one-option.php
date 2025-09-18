@@ -127,6 +127,18 @@ $this->add_control(
 );
 
 $this->add_control(
+	'layout_one_box_icon',
+	[
+		'label' => esc_html__('Box Icon', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::ICONS,
+		'default' => [
+			'value' => 'flaticon-travel',
+			'library' => 'flaticon',
+		],
+	]
+);
+
+$this->add_control(
 	'layout_one_content',
 	[
 		'label' => esc_html__('Content', 'roavio-toolkit'),

@@ -8,13 +8,13 @@
                         <div class="about-left-item">
                             <?php if (!empty($settings['layout_one_title'])) : ?>
                                 <div class="section-title mb-0">
-                                    <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="wow fadeInUp" data-wow-delay=".3s">
+                                    <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="wow fadeInUp sec-title" data-wow-delay=".3s">
                                         <?php echo rt_kses_basic($settings['layout_one_title']); ?>
                                     </<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
                                 </div>
                             <?php endif; ?>
                             <?php if (!empty($settings['layout_one_sub_title'])) : ?>
-                                <<?php echo esc_attr($settings['layout_one_sub_title_tag']); ?> class="wow fadeInUp" data-wow-delay=".5s"><?php echo rt_kses_basic($settings['layout_one_sub_title']); ?></<?php echo esc_attr($settings['layout_one_sub_title_tag']); ?>>
+                                <<?php echo esc_attr($settings['layout_one_sub_title_tag']); ?> class="wow fadeInUp sec-sub-title" data-wow-delay=".5s"><?php echo rt_kses_basic($settings['layout_one_sub_title']); ?></<?php echo esc_attr($settings['layout_one_sub_title_tag']); ?>>
                             <?php endif; ?>
                             <div class="about-image wow img-custom-anim-left">
                                 <?php rt_elementor_rendered_image($settings, 'layout_one_image_one'); ?>
@@ -29,11 +29,9 @@
                                 </div>
                                 <?php if (!empty($settings['layout_one_box_title']) || !empty($settings['layout_one_box_description'])) : ?>
                                     <div class="about-box wow img-custom-anim-right">
-                                        <?php if (!empty($settings['layout_one_box_icon']['url'])) : ?>
-                                            <div class="icon">
-                                                <img src="assets/img/home-1/icon/01.svg" alt="img">
-                                            </div>
-                                        <?php endif; ?>
+                                        <div class="icon">
+                                            <?php \Elementor\Icons_Manager::render_icon($settings['layout_one_box_icon'], ['aria-hidden' => 'true'], 'i'); ?>
+                                        </div>
                                         <?php if (!empty($settings['layout_one_box_title'])) : ?>
                                             <h5><?php echo esc_html($settings['layout_one_box_title']); ?></h5>
                                         <?php endif; ?>

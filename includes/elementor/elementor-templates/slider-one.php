@@ -17,7 +17,7 @@
                                         <div class="col-xl-4 col-lg-6">
                                             <div class="hero-content">
                                                 <?php if (!empty($slide['layout_one_slide_title'])) : ?>
-                                                    <<?php echo esc_attr($settings['layout_one_title_tag']); ?> data-animation="fadeInUp" data-delay="1.3s">
+                                                    <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="title" data-animation="fadeInUp" data-delay="1.3s">
                                                         <?php echo rt_kses_basic($slide['layout_one_slide_title']); ?>
                                                     </<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
                                                 <?php endif; ?>

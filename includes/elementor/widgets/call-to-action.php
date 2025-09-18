@@ -73,8 +73,11 @@ class Call_To_Action extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .sec-title', ['layout_one', 'layout_two', 'layout_three']);
-		roavio_elementor_style_options($this, 'Sub Title', '{{WRAPPER}} .section-title p', ['layout_one', 'layout_three']);
+		roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .title', ['layout_one', 'layout_two', 'layout_three']);
+		roavio_elementor_style_options($this, 'Sub Title', '{{WRAPPER}} .feature-bg-content .text', ['layout_one', 'layout_three']);
+
+		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .feature-bottom-content p', ['layout_one', 'layout_three']);
+		roavio_elementor_style_options($this, 'Price', '{{WRAPPER}} .feature-bottom-content h3', ['layout_one', 'layout_three']);
 
 		$this->end_controls_section();
 
@@ -83,6 +86,9 @@ class Call_To_Action extends Widget_Base
 			[
 				'label' => esc_html__('Button Style', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'layout_type' => 'layout_one'
+				]
 			]
 		);
 

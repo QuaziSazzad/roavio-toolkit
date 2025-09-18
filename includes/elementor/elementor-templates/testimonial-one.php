@@ -5,10 +5,10 @@
             <?php if (!empty($settings['layout_one_section_title']) || !empty($settings['layout_one_section_subtitle'])) : ?>
                 <div class="section-title text-center">
                     <?php if (!empty($settings['layout_one_section_title'])) : ?>
-                        <h2 class="text-white wow fadeInUp" data-wow-delay=".3s"><?php echo esc_html($settings['layout_one_section_title']); ?></h2>
+                        <h2 class="text-white wow fadeInUp sec-title" data-wow-delay=".3s"><?php echo esc_html($settings['layout_one_section_title']); ?></h2>
                     <?php endif; ?>
                     <?php if (!empty($settings['layout_one_section_subtitle'])) : ?>
-                        <p class="text-white wow fadeInUp" data-wow-delay=".5s"><?php echo esc_html($settings['layout_one_section_subtitle']); ?></p>
+                        <p class="text-white wow fadeInUp sec-sub-title" data-wow-delay=".5s"><?php echo esc_html($settings['layout_one_section_subtitle']); ?></p>
                     <?php endif; ?>
                 </div>
             <?php endif; ?>

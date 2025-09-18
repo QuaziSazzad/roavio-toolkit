@@ -645,17 +645,17 @@ class Recent_Post extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .section-title h2', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five']);
-		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .section-title .sub-title,{{WRAPPER}} .subtitle', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five']);
+		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one', 'layout_two']);
+		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one', 'layout_two']);
 
-		roavio_elementor_style_options($this, 'Post Title', '{{WRAPPER}} .title a,{{WRAPPER}} .blog-four-item .content h5', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five']);
-		roavio_elementor_style_options($this, 'Category', '{{WRAPPER}} .blog-meta li:first-child a', ['layout_two', 'layout_three']);
-		roavio_elementor_style_options($this, 'Summary Text', '{{WRAPPER}} .blog-item .content p, {{WRAPPER}} .summary-text, {{WRAPPER}} .content p', ['layout_one', 'layout_two', 'layout_three', 'layout_five']);
-		roavio_elementor_style_options($this, 'Author', '{{WRAPPER}} .blog-item-five .content .author a,{{WRAPPER}} .blog-meta li:first-child a', ['layout_four', 'layout_five']);
-		roavio_elementor_style_options($this, 'Date', '{{WRAPPER}} .blog-meta li:last-child a, {{WRAPPER}} .content .blog-meta li:not(:first-child)', ['layout_one', 'layout_two', 'layout_three', 'layout_five']);
-		roavio_elementor_style_options($this, 'Read More', '{{WRAPPER}} .read-more', ['layout_one', 'layout_two', 'layout_four', 'layout_five']);
+		roavio_elementor_style_options($this, 'Post Title', '{{WRAPPER}} .news-content h3 a', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five']);
+		roavio_elementor_style_options($this, 'Category', '{{WRAPPER}} .news-content span', ['layout_one', 'layout_three']);
+		//roavio_elementor_style_options($this, 'Summary Text', '{{WRAPPER}} .blog-item .content p, {{WRAPPER}} .summary-text, {{WRAPPER}} .content p', ['layout_one', 'layout_two', 'layout_three', 'layout_five']);
+		//roavio_elementor_style_options($this, 'Author', '{{WRAPPER}} .blog-item-five .content .author a,{{WRAPPER}} .blog-meta li:first-child a', ['layout_four', 'layout_five']);
+		roavio_elementor_style_options($this, 'Date', '{{WRAPPER}} .news-image span', ['layout_one', 'layout_two', 'layout_three', 'layout_five']);
+		roavio_elementor_style_options($this, 'Read More', '{{WRAPPER}} .link-btn', ['layout_one', 'layout_two', 'layout_four', 'layout_five']);
 
-		roavio_elementor_style_options($this, 'Meta', '{{WRAPPER}} .content .blog-meta li,{{WRAPPER}} .blog-item-five .content .blog-meta li a ', ['layout_four']);
+		//roavio_elementor_style_options($this, 'Meta', '{{WRAPPER}} .content .blog-meta li,{{WRAPPER}} .blog-item-five .content .blog-meta li a ', ['layout_four']);
 
 		$this->end_controls_section();
 

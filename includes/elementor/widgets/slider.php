@@ -52,6 +52,7 @@ class Slider extends Widget_Base
 				'default' => 'layout_one',
 				'options' => [
 					'layout_one' => __('Layout One', 'roavio-toolkit'),
+					'layout_two' => __('Layout Two', 'roavio-toolkit'),
 
 				]
 			]
@@ -70,12 +71,11 @@ class Slider extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .hero-content h1,{{WRAPPER}} .slide-content h1,{{WRAPPER}} .hero-content-five h1,{{WRAPPER}} .hero-content-five .h1', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
-		roavio_elementor_style_options($this, 'Sub Title', '{{WRAPPER}} .hero-content .sub-title,{{WRAPPER}} .subtitle-one, {{WRAPPER}} .sub-title ', ['layout_one', 'layout_three', 'layout_four', 'layout_five']);
-		roavio_elementor_style_options($this, 'Tagline', '{{WRAPPER}} .slide-content .h2', ['layout_five']);
-		roavio_elementor_style_options($this, 'Description Text', '{{WRAPPER}} .hero-content > p, {{WRAPPER}} .hero-content p, {{WRAPPER}} .content p', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_six']);
+		roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .hero-1 .hero-content .title', ['layout_one', 'layout_two']);
+		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .hero-1 .hero-content p', ['layout_one']);
 
-		roavio_elementor_style_options($this, 'Client Text', '{{WRAPPER}} .hero-five-clients h5', ['layout_six']);
+		roavio_elementor_style_options($this, 'Count Text', '{{WRAPPER}} .hero-1 .counter-item .content p', ['layout_one']);
+		roavio_elementor_style_options($this, 'Count Number', '{{WRAPPER}} .count', ['layout_one']);
 		$this->end_controls_section();
 
 		$this->start_controls_section(

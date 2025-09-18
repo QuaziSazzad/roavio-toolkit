@@ -100,11 +100,22 @@ $this->add_control(
 	]
 );
 
+$this->add_control(
+	'layout_two_video_url',
+	[
+		'label' => esc_html__('Video URL', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'placeholder' => esc_html__('Add Video UR', 'roavio-toolkit'),
+		'default' => esc_html__('#', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
 
 $this->end_controls_section();
 
 $this->start_controls_section(
-	'section_image_one',
+	'section_image_two',
 	[
 		'label' => esc_html__('Images', 'roavio-toolkit'),
 		'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
@@ -115,14 +126,6 @@ $this->start_controls_section(
 );
 
 
-$this->add_control(
-	'layout_two_group_image',
-	[
-		'label' => esc_html__('Group Image', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [],
-	]
-);
 $this->add_control(
 	'layout_two_bg_image',
 	[

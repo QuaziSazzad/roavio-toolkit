@@ -1,13 +1,15 @@
 <?php if ('layout_two' == $settings['layout_type']) : ?>
     <!-- Hero Section Start -->
-    <section class="hero-section hero-2 fix bg-cover" style="background-image: url(assets/img/home-2/hero/hero-bg.jpg);">
+    <section class="hero-section hero-2 fix bg-cover" style="background-image: url(<?php echo esc_url($settings['layout_two_bg_image']['url']); ?>);">
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-xl-12">
                     <div class="hero-content">
-                        <a href="https://www.youtube.com/watch?v=Cn4G2lZ_g2I" class="video-btn video-popup wow fadeInUp" data-wow-delay=".3s">
-                            <i class="fa-duotone fa-play"></i>
-                        </a>
+                        <?php if ($settings['layout_two_video_url']) : ?>
+                            <a href="<?php echo esc_url($settings['layout_two_video_url']); ?>" class="video-btn video-popup wow fadeInUp" data-wow-delay=".3s">
+                                <i class="fa-duotone fa-play"></i>
+                            </a>
+                        <?php endif; ?>
                         <?php if ($settings['layout_two_sub_title']) : ?>
                             <<?php echo esc_attr($settings['layout_two_sub_title_tag']); ?> class="wow fadeInUp" data-wow-delay=".5s"><?php echo rt_kses_basic($settings['layout_two_sub_title']); ?></<?php echo esc_attr($settings['layout_two_sub_title_tag']); ?>>
                         <?php endif; ?>

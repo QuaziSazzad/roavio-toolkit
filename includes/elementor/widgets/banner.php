@@ -79,12 +79,12 @@ class Banner extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .hero-content h1,{{WRAPPER}} .slide-content h1,{{WRAPPER}} .hero-content-five h1,{{WRAPPER}} .hero-content-five .h1', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
-		roavio_elementor_style_options($this, 'Sub Title', '{{WRAPPER}} .hero-content .sub-title,{{WRAPPER}} .subtitle-one, {{WRAPPER}} .sub-title ', ['layout_one', 'layout_three', 'layout_four', 'layout_five']);
-		roavio_elementor_style_options($this, 'Tagline', '{{WRAPPER}} .slide-content .h2', ['layout_five']);
-		roavio_elementor_style_options($this, 'Description Text', '{{WRAPPER}} .hero-content > p, {{WRAPPER}} .hero-content p, {{WRAPPER}} .content p', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_six']);
+		roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .hero-1 .hero-content h1', ['layout_one', 'layout_two']);
+		roavio_elementor_style_options($this, 'Sub Title', '{{WRAPPER}} .hero-1 .hero-content p ', ['layout_one']);
 
-		roavio_elementor_style_options($this, 'Client Text', '{{WRAPPER}} .hero-five-clients h5', ['layout_six']);
+		roavio_elementor_style_options($this, 'Count Text', '{{WRAPPER}} .hero-1 .counter-item .content p', ['layout_one']);
+		roavio_elementor_style_options($this, 'Count Number', '{{WRAPPER}} .count', ['layout_one']);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -114,7 +114,7 @@ class Banner extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .theme-btn' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .theme-btn::after' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -139,7 +139,7 @@ class Banner extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .theme-btn:hover, a.theme-btn:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .theme-btn:hover::after, a.theme-btn:hover::after' => 'background-color: {{VALUE}};',
 				],
 			]
 		);

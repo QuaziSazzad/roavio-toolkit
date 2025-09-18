@@ -93,35 +93,31 @@ class About extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .section-title h2', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six', 'layout_seven', 'layout_eight', 'layout_nine', 'layout_ten']);
-		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .section-title .sub-title, {{WRAPPER}} .subtitle ', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_seven', 'layout_eight', 'layout_nine']);
-		roavio_elementor_style_options($this, 'Summary Text', '{{WRAPPER}} .summary-text,{{WRAPPER}} .about-content p,{{WRAPPER}} .team-page-left-content p', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six', 'layout_eight', 'layout_ten']);
+		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six', 'layout_seven', 'layout_eight', 'layout_nine', 'layout_ten']);
+		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one']);
+		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .about-right-item .content p,{{WRAPPER}} .adventure-wrapper .text,{{WRAPPER}} .about-content .text', ['layout_one', 'layout_two', 'layout_four']);
 
-		roavio_elementor_style_options($this, 'Content', '{{WRAPPER}} .about-page-about-left-content p', ['layout_nine']);
+		roavio_elementor_style_options($this, 'Features List', '{{WRAPPER}} .list-item .list li', ['layout_one']);
 
-		roavio_elementor_style_options($this, 'Check List', '{{WRAPPER}} .list-style-one li', ['layout_two']);
+		roavio_elementor_style_options($this, 'Box Title', '{{WRAPPER}} .adventure-box h3 a', ['layout_two']);
+		roavio_elementor_style_options($this, 'Client Name', '{{WRAPPER}} .content h5,{{WRAPPER}} .info-item .content h5', ['layout_two', 'layout_three']);
+		roavio_elementor_style_options($this, 'Client Designation', '{{WRAPPER}} .content span,{{WRAPPER}} .info-item .content span', ['layout_two', 'layout_three']);
 
-		roavio_elementor_style_options($this, 'Content Title', '{{WRAPPER}} .ai-content h3', ['layout_six']);
-		roavio_elementor_style_options($this, 'Content Sub Title', '{{WRAPPER}} .ai-content .subtitle', ['layout_six']);
-		roavio_elementor_style_options($this, 'Content Description', '{{WRAPPER}} .ai-content p', ['layout_six']);
+		roavio_elementor_style_options($this, 'Discount Text', '{{WRAPPER}} .adventure-thumb .adventure-content h6', ['layout_two']);
+		roavio_elementor_style_options($this, 'Adventure Title', '{{WRAPPER}} .adventure-thumb .adventure-content h3', ['layout_two']);
+		roavio_elementor_style_options($this, 'Price', '{{WRAPPER}} .booking-item .content h4', ['layout_two']);
+		roavio_elementor_style_options($this, 'Price Description', '{{WRAPPER}} .booking-item .content span', ['layout_two']);
 
-		roavio_elementor_style_options($this, 'Features Title', '{{WRAPPER}} .feature-item-two h5 a,{{WRAPPER}} .service-item-two h5 a, {{WRAPPER}} .about-featured-item h5 a, {{WRAPPER}} .service-item h4 a', ['layout_one', 'layout_three', 'layout_four', 'layout_seven']);
-		roavio_elementor_style_options($this, 'Features Description', '{{WRAPPER}} .feature-item-two p,{{WRAPPER}} .about-two-content p', ['layout_one', 'layout_seven']);
-		roavio_elementor_style_options($this, 'Features Icon', '{{WRAPPER}} .feature-item-two .icon i, {{WRAPPER}} .service-item-two .icon i,{{WRAPPER}} .about-featured-item .icon i, {{WRAPPER}} .service-item .icon i', ['layout_one', 'layout_three', 'layout_four', 'layout_seven']);
-		roavio_elementor_style_options($this, 'Read More', '{{WRAPPER}} .read-more', ['layout_seven']);
+		roavio_elementor_style_options($this, 'Counter One Number', '{{WRAPPER}} .booking-item .content span', ['layout_three']);
+		roavio_elementor_style_options($this, 'Counter One Text', '{{WRAPPER}} .counter-main-box .content p', ['layout_three']);
 
-		roavio_elementor_style_options($this, 'Video Title', '{{WRAPPER}} .video-wrap span', ['layout_three']);
-		roavio_elementor_style_options($this, 'Video Description', '{{WRAPPER}} .video-wrap h5', ['layout_three']);
+		roavio_elementor_style_options($this, 'Counter Two Number', '{{WRAPPER}} .right-box .count', ['layout_three']);
+		roavio_elementor_style_options($this, 'Counter Two Text', '{{WRAPPER}} .right-box p', ['layout_three']);
+		roavio_elementor_style_options($this, 'Experience Title', '{{WRAPPER}} .adventure-box-2 h3 a', ['layout_three']);
 
-		roavio_elementor_style_options($this, 'Client Title', '{{WRAPPER}} .trusted-clients-wrap h6', ['layout_four']);
-		roavio_elementor_style_options($this, 'Caption Text', '{{WRAPPER}} .about-three-left-image .clients-satisfied h4, {{WRAPPER}} .years-experience h4, {{WRAPPER}} .team-member h4', ['layout_four']);
 
-		roavio_elementor_style_options($this, 'Progress Title', '{{WRAPPER}} .circle-progress-item h4,{{WRAPPER}} .circle-progress-item-two h4', ['layout_five', 'layout_ten']);
-		roavio_elementor_style_options($this, 'Progress Number', '{{WRAPPER}} .circle-progress .counting', ['layout_five']);
-
-		roavio_elementor_style_options($this, 'Proven Expertise Title', '{{WRAPPER}} .proven-area h4', ['layout_five']);
-		roavio_elementor_style_options($this, 'Proven Description', '{{WRAPPER}} .proven-area p', ['layout_five']);
-
+		roavio_elementor_style_options($this, 'Tab Content', '{{WRAPPER}} .right-content .content p', ['layout_four']);
+		roavio_elementor_style_options($this, 'Tab Features', '{{WRAPPER}} .right-content .content .list li', ['layout_four']);
 
 		$this->end_controls_section();
 
@@ -131,7 +127,7 @@ class About extends Widget_Base
 				'label' => esc_html__('Button Style', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 				'condition' => [
-					'layout_type' => ['layout_one', 'layout_two', 'layout_two', 'layout_six', 'layout_eight'],
+					'layout_type' => ['layout_one', 'layout_four'],
 				],
 			]
 		);

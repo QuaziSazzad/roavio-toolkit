@@ -69,14 +69,11 @@ class Gallery extends Widget_Base
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
+		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one', 'layout_two']);
+		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one', 'layout_two']);
 
-		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .section-title h2', ['layout_one', 'layout_two', 'layout_three']);
-		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .section-title .sub-title', ['layout_one', 'layout_two', 'layout_three']);
+		roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .activities-content h4 a', ['layout_one', 'layout_two', 'layout_three']);
 
-		roavio_elementor_style_options($this, 'Name', '{{WRAPPER}} .content h5 a, {{WRAPPER}} .name a', ['layout_one', 'layout_two', 'layout_three']);
-		roavio_elementor_style_options($this, 'Designation', '{{WRAPPER}} .designations, {{WRAPPER}} .designation', ['layout_one', 'layout_two', 'layout_three']);
-		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .bottom-part p', ['layout_three']);
-		roavio_elementor_style_options($this, 'Social Icon', '{{WRAPPER}} .social-style-one i', ['layout_one']);
 
 		$this->end_controls_section();
 	}
