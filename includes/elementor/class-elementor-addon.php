@@ -57,7 +57,7 @@ class Roavio_Elementor_Addon
 
 	public function init_widgets($widgets_manager)
 	{
-		// include_once RT_ELEMENTOR . '/widgets/header.php';
+		include_once RT_ELEMENTOR . '/widgets/header.php';
 		//include_once RT_ELEMENTOR . '/widgets/banner.php';
 		include_once RT_ELEMENTOR . '/widgets/slider.php';
 		// include_once RT_ELEMENTOR . '/widgets/funfact.php';
@@ -100,7 +100,7 @@ class Roavio_Elementor_Addon
 		// include_once RT_ELEMENTOR . '/widgets/footer-shape.php';
 		// include_once RT_ELEMENTOR . '/widgets/copyright.php';
 
-		// $widgets_manager->register(new Widgets\Header());
+		$widgets_manager->register(new Widgets\Header());
 		//$widgets_manager->register(new Widgets\Banner());
 		$widgets_manager->register(new Widgets\Slider());
 		// $widgets_manager->register(new Widgets\FunFact());

@@ -176,11 +176,11 @@ class Header extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 		include rt_get_elementor_template('header-one.php');
-		include rt_get_elementor_template('header-two.php');
-		include rt_get_elementor_template('header-three.php');
-		include rt_get_elementor_template('header-four.php');
-		include rt_get_elementor_template('header-five.php');
-		include rt_get_elementor_template('header-six.php');
-		include rt_get_elementor_template('header-sidebar.php');
+		// include rt_get_elementor_template('header-two.php');
+		// include rt_get_elementor_template('header-three.php');
+		// include rt_get_elementor_template('header-four.php');
+		// include rt_get_elementor_template('header-five.php');
+		// include rt_get_elementor_template('header-six.php');
+		// include rt_get_elementor_template('header-sidebar.php');
 	}
 }

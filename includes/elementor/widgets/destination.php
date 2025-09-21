@@ -69,11 +69,11 @@ class Destination extends Widget_Base
 			]
 		);
 
-		// roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .section-title h2', ['layout_one']);
-		// roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .section-title ', ['layout_one']);
+		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_two']);
+		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title ', ['layout_two']);
 
-		roavio_elementor_style_options($this, 'Destination Name', '{{WRAPPER}} .tour-content h3 a', ['layout_one', 'layout_two', 'layout_three']);
-		roavio_elementor_style_options($this, 'Destination Location', '{{WRAPPER}} .tour-content p', ['layout_one', 'layout_two', 'layout_three']);
+		roavio_elementor_style_options($this, 'Destination Name', '{{WRAPPER}} .tour-content h3 a,{{WRAPPER}} .destination-content h3 a', ['layout_one', 'layout_two', 'layout_three']);
+		roavio_elementor_style_options($this, 'Destination Location', '{{WRAPPER}} .tour-content p,{{WRAPPER}} .destination-content p', ['layout_one', 'layout_two', 'layout_three']);
 
 		$this->end_controls_section();
 	}

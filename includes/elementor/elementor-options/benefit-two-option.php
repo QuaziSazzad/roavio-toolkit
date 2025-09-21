@@ -20,6 +20,7 @@ $this->add_control(
 		'type' => \Elementor\Controls_Manager::TEXT,
 		'default' => esc_html__('How to benefit our Tours', 'roavio-toolkit'),
 		'placeholder' => esc_html__('Type your title here', 'roavio-toolkit'),
+		'label_block' => true
 	]
 );
 

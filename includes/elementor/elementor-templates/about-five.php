@@ -8,7 +8,7 @@
                         <div class="commitment-content">
                             <?php if (!empty($settings['layout_five_title'])) : ?>
                                 <div class="section-title mb-0">
-                                    <<?php echo esc_attr($settings['layout_five_title_tag']); ?> class="text-white">
+                                    <<?php echo esc_attr($settings['layout_five_title_tag']); ?> class="text-white sec-title">
                                         <?php echo rt_kses_basic($settings['layout_five_title']); ?>
                                     </<?php echo esc_attr($settings['layout_five_title_tag']); ?>>
                                 </div>
@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="count-item">
                                     <?php if (!empty($settings['layout_five_description'])) : ?>
-                                        <p class="wow fadeInUp" data-wow-delay=".3s">
+                                        <p class="wow fadeInUp description" data-wow-delay=".3s">
                                             <?php echo wp_kses_post($settings['layout_five_description']); ?>
                                         </p>
                                     <?php endif; ?>

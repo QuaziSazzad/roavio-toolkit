@@ -90,15 +90,6 @@ $this->add_control(
 	]
 );
 
-$this->add_control(
-	'layout_one_input_label',
-	[
-		'label' => esc_html__('Input Label', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Default Text', 'roavio-toolkit'),
-		'label_block' => true,
-	]
-);
 
 $this->add_control(
 	'layout_one_input_placeholder',

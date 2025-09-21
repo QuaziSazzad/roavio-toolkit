@@ -81,9 +81,9 @@ class Testimonial extends Widget_Base
 		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one', 'layout_two']);
 
 
-		roavio_elementor_style_options($this, 'Name', '{{WRAPPER}}  .testimonial-content .content h4', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
-		roavio_elementor_style_options($this, 'Designation', '{{WRAPPER}} .content span', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
-		roavio_elementor_style_options($this, 'Testimonial', '{{WRAPPER}} .content p', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
+		roavio_elementor_style_options($this, 'Name', '{{WRAPPER}}  .testimonial-content .content h4,{{WRAPPER}} .info-content h6', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
+		roavio_elementor_style_options($this, 'Designation', '{{WRAPPER}} .content span,{{WRAPPER}} .info-content h6 span', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
+		roavio_elementor_style_options($this, 'Testimonial', '{{WRAPPER}} .content p,{{WRAPPER}} .info-content h3', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
 		roavio_elementor_style_options($this, 'Quote Icon', '{{WRAPPER}} .icon i', ['layout_one']);
 
 
