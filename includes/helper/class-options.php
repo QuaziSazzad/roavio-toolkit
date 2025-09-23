@@ -345,7 +345,7 @@ class Roavio_Options
 					'title'      => esc_html__('Button Text', 'roavio-toolkit'),
 					'subtitle'   => esc_html__('Text for Header Button.', 'roavio-toolkit'),
 					'type'       => 'text',
-					'default'    => esc_html__('Get a Quote', 'roavio-toolkit'),
+					'default'    => esc_html__('Book Now', 'roavio-toolkit'),
 					'dependency' => [
 						['default_header', '==', 'enabled'],
 						['header_button', '==', 'enabled'],
@@ -361,6 +361,17 @@ class Roavio_Options
 						['default_header', '==', 'enabled'],
 						['header_button', '==', 'enabled'],
 					],
+				],
+				[
+					'id'         => 'search_button',
+					'type'       => 'button_set',
+					'title'      => esc_html__('Show Search Button', 'roavio-toolkit'),
+					'subtitle'   => esc_html__('Show a search button to header right side', 'roavio-toolkit'),
+					'options'    => [
+						'enabled'  => esc_html__('Enable', 'roavio-toolkit'),
+						'disabled' => esc_html__('Disable', 'roavio-toolkit'),
+					],
+					'default'    => 'enabled',
 				],
 			],
 		]);
