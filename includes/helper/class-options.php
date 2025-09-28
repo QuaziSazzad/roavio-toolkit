@@ -893,7 +893,7 @@ class Roavio_Options
 						'yes' => esc_html__('Yes', 'roavio-toolkit'),
 						'no'  => esc_html__('No', 'roavio-toolkit'),
 					],
-					'default'  => 'yes',
+					'default'  => 'no',
 				],
 				[
 					'id'         => 'social_share_item',
@@ -1319,10 +1319,16 @@ class Roavio_Options
 					'content' => esc_html__('404 Page', 'roavio-toolkit'),
 				],
 				[
+					'id'      => 'not_found_text',
+					'type'    => 'text',
+					'title'   => esc_html__('Title', 'roavio-toolkit'),
+					'default' => esc_html__('404 (page not found)', 'roavio-toolkit'),
+				],
+				[
 					'id'      => 'error_title',
 					'type'    => 'text',
 					'title'   => esc_html__('Title', 'roavio-toolkit'),
-					'default' => esc_html__('OPPS!', 'roavio-toolkit'),
+					'default' => esc_html__('Sorry! page can’t be found', 'roavio-toolkit'),
 				],
 				[
 					'id'      => 'error_bottom_message',
