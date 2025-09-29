@@ -17,245 +17,202 @@ $this->add_control(
 	[
 		'label' => esc_html__('Section Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'placeholder' => esc_html__('Scale Generative artificial intelligence Platform', 'roavio-toolkit'),
-		'default' => esc_html__('Scale Generative artificial intelligence Platform', 'roavio-toolkit'),
+		'default' => wp_kses(__(' Passionate about your adventures with <b>ROAVIO</b>', 'roavio-toolkit'), ['b' => []]),
+		'placeholder' => esc_html__('Type your section title here', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
 $this->add_control(
 	'layout_six_title_tag',
 	[
-		'label'       => esc_html__('Title Tag', 'roavio-toolkit'),
-		'type'        => \Elementor\Controls_Manager::CHOOSE,
-		'label_block' => false,
-		'options'     => [
-			'h1' => [
-				'title' => esc_html__('H1', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h1',
-			],
-			'h2' => [
-				'title' => esc_html__('H2', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h2',
-			],
-			'h3' => [
-				'title' => esc_html__('H3', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h3',
-			],
-			'h4' => [
-				'title' => esc_html__('H4', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h4',
-			],
-			'h5' => [
-				'title' => esc_html__('H5', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h5',
-			],
-			'h6' => [
-				'title' => esc_html__('H6', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h6',
-			],
+		'label' => esc_html__('Section Title Tag', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::SELECT,
+		'default' => 'h2',
+		'options' => [
+			'h1' => esc_html__('H1', 'roavio-toolkit'),
+			'h2' => esc_html__('H2', 'roavio-toolkit'),
+			'h3' => esc_html__('H3', 'roavio-toolkit'),
+			'h4' => esc_html__('H4', 'roavio-toolkit'),
+			'h5' => esc_html__('H5', 'roavio-toolkit'),
+			'h6' => esc_html__('H6', 'roavio-toolkit'),
+			'div' => esc_html__('div', 'roavio-toolkit'),
+			'span' => esc_html__('span', 'roavio-toolkit'),
+			'p' => esc_html__('p', 'roavio-toolkit'),
 		],
-		'default'     => 'h2',
-		'toggle'      => false,
 	]
 );
 
 $this->add_control(
-	'layout_six_section_description',
+	'layout_six_description',
 	[
-		'label' => esc_html__('Section Description', 'roavio-toolkit'),
+		'label' => esc_html__('Description', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'placeholder' => esc_html__('Add section description', 'roavio-toolkit'),
-		'default' => esc_html__('Sed ut perspiciatis unde omnis iste sit voluptatem accusantium doloremque laudantium rem aperiam eaqups quae ab illo inventore veritatis et quasi architecto', 'roavio-toolkit'),
+		'default' => esc_html__('We believe travel is more than just a trip—it\'s an experience that shapes your life. Our mission is to create unforgettable journeys that combine adventure, comfort, and authentic cultural encounters.', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Type your description here', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
-// First Content Block
+
+// Tab Navigation
 $this->add_control(
-	'layout_six_first_block_heading',
+	'layout_six_tab_heading',
 	[
-		'label' => esc_html__('First Block', 'roavio-toolkit'),
+		'label' => esc_html__('Tab Navigation', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::HEADING,
 		'separator' => 'before',
 	]
 );
 
-$this->add_control(
-	'layout_six_first_image',
-	[
-		'label' => esc_html__('First Image', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [
-			'url' => \Elementor\Utils::get_placeholder_image_src(),
-		],
-	]
-);
+$layout_six_tabs = new \Elementor\Repeater();
 
-$this->add_control(
-	'layout_six_first_subtitle',
+$layout_six_tabs->add_control(
+	'tab_title',
 	[
-		'label' => esc_html__('First Subtitle', 'roavio-toolkit'),
+		'label' => esc_html__('Tab Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'placeholder' => esc_html__('Custom LLM', 'roavio-toolkit'),
-		'default' => esc_html__('Custom LLM', 'roavio-toolkit'),
+		'default' => esc_html__('Our Mission', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Type your tab title here', 'roavio-toolkit'),
 		'label_block' => true,
 	]
 );
 
-$this->add_control(
-	'layout_six_first_title',
+$layout_six_tabs->add_control(
+	'tab_content',
 	[
-		'label' => esc_html__('First Title', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'placeholder' => esc_html__('Customize Large Language Models', 'roavio-toolkit'),
-		'default' => esc_html__('Customize Large Language Models', 'roavio-toolkit'),
-		'label_block' => true,
-	]
-);
-
-$this->add_control(
-	'layout_six_first_description',
-	[
-		'label' => esc_html__('First Description', 'roavio-toolkit'),
+		'label' => esc_html__('Tab Content', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'placeholder' => esc_html__('Add description', 'roavio-toolkit'),
-		'default' => esc_html__('Customizing large language models involves fine-tuning their pre-trained parameters to adapt them to specific tasks or domains, enhancing their performance relevance in specialized applications. This process enables organizations to leverage', 'roavio-toolkit'),
-	]
-);
-
-$this->add_control(
-	'layout_six_first_button_text',
-	[
-		'label' => esc_html__('First Button Text', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'placeholder' => esc_html__('Read More', 'roavio-toolkit'),
-		'default' => esc_html__('Read More', 'roavio-toolkit'),
+		'default' => esc_html__('Take the stress to travel with our seamless flight booking and reservation services.', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Type your tab content here', 'roavio-toolkit'),
 		'label_block' => true,
 	]
 );
 
-$this->add_control(
-	'layout_six_first_button_url',
+// Features List for each tab
+$layout_six_features = new \Elementor\Repeater();
+
+$layout_six_features->add_control(
+	'feature_text',
 	[
-		'label' => esc_html__('First Button URL', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::URL,
-		'placeholder' => esc_html__('https://your-link.com', 'roavio-toolkit'),
+		'label' => esc_html__('Feature Text', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('Destination Search & Filters', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Type your feature text here', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+$layout_six_features->add_control(
+	'feature_icon',
+	[
+		'label' => esc_html__('Feature Icon', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::ICONS,
 		'default' => [
-			'url' => '#',
-			'is_external' => false,
-			'nofollow' => false,
+			'value' => 'fa fa-check',
+			'library' => 'font-awesome',
 		],
 	]
 );
 
-// Second Content Block
-$this->add_control(
-	'layout_six_second_block_heading',
+$layout_six_tabs->add_control(
+	'tab_features',
 	[
-		'label' => esc_html__('Second Block', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::HEADING,
-		'separator' => 'before',
-	]
-);
-
-$this->add_control(
-	'layout_six_second_image',
-	[
-		'label' => esc_html__('Second Image', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [
-			'url' => \Elementor\Utils::get_placeholder_image_src(),
-		],
-	]
-);
-
-$this->add_control(
-	'layout_six_second_subtitle',
-	[
-		'label' => esc_html__('Second Subtitle', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'placeholder' => esc_html__('Edit & Customizations', 'roavio-toolkit'),
-		'default' => esc_html__('Edit & Customizations', 'roavio-toolkit'),
-		'label_block' => true,
-	]
-);
-
-$this->add_control(
-	'layout_six_second_title',
-	[
-		'label' => esc_html__('Second Title', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'placeholder' => esc_html__('Data Curation & Customizations', 'roavio-toolkit'),
-		'default' => esc_html__('Data Curation & Customizations', 'roavio-toolkit'),
-		'label_block' => true,
-	]
-);
-
-$this->add_control(
-	'layout_six_second_description',
-	[
-		'label' => esc_html__('Second Description', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'placeholder' => esc_html__('Add description', 'roavio-toolkit'),
-		'default' => esc_html__('Data curation involves the careful selection, organization, and maintenance of data to ensure its quality, relevance', 'roavio-toolkit'),
-	]
-);
-
-// List Items
-$repeater = new \Elementor\Repeater();
-
-$repeater->add_control(
-	'list_item',
-	[
-		'label' => esc_html__('List Item', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('List Item', 'roavio-toolkit'),
-		'label_block' => true,
-
-	]
-);
-
-$this->add_control(
-	'layout_six_list_items',
-	[
-		'label' => esc_html__('List Items', 'roavio-toolkit'),
+		'label' => esc_html__('Tab Features', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::REPEATER,
-		'fields' => $repeater->get_controls(),
+		'fields' => $layout_six_features->get_controls(),
 		'default' => [
 			[
-				'list_item' => esc_html__('Connect with leads with zero hassle.', 'roavio-toolkit'),
+				'feature_text' => esc_html__('Destination Search & Filters', 'roavio-toolkit'),
+				'feature_icon' => [
+					'value' => 'fa fa-check',
+					'library' => 'font-awesome',
+				],
 			],
 			[
-				'list_item' => esc_html__('Take quick payments direct from meetings', 'roavio-toolkit'),
+				'feature_text' => esc_html__('Online Booking System', 'roavio-toolkit'),
+				'feature_icon' => [
+					'value' => 'fa fa-check',
+					'library' => 'font-awesome',
+				],
+			],
+			[
+				'feature_text' => esc_html__('Blog & Travel Guides', 'roavio-toolkit'),
+				'feature_icon' => [
+					'value' => 'fa fa-check',
+					'library' => 'font-awesome',
+				],
 			],
 		],
-		'title_field' => '{{{ list_item }}}',
+		'title_field' => '{{{ feature_text }}}',
 	]
 );
 
-$this->add_control(
-	'layout_six_second_button_text',
+$layout_six_tabs->add_control(
+	'tab_button_text',
 	[
-		'label' => esc_html__('Second Button Text', 'roavio-toolkit'),
+		'label' => esc_html__('Button Text', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'placeholder' => esc_html__('Read More', 'roavio-toolkit'),
-		'default' => esc_html__('Read More', 'roavio-toolkit'),
+		'default' => esc_html__('Learn More Us', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Type your button text here', 'roavio-toolkit'),
 		'label_block' => true,
 	]
 );
 
-$this->add_control(
-	'layout_six_second_button_url',
+$layout_six_tabs->add_control(
+	'tab_button_url',
 	[
-		'label' => esc_html__('Second Button URL', 'roavio-toolkit'),
+		'label' => esc_html__('Button URL', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::URL,
 		'placeholder' => esc_html__('https://your-link.com', 'roavio-toolkit'),
 		'default' => [
 			'url' => '#',
-			'is_external' => false,
-			'nofollow' => false,
 		],
 	]
 );
 
+$this->add_control(
+	'layout_six_tabs',
+	[
+		'label' => esc_html__('Tabs', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::REPEATER,
+		'fields' => $layout_six_tabs->get_controls(),
+		'default' => [
+			[
+				'tab_title' => esc_html__('Our Mission', 'roavio-toolkit'),
+				'tab_content' => esc_html__('Take the stress to travel with our seamless flight booking and reservation services.', 'roavio-toolkit'),
+				'tab_button_text' => esc_html__('Learn More Us', 'roavio-toolkit'),
+			],
+			[
+				'tab_title' => esc_html__('Our Vision', 'roavio-toolkit'),
+				'tab_content' => esc_html__('Take the stress to travel with our seamless flight booking and reservation services.', 'roavio-toolkit'),
+				'tab_button_text' => esc_html__('Learn More Us', 'roavio-toolkit'),
+			],
+		],
+		'title_field' => '{{{ tab_title }}}',
+	]
+);
+
+$this->add_control(
+	'layout_six_left_image',
+	[
+		'label' => esc_html__('Left Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [
+			'url' => \Elementor\Utils::get_placeholder_image_src(),
+		],
+	]
+);
+
+$this->add_control(
+	'layout_six_right_image',
+	[
+		'label' => esc_html__('Right Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [
+			'url' => \Elementor\Utils::get_placeholder_image_src(),
+		],
+	]
+);
 
 $this->end_controls_section();

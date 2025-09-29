@@ -12,20 +12,23 @@ $this->start_controls_section(
 	]
 );
 
+// Section Title
 $this->add_control(
 	'layout_one_section_title',
 	[
 		'label' => esc_html__('Section Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Modern Design Agency Blueprint Innovation', 'roavio-toolkit'),
 		'label_block' => true,
+		'default' => esc_html__('Unlimited travel experience', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Enter section title', 'roavio-toolkit'),
 	]
 );
 
+// Section Title Tag
 $this->add_control(
 	'layout_one_title_tag',
 	[
-		'label' => esc_html__('Title HTML Tag', 'roavio-toolkit'),
+		'label' => esc_html__('Section Title Tag', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::SELECT,
 		'default' => 'h2',
 		'options' => [
@@ -35,151 +38,110 @@ $this->add_control(
 			'h4' => esc_html__('H4', 'roavio-toolkit'),
 			'h5' => esc_html__('H5', 'roavio-toolkit'),
 			'h6' => esc_html__('H6', 'roavio-toolkit'),
+			'div' => esc_html__('div', 'roavio-toolkit'),
+			'span' => esc_html__('span', 'roavio-toolkit'),
+			'p' => esc_html__('p', 'roavio-toolkit'),
 		],
 	]
 );
 
+// Section Description
 $this->add_control(
-	'layout_one_section_sub_title',
+	'layout_one_section_description',
 	[
-		'label' => esc_html__('Section Sub Title', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Great Achievement', 'roavio-toolkit'),
-		'label_block' => true,
-	]
-);
-
-
-
-$this->add_control(
-	'layout_one_description',
-	[
-		'label' => esc_html__('Description', 'roavio-toolkit'),
+		'label' => esc_html__('Section Description', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'default' => esc_html__('We empower businesses to thrive in the digital system with best innovative IT solutions.', 'roavio-toolkit'),
 		'label_block' => true,
+		'default' => esc_html__('Crafting journeys, creating memories plan smarter, travel better', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Enter section description', 'roavio-toolkit'),
 	]
 );
 
-$this->add_control(
-	'layout_one_button_text',
-	[
-		'label' => esc_html__('Button Text', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Get Consultation', 'roavio-toolkit'),
-		'label_block' => true,
-	]
-);
-
-$this->add_control(
-	'layout_one_button_url',
-	[
-		'label' => esc_html__('Button URL', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::URL,
-		'placeholder' => esc_html__('https://your-link.com', 'roavio-toolkit'),
-		'default' => [
-			'url' => '#',
-			'is_external' => false,
-			'nofollow' => false,
-		],
-	]
-);
-
+// Counter Items Repeater
 $repeater = new \Elementor\Repeater();
 
 $repeater->add_control(
-	'number',
+	'layout_one_counter_icon',
+	[
+		'label' => esc_html__('Icon', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::ICONS,
+		'default' => [
+			'value' => 'flaticon-costumer',
+			'library' => 'solid',
+		],
+	]
+);
+
+$repeater->add_control(
+	'layout_one_counter_number',
 	[
 		'label' => esc_html__('Counter Number', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => '8',
 		'label_block' => true,
+		'default' => esc_html__('30', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Enter counter number', 'roavio-toolkit'),
 	]
 );
 
 $repeater->add_control(
-	'symbol',
+	'layout_one_counter_suffix',
 	[
-		'label' => esc_html__('Counter Symbol', 'roavio-toolkit'),
+		'label' => esc_html__('Counter Suffix', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => 'k+',
-		'label_block' => true,
+		'default' => esc_html__('k+', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Enter suffix (e.g., k+, +, %)', 'roavio-toolkit'),
 	]
 );
 
 $repeater->add_control(
-	'title',
+	'layout_one_counter_title',
 	[
 		'label' => esc_html__('Counter Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Project Complete', 'roavio-toolkit'),
 		'label_block' => true,
-	]
-);
-
-$repeater->add_control(
-	'description',
-	[
-		'label' => esc_html__('Counter Description', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'default' => '',
-		'label_block' => true,
+		'default' => esc_html__('Total worldwide satisfied clients', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Enter counter title', 'roavio-toolkit'),
 	]
 );
 
 $this->add_control(
-	'layout_one_counter_list',
+	'layout_one_counter_items',
 	[
 		'label' => esc_html__('Counter Items', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::REPEATER,
 		'fields' => $repeater->get_controls(),
 		'default' => [
 			[
-				'number' => '8',
-				'symbol' => 'k+',
-				'title' => esc_html__('Project Complete', 'roavio-toolkit'),
+				'layout_one_counter_icon' => [
+					'value' => 'flaticon-costumer',
+					'library' => 'solid',
+				],
+				'layout_one_counter_number' => esc_html__('30', 'roavio-toolkit'),
+				'layout_one_counter_suffix' => esc_html__('k+', 'roavio-toolkit'),
+				'layout_one_counter_title' => esc_html__('Total worldwide satisfied clients', 'roavio-toolkit'),
 			],
 			[
-				'number' => '5',
-				'symbol' => 'k+',
-				'title' => esc_html__('Global Clients', 'roavio-toolkit'),
+				'layout_one_counter_icon' => [
+					'value' => 'flaticon-suitcase',
+					'library' => 'solid',
+				],
+				'layout_one_counter_number' => esc_html__('500', 'roavio-toolkit'),
+				'layout_one_counter_suffix' => esc_html__('+', 'roavio-toolkit'),
+				'layout_one_counter_title' => esc_html__('World tours available in toun', 'roavio-toolkit'),
 			],
 			[
-				'number' => '23',
-				'symbol' => '+',
-				'title' => esc_html__('Awards Winning', 'roavio-toolkit'),
-			],
-			[
-				'number' => '20',
-				'symbol' => '+',
-				'title' => esc_html__('Expert Team Member', 'roavio-toolkit'),
+				'layout_one_counter_icon' => [
+					'value' => 'flaticon-excursion',
+					'library' => 'solid',
+				],
+				'layout_one_counter_number' => esc_html__('20', 'roavio-toolkit'),
+				'layout_one_counter_suffix' => esc_html__('+', 'roavio-toolkit'),
+				'layout_one_counter_title' => esc_html__('Professional local tour guides', 'roavio-toolkit'),
 			],
 		],
-		'title_field' => '{{{ title }}}',
+		'title_field' => '{{{ layout_one_counter_title }}}',
 	]
 );
 
-
-$this->end_controls_section();
-
-$this->start_controls_section(
-	'section_image_one',
-	[
-		'label' => esc_html__('Images', 'roavio-toolkit'),
-		'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-		'condition' => [
-			'layout_type' => 'layout_one'
-		]
-	]
-);
-
-$this->add_control(
-	'layout_one_bg_image',
-	[
-		'label' => esc_html__('Background Image', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [],
-	]
-);
 
 $this->end_controls_section();

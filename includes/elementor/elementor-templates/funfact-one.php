@@ -1,46 +1,59 @@
 <?php if ('layout_one' == $settings['layout_type']) : ?>
-    <!-- Achievement Area start -->
-    <section class="achievement-area bgc-blue bgs-cover pt-100 rpt-70 pb-130 rpb-130 rel z-1" <?php if (!empty($settings['layout_one_bg_image']['url'])) : ?> style="background-image: url(<?php echo esc_url($settings['layout_one_bg_image']['url']); ?>);" <?php endif; ?>>
+    <!-- Counter Section Start -->
+    <section class="counter-section-2 section-padding fix">
         <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-5">
-                    <div class="achievement-content text-white rmb-55" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="section-title mb-30">
-                            <?php if (!empty($settings['layout_one_section_sub_title'])) : ?>
-                                <span class="sub-title mb-10"><?php echo esc_html($settings['layout_one_section_sub_title']); ?></span>
-                            <?php endif; ?>
-                            <?php if (!empty($settings['layout_one_section_title'])) : ?>
-                                <<?php echo esc_attr($settings['layout_one_title_tag']); ?>><?php echo esc_html($settings['layout_one_section_title']); ?></<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
-                            <?php endif; ?>
-                        </div>
-                        <?php if (!empty($settings['layout_one_description'])) : ?>
-                            <p><?php echo esc_html($settings['layout_one_description']); ?></p>
+            <div class="counter-wrapper-2">
+                <?php if (!empty($settings['layout_one_section_title']) || !empty($settings['layout_one_section_subtitle'])) : ?>
+                    <div class="section-title text-center mb-0">
+                        <?php if (!empty($settings['layout_one_section_title'])) : ?>
+                            <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="text-white wow fadeInUp" data-wow-delay=".3s">
+                                <?php echo rt_kses_basic($settings['layout_one_section_title']); ?>
+                            </<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
                         <?php endif; ?>
-                        <?php if (!empty($settings['layout_one_button_text'])) : ?>
-                            <a href="<?php echo esc_url($settings['layout_one_button_url']['url']); ?>" class="theme-btn mt-20" <?php echo ($settings['layout_one_button_url']['is_external']) ? 'target="_blank"' : ''; ?> <?php echo ($settings['layout_one_button_url']['nofollow']) ? 'rel="nofollow"' : ''; ?>><?php echo esc_html($settings['layout_one_button_text']); ?></a>
+
+                        <?php if (!empty($settings['layout_one_section_subtitle'])) : ?>
+                            <p class="text-white wow fadeInUp" data-wow-delay=".5s">
+                                <?php echo rt_kses_basic($settings['layout_one_section_subtitle']); ?>
+                            </p>
                         <?php endif; ?>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="achievement-counter bg-white" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="row no-gap">
-                            <?php if (!empty($settings['layout_one_counter_list'])) : ?>
-                                <?php foreach ($settings['layout_one_counter_list'] as $item) : ?>
-                                    <div class="col-sm-6">
-                                        <div class="counter-item" data-aos="zoom-in" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
-                                            <div class="counter-text-wrap">
-                                                <span class="count-text" data-speed="3000" data-stop="<?php echo esc_attr($item['number']); ?>">0</span><span class="after"><?php echo esc_html($item['symbol']); ?></span>
-                                            </div>
-                                            <span class="counter-title"><?php echo esc_html($item['title']); ?></span>
+                <?php endif; ?>
+
+                <div class="row">
+                    <div class="counter-main-item-2">
+                        <?php if (!empty($settings['layout_one_counter_items'])) : ?>
+                            <?php $delay = 0.3;
+                            foreach ($settings['layout_one_counter_items'] as $item) : ?>
+                                <div class="counter-item wow fadeInUp" data-wow-delay=".<?php echo esc_attr($delay); ?>s">
+                                    <?php if (!empty($item['layout_one_counter_icon']['value'])) : ?>
+                                        <div class="icon">
+                                            <?php \Elementor\Icons_Manager::render_icon($item['layout_one_counter_icon'], ['aria-hidden' => 'true'], 'i'); ?>
                                         </div>
+                                    <?php endif; ?>
+
+                                    <div class="content">
+                                        <?php if (!empty($item['layout_one_counter_number']) || !empty($item['layout_one_counter_suffix'])) : ?>
+                                            <h3>
+                                                <?php if (!empty($item['layout_one_counter_number'])) : ?>
+                                                    <span class="count"><?php echo esc_html($item['layout_one_counter_number']); ?></span>
+                                                <?php endif; ?>
+                                                <?php if (!empty($item['layout_one_counter_suffix'])) : ?>
+                                                    <?php echo esc_html($item['layout_one_counter_suffix']); ?>
+                                                <?php endif; ?>
+                                            </h3>
+                                        <?php endif; ?>
+
+                                        <?php if (!empty($item['layout_one_counter_title'])) : ?>
+                                            <p><?php echo rt_kses_basic($item['layout_one_counter_title']); ?></p>
+                                        <?php endif; ?>
                                     </div>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        </div>
+                                </div>
+                            <?php $delay += 0.2;
+                            endforeach; ?>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Achievement Area end -->
 <?php endif; ?>

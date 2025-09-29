@@ -60,8 +60,8 @@ class Team extends Widget_Base
 		$this->end_controls_section();
 
 		include rt_get_elementor_option('team-one-option.php');
-		include rt_get_elementor_option('team-two-option.php');
-		include rt_get_elementor_option('team-three-option.php');
+		// include rt_get_elementor_option('team-two-option.php');
+		// include rt_get_elementor_option('team-three-option.php');
 
 		//Content style
 		$this->start_controls_section(
@@ -87,7 +87,7 @@ class Team extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 		include rt_get_elementor_template('team-one.php');
-		include rt_get_elementor_template('team-two.php');
-		include rt_get_elementor_template('team-three.php');
+		// include rt_get_elementor_template('team-two.php');
+		// include rt_get_elementor_template('team-three.php');
 	}
 }

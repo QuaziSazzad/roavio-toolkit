@@ -1,31 +1,44 @@
 <?php if ('layout_one' == $settings['layout_type']) : ?>
-    <!-- Why Choose Us Area start -->
-    <section class="why-choose-us-five-area rel z-1 pt-130 rpt-100 pb-80">
-        <div class="container container-1290">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-xl-4 col-lg-5" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
-                    <div class="why-choose-us-content-five rmb-55">
-                        <div class="section-title mb-50 rmb-30">
-                            <?php if ($settings['layout_one_sub_title']) : ?>
-                                <span class="subtitle color-primary mt-10 mb-15"><?php echo rt_kses_basic($settings['layout_one_sub_title']); ?></span>
-                            <?php endif; ?>
-                            <?php if ($settings['layout_one_title']) : ?>
-                                <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="sec-title"><?php echo rt_kses_basic($settings['layout_one_title']); ?></<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
-                            <?php endif; ?>
+    <div class="choose-us-section section-padding fix bg-cover" style="background-image: url(<?php echo esc_url($settings['layout_one_background_image']['url']); ?>);">
+        <div class="container">
+            <?php if (!empty($settings['layout_one_section_title']) || !empty($settings['layout_one_section_subtitle'])) : ?>
+                <div class="section-title text-center">
+                    <?php if (!empty($settings['layout_one_section_title'])) : ?>
+                        <<?php echo esc_attr($settings['layout_one_section_title_tag']); ?> class="wow fadeInUp" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                            <?php echo rt_kses_basic($settings['layout_one_section_title']); ?>
+                        </<?php echo esc_attr($settings['layout_one_section_title_tag']); ?>>
+                    <?php endif; ?>
+                    <?php if (!empty($settings['layout_one_section_subtitle'])) : ?>
+                        <<?php echo esc_attr($settings['layout_one_subtitle_tag']); ?> class="wow fadeInUp" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                            <?php echo rt_kses_basic($settings['layout_one_section_subtitle']); ?>
+                        </<?php echo esc_attr($settings['layout_one_subtitle_tag']); ?>>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (!empty($settings['layout_one_choose_us_items'])) : ?>
+                <div class="row">
+                    <?php foreach ($settings['layout_one_choose_us_items'] as $item) : ?>
+                        <div class="col-xl-3 col-lg-6 col-md-6">
+                            <div class="choose-us-box">
+                                <?php if (!empty($item['layout_one_item_icon']['value'])) : ?>
+                                    <div class="icon">
+                                        <?php \Elementor\Icons_Manager::render_icon($item['layout_one_item_icon'], ['aria-hidden' => 'true']); ?>
+                                    </div>
+                                <?php endif; ?>
+                                <div class="choose-us-content">
+                                    <?php if (!empty($item['layout_one_item_title'])) : ?>
+                                        <h5><?php echo rt_kses_basic($item['layout_one_item_title']); ?></h5>
+                                    <?php endif; ?>
+                                    <?php if (!empty($item['layout_one_item_description'])) : ?>
+                                        <p><?php echo rt_kses_basic($item['layout_one_item_description']); ?></p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
                         </div>
-                        <hr class="mb-50 rmb-30">
-                        <?php if ($settings['layout_one_summary_text']) : ?>
-                            <p class="summary-text"><?php echo rt_kses_basic($settings['layout_one_summary_text']); ?></p>
-                        <?php endif; ?>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
-                <div class="col-lg-7" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
-                    <div class="image">
-                        <?php rt_elementor_rendered_image($settings, 'layout_one_image', 'br-10'); ?>
-                    </div>
-                </div>
-            </div>
+            <?php endif; ?>
         </div>
-    </section>
-    <!-- Why Choose Us Area end -->
+    </div>
 <?php endif; ?>

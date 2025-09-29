@@ -1,59 +1,89 @@
 <?php if ('layout_six' == $settings['layout_type']) : ?>
-    <!-- Artificial Intelligenc Area Start -->
-    <section class="artificial-intelligence-area rel pt-50 rpt-20 pb-130 rpb-100 z-2">
+    <!-- About Section-2 Start -->
+    <section class="about-section-2 section-padding fix">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-7 col-lg-9 col-md-11">
-                    <div class="section-title text-center mb-60" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                        <<?php echo esc_attr($settings['layout_six_title_tag']); ?>><?php echo rt_kses_basic($settings['layout_six_section_title']); ?></<?php echo esc_attr($settings['layout_six_title_tag']); ?>>
-                        <p><?php echo rt_kses_basic($settings['layout_six_section_description']); ?></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container container-1070">
-            <div class="row pb-30 rpb-65 gap-100 align-items-center">
-                <div class="col-lg-6 order-lg-2">
-                    <div class="ai-image" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
-                        <?php rt_elementor_rendered_image($settings, 'layout_six_first_image'); ?>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="ai-content mb-40 rmb-0" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
-                        <span class="subtitle"><?php echo rt_kses_basic($settings['layout_six_first_subtitle']); ?></span>
-                        <h3><?php echo rt_kses_basic($settings['layout_six_first_title']); ?></h3>
-                        <p><?php echo rt_kses_basic($settings['layout_six_first_description']); ?></p>
-                        <a href="<?php echo esc_url($settings['layout_six_first_button_url']['url']); ?>" <?php if (!empty($settings['layout_six_first_button_url']['is_external'])) : ?> target="_blank" <?php endif; ?> class="theme-btn style-two mt-25"><?php echo esc_html($settings['layout_six_first_button_text']); ?> <i class="far fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="row gap-100 align-items-center">
-                <div class="col-lg-6">
-                    <div class="ai-image rmb-55" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
-                        <?php rt_elementor_rendered_image($settings, 'layout_six_second_image'); ?>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="ai-content" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
-                        <span class="subtitle"><?php echo rt_kses_basic($settings['layout_six_second_subtitle']); ?></span>
-                        <h3><?php echo rt_kses_basic($settings['layout_six_second_title']); ?></h3>
-                        <p><?php echo rt_kses_basic($settings['layout_six_second_description']); ?></p>
-                        <ul class="icon-list style-two mt-25 mb-20">
-                            <?php if (!empty($settings['layout_six_list_items'])) : ?>
-                                <?php foreach ($settings['layout_six_list_items'] as $item) : ?>
-                                    <li><i class="fas fa-check"></i> <?php echo rt_kses_basic($item['list_item']); ?></li>
-                                <?php endforeach; ?>
+            <div class="about-wrapper-2 style-2">
+                <div class="row g-4">
+                    <div class="col-lg-7">
+                        <div class="about-content">
+                            <div class="section-title mb-0">
+                                <?php if (!empty($settings['layout_six_section_title'])) : ?>
+                                    <<?php echo esc_attr($settings['layout_six_title_tag'] ?? 'h2'); ?> class="wow fadeInUp" data-wow-delay=".3s">
+                                        <?php echo rt_kses_basic($settings['layout_six_section_title']); ?>
+                                    </<?php echo esc_attr($settings['layout_six_title_tag'] ?? 'h2'); ?>>
+                                <?php endif; ?>
+                            </div>
+                            <?php if (!empty($settings['layout_six_description'])) : ?>
+                                <p class="text wow fadeInUp" data-wow-delay=".5s">
+                                    <?php echo rt_kses_basic($settings['layout_six_description']); ?>
+                                </p>
                             <?php endif; ?>
-                        </ul>
-                        <a href="<?php echo esc_url($settings['layout_six_second_button_url']['url']); ?>" <?php if (!empty($settings['layout_six_second_button_url']['is_external'])) : ?> target="_blank" <?php endif; ?> class="theme-btn style-three mt-25"><?php echo esc_html($settings['layout_six_second_button_text']); ?> <i class="far fa-arrow-right"></i></a>
+                            <div class="about-item">
+                                <div class="about-image wow img-custom-anim-left">
+                                    <?php rt_elementor_rendered_image($settings, 'layout_six_left_image'); ?>
+                                </div>
+                                <div class="right-content wow fadeInUp" data-wow-delay=".3s">
+                                    <?php if (!empty($settings['layout_six_tabs'])) : ?>
+                                        <ul class="nav">
+                                            <?php foreach ($settings['layout_six_tabs'] as $index => $tab) : ?>
+                                                <?php if (!empty($tab['tab_title'])) : ?>
+                                                    <li class="nav-item">
+                                                        <a href="#tab-<?php echo esc_attr($index); ?>" data-bs-toggle="tab" class="nav-link <?php echo $index === 0 ? 'active' : ''; ?>">
+                                                            <?php echo esc_html($tab['tab_title']); ?>
+                                                        </a>
+                                                    </li>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <?php foreach ($settings['layout_six_tabs'] as $index => $tab) : ?>
+                                                <div id="tab-<?php echo esc_attr($index); ?>" class="tab-pane fade <?php echo $index === 0 ? 'show active' : ''; ?>">
+                                                    <div class="content">
+                                                        <?php if (!empty($tab['tab_content'])) : ?>
+                                                            <p>
+                                                                <?php echo rt_kses_basic($tab['tab_content']); ?>
+                                                            </p>
+                                                        <?php endif; ?>
+                                                        <?php if (!empty($tab['tab_features'])) : ?>
+                                                            <ul class="list">
+                                                                <?php foreach ($tab['tab_features'] as $feature) : ?>
+                                                                    <li>
+                                                                        <?php if (!empty($feature['feature_icon'])) : ?>
+                                                                            <?php \Elementor\Icons_Manager::render_icon($feature['feature_icon'], ['aria-hidden' => 'true'], 'i'); ?>
+                                                                        <?php else : ?>
+                                                                            <i class="fa-solid fa-check"></i>
+                                                                        <?php endif; ?>
+                                                                        <?php echo esc_html($feature['feature_text']); ?>
+                                                                    </li>
+                                                                <?php endforeach; ?>
+                                                            </ul>
+                                                        <?php endif; ?>
+                                                        <?php if (!empty($tab['tab_button_text']) && !empty($tab['tab_button_url']['url'])) : ?>
+                                                            <a href="<?php echo esc_url($tab['tab_button_url']['url']); ?>"
+                                                                class="theme-btn"
+                                                                <?php if ($tab['tab_button_url']['is_external']) : ?>target="_blank" <?php endif; ?>
+                                                                <?php if ($tab['tab_button_url']['nofollow']) : ?>rel="nofollow" <?php endif; ?>>
+                                                                <?php echo esc_html($tab['tab_button_text']); ?>
+                                                            </a>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="about-image-item">
+                            <div class="about-image-2 wow img-custom-anim-top">
+                                <?php rt_elementor_rendered_image($settings, 'layout_six_right_image'); ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="bg-lines">
-            <span></span><span></span>
-            <span></span><span></span>
         </div>
     </section>
-    <!-- Artificial Intelligenc Area End -->
 <?php endif; ?>

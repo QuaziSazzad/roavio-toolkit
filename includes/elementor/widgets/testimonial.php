@@ -51,7 +51,7 @@ class Testimonial extends Widget_Base
 				'options' => [
 					'layout_one' => __('Layout One', 'roavio-toolkit'),
 					'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					// 'layout_three' => __('Layout Three', 'roavio-toolkit'),
+					'layout_three' => __('Layout Three', 'roavio-toolkit'),
 					// 'layout_four' => __('Layout Four', 'roavio-toolkit'),
 					// 'layout_five' => __('Layout Five', 'roavio-toolkit'),
 					// 'layout_six' => __('Layout Six', 'roavio-toolkit'),
@@ -63,7 +63,7 @@ class Testimonial extends Widget_Base
 
 		include rt_get_elementor_option('testimonial-one-option.php');
 		include rt_get_elementor_option('testimonial-two-option.php');
-		// include rt_get_elementor_option('testimonial-three-option.php');
+		include rt_get_elementor_option('testimonial-three-option.php');
 		// include rt_get_elementor_option('testimonial-four-option.php');
 		// include rt_get_elementor_option('testimonial-five-option.php');
 		// include rt_get_elementor_option('testimonial-six-option.php');
@@ -95,7 +95,7 @@ class Testimonial extends Widget_Base
 		$settings = $this->get_settings_for_display();
 		include rt_get_elementor_template('testimonial-one.php');
 		include rt_get_elementor_template('testimonial-two.php');
-		// include rt_get_elementor_template('testimonial-three.php');
+		include rt_get_elementor_template('testimonial-three.php');
 		// include rt_get_elementor_template('testimonial-four.php');
 		// include rt_get_elementor_template('testimonial-five.php');
 		// include rt_get_elementor_template('testimonial-six.php');
