@@ -52,6 +52,7 @@ class Gallery extends Widget_Base
 				'options' => [
 					'layout_one' => __('Layout One', 'roavio-toolkit'),
 					'layout_two' => __('Layout Two', 'roavio-toolkit'),
+					'layout_three' => __('Layout Three', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -60,6 +61,7 @@ class Gallery extends Widget_Base
 
 		include rt_get_elementor_option('gallery-one-option.php');
 		include rt_get_elementor_option('gallery-two-option.php');
+		include rt_get_elementor_option('gallery-three-option.php');
 
 		//Content style
 		$this->start_controls_section(
@@ -83,5 +85,6 @@ class Gallery extends Widget_Base
 		$settings = $this->get_settings_for_display();
 		include rt_get_elementor_template('gallery-one.php');
 		include rt_get_elementor_template('gallery-two.php');
+		include rt_get_elementor_template('gallery-three.php');
 	}
 }

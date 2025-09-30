@@ -63,7 +63,7 @@ class About extends Widget_Base
 					'layout_four' => __('Layout Four', 'roavio-toolkit'),
 					'layout_five' => __('Layout Five', 'roavio-toolkit'),
 					'layout_six' => __('Layout Six', 'roavio-toolkit'),
-					// 'layout_seven' => __('Layout Seven', 'roavio-toolkit'),
+					'layout_seven' => __('Layout Seven', 'roavio-toolkit'),
 					// 'layout_eight' => __('Layout Eight', 'roavio-toolkit'),
 					// 'layout_nine' => __('Layout Nine', 'roavio-toolkit'),
 					// 'layout_ten' => __('Layout Ten', 'roavio-toolkit'),
@@ -79,7 +79,7 @@ class About extends Widget_Base
 		include rt_get_elementor_option('about-four-option.php');
 		include rt_get_elementor_option('about-five-option.php');
 		include rt_get_elementor_option('about-six-option.php');
-		// include rt_get_elementor_option('about-seven-option.php');
+		include rt_get_elementor_option('about-seven-option.php');
 		// include rt_get_elementor_option('about-eight-option.php');
 		// include rt_get_elementor_option('about-nine-option.php');
 		// include rt_get_elementor_option('about-ten-option.php');
@@ -202,7 +202,7 @@ class About extends Widget_Base
 		include rt_get_elementor_template('about-four.php');
 		include rt_get_elementor_template('about-five.php');
 		include rt_get_elementor_template('about-six.php');
-		// include rt_get_elementor_template('about-seven.php');
+		include rt_get_elementor_template('about-seven.php');
 		// include rt_get_elementor_template('about-eight.php');
 		// include rt_get_elementor_template('about-nine.php');
 		// include rt_get_elementor_template('about-ten.php');

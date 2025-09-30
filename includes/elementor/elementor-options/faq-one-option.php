@@ -15,10 +15,9 @@ $this->start_controls_section(
 $this->add_control(
 	'layout_one_title',
 	[
-		'label' => esc_html__('Title', 'roavio-toolkit'),
+		'label' => esc_html__('Section Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Hacking the Hackers Strategic Interventions in Cybersecurity', 'roavio-toolkit'),
-		'placeholder' => esc_html__('Type your title here', 'roavio-toolkit'),
+		'default' => esc_html__('Frequently Asked Questions?', 'roavio-toolkit'),
 		'label_block' => true,
 	]
 );
@@ -26,135 +25,156 @@ $this->add_control(
 $this->add_control(
 	'layout_one_title_tag',
 	[
-		'label'       => esc_html__('Title Tag', 'roavio-toolkit'),
-		'type'        => \Elementor\Controls_Manager::CHOOSE,
-		'label_block' => false,
-		'options'     => [
-			'h1' => [
-				'title' => esc_html__('H1', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h1',
-			],
-			'h2' => [
-				'title' => esc_html__('H2', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h2',
-			],
-			'h3' => [
-				'title' => esc_html__('H3', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h3',
-			],
-			'h4' => [
-				'title' => esc_html__('H4', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h4',
-			],
-			'h5' => [
-				'title' => esc_html__('H5', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h5',
-			],
-			'h6' => [
-				'title' => esc_html__('H6', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h6',
-			],
-		],
-		'default'     => 'h2',
-		'toggle'      => false,
-	]
-);
-
-$this->add_control(
-	'layout_one_subtitle',
-	[
-		'label' => esc_html__('Subtitle', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('How to Benefits', 'roavio-toolkit'),
-		'placeholder' => esc_html__('Type your subtitle here', 'roavio-toolkit'),
-		'label_block' => true,
-	]
-);
-
-
-$this->add_control(
-	'layout_one_image',
-	[
-		'label' => esc_html__('Image', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [
-			'url' => \Elementor\Utils::get_placeholder_image_src(),
+		'label' => esc_html__('Section Title Tag', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::SELECT,
+		'default' => 'h2',
+		'options' => [
+			'h1' => esc_html__('H1', 'roavio-toolkit'),
+			'h2' => esc_html__('H2', 'roavio-toolkit'),
+			'h3' => esc_html__('H3', 'roavio-toolkit'),
+			'h4' => esc_html__('H4', 'roavio-toolkit'),
+			'h5' => esc_html__('H5', 'roavio-toolkit'),
+			'h6' => esc_html__('H6', 'roavio-toolkit'),
+			'div' => esc_html__('div', 'roavio-toolkit'),
+			'span' => esc_html__('span', 'roavio-toolkit'),
+			'p' => esc_html__('p', 'roavio-toolkit'),
 		],
 	]
 );
 
 $this->add_control(
-	'layout_one_awards_number',
+	'layout_one_description',
 	[
-		'label' => esc_html__('Awards Number', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::NUMBER,
-		'min' => 0,
-		'max' => 1000,
-		'step' => 1,
-		'default' => 0,
-	]
-);
-
-$this->add_control(
-	'layout_one_awards_text',
-	[
-		'label' => esc_html__('Awards Text', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Awards Winning', 'roavio-toolkit'),
-		'placeholder' => esc_html__('Type your text here', 'roavio-toolkit'),
-		'label_block' => true,
-	]
-);
-
-$this->add_control(
-	'layout_one_reviews_number',
-	[
-		'label' => esc_html__('Reviews Number', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::NUMBER,
-		'min' => 0,
-		'max' => 1000,
-		'step' => 1,
-		'default' => 0,
-	]
-);
-
-$this->add_control(
-	'layout_one_reviews_text',
-	[
-		'label' => esc_html__('Reviews Text', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Customer review', 'roavio-toolkit'),
-		'placeholder' => esc_html__('Type your text here', 'roavio-toolkit'),
-		'label_block' => true,
-	]
-);
-
-$repeater = new \Elementor\Repeater();
-
-$repeater->add_control(
-	'layout_one_faq_title',
-	[
-		'label' => esc_html__('FAQ Title', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Network Security & Protection', 'roavio-toolkit'),
-		'placeholder' => esc_html__('Type your FAQ title here', 'roavio-toolkit'),
-	]
-);
-
-$repeater->add_control(
-	'layout_one_faq_content',
-	[
-		'label' => esc_html__('FAQ Content', 'roavio-toolkit'),
+		'label' => esc_html__('Description', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'default' => esc_html__('Accelerate innovation with world-class tech teams We\'ll match you to an entire remote team.', 'roavio-toolkit'),
-		'placeholder' => esc_html__('Type your FAQ content here', 'roavio-toolkit'),
+		'default' => esc_html__('We\'ve gathered the information you need in one place you can save time and make confident decisions. And if you don\'t see your question answered.', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
-$repeater->add_control(
-	'layout_one_is_active',
+// Tab Items
+$this->add_control(
+	'layout_one_tabs_heading',
 	[
-		'label' => esc_html__('Is Active?', 'roavio-toolkit'),
+		'label' => esc_html__('FAQ Tabs', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::HEADING,
+		'separator' => 'before',
+	]
+);
+
+$repeater_tabs = new \Elementor\Repeater();
+
+$repeater_tabs->add_control(
+	'tab_title',
+	[
+		'label' => esc_html__('Tab Title', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('General', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+$repeater_tabs->add_control(
+	'tab_id',
+	[
+		'label' => esc_html__('Tab ID', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('technical', 'roavio-toolkit'),
+		'label_block' => true,
+		'description' => esc_html__('Enter a unique ID for this tab (without spaces or special characters)', 'roavio-toolkit'),
+	]
+);
+
+$repeater_tabs->add_control(
+	'is_active',
+	[
+		'label' => esc_html__('Active Tab', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::SWITCHER,
+		'label_on' => esc_html__('Yes', 'roavio-toolkit'),
+		'label_off' => esc_html__('No', 'roavio-toolkit'),
+		'return_value' => 'yes',
+		'default' => 'no',
+	]
+);
+
+$this->add_control(
+	'layout_one_tabs',
+	[
+		'label' => esc_html__('Tabs', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::REPEATER,
+		'fields' => $repeater_tabs->get_controls(),
+		'default' => [
+			[
+				'tab_title' => esc_html__('General', 'roavio-toolkit'),
+				'tab_id' => 'technical',
+				'is_active' => 'yes',
+			],
+			[
+				'tab_title' => esc_html__('Pricing Plan', 'roavio-toolkit'),
+				'tab_id' => 'work',
+				'is_active' => 'no',
+			],
+			[
+				'tab_title' => esc_html__('Tour Package', 'roavio-toolkit'),
+				'tab_id' => 'ambition',
+				'is_active' => 'no',
+			],
+			[
+				'tab_title' => esc_html__('Privacy Policy', 'roavio-toolkit'),
+				'tab_id' => 'skill',
+				'is_active' => 'no',
+			],
+		],
+		'title_field' => '{{{ tab_title }}}',
+	]
+);
+
+// FAQ Items
+$this->add_control(
+	'layout_one_faq_heading',
+	[
+		'label' => esc_html__('FAQ Items', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::HEADING,
+		'separator' => 'before',
+	]
+);
+
+$repeater_faq = new \Elementor\Repeater();
+
+$repeater_faq->add_control(
+	'faq_tab_id',
+	[
+		'label' => esc_html__('Tab ID', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => 'technical',
+		'label_block' => true,
+		'description' => esc_html__('Enter the tab ID this FAQ belongs to', 'roavio-toolkit'),
+	]
+);
+
+$repeater_faq->add_control(
+	'faq_question',
+	[
+		'label' => esc_html__('Question', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('How do I book a trip with your agency?', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+$repeater_faq->add_control(
+	'faq_answer',
+	[
+		'label' => esc_html__('Answer', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXTAREA,
+		'default' => esc_html__('Yes! We specialize in tailor-made tours. You can share your preferences—destinations, activities, and budget—and we\'ll design a trip that suits your needs.', 'roavio-toolkit'),
+	]
+);
+
+$repeater_faq->add_control(
+	'faq_is_open',
+	[
+		'label' => esc_html__('Initially Open', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::SWITCHER,
 		'label_on' => esc_html__('Yes', 'roavio-toolkit'),
 		'label_off' => esc_html__('No', 'roavio-toolkit'),
@@ -168,56 +188,22 @@ $this->add_control(
 	[
 		'label' => esc_html__('FAQ Items', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::REPEATER,
-		'fields' => $repeater->get_controls(),
+		'fields' => $repeater_faq->get_controls(),
 		'default' => [
 			[
-				'layout_one_faq_title' => esc_html__('Network Security & Protection', 'roavio-toolkit'),
-				'layout_one_faq_content' => esc_html__('Accelerate innovation with world-class tech teams We\'ll match you to an entire remote team.', 'roavio-toolkit'),
-				'layout_one_is_active' => 'yes',
+				'faq_tab_id' => 'technical',
+				'faq_question' => esc_html__('How do I book a trip with your agency?', 'roavio-toolkit'),
+				'faq_answer' => esc_html__('Yes! We specialize in tailor-made tours. You can share your preferences—destinations, activities, and budget—and we\'ll design a trip that suits your needs.', 'roavio-toolkit'),
 			],
 			[
-				'layout_one_faq_title' => esc_html__('Browser Safety & Farewell', 'roavio-toolkit'),
-				'layout_one_faq_content' => esc_html__('Accelerate innovation with world-class tech teams We\'ll match you to an entire remote team.', 'roavio-toolkit'),
-				'layout_one_is_active' => 'no',
-			],
-			[
-				'layout_one_faq_title' => esc_html__('Infrastructure Technology', 'roavio-toolkit'),
-				'layout_one_faq_content' => esc_html__('Accelerate innovation with world-class tech teams We\'ll match you to an entire remote team.', 'roavio-toolkit'),
-				'layout_one_is_active' => 'no',
-			],
-			[
-				'layout_one_faq_title' => esc_html__('Management & Support Services', 'roavio-toolkit'),
-				'layout_one_faq_content' => esc_html__('Accelerate innovation with world-class tech teams We\'ll match you to an entire remote team.', 'roavio-toolkit'),
-				'layout_one_is_active' => 'no',
+				'faq_tab_id' => 'technical',
+				'faq_question' => esc_html__('Can I customize my tour package?', 'roavio-toolkit'),
+				'faq_answer' => esc_html__('Yes! We specialize in tailor-made tours. You can share your preferences—destinations, activities, and budget—and we\'ll design a trip that suits your needs.', 'roavio-toolkit'),
 			],
 		],
-		'title_field' => '{{{ layout_one_faq_title }}}',
+		'title_field' => '{{{ faq_question }}}',
 	]
 );
-
-$this->add_control(
-	'layout_one_background_color',
-	[
-		'label' => esc_html__('Background Color', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::COLOR,
-		'selectors' => [
-			'{{WRAPPER}} .bgc-blue ' => 'background-color: {{VALUE}}',
-		],
-		'default' => '#18185e',
-	]
-);
-
-$this->add_control(
-	'layout_one_background_image',
-	[
-		'label' => esc_html__('Background Image', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [
-			'url' => '',
-		],
-	]
-);
-
 
 
 $this->end_controls_section();

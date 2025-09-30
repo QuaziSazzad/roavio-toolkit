@@ -172,6 +172,75 @@
       });
       }
 
+          //>> gallery Slider Start <<//
+          if($('.gallery-slider').length > 0) {
+            const GallerySlider = new Swiper(".gallery-slider", {
+               spaceBetween: 10,
+               speed: 1300,
+               loop: true,
+               autoplay: {
+                   delay: 2000,
+                   disableOnInteraction: false,
+               },
+   
+               breakpoints: {
+                   1399: {
+                       slidesPerView: 5,
+                   },
+                   1199: {
+                       slidesPerView: 4,
+                   },
+                   991: {
+                       slidesPerView: 3.5,
+                   },
+                   767: {
+                       slidesPerView: 2.8,
+                   },
+                   575: {
+                       slidesPerView: 1.5,
+                   },
+                   0: {
+                       slidesPerView: 1.1,
+                   },
+               },
+           });
+       }
+   
+        //>> gallery Slider2 Start <<//
+           if ($('.gallery-slider-2').length > 0) {
+            const GallerySlider2 = new Swiper(".gallery-slider-2", {
+               spaceBetween: 10,
+               speed: 1300,
+               loop: true,
+               autoplay: {
+                   delay: 2000,
+                   disableOnInteraction: false,
+                    reverseDirection: true,
+               },
+   
+               breakpoints: {
+                   1399: {
+                       slidesPerView: 5,
+                   },
+                   1199: {
+                       slidesPerView: 4,
+                   },
+                   991: {
+                       slidesPerView: 3.5,
+                   },
+                   767: {
+                       slidesPerView: 2.8,
+                   },
+                   575: {
+                       slidesPerView: 1.5,
+                   },
+                   0: {
+                       slidesPerView: 1.1,
+                   },
+               },
+           });
+       }
+
     };
 
     //elementor front start

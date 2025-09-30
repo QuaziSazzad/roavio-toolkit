@@ -1,56 +1,62 @@
 <?php if ('layout_two' == $settings['layout_type']) : ?>
-    <!-- Team Area start -->
-    <section class="team-area bgc-gray py-130 rpy-100 rel z-1">
+    <!-- Team Section Start -->
+    <section class="team-single-section section-padding fix">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="section-title text-center mb-50" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                        <?php if (!empty($settings['layout_two_sub_title'])) : ?>
-                            <span class="sub-title color-primary mb-10"><?php echo esc_html($settings['layout_two_sub_title']); ?></span>
-                        <?php endif; ?>
-                        <?php if (!empty($settings['layout_two_title'])) : ?>
-                            <<?php echo esc_attr($settings['layout_two_title_tag']); ?>><?php echo esc_html($settings['layout_two_title']); ?></<?php echo esc_attr($settings['layout_two_title_tag']); ?>>
-                        <?php endif; ?>
-                    </div>
-                </div>
+            <div class="section-title text-center">
+                <?php if (!empty($settings['layout_two_section_title'])) : ?>
+                    <<?php echo esc_attr($settings['layout_two_title_tag']); ?> class="wow fadeInUp" data-wow-delay=".3s">
+                        <?php echo rt_kses_basic($settings['layout_two_section_title']); ?>
+                    </<?php echo esc_attr($settings['layout_two_title_tag']); ?>>
+                <?php endif; ?>
+
+                <?php if (!empty($settings['layout_two_section_subtitle'])) : ?>
+                    <<?php echo esc_attr($settings['layout_two_sub_title_tag']); ?> class="wow fadeInUp" data-wow-delay=".5s"><?php echo rt_kses_basic($settings['layout_two_section_subtitle']); ?></<?php echo esc_attr($settings['layout_two_sub_title_tag']); ?>>
+                <?php endif; ?>
             </div>
-            <div class="team-slider">
-                <?php if (!empty($settings['layout_two_team_list'])) :
-                    $delay = 100;
-                    foreach ($settings['layout_two_team_list'] as $item) : ?>
-                        <div class="team-item style-two" data-aos="fade-up" data-aos-delay="<?php echo esc_attr($delay); ?>" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="image">
-                                <?php echo rt_elementor_rendered_image($item, 'image'); ?>
-                                <div class="icon">
-                                    <i class="far fa-plus"></i>
-                                    <div class="social-style-one">
-                                        <?php if (!empty($item['social'])) : ?>
-                                            <?php echo rt_kses_basic($item['social']); ?>
-                                        <?php endif; ?>
-                                    </div>
+            <div class="row">
+                <?php
+                if (!empty($settings['layout_two_team_members'])) :
+                    foreach ($settings['layout_two_team_members'] as $index => $item) :
+                        $delay = ($index * 0.2) + 0.3;
+                ?>
+                        <div class="col-xl-3 col-md-6 col-lg-3">
+                            <div class="team-single-item">
+                                <div class="team-image">
+                                    <?php if (!empty($item['layout_two_team_image']['url'])) : ?>
+                                        <?php rt_elementor_rendered_image($item, 'layout_two_team_image'); ?>
+                                    <?php endif; ?>
+                                    <?php if (!empty($item['layout_two_team_icon'])) : ?>
+                                        <div class="icon">
+                                            <?php \Elementor\Icons_Manager::render_icon($item['layout_two_team_icon'], ['aria-hidden' => 'true']); ?>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
-                            </div>
-                            <div class="content">
-                                <?php if (!empty($item['name'])) : ?>
-                                    <h5 class="name">
-                                        <?php if (!empty($item['url']['url'])) : ?>
-                                            <a href="<?php echo esc_url($item['url']['url']); ?>" <?php if (!empty($item['url']['is_external'])) : ?> target="_blank" <?php endif; ?>><?php echo esc_html($item['name']); ?></a>
-                                        <?php else : ?>
-                                            <?php echo esc_html($item['name']); ?>
-                                        <?php endif; ?>
-                                    </h5>
-                                <?php endif; ?>
-                                <?php if (!empty($item['designation'])) : ?>
-                                    <span class="designations"><?php echo esc_html($item['designation']); ?></span>
-                                <?php endif; ?>
+                                <div class="team-content">
+                                    <?php if (!empty($item['layout_two_team_name'])) : ?>
+                                        <h3>
+                                            <?php if (!empty($item['layout_two_member_link']['url'])) : ?>
+                                                <a href="<?php echo esc_url($item['layout_two_member_link']['url']); ?>"
+                                                    <?php echo !empty($item['layout_two_member_link']['is_external']) ? 'target="_blank"' : ''; ?>
+                                                    <?php echo !empty($item['layout_two_member_link']['nofollow']) ? 'rel="nofollow"' : ''; ?>>
+                                                    <?php echo esc_html($item['layout_two_team_name']); ?>
+                                                </a>
+                                            <?php else : ?>
+                                                <?php echo esc_html($item['layout_two_team_name']); ?>
+                                            <?php endif; ?>
+                                        </h3>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($item['layout_two_team_designation'])) : ?>
+                                        <p><?php echo esc_html($item['layout_two_team_designation']); ?></p>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
                 <?php
-                        $delay = ($delay == 100) ? 200 : (($delay == 200) ? 300 : (($delay == 300) ? 400 : 100));
                     endforeach;
-                endif; ?>
+                endif;
+                ?>
             </div>
         </div>
     </section>
-    <!-- Team Area end -->
 <?php endif; ?>

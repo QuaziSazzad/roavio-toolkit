@@ -74,7 +74,7 @@ class Roavio_Elementor_Addon
 		// include_once RT_ELEMENTOR . '/widgets/features.php';
 		include_once RT_ELEMENTOR . '/widgets/testimonial.php';
 		include_once RT_ELEMENTOR . '/widgets/call-to-action.php';
-		// include_once RT_ELEMENTOR . '/widgets/faq.php';
+		include_once RT_ELEMENTOR . '/widgets/faq.php';
 		// include_once RT_ELEMENTOR . '/widgets/integrating.php';
 		// include_once RT_ELEMENTOR . '/widgets/portfolio.php';
 		include_once RT_ELEMENTOR . '/widgets/recent-post.php';
@@ -115,7 +115,7 @@ class Roavio_Elementor_Addon
 		// $widgets_manager->register(new Widgets\TeamDetails());
 		// $widgets_manager->register(new Widgets\Working_Process());
 		$widgets_manager->register(new Widgets\Testimonial());
-		// $widgets_manager->register(new Widgets\Faq());
+		$widgets_manager->register(new Widgets\Faq());
 		// $widgets_manager->register(new Widgets\Integrating());
 		// $widgets_manager->register(new Widgets\Portfolio());
 		$widgets_manager->register(new Widgets\Recent_Post());

@@ -64,11 +64,11 @@ class Faq extends Widget_Base
 		$this->end_controls_section();
 
 		include rt_get_elementor_option('faq-one-option.php');
-		include rt_get_elementor_option('faq-two-option.php');
-		include rt_get_elementor_option('faq-three-option.php');
-		include rt_get_elementor_option('faq-four-option.php');
-		include rt_get_elementor_option('faq-five-option.php');
-		include rt_get_elementor_option('faq-six-option.php');
+		// include rt_get_elementor_option('faq-two-option.php');
+		// include rt_get_elementor_option('faq-three-option.php');
+		// include rt_get_elementor_option('faq-four-option.php');
+		// include rt_get_elementor_option('faq-five-option.php');
+		// include rt_get_elementor_option('faq-six-option.php');
 
 		//Content style
 		$this->start_controls_section(
@@ -79,11 +79,11 @@ class Faq extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .section-title h2', ['layout_one', 'layout_two', 'layout_four', 'layout_five', 'layout_six']);
-		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .section-title .sub-title', ['layout_one', 'layout_two', 'layout_four', 'layout_six']);
+		// roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .section-title h2', ['layout_one', 'layout_two', 'layout_four', 'layout_five', 'layout_six']);
+		// roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .section-title .sub-title', ['layout_one', 'layout_two', 'layout_four', 'layout_six']);
 
-		roavio_elementor_style_options($this, 'Faq Title', '{{WRAPPER}} .accordion-header .title', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
-		roavio_elementor_style_options($this, 'Faq Description', '{{WRAPPER}} .accordion-body p', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
+		// roavio_elementor_style_options($this, 'Faq Title', '{{WRAPPER}} .accordion-header .title', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
+		// roavio_elementor_style_options($this, 'Faq Description', '{{WRAPPER}} .accordion-body p', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
 
 		$this->end_controls_section();
 	}
@@ -92,10 +92,10 @@ class Faq extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 		include rt_get_elementor_template('faq-one.php');
-		include rt_get_elementor_template('faq-two.php');
-		include rt_get_elementor_template('faq-three.php');
-		include rt_get_elementor_template('faq-four.php');
-		include rt_get_elementor_template('faq-five.php');
-		include rt_get_elementor_template('faq-six.php');
+		// include rt_get_elementor_template('faq-two.php');
+		// include rt_get_elementor_template('faq-three.php');
+		// include rt_get_elementor_template('faq-four.php');
+		// include rt_get_elementor_template('faq-five.php');
+		// include rt_get_elementor_template('faq-six.php');
 	}
 }

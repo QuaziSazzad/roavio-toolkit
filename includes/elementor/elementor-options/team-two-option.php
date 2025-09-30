@@ -13,124 +13,72 @@ $this->start_controls_section(
 );
 
 $this->add_control(
-	'layout_two_title',
+	'layout_two_section_title',
 	[
-		'label' => esc_html__('Title', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'placeholder' => esc_html__('Add title', 'roavio-toolkit'),
-		'default' => esc_html__('Experience Technical Team', 'roavio-toolkit'),
+		'label' => esc_html__('Section Title', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('Meet Our Travel Guide', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
 $this->add_control(
 	'layout_two_title_tag',
 	[
-		'label'       => esc_html__('Title Tag', 'roavio-toolkit'),
-		'type'        => \Elementor\Controls_Manager::CHOOSE,
-		'label_block' => false,
-		'options'     => [
-			'h1' => [
-				'title' => esc_html__('H1', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h1',
-			],
-			'h2' => [
-				'title' => esc_html__('H2', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h2',
-			],
-			'h3' => [
-				'title' => esc_html__('H3', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h3',
-			],
-			'h4' => [
-				'title' => esc_html__('H4', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h4',
-			],
-			'h5' => [
-				'title' => esc_html__('H5', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h5',
-			],
-			'h6' => [
-				'title' => esc_html__('H6', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h6',
-			],
+		'label' => esc_html__('Section Title Tag', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::SELECT,
+		'default' => 'h2',
+		'options' => [
+			'h1' => esc_html__('H1', 'roavio-toolkit'),
+			'h2' => esc_html__('H2', 'roavio-toolkit'),
+			'h3' => esc_html__('H3', 'roavio-toolkit'),
+			'h4' => esc_html__('H4', 'roavio-toolkit'),
+			'h5' => esc_html__('H5', 'roavio-toolkit'),
+			'h6' => esc_html__('H6', 'roavio-toolkit'),
+			'div' => esc_html__('div', 'roavio-toolkit'),
+			'span' => esc_html__('span', 'roavio-toolkit'),
+			'p' => esc_html__('p', 'roavio-toolkit'),
 		],
-		'default'     => 'h2',
-		'toggle'      => false,
 	]
 );
 
 $this->add_control(
-	'layout_two_sub_title',
+	'layout_two_section_subtitle',
 	[
-		'label' => esc_html__('Sub Title', 'roavio-toolkit'),
+		'label' => esc_html__('Section Subtitle', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'placeholder' => esc_html__('Add sub title', 'roavio-toolkit'),
-		'default' => esc_html__('Meet Our Team', 'roavio-toolkit'),
-		'label_block' => true
+		'default' => esc_html__('The leadership team guiding Togo\'s success', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
-$layout_two_team_list = new \Elementor\Repeater();
-
-$layout_two_team_list->add_control(
-	'name',
+$this->add_control(
+	'layout_two_sub_title_tag',
 	[
-		'label' => esc_html__('Name', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'rows' => '2',
-		'placeholder' => esc_html__('Add Title', 'roavio-toolkit'),
-		'default' => esc_html__('Raymond R. Jacobs', 'roavio-toolkit'),
-		'label_block' => true
-	]
-);
-
-$layout_two_team_list->add_control(
-	'url',
-	[
-		'label' => esc_html__('Url', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::URL,
-		'placeholder' => esc_html__('#', 'roavio-toolkit'),
-		'show_external' => false,
-		'default' => [
-			'url' => '#',
-			'is_external' => false,
-			'nofollow' => false,
+		'label' => esc_html__('Section Sub Title Tag', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::SELECT,
+		'default' => 'p',
+		'options' => [
+			'h1' => esc_html__('H1', 'roavio-toolkit'),
+			'h2' => esc_html__('H2', 'roavio-toolkit'),
+			'h3' => esc_html__('H3', 'roavio-toolkit'),
+			'h4' => esc_html__('H4', 'roavio-toolkit'),
+			'h5' => esc_html__('H5', 'roavio-toolkit'),
+			'h6' => esc_html__('H6', 'roavio-toolkit'),
+			'div' => esc_html__('div', 'roavio-toolkit'),
+			'span' => esc_html__('span', 'roavio-toolkit'),
+			'p' => esc_html__('p', 'roavio-toolkit'),
 		],
-		'show_label' => false,
 	]
 );
 
-$layout_two_team_list->add_control(
-	'designation',
-	[
-		'label' => esc_html__('Designation', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'rows' => '2',
-		'placeholder' => esc_html__('Add Designation', 'roavio-toolkit'),
-		'default' => esc_html__('Ceo & Founder', 'roavio-toolkit'),
-		'label_block' => true
-	]
-);
 
-$layout_two_team_list->add_control(
-	'social',
-	[
-		'label' => esc_html__('Social Profile', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::CODE,
-		'rows' => '2',
-		'placeholder' => esc_html__('Add Social Profile', 'roavio-toolkit'),
-		'default' => wp_kses(__('<a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
-			<a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
-			<a href="https://www.twitter.com/"><i class="fab fa-twitter"></i></a>
-			<a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>', 'roavio-toolkit'), rt_get_allowed_html_tags()),
-		'label_block' => true
-	]
-);
+$repeater = new \Elementor\Repeater();
 
-$layout_two_team_list->add_control(
-	'image',
+$repeater->add_control(
+	'layout_two_team_image',
 	[
-		'label' => esc_html__('Image', 'roavio-toolkit'),
+		'label' => esc_html__('Team Member Image', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
 		'default' => [
 			'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -138,64 +86,77 @@ $layout_two_team_list->add_control(
 	]
 );
 
-$this->add_control(
-	'layout_two_team_list',
+$repeater->add_control(
+	'layout_two_team_name',
 	[
-		'label' => esc_html__('Team List', 'roavio-toolkit'),
+		'label' => esc_html__('Name', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('Emma Williams', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+$repeater->add_control(
+	'layout_two_team_designation',
+	[
+		'label' => esc_html__('Designation', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('Senior Tour Guide', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+$repeater->add_control(
+	'layout_two_team_link',
+	[
+		'label' => esc_html__('Profile Link', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::URL,
+		'placeholder' => esc_html__('https://your-link.com', 'roavio-toolkit'),
+		'default' => [
+			'url' => '#',
+			'is_external' => true,
+			'nofollow' => true,
+		],
+	]
+);
+
+$repeater->add_control(
+	'layout_two_team_icon',
+	[
+		'label' => esc_html__('Icon', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::ICONS,
+		'default' => [
+			'value' => 'fas fa-plus',
+			'library' => 'fa-solid',
+		],
+	]
+);
+
+$this->add_control(
+	'layout_two_team_members',
+	[
+		'label' => esc_html__('Team Members', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::REPEATER,
-		'fields' => $layout_two_team_list->get_controls(),
-		'prevent_empty' => false,
-		'title_field' => '{{{ name }}}',
+		'fields' => $repeater->get_controls(),
 		'default' => [
 			[
-				'name' => esc_html__('David R. Watkins', 'roavio-toolkit'),
-				'designation' => esc_html__('IT Consultant', 'roavio-toolkit'),
-				'social' => wp_kses(__('<a href="#"><i class="fab fa-facebook-f"></i></a>
-				<a href="#"><i class="fab fa-twitter"></i></a>
-				<a href="#"><i class="fab fa-instagram"></i></a>', 'roavio-toolkit'), rt_get_allowed_html_tags()),
-				'url' => [
-					'url' => '#',
-					'is_external' => false,
-					'nofollow' => false,
-				],
+				'layout_two_team_name' => esc_html__('Emma Williams', 'roavio-toolkit'),
+				'layout_two_team_designation' => esc_html__('Senior Tour Guide', 'roavio-toolkit'),
 			],
 			[
-				'name' => esc_html__('James K. Andrews', 'roavio-toolkit'),
-				'designation' => esc_html__('UI Designer', 'roavio-toolkit'),
-				'social' => wp_kses(__('<a href="#"><i class="fab fa-facebook-f"></i></a>
-				<a href="#"><i class="fab fa-twitter"></i></a>
-				<a href="#"><i class="fab fa-instagram"></i></a>', 'roavio-toolkit'), rt_get_allowed_html_tags()),
-				'url' => [
-					'url' => '#',
-					'is_external' => false,
-					'nofollow' => false,
-				],
+				'layout_two_team_name' => esc_html__('James Anderson', 'roavio-toolkit'),
+				'layout_two_team_designation' => esc_html__('Travel Specialist', 'roavio-toolkit'),
 			],
 			[
-				'name' => esc_html__('Kenneth B. Hebert', 'roavio-toolkit'),
-				'designation' => esc_html__('HR Support', 'roavio-toolkit'),
-				'social' => wp_kses(__('<a href="#"><i class="fab fa-facebook-f"></i></a>
-				<a href="#"><i class="fab fa-twitter"></i></a>
-				<a href="#"><i class="fab fa-instagram"></i></a>', 'roavio-toolkit'), rt_get_allowed_html_tags()),
-				'url' => [
-					'url' => '#',
-					'is_external' => false,
-					'nofollow' => false,
-				],
+				'layout_two_team_name' => esc_html__('Sophia Martinez', 'roavio-toolkit'),
+				'layout_two_team_designation' => esc_html__('Cultural Guide', 'roavio-toolkit'),
 			],
 			[
-				'name' => esc_html__('Alexander M. Burris', 'roavio-toolkit'),
-				'designation' => esc_html__('Product Designer', 'roavio-toolkit'),
-				'social' => wp_kses(__('<a href="#"><i class="fab fa-facebook-f"></i></a>
-				<a href="#"><i class="fab fa-twitter"></i></a>
-				<a href="#"><i class="fab fa-instagram"></i></a>', 'roavio-toolkit'), rt_get_allowed_html_tags()),
-				'url' => [
-					'url' => '#',
-					'is_external' => false,
-					'nofollow' => false,
-				],
+				'layout_two_team_name' => esc_html__('Ava Thompson', 'roavio-toolkit'),
+				'layout_two_team_designation' => esc_html__('Holiday Planner', 'roavio-toolkit'),
 			],
 		],
+		'title_field' => '{{{ layout_two_team_name }}}',
 	]
 );
 
