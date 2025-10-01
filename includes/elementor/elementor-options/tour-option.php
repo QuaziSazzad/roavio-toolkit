@@ -9,7 +9,7 @@ $this->start_controls_section(
 		'label' => esc_html__('Content', 'roavio-addon'),
 		'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 		'condition' => [
-			'layout_type' => ['layout_one', 'layout_two', 'layout_three'],
+			'layout_type' => ['layout_one', 'layout_two', 'layout_three', 'layout_four'],
 		]
 	]
 );

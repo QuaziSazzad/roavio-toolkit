@@ -1,75 +1,114 @@
 <?php if ('layout_one' == $settings['layout_type']) : ?>
-    <!-- Contact Form Section Start -->
-    <section class="contact-form-area py-130 rpy-100 bgs-cover" <?php if (!empty($settings['layout_one_background_image']['url'])) : ?> style="background-image: url(<?php echo esc_url($settings['layout_one_background_image']['url']); ?>);" <?php endif; ?>>
+    <!-- Conatct-Us Section Start -->
+    <section class="conatct-us-section-3 section-padding fix">
         <div class="container">
-            <div class="row gap-100 align-items-center">
-                <div class="col-lg-7">
-                    <div class="contact-form-two bg-white p-80 rmb-55 wow fadeInRight delay-0-2s">
-                        <div class="section-title mb-30">
-                            <?php if ($settings['layout_one_form_title']) : ?>
-                                <h3><?php echo rt_kses_basic($settings['layout_one_form_title']); ?></h3>
-                            <?php endif; ?>
+            <div class="contact-us-wrapper-3">
+                <div class="row g-4">
+                    <div class="col-xl-5 col-lg-6">
+                        <div class="contact-us-content">
+                            <div class="section-title mb-0">
+                                <h2>
+                                    Start Your Adventure
+                                    Contact Us Today
+                                </h2>
+                            </div>
+                            <p class="text">
+                                Have questions or ready to plan your next adventure? Our travel experts are here to guide you every step of the way.
+                            </p>
+                            <div class="contact-us-item">
+                                <div class="content">
+                                    <h5>
+                                        <img src="assets/img/inner-page/icon/01.svg" alt="img">
+                                        Email us
+                                    </h5>
+                                    <h6>
+                                        <a href="mailto:supportroavio@gmail.com">supportroavio@gmail.com</a>
+                                    </h6>
+                                    <h6>
+                                        <a href="mailto:www.roavio247.com">www.roavio247.com</a>
+                                    </h6>
+                                </div>
+                                <div class="content">
+                                    <h5>
+                                        <img src="assets/img/inner-page/icon/02.svg" alt="img">
+                                        Email us
+                                    </h5>
+                                    <h6>
+                                        <a href="tel:+11234567890">+1 123456 7890</a>
+                                    </h6>
+                                    <h6>
+                                        Available 24/7 hours
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="contact-us-item mb-0">
+                                <div class="content">
+                                    <h5>
+                                        <img src="assets/img/inner-page/icon/03.svg" alt="img">
+                                        Working Hours
+                                    </h5>
+                                    <h6>
+                                        Sunday to Friday <br> 08:00 AM – 06:00 PM
+                                    </h6>
+                                </div>
+                                <div class="content">
+                                    <h5>
+                                        <img src="assets/img/inner-page/icon/04.svg" alt="img">
+                                        USA Office
+                                    </h5>
+                                    <h6>
+                                        20 Cooper Square, New <br>
+                                        York, NY 10003, USA
+                                    </h6>
+                                </div>
+                            </div>
                         </div>
-                        <?php if (!empty($settings['layout_one_select_cf7_form'])) : ?>
-                            <?php echo str_replace("<br />", "", trim(do_shortcode('[contact-form-7 id="' . $settings['layout_one_select_cf7_form'] . '" ]'))); ?>
-                        <?php endif; ?>
                     </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="contact-info-wrap wow fadeInLeft delay-0-2s">
-                        <div class="section-title mb-40">
-                            <?php if ($settings['layout_one_info_subtitle']) : ?>
-                                <span class="sub-title mb-10"><?php echo rt_kses_basic($settings['layout_one_info_subtitle']); ?></span>
-                            <?php endif; ?>
-                            <?php if ($settings['layout_one_info_title']) : ?>
-                                <h2><?php echo rt_kses_basic($settings['layout_one_info_title']); ?></h2>
-                            <?php endif; ?>
-                        </div>
-                        <div class="contact-info-part-two">
-                            <div class="contact-info-item-two">
-                                <div class="icon">
-                                    <i class="far fa-map-marked-alt"></i>
+                    <div class="col-xl-7 col-lg-6">
+                        <div class="contact-box">
+                            <form action="contact.php" id="contact-form1" method="POST" class="contact-form-items">
+                                <div class="row g-4">
+                                    <div class="col-lg-6">
+                                        <div class="form-clt">
+                                            <span>Full Name</span>
+                                            <input type="text" name="name" id="name331" placeholder="Full Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-clt">
+                                            <span>Phone</span>
+                                            <input type="text" name="name" id="name22" placeholder="Phone Number">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-clt">
+                                            <span>Email Address</span>
+                                            <input type="text" name="name" id="email11" placeholder="Your email">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-clt">
+                                            <span>Subject</span>
+                                            <input type="text" name="name" id="name24" placeholder="Subject">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-clt">
+                                            <span>Comments</span>
+                                            <textarea name="message" id="message1" placeholder="Type your message"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <button type="submit" class="theme-btn">
+                                            Send Your Reviews
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="content">
-                                    <?php if ($settings['layout_one_location_label']) : ?>
-                                        <span><?php echo rt_kses_basic($settings['layout_one_location_label']); ?></span>
-                                    <?php endif; ?>
-                                    <?php if ($settings['layout_one_location_text']) : ?>
-                                        <h5><?php echo rt_kses_basic($settings['layout_one_location_text']); ?></h5>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                            <div class="contact-info-item-two">
-                                <div class="icon">
-                                    <i class="far fa-envelope-open-text"></i>
-                                </div>
-                                <div class="content">
-                                    <?php if ($settings['layout_one_email_label']) : ?>
-                                        <span><?php echo rt_kses_basic($settings['layout_one_email_label']); ?></span>
-                                    <?php endif; ?>
-                                    <?php if ($settings['layout_one_email_text']) : ?>
-                                        <h5><a href="mailto:<?php echo esc_attr($settings['layout_one_email_text']); ?>"><?php echo rt_kses_basic($settings['layout_one_email_text']); ?></a></h5>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                            <div class="contact-info-item-two">
-                                <div class="icon">
-                                    <i class="far fa-phone"></i>
-                                </div>
-                                <div class="content">
-                                    <?php if ($settings['layout_one_phone_label']) : ?>
-                                        <span><?php echo rt_kses_basic($settings['layout_one_phone_label']); ?></span>
-                                    <?php endif; ?>
-                                    <?php if ($settings['layout_one_phone_text']) : ?>
-                                        <h5><a href="tel:<?php echo esc_attr(str_replace(' ', '', $settings['layout_one_phone_text'])); ?>"><?php echo rt_kses_basic($settings['layout_one_phone_text']); ?></a></h5>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Contact Form Section End -->
 <?php endif; ?>

@@ -1,108 +1,88 @@
 <?php if ('layout_one' == $settings['layout_type']) : ?>
-    <!-- Team Details area start -->
-    <section class="team-detial-area pt-130 rpt-100 pb-110 rpb-80 rel z-1">
+    <!-- Team-Detailsr Section Start -->
+    <section class="team-details-section fix section-padding">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="team-detials-left-part rmb-50" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                        <?php if (!empty($settings['layout_one_team_image']['url'])) : ?>
-                            <div class="team-details-image">
-                                <?php rt_elementor_rendered_image($settings, 'layout_one_team_image'); ?>
-                            </div>
-                        <?php endif; ?>
-                        <?php if (!empty($settings['layout_one_team_name'])) : ?>
-                            <h3><?php echo esc_html($settings['layout_one_team_name']); ?></h3>
-                        <?php endif; ?>
-                        <?php if (!empty($settings['layout_one_team_designation'])) : ?>
-                            <p><?php echo esc_html($settings['layout_one_team_designation']); ?></p>
-                        <?php endif; ?>
-                        <hr class="mt-35 mb-40">
-
-                        <div class="team-contact-info">
-                            <?php if (!empty($settings['layout_one_contact_title'])) : ?>
-                                <h5 class="title"><?php echo esc_html($settings['layout_one_contact_title']); ?></h5>
-                            <?php endif; ?>
-                            <?php if (!empty($settings['layout_one_team_email'])) : ?>
-                                <div class="team-info-item">
-                                    <?php if (!empty($settings['layout_one_team_email_title'])) : ?>
-                                        <span><?php echo esc_html($settings['layout_one_team_email_title']); ?></span>
-                                    <?php endif; ?>
-
-                                    <a href="mailto:<?php echo esc_attr($settings['layout_one_team_email']); ?>"><?php echo esc_html($settings['layout_one_team_email']); ?></a>
-
-                                </div>
-                            <?php endif; ?>
-                            <?php if (!empty($settings['layout_one_team_phone'])) : ?>
-                                <div class="team-info-item">
-                                    <?php if (!empty($settings['layout_one_team_phone_title'])) : ?>
-                                        <span><?php echo esc_html($settings['layout_one_team_phone_title']); ?></span>
-                                    <?php endif; ?>
-                                    <a href="callto:<?php echo esc_attr($settings['layout_one_team_phone']); ?>"><?php echo esc_html($settings['layout_one_team_phone']); ?></a>
-                                </div>
-                            <?php endif; ?>
-                            <?php if (!empty($settings['layout_one_team_location'])) : ?>
-                                <div class="team-info-item">
-                                    <?php if (!empty($settings['layout_one_team_location_title'])) : ?>
-                                        <span><?php echo esc_html($settings['layout_one_team_location_title']); ?></span>
-                                    <?php endif; ?>
-                                    <p><?php echo esc_html($settings['layout_one_team_location']); ?></p>
-                                </div>
-                            <?php endif; ?>
+            <div class="team-details-wrapper">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-5">
+                        <div class="team-details-image">
+                            <?php rt_elementor_rendered_image($settings, 'layout_one_team_image'); ?>
                         </div>
-
-                        <hr class="my-40">
-
-                        <div class="team-contact-info social-icons">
-                            <?php if (!empty($settings['layout_one_follow_title'])) : ?>
-                                <h5 class="title"><?php echo esc_html($settings['layout_one_follow_title']); ?></h5>
-                            <?php endif; ?>
-                            <div class="social-style-six">
-                                <?php if (!empty($settings['layout_one_social_links'])) : ?>
-                                    <?php foreach ($settings['layout_one_social_links'] as $social) : ?>
-                                        <?php if (!empty($social['social_link']['url'])) : ?>
-                                            <a href="<?php echo esc_url($social['social_link']['url']); ?>" <?php echo ($social['social_link']['is_external']) ? 'target="_blank"' : ''; ?> <?php echo ($social['social_link']['nofollow']) ? 'rel="nofollow"' : ''; ?>>
-                                                <?php \Elementor\Icons_Manager::render_icon($social['social_icon'], ['aria-hidden' => 'true']); ?>
-                                            </a>
-                                        <?php endif; ?>
-                                    <?php endforeach; ?>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="team-details-content">
+                            <div class="details-info">
+                                <?php if (!empty($settings['layout_one_team_name'])) : ?>
+                                    <<?php echo esc_attr($settings['layout_one_team_name_tag']); ?>><?php echo rt_kses_basic($settings['layout_one_team_name']); ?></<?php echo esc_attr($settings['layout_one_team_name_tag']); ?>>
+                                <?php endif; ?>
+                                <?php if (!empty($settings['layout_one_team_designation'])) : ?>
+                                    <span><?php echo rt_kses_basic($settings['layout_one_team_designation']); ?></span>
                                 <?php endif; ?>
                             </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="team-detials-right-part" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                        <?php if (!empty($settings['layout_one_eight_title'])) : ?>
-                            <div class="section-title mb-20">
-                                <h2><?php echo esc_html($settings['layout_one_eight_title']); ?></h2>
-                            </div>
-                        <?php endif; ?>
-
-                        <?php echo wp_kses_post($settings['layout_one_eight_content']); ?>
-                        <?php if (is_array($settings['layout_one_progressbar']) && !empty($settings['layout_one_progressbar'])) : ?>
-                            <div class="progress-bar-wrap my-55" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                                <?php foreach ($settings['layout_one_progressbar'] as $skillbar) : ?>
-                                    <div class="skillbar" data-percent="<?php echo esc_attr($skillbar['number']['size']); ?>">
-                                        <span class="skillbar-title"><?php echo esc_html($skillbar['title']); ?></span>
-                                        <div class="skillbar-wrap">
-                                            <div class="skillbar-bar"></div>
-                                        </div>
-                                        <span class="skill-bar-percent"></span>
+                            <?php if (!empty($settings['layout_one_team_description'])) : ?>
+                                <p class="mt-3">
+                                    <?php echo rt_kses_basic($settings['layout_one_team_description']); ?>
+                                </p>
+                            <?php endif; ?>
+                            <?php if (!empty($settings['layout_one_skills'])) : ?>
+                                <div class="progress-area mt-4">
+                                    <div class="progress-wrap">
+                                        <?php foreach ($settings['layout_one_skills'] as $skill) : ?>
+                                            <div class="pro-items">
+                                                <div class="pro-head">
+                                                    <h6 class="title">
+                                                        <?php echo rt_kses_basic($skill['layout_one_skill_title']); ?>
+                                                    </h6>
+                                                    <span class="point">
+                                                        <?php echo esc_html($skill['layout_one_skill_percentage']['size']); ?>%
+                                                    </span>
+                                                </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar" data-wow-duration=".9s" role="progressbar" style="width: <?php echo esc_attr($skill['layout_one_skill_percentage']['size']); ?>%;" aria-valuenow="<?php echo esc_attr($skill['layout_one_skill_percentage']['size']); ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
                                     </div>
-                                <?php endforeach; ?>
-                            </div>
-                        <?php endif; ?>
-                        <?php if (!empty($settings['layout_one_bottom_title'])) : ?>
-                            <h3 class="mb-15"><?php echo esc_html($settings['layout_one_bottom_title']); ?></h3>
-                        <?php endif; ?>
-                        <?php if (!empty($settings['layout_one_bottom_content'])) : ?>
-                            <p><?php echo wp_kses_post($settings['layout_one_bottom_content']); ?></p>
-                        <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($settings['layout_one_social_icons'])) : ?>
+                                <div class="social-icon">
+                                    <?php if (!empty($settings['layout_one_social_label'])) : ?>
+                                        <span><?php echo rt_kses_basic($settings['layout_one_social_label']); ?></span>
+                                    <?php endif; ?>
+                                    <?php foreach ($settings['layout_one_social_icons'] as $social) : ?>
+                                        <a href="<?php echo esc_url($social['layout_one_social_link']['url']); ?>" <?php echo ($social['layout_one_social_link']['is_external']) ? 'target="_blank"' : ''; ?> <?php echo ($social['layout_one_social_link']['nofollow']) ? 'rel="nofollow"' : ''; ?>>
+                                            <?php \Elementor\Icons_Manager::render_icon($social['layout_one_social_icon'], ['aria-hidden' => 'true'], 'i'); ?>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
+                <?php if (!empty($settings['layout_one_education_items'])) : ?>
+                    <div class="team-single-history pt-5">
+                        <?php if (!empty($settings['layout_one_education_title'])) : ?>
+                            <div class="title">
+                                <<?php echo esc_attr($settings['layout_one_education_title_tag']); ?>><?php echo rt_kses_basic($settings['layout_one_education_title']); ?></<?php echo esc_attr($settings['layout_one_education_title_tag']); ?>>
+                            </div>
+                        <?php endif; ?>
+                        <?php foreach ($settings['layout_one_education_items'] as $education) : ?>
+                            <h5 class="pt-5">
+                                <?php echo rt_kses_basic($education['layout_one_education_degree']); ?>
+                                <?php if (!empty($education['layout_one_education_period'])) : ?>
+                                    <span><?php echo rt_kses_basic($education['layout_one_education_period']); ?></span>
+                                <?php endif; ?>
+                            </h5>
+                            <?php if (!empty($education['layout_one_education_description'])) : ?>
+                                <p class="mt-3">
+                                    <?php echo rt_kses_basic($education['layout_one_education_description']); ?>
+                                </p>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
-    <!-- Team Details area end -->
 <?php endif; ?>

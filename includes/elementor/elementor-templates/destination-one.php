@@ -34,7 +34,9 @@
                                         <div class="tour-image">
                                             <?php rt_elementor_rendered_image($item, 'image'); ?>
                                             <?php if (!empty($item['listing_text'])) : ?>
-                                                <span><?php echo esc_html($term->count); ?> <?php echo esc_html($item['listing_text']); ?></span>
+                                                <span><?php echo esc_html($item['listing_text']); ?></span>
+                                            <?php else: ?>
+                                                <span><?php echo esc_html($term->count); ?> <?php echo esc_html__(' Listing', 'roavio-toolkit'); ?></span>
                                             <?php endif; ?>
                                             <div class="tour-content">
                                                 <?php if (!empty($item['location'])) : ?>

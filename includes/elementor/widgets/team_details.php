@@ -68,12 +68,12 @@ class TeamDetails extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_two', 'layout_three']);
-		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .subtitle', ['layout_two', 'layout_three']);
+		// roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_two', 'layout_three']);
+		// roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .subtitle', ['layout_two', 'layout_three']);
 
-		roavio_elementor_style_options($this, 'Name', '{{WRAPPER}} .team-item .content h5', ['layout_one', 'layout_two', 'layout_three']);
-		roavio_elementor_style_options($this, 'Designation', '{{WRAPPER}} .content span', ['layout_one', 'layout_two', 'layout_three']);
-		roavio_elementor_style_options($this, 'Social Icon', '{{WRAPPER}} .team-item.style-two .image .social-style-one a', ['layout_two', 'layout_three']);
+		// roavio_elementor_style_options($this, 'Name', '{{WRAPPER}} .team-item .content h5', ['layout_one', 'layout_two', 'layout_three']);
+		// roavio_elementor_style_options($this, 'Designation', '{{WRAPPER}} .content span', ['layout_one', 'layout_two', 'layout_three']);
+		// roavio_elementor_style_options($this, 'Social Icon', '{{WRAPPER}} .team-item.style-two .image .social-style-one a', ['layout_two', 'layout_three']);
 
 		$this->end_controls_section();
 	}

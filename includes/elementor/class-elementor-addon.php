@@ -69,7 +69,7 @@ class Roavio_Elementor_Addon
 		// include_once RT_ELEMENTOR . '/widgets/service.php';
 		// include_once RT_ELEMENTOR . '/widgets/service-details.php';
 		include_once RT_ELEMENTOR . '/widgets/team.php';
-		// include_once RT_ELEMENTOR . '/widgets/team_details.php';
+		include_once RT_ELEMENTOR . '/widgets/team_details.php';
 		// include_once RT_ELEMENTOR . '/widgets/working-process.php';
 		// include_once RT_ELEMENTOR . '/widgets/features.php';
 		include_once RT_ELEMENTOR . '/widgets/testimonial.php';
@@ -85,7 +85,7 @@ class Roavio_Elementor_Addon
 		include_once RT_ELEMENTOR . '/widgets/sponsors.php';
 		include_once RT_ELEMENTOR . '/widgets/destination.php';
 		include_once RT_ELEMENTOR . '/widgets/tour.php';
-		// include_once RT_ELEMENTOR . '/widgets/contact.php';
+		include_once RT_ELEMENTOR . '/widgets/contact.php';
 		// include_once RT_ELEMENTOR . '/widgets/latest-work.php';
 		// include_once RT_ELEMENTOR . '/widgets/pricing.php';
 		// include_once RT_ELEMENTOR . '/widgets/portfolio-details.php';
@@ -112,7 +112,7 @@ class Roavio_Elementor_Addon
 		// $widgets_manager->register(new Widgets\Service());
 		// $widgets_manager->register(new Widgets\Service_Details());
 		$widgets_manager->register(new Widgets\Team());
-		// $widgets_manager->register(new Widgets\TeamDetails());
+		$widgets_manager->register(new Widgets\TeamDetails());
 		// $widgets_manager->register(new Widgets\Working_Process());
 		$widgets_manager->register(new Widgets\Testimonial());
 		$widgets_manager->register(new Widgets\Faq());
@@ -127,7 +127,7 @@ class Roavio_Elementor_Addon
 		$widgets_manager->register(new Widgets\Newsletter());
 		$widgets_manager->register(new Widgets\Search_Form());
 		// $widgets_manager->register(new Widgets\Features());
-		// $widgets_manager->register(new Widgets\Contact());
+		$widgets_manager->register(new Widgets\Contact());
 		// $widgets_manager->register(new Widgets\Latest_Work());
 		// $widgets_manager->register(new Widgets\Pricing());
 		// $widgets_manager->register(new Widgets\Portfolio_Details());

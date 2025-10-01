@@ -1021,7 +1021,7 @@ class Roavio_Metaboxes
 					'title' => esc_html__('People Count', 'roavio-toolkit'),
 					'desc'  => esc_html__('Enter the people count for this tour', 'roavio-toolkit'),
 					'default' => esc_html__('3 persons', 'roavio-toolkit')
-				]
+				],
 			],
 		]);
 	}

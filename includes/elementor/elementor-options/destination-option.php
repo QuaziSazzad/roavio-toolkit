@@ -7,7 +7,7 @@ $this->start_controls_section(
 		'label' => esc_html__('Content', 'roavio-toolkit'),
 		'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 		'condition' => [
-			'layout_type' => 'layout_two'
+			'layout_type' => ['layout_two', 'layout_three', 'layout_four']
 		]
 	]
 );
@@ -102,7 +102,17 @@ $locations->add_control(
 	[
 		'label' => esc_html__('Listing Text', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Listing', 'roavio-toolkit'),
+		'default' => esc_html__('5 Listing', 'roavio-toolkit'),
+		'label_block' => true
+	]
+);
+
+$locations->add_control(
+	'address',
+	[
+		'label' => esc_html__('Address', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('London', 'roavio-toolkit'),
 		'label_block' => true
 	]
 );
@@ -150,7 +160,7 @@ $this->add_control(
 		'fields' => $locations->get_controls(),
 		'title_field' => '{{{ location }}}',
 		'condition' => [
-			'layout_type' => ['layout_one'],
+			'layout_type' => ['layout_one', 'layout_four'],
 		]
 	]
 );
@@ -193,6 +203,16 @@ $locations_two->add_control(
 );
 
 $locations_two->add_control(
+	'address',
+	[
+		'label' => esc_html__('Address', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('United Kingdom', 'roavio-toolkit'),
+		'label_block' => true
+	]
+);
+
+$locations_two->add_control(
 	'image',
 	[
 		'label' => esc_html__('Image', 'roavio-toolkit'),
@@ -227,7 +247,7 @@ $this->add_control(
 		'fields' => $locations_two->get_controls(),
 		'title_field' => '{{{ location }}}',
 		'condition' => [
-			'layout_type' => ['layout_two'],
+			'layout_type' => ['layout_two', 'layout_three'],
 		]
 	]
 );
