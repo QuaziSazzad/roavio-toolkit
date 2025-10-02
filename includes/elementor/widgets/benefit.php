@@ -72,12 +72,12 @@ class Benefit extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one', 'layout_two']);
-		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one', 'layout_two']);
+		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one', 'layout_two', 'layout_three']);
+		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one', 'layout_two', 'layout_three']);
 
-		roavio_elementor_style_options($this, 'Benefit Title', '{{WRAPPER}} .content h5 a', ['layout_one', 'layout_two']);
-		roavio_elementor_style_options($this, 'Benefit Description', '{{WRAPPER}} .benefit-tour-item .content p,{{WRAPPER}} .content p', ['layout_one', 'layout_two']);
-		roavio_elementor_style_options($this, 'Benefit Icon', '{{WRAPPER}} .benefit-tour-item .icon i,{{WRAPPER}} .tour-benefit-item-2 .icon i', ['layout_one', 'layout_two']);
+		roavio_elementor_style_options($this, 'Benefit Title', '{{WRAPPER}} .content h5 a', ['layout_one', 'layout_two', 'layout_three']);
+		roavio_elementor_style_options($this, 'Benefit Description', '{{WRAPPER}} .benefit-tour-item .content p,{{WRAPPER}} .content p', ['layout_one', 'layout_two', 'layout_three']);
+		roavio_elementor_style_options($this, 'Benefit Icon', '{{WRAPPER}} .benefit-tour-item .icon i,{{WRAPPER}} .tour-benefit-item-2 .icon i', ['layout_one', 'layout_two', 'layout_three']);
 
 		$this->end_controls_section();
 	}

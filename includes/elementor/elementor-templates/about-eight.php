@@ -1,47 +1,98 @@
 <?php if ('layout_eight' == $settings['layout_type']) : ?>
-    <!-- About Area start -->
-    <section class="about-area-five rel z-1 pb-230 rpb-150">
-        <div class="container container-1290">
-            <div class="row justify-content-between">
-                <div class="col-lg-3" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
-                    <?php if ($settings['layout_eight_sub_title']) : ?>
-                        <span class="subtitle color-primary mb-25"><?php echo rt_kses_basic($settings['layout_eight_sub_title']); ?></span>
-                    <?php endif; ?>
-                </div>
-                <div class="col-xl-7 col-lg-9" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
-                    <div class="about-content-five">
-                        <?php if ($settings['layout_eight_title']) : ?>
-                            <div class="section-title mb-40 rmb-25">
-                                <<?php echo esc_attr($settings['layout_eight_title_tag']); ?> class="sec-title"><?php echo rt_kses_basic($settings['layout_eight_title']); ?></<?php echo esc_attr($settings['layout_eight_title_tag']); ?>>
+    <!-- Travel-Section- Start -->
+    <section class="travel-section section-padding header-bg fix">
+        <div class="container">
+            <div class="travel-wrapper">
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="travel-content">
+                            <div class="section-title mb-0">
+                                <?php if (!empty($settings['layout_eight_title'])) : ?>
+                                    <<?php echo esc_attr($settings['layout_eight_title_tag']); ?> class="text-white wow fadeInUp" data-wow-delay=".3s">
+                                        <?php echo rt_kses_basic($settings['layout_eight_title']); ?>
+                                    </<?php echo esc_attr($settings['layout_eight_title_tag']); ?>>
+                                <?php endif; ?>
+
+                                <?php if (!empty($settings['layout_eight_subtitle'])) : ?>
+                                    <<?php echo esc_attr($settings['layout_eight_sub_title_tag']); ?> class="text-white wow fadeInUp" data-wow-delay=".5s">
+                                        <?php echo rt_kses_basic($settings['layout_eight_subtitle']); ?>
+                                    </<?php echo esc_attr($settings['layout_eight_sub_title_tag']); ?>>
+                                <?php endif; ?>
                             </div>
-                        <?php endif; ?>
-                        <?php if ($settings['layout_eight_summary_text']) : ?>
-                            <p class="summary-text"><?php echo rt_kses_basic($settings['layout_eight_summary_text']); ?></p>
-                        <?php endif; ?>
-                        <?php if ($settings['layout_eight_button_label']) : ?>
-                            <a href="<?php echo esc_url($settings['layout_eight_button_url']['url']); ?>" <?php if (!empty($settings['layout_eight_button_url']['is_external'])) : ?> target="_blank" <?php endif; ?> class="theme-btn color-white hover-secondary mt-25 rmt-15" data-hover="<?php echo esc_attr($settings['layout_eight_button_label']); ?>">
-                                <span><?php echo esc_html($settings['layout_eight_button_label']); ?></span>
-                            </a>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-65">
-                <div class="col-xl-4 col-lg-6 col-md-8 mt-30" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                    <div class="about-five-logo-part bgs-cover py-30 text-white p-50 br-10" style="background-image: url(<?php echo esc_url($settings['layout_eight_bg_shape']['url']); ?>);">
-                        <div class="logo pb-25 rpb-55">
-                            <a href="<?php echo esc_url($settings['layout_eight_logo_url']['url']); ?>" <?php if (!empty($settings['layout_eight_logo_url']['is_external'])) : ?> target="_blank" <?php endif; ?>><?php rt_elementor_rendered_image($settings, 'layout_eight_logo'); ?></a>
+
+                            <?php if (!empty($settings['layout_eight_items'])) : ?>
+                                <div class="travel-item">
+                                    <?php
+                                    $count = 0;
+                                    foreach ($settings['layout_eight_items'] as $index => $item) :
+                                        if ($count % 2 == 0 && $count > 0) : ?>
+                                </div>
+                                <div class="travel-item">
+                                <?php endif; ?>
+
+                                <div class="icon-item">
+                                    <div class="icon">
+                                        <?php \Elementor\Icons_Manager::render_icon($item['layout_eight_item_icon'], ['aria-hidden' => 'true']); ?>
+                                    </div>
+                                    <div class="content">
+                                        <?php if (!empty($item['layout_eight_item_title'])) : ?>
+                                            <h5>
+                                                <?php echo rt_kses_basic($item['layout_eight_item_title']); ?>
+                                            </h5>
+                                        <?php endif; ?>
+
+                                        <?php if (!empty($item['layout_eight_item_description'])) : ?>
+                                            <p>
+                                                <?php echo rt_kses_basic($item['layout_eight_item_description']); ?>
+                                            </p>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+
+                            <?php
+                                        $count++;
+                                    endforeach; ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
-                        <h4><?php echo esc_html($settings['layout_eight_logo_caption']); ?></h4>
                     </div>
-                </div>
-                <div class="col-xl-8 mt-30" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50" data-aos-delay="100">
-                    <div class="image">
-                        <?php rt_elementor_rendered_image($settings, 'layout_eight_image', 'br-10'); ?>
+                    <div class="col-lg-6">
+                        <div class="travel-image">
+                            <?php rt_elementor_rendered_image($settings, 'layout_eight_image'); ?>
+                            <div class="right-box">
+                                <?php if (!empty($settings['layout_eight_counter_number']) || !empty($settings['layout_eight_counter_suffix'])) : ?>
+                                    <h2>
+                                        <?php if (!empty($settings['layout_eight_counter_number'])) : ?>
+                                            <span class="count"><?php echo esc_html($settings['layout_eight_counter_number']); ?></span>
+                                        <?php endif; ?>
+                                        <?php if (!empty($settings['layout_eight_counter_suffix'])) : ?>
+                                            <?php echo esc_html($settings['layout_eight_counter_suffix']); ?>
+                                        <?php endif; ?>
+                                    </h2>
+                                <?php endif; ?>
+
+                                <?php if (!empty($settings['layout_eight_counter_description'])) : ?>
+                                    <p><?php echo rt_kses_basic($settings['layout_eight_counter_description']); ?></p>
+                                <?php endif; ?>
+
+                                <div class="star-item">
+                                    <?php rt_elementor_rendered_image($settings, 'layout_eight_rating_image'); ?>
+
+                                    <?php if ('yes' === $settings['layout_eight_show_rating_stars'] && !empty($settings['layout_eight_rating_stars'])) : ?>
+                                        <div class="star">
+                                            <?php
+                                            $stars = intval($settings['layout_eight_rating_stars']);
+                                            for ($i = 0; $i < $stars; $i++) : ?>
+                                                <i class="fa-solid fa-star"></i>
+                                            <?php endfor; ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- About Area end -->
 <?php endif; ?>

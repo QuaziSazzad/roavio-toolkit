@@ -7,104 +7,82 @@
                     <div class="col-xl-5 col-lg-6">
                         <div class="contact-us-content">
                             <div class="section-title mb-0">
-                                <h2>
-                                    Start Your Adventure
-                                    Contact Us Today
-                                </h2>
+                                <?php if (!empty($settings['layout_one_section_title'])) : ?>
+                                    <<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
+                                        <?php echo rt_kses_basic($settings['layout_one_section_title']); ?>
+                                    </<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
+                                <?php endif; ?>
                             </div>
-                            <p class="text">
-                                Have questions or ready to plan your next adventure? Our travel experts are here to guide you every step of the way.
-                            </p>
+                            <?php if (!empty($settings['layout_one_description'])) : ?>
+                                <p class="text">
+                                    <?php echo rt_kses_basic($settings['layout_one_description']); ?>
+                                </p>
+                            <?php endif; ?>
                             <div class="contact-us-item">
                                 <div class="content">
                                     <h5>
-                                        <img src="assets/img/inner-page/icon/01.svg" alt="img">
-                                        Email us
+                                        <?php \Elementor\Icons_Manager::render_icon($settings['layout_one_email_icon'], ['aria-hidden' => 'true']); ?>
+                                        <?php echo esc_html($settings['layout_one_email_title']); ?>
                                     </h5>
-                                    <h6>
-                                        <a href="mailto:supportroavio@gmail.com">supportroavio@gmail.com</a>
-                                    </h6>
-                                    <h6>
-                                        <a href="mailto:www.roavio247.com">www.roavio247.com</a>
-                                    </h6>
+                                    <?php if (!empty($settings['layout_one_email_one'])) : ?>
+                                        <h6>
+                                            <a href="mailto:<?php echo esc_attr($settings['layout_one_email_one']); ?>"><?php echo esc_html($settings['layout_one_email_one']); ?></a>
+                                        </h6>
+                                    <?php endif; ?>
+                                    <?php if (!empty($settings['layout_one_email_two'])) : ?>
+                                        <h6>
+                                            <a href="mailto:<?php echo esc_attr($settings['layout_one_email_two']); ?>"><?php echo esc_html($settings['layout_one_email_two']); ?></a>
+                                        </h6>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="content">
                                     <h5>
-                                        <img src="assets/img/inner-page/icon/02.svg" alt="img">
-                                        Email us
+                                        <?php \Elementor\Icons_Manager::render_icon($settings['layout_one_phone_icon'], ['aria-hidden' => 'true']); ?>
+                                        <?php echo esc_html($settings['layout_one_phone_title']); ?>
                                     </h5>
-                                    <h6>
-                                        <a href="tel:+11234567890">+1 123456 7890</a>
-                                    </h6>
-                                    <h6>
-                                        Available 24/7 hours
-                                    </h6>
+                                    <?php if (!empty($settings['layout_one_phone_number'])) : ?>
+                                        <h6>
+                                            <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $settings['layout_one_phone_number'])); ?>"><?php echo esc_html($settings['layout_one_phone_number']); ?></a>
+                                        </h6>
+                                    <?php endif; ?>
+                                    <?php if (!empty($settings['layout_one_phone_availability'])) : ?>
+                                        <h6>
+                                            <?php echo esc_html($settings['layout_one_phone_availability']); ?>
+                                        </h6>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <div class="contact-us-item mb-0">
                                 <div class="content">
                                     <h5>
-                                        <img src="assets/img/inner-page/icon/03.svg" alt="img">
-                                        Working Hours
+                                        <?php \Elementor\Icons_Manager::render_icon($settings['layout_one_hours_icon'], ['aria-hidden' => 'true']); ?>
+                                        <?php echo esc_html($settings['layout_one_hours_title']); ?>
                                     </h5>
-                                    <h6>
-                                        Sunday to Friday <br> 08:00 AM – 06:00 PM
-                                    </h6>
+                                    <?php if (!empty($settings['layout_one_hours_text'])) : ?>
+                                        <h6>
+                                            <?php echo rt_kses_basic($settings['layout_one_hours_text']); ?>
+                                        </h6>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="content">
                                     <h5>
-                                        <img src="assets/img/inner-page/icon/04.svg" alt="img">
-                                        USA Office
+                                        <?php \Elementor\Icons_Manager::render_icon($settings['layout_one_office_icon'], ['aria-hidden' => 'true']); ?>
+                                        <?php echo esc_html($settings['layout_one_office_title']); ?>
                                     </h5>
-                                    <h6>
-                                        20 Cooper Square, New <br>
-                                        York, NY 10003, USA
-                                    </h6>
+                                    <?php if (!empty($settings['layout_one_office_address'])) : ?>
+                                        <h6>
+                                            <?php echo rt_kses_basic($settings['layout_one_office_address']); ?>
+                                        </h6>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-7 col-lg-6">
                         <div class="contact-box">
-                            <form action="contact.php" id="contact-form1" method="POST" class="contact-form-items">
-                                <div class="row g-4">
-                                    <div class="col-lg-6">
-                                        <div class="form-clt">
-                                            <span>Full Name</span>
-                                            <input type="text" name="name" id="name331" placeholder="Full Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-clt">
-                                            <span>Phone</span>
-                                            <input type="text" name="name" id="name22" placeholder="Phone Number">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-clt">
-                                            <span>Email Address</span>
-                                            <input type="text" name="name" id="email11" placeholder="Your email">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-clt">
-                                            <span>Subject</span>
-                                            <input type="text" name="name" id="name24" placeholder="Subject">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-clt">
-                                            <span>Comments</span>
-                                            <textarea name="message" id="message1" placeholder="Type your message"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <button type="submit" class="theme-btn">
-                                            Send Your Reviews
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+                            <?php if (!empty($settings['layout_one_select_cf7_form'])) :
+                                echo do_shortcode('[contact-form-7 id="' . esc_attr($settings['layout_one_select_cf7_form']) . '"]');
+                            endif; ?>
                         </div>
                     </div>
                 </div>

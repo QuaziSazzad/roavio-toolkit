@@ -64,7 +64,7 @@ class About extends Widget_Base
 					'layout_five' => __('Layout Five', 'roavio-toolkit'),
 					'layout_six' => __('Layout Six', 'roavio-toolkit'),
 					'layout_seven' => __('Layout Seven', 'roavio-toolkit'),
-					// 'layout_eight' => __('Layout Eight', 'roavio-toolkit'),
+					'layout_eight' => __('Layout Eight', 'roavio-toolkit'),
 					// 'layout_nine' => __('Layout Nine', 'roavio-toolkit'),
 					// 'layout_ten' => __('Layout Ten', 'roavio-toolkit'),
 				]
@@ -80,7 +80,7 @@ class About extends Widget_Base
 		include rt_get_elementor_option('about-five-option.php');
 		include rt_get_elementor_option('about-six-option.php');
 		include rt_get_elementor_option('about-seven-option.php');
-		// include rt_get_elementor_option('about-eight-option.php');
+		include rt_get_elementor_option('about-eight-option.php');
 		// include rt_get_elementor_option('about-nine-option.php');
 		// include rt_get_elementor_option('about-ten-option.php');
 
@@ -95,7 +95,7 @@ class About extends Widget_Base
 
 		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six', 'layout_seven', 'layout_eight', 'layout_nine', 'layout_ten']);
 		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one']);
-		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .about-right-item .content p,{{WRAPPER}} .adventure-wrapper .text,{{WRAPPER}} .about-content .text,{{WRAPPER}} .description', ['layout_one', 'layout_two', 'layout_four', 'layout_five']);
+		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .about-right-item .content p,{{WRAPPER}} .adventure-wrapper .text,{{WRAPPER}} .about-content .text,{{WRAPPER}} .description', ['layout_one', 'layout_two', 'layout_four', 'layout_five', 'layout_six']);
 
 		roavio_elementor_style_options($this, 'Features List', '{{WRAPPER}} .list-item .list li', ['layout_one']);
 
@@ -116,8 +116,8 @@ class About extends Widget_Base
 		roavio_elementor_style_options($this, 'Experience Title', '{{WRAPPER}} .adventure-box-2 h3 a', ['layout_three']);
 
 
-		roavio_elementor_style_options($this, 'Tab Content', '{{WRAPPER}} .right-content .content p', ['layout_four']);
-		roavio_elementor_style_options($this, 'Tab Features', '{{WRAPPER}} .right-content .content .list li', ['layout_four']);
+		roavio_elementor_style_options($this, 'Tab Content', '{{WRAPPER}} .right-content .content p', ['layout_four', 'layout_six']);
+		roavio_elementor_style_options($this, 'Tab Features', '{{WRAPPER}} .right-content .content .list li', ['layout_four', 'layout_six']);
 
 		$this->end_controls_section();
 
@@ -127,7 +127,7 @@ class About extends Widget_Base
 				'label' => esc_html__('Button Style', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 				'condition' => [
-					'layout_type' => ['layout_one', 'layout_four'],
+					'layout_type' => ['layout_one', 'layout_four', 'layout_six'],
 				],
 			]
 		);
@@ -203,7 +203,7 @@ class About extends Widget_Base
 		include rt_get_elementor_template('about-five.php');
 		include rt_get_elementor_template('about-six.php');
 		include rt_get_elementor_template('about-seven.php');
-		// include rt_get_elementor_template('about-eight.php');
+		include rt_get_elementor_template('about-eight.php');
 		// include rt_get_elementor_template('about-nine.php');
 		// include rt_get_elementor_template('about-ten.php');
 	}

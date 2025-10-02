@@ -1,14 +1,14 @@
-<?php if ('layout_four' == $settings['layout_type']) : ?>
+<?php if ('layout_five' == $settings['layout_type']) : ?>
     <!-- Popular-Destination Section-4 Start -->
-    <section class="popular-destination-section-4 section-padding fix">
+    <section class="popular-destination-section-4 section-padding header-bg fix">
         <div class="container">
             <?php if (!empty($settings['section_title']) ||  !empty($settings['section_sub_title'])) : ?>
                 <div class="section-title text-center">
                     <?php if (!empty($settings['section_title'])) : ?>
-                        <<?php echo esc_html($settings['title_tag']); ?> class="wow fadeInUp sec-title" data-wow-delay=".3s"><?php echo rt_kses_basic($settings['section_title']); ?></<?php echo esc_html($settings['title_tag']); ?>>
+                        <<?php echo esc_html($settings['title_tag']); ?> class="text-white sec-title wow fadeInUp" data-wow-delay=".3s"><?php echo rt_kses_basic($settings['section_title']); ?></<?php echo esc_html($settings['title_tag']); ?>>
                     <?php endif; ?>
                     <?php if (!empty($settings['section_sub_title'])) : ?>
-                        <<?php echo esc_html($settings['section_sub_title_tag']); ?> class="wow fadeInUp sec-sub-title" data-wow-delay=".5s"><?php echo rt_kses_basic($settings['section_sub_title']); ?></<?php echo esc_html($settings['section_sub_title_tag']); ?>>
+                        <<?php echo esc_html($settings['section_sub_title_tag']); ?> class="text-white wow fadeInUp sec-sub-title" data-wow-delay=".5s"><?php echo rt_kses_basic($settings['section_sub_title']); ?></<?php echo esc_html($settings['section_sub_title_tag']); ?>>
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
@@ -38,7 +38,7 @@
 
                 ?>
                         <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".2s">
-                            <div class="destination-radius-item">
+                            <div class="destination-radius-item style-2">
                                 <div class="destination-image">
                                     <?php rt_elementor_rendered_image($item, 'image'); ?>
                                     <?php if (!empty($item['listing_text'])) : ?>
@@ -69,7 +69,6 @@
                     endforeach;
                 endif;
                 ?>
-
             </div>
         </div>
     </section>

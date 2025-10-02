@@ -76,14 +76,12 @@ class FunFact extends Widget_Base
 			]
 		);
 
-		// roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .section-title h2,{{WRAPPER}} section-title h3', ['layout_one', 'layout_three', 'layout_four']);
-		// roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .section-title .sub-title', ['layout_one']);
-		// roavio_elementor_style_options($this, 'Section Description Text', '{{WRAPPER}} .section-title p, {{WRAPPER}} .statistics-two-content p', ['layout_one', 'layout_four']);
+		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one', 'layout_three', 'layout_four']);
+		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .description', ['layout_one', 'layout_three', 'layout_four']);
 
-		// roavio_elementor_style_options($this, 'Funfact Title', '{{WRAPPER}} .counter-item .counter-title,{{WRAPPER}} .counter-title', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five']);
-		// roavio_elementor_style_options($this, 'Count Number', '{{WRAPPER}} .counter-item .counter-text-wrap, {{WRAPPER}} .count-text,{{WRAPPER}} .after', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five']);
-
-		// roavio_elementor_style_options($this, 'Icon', '{{WRAPPER}} .counter-item-three>i', ['layout_four']);
+		roavio_elementor_style_options($this, 'Funfact Title', '{{WRAPPER}} .content p', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five']);
+		roavio_elementor_style_options($this, 'Count Number', '{{WRAPPER}} .content h3', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five']);
+		roavio_elementor_style_options($this, 'Icon', '{{WRAPPER}} .counter-item .icon i', ['layout_one']);
 		$this->end_controls_section();
 	}
 

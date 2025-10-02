@@ -7,7 +7,7 @@ $this->start_controls_section(
 		'label' => esc_html__('Content', 'roavio-toolkit'),
 		'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 		'condition' => [
-			'layout_type' => ['layout_two', 'layout_three', 'layout_four']
+			'layout_type' => ['layout_two', 'layout_three', 'layout_four', 'layout_five']
 		]
 	]
 );
@@ -160,7 +160,7 @@ $this->add_control(
 		'fields' => $locations->get_controls(),
 		'title_field' => '{{{ location }}}',
 		'condition' => [
-			'layout_type' => ['layout_one', 'layout_four'],
+			'layout_type' => ['layout_one', 'layout_four', 'layout_five'],
 		]
 	]
 );

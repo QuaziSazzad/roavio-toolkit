@@ -12,8 +12,9 @@ $this->start_controls_section(
 	]
 );
 
+// Section Title
 $this->add_control(
-	'layout_one_title',
+	'layout_one_section_title',
 	[
 		'label' => esc_html__('Section Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
@@ -42,6 +43,7 @@ $this->add_control(
 	]
 );
 
+// Description
 $this->add_control(
 	'layout_one_description',
 	[
@@ -52,16 +54,19 @@ $this->add_control(
 	]
 );
 
-// Email Contact Info
+
 $this->add_control(
-	'layout_one_email_heading',
+	'layout_one_select_cf7_form',
 	[
-		'label' => esc_html__('Email Contact Info', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::HEADING,
-		'separator' => 'before',
+		'label' => esc_html__('Select your contact form 7', 'roavio-addon'),
+		'label_block' => true,
+		'type' => \Elementor\Controls_Manager::SELECT,
+		'options' => rt_select_post('wpcf7_contact_form'),
 	]
 );
 
+
+// Email Section
 $this->add_control(
 	'layout_one_email_title',
 	[
@@ -69,6 +74,7 @@ $this->add_control(
 		'type' => \Elementor\Controls_Manager::TEXT,
 		'default' => esc_html__('Email us', 'roavio-toolkit'),
 		'label_block' => true,
+		'separator' => 'before',
 	]
 );
 
@@ -76,9 +82,10 @@ $this->add_control(
 	'layout_one_email_icon',
 	[
 		'label' => esc_html__('Email Icon', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::MEDIA,
+		'type' => \Elementor\Controls_Manager::ICONS,
 		'default' => [
-			'url' => '',
+			'value' => 'fa-solid fa-envelope',
+			'library' => 'solid',
 		],
 	]
 );
@@ -103,23 +110,15 @@ $this->add_control(
 	]
 );
 
-// Phone Contact Info
-$this->add_control(
-	'layout_one_phone_heading',
-	[
-		'label' => esc_html__('Phone Contact Info', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::HEADING,
-		'separator' => 'before',
-	]
-);
-
+// Phone Section
 $this->add_control(
 	'layout_one_phone_title',
 	[
 		'label' => esc_html__('Phone Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Email us', 'roavio-toolkit'),
+		'default' => esc_html__('Call Us', 'roavio-toolkit'),
 		'label_block' => true,
+		'separator' => 'before',
 	]
 );
 
@@ -127,9 +126,10 @@ $this->add_control(
 	'layout_one_phone_icon',
 	[
 		'label' => esc_html__('Phone Icon', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::MEDIA,
+		'type' => \Elementor\Controls_Manager::ICONS,
 		'default' => [
-			'url' => '',
+			'value' => 'fa-solid fa-phone',
+			'library' => 'solid',
 		],
 	]
 );
@@ -154,23 +154,15 @@ $this->add_control(
 	]
 );
 
-// Working Hours Info
-$this->add_control(
-	'layout_one_hours_heading',
-	[
-		'label' => esc_html__('Working Hours Info', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::HEADING,
-		'separator' => 'before',
-	]
-);
-
+// Working Hours Section
 $this->add_control(
 	'layout_one_hours_title',
 	[
-		'label' => esc_html__('Hours Title', 'roavio-toolkit'),
+		'label' => esc_html__('Working Hours Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
 		'default' => esc_html__('Working Hours', 'roavio-toolkit'),
 		'label_block' => true,
+		'separator' => 'before',
 	]
 );
 
@@ -178,9 +170,10 @@ $this->add_control(
 	'layout_one_hours_icon',
 	[
 		'label' => esc_html__('Hours Icon', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::MEDIA,
+		'type' => \Elementor\Controls_Manager::ICONS,
 		'default' => [
-			'url' => '',
+			'value' => 'fas fa-alarm-clock',
+			'library' => 'solid',
 		],
 	]
 );
@@ -188,71 +181,44 @@ $this->add_control(
 $this->add_control(
 	'layout_one_hours_text',
 	[
-		'label' => esc_html__('Hours Text', 'roavio-toolkit'),
+		'label' => esc_html__('Working Hours Text', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXTAREA,
 		'default' => esc_html__('Sunday to Friday 08:00 AM – 06:00 PM', 'roavio-toolkit'),
 		'label_block' => true,
 	]
 );
 
-// Office Address Info
+// Office Location Section
 $this->add_control(
-	'layout_one_address_heading',
+	'layout_one_office_title',
 	[
-		'label' => esc_html__('Office Address Info', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::HEADING,
+		'label' => esc_html__('Office Title', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('USA Office', 'roavio-toolkit'),
+		'label_block' => true,
 		'separator' => 'before',
 	]
 );
 
 $this->add_control(
-	'layout_one_address_title',
+	'layout_one_office_icon',
 	[
-		'label' => esc_html__('Address Title', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('USA Office', 'roavio-toolkit'),
-		'label_block' => true,
-	]
-);
-
-$this->add_control(
-	'layout_one_address_icon',
-	[
-		'label' => esc_html__('Address Icon', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::MEDIA,
+		'label' => esc_html__('Office Icon', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::ICONS,
 		'default' => [
-			'url' => '',
+			'value' => 'fa-solid fa-earth-americas',
+			'library' => 'solid',
 		],
 	]
 );
 
 $this->add_control(
-	'layout_one_address_text',
+	'layout_one_office_address',
 	[
-		'label' => esc_html__('Address Text', 'roavio-toolkit'),
+		'label' => esc_html__('Office Address', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXTAREA,
 		'default' => esc_html__('20 Cooper Square, New York, NY 10003, USA', 'roavio-toolkit'),
 		'label_block' => true,
-	]
-);
-
-// Contact Form
-$this->add_control(
-	'layout_one_form_heading',
-	[
-		'label' => esc_html__('Contact Form', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::HEADING,
-		'separator' => 'before',
-	]
-);
-
-$this->add_control(
-	'layout_one_select_cf7_form',
-	[
-		'label' => esc_html__('Select your contact form 7', 'roavio-addon'),
-		'label_block' => true,
-		'type' => \Elementor\Controls_Manager::SELECT,
-		'options' => rt_select_post('wpcf7_contact_form'),
 	]
 );
 
