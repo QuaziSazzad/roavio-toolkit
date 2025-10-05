@@ -17,13 +17,34 @@ class Utility
 
 		add_action('wp_ajax_subscribe_user', array($this, 'subscribe_user'));
 		add_action('wp_ajax_nopriv_subscribe_user', array($this, 'subscribe_user'));
+
+		// add_filter('template_include', array($this, 'location_template'), 99);
+		// add_filter('single_template', array($this, 'booking_details'), 99);
 	}
 	public function set_image_size()
 	{
 		add_image_size('roavio_blog_410X270', 410, 270, true); //in use
+		add_image_size('roavio_blog_300X200', 300, 200, true); //in use
 		// add_image_size('roavio_blog_410X270', 410, 270, true); //in use
 		// add_image_size('roavio_blog_80X64', 80, 64, true); //in use
 		// add_image_size('roavio_blog_100X80', 100, 80, true); //in use
+	}
+
+	public function booking_details($template)
+	{
+		global $post;
+
+		if ('to_book' === $post->post_type && is_singular('to_book') && locate_template(array('single-to_book.php')) !== $template) {
+			/*
+            * This is a 'to_book' post
+            * AND a 'single to_book template' is not found on
+            * theme or child theme directories, so load it
+            * from our plugin directory.
+            */
+			return RT_INCLUDES . '/templates/single-to_book.php';
+		}
+
+		return $template;
 	}
 
 	public function after_breadcrumb()

@@ -742,3 +742,70 @@ function roavio_wishlist_notice()
 	</div>
 <?php
 }
+
+
+function roavio_custom_template($template)
+{
+	global $wp_query;
+
+	$filter = isset($_GET['filter']) ? $_GET['filter'] : '';
+
+	if ($filter == 'yes') {
+		// Check if the template exists in the theme directory
+		$theme_template = get_template_directory() . '/search-to_book.php';
+		if (file_exists($theme_template)) {
+			return $theme_template;
+		} else {
+			// If not found in theme, load from plugin directory
+			return RT_INCLUDES . '/templates/search-to_book.php';
+		}
+	}
+
+	return $template;
+}
+
+add_filter('template_include', 'roavio_custom_template', 99);
+
+add_action('save_post', 'roavio_to_book_meta', 99);
+function roavio_to_book_meta($post_id)
+{
+
+	$post_type = get_post_type($post_id);
+
+	if ($post_type == 'to_book') {
+
+		$prices = BABE_Post_types::get_post_price_from($post_id);
+
+		$price_from = isset($prices['price_from']) ? $prices['price_from'] : false;
+
+		$price =  BABE_Currency::get_currency_price($price_from);
+
+		$dom = new DOMDocument();
+		$dom->loadHTML($price);
+
+		// Get the first <span> element with the class "currency_amount"
+		$amountElement = $dom->getElementsByTagName('span')->item(0);
+
+		if ($amountElement) {
+			// Find the "data-amount" attribute in the <span> element
+			$amount = (int)$amountElement->getAttribute('data-amount');
+		} else {
+			$amount = 0;
+		}
+
+		update_post_meta($post_id, 'roavio_general_price', $amount);
+
+		if (isset($_POST['start_date'])) {
+
+			$start_date = DateTime::createFromFormat("d/m/Y", $_POST['start_date']);
+			$start_date = $start_date->format("Y-m-d");
+			update_post_meta($post_id, 'roavio_book_start_date', $start_date);
+		}
+
+		if (isset($_POST['end_date'])) {
+			$end_date = DateTime::createFromFormat("d/m/Y", $_POST['end_date']);
+			$end_date = $end_date->format("Y-m-d");
+			update_post_meta($post_id, 'roavio_book_end_date', $end_date);
+		}
+	}
+}

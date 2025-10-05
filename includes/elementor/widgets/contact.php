@@ -74,14 +74,12 @@ class Contact extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .section-title h2,{{WRAPPER}} section-title h3', ['layout_one', 'layout_three', 'layout_four']);
-		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .section-title .sub-title', ['layout_one', 'layout_three', 'layout_four']);
+		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one']);
+		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .description', ['layout_one']);
 
-		roavio_elementor_style_options($this, 'Contact Form Title', '{{WRAPPER}} .contact-form-two h3,{{WRAPPER}} .contact-form h3,{{WRAPPER}} .get-consultations-form-area h4,{{WRAPPER}} .contact-page-form h4', ['layout_one', 'layout_two', 'layout_three', 'layout_four']);
-		roavio_elementor_style_options($this, 'Contact Form Sub Title', '{{WRAPPER}} .contact-form.style-two p', ['layout_two']);
 
-		roavio_elementor_style_options($this, 'Contact Label', '{{WRAPPER}} .content span,{{WRAPPER}} .service-get-consultations-wrap .left-content h5,{{WRAPPER}} .contact-info-item .title', ['layout_one', 'layout_three', 'layout_four']);
-		roavio_elementor_style_options($this, 'Contact Content', '{{WRAPPER}} .contact-info-item-two h5, {{WRAPPER}} .left-content p, {{WRAPPER}} .contact-content a,{{WRAPPER}} .contact-info-item p,{{WRAPPER}} .contact-info-item a', ['layout_one', 'layout_three', 'layout_four']);
+		roavio_elementor_style_options($this, 'Contact Label', '{{WRAPPER}} .content h5', ['layout_one']);
+		roavio_elementor_style_options($this, 'Contact Content', '{{WRAPPER}} .content h6 a', ['layout_one']);
 
 		$this->end_controls_section();
 	}

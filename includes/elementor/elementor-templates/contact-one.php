@@ -8,13 +8,13 @@
                         <div class="contact-us-content">
                             <div class="section-title mb-0">
                                 <?php if (!empty($settings['layout_one_section_title'])) : ?>
-                                    <<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
+                                    <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="sec-title">
                                         <?php echo rt_kses_basic($settings['layout_one_section_title']); ?>
                                     </<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
                                 <?php endif; ?>
                             </div>
                             <?php if (!empty($settings['layout_one_description'])) : ?>
-                                <p class="text">
+                                <p class="text description">
                                     <?php echo rt_kses_basic($settings['layout_one_description']); ?>
                                 </p>
                             <?php endif; ?>

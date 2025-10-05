@@ -8,13 +8,13 @@
                         <div class="travel-content">
                             <div class="section-title mb-0">
                                 <?php if (!empty($settings['layout_eight_title'])) : ?>
-                                    <<?php echo esc_attr($settings['layout_eight_title_tag']); ?> class="text-white wow fadeInUp" data-wow-delay=".3s">
+                                    <<?php echo esc_attr($settings['layout_eight_title_tag']); ?> class="text-white wow fadeInUp sec-title" data-wow-delay=".3s">
                                         <?php echo rt_kses_basic($settings['layout_eight_title']); ?>
                                     </<?php echo esc_attr($settings['layout_eight_title_tag']); ?>>
                                 <?php endif; ?>
 
                                 <?php if (!empty($settings['layout_eight_subtitle'])) : ?>
-                                    <<?php echo esc_attr($settings['layout_eight_sub_title_tag']); ?> class="text-white wow fadeInUp" data-wow-delay=".5s">
+                                    <<?php echo esc_attr($settings['layout_eight_sub_title_tag']); ?> class="text-white wow fadeInUp sec-sub-title" data-wow-delay=".5s">
                                         <?php echo rt_kses_basic($settings['layout_eight_subtitle']); ?>
                                     </<?php echo esc_attr($settings['layout_eight_sub_title_tag']); ?>>
                                 <?php endif; ?>

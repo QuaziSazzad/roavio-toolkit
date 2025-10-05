@@ -94,7 +94,7 @@ class About extends Widget_Base
 		);
 
 		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six', 'layout_seven', 'layout_eight', 'layout_nine', 'layout_ten']);
-		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one']);
+		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one', 'layout_eight']);
 		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .about-right-item .content p,{{WRAPPER}} .adventure-wrapper .text,{{WRAPPER}} .about-content .text,{{WRAPPER}} .description', ['layout_one', 'layout_two', 'layout_four', 'layout_five', 'layout_six']);
 
 		roavio_elementor_style_options($this, 'Features List', '{{WRAPPER}} .list-item .list li', ['layout_one']);
@@ -108,8 +108,8 @@ class About extends Widget_Base
 		roavio_elementor_style_options($this, 'Price', '{{WRAPPER}} .booking-item .content h4', ['layout_two']);
 		roavio_elementor_style_options($this, 'Price Description', '{{WRAPPER}} .booking-item .content span', ['layout_two']);
 
-		roavio_elementor_style_options($this, 'Counter One Number', '{{WRAPPER}} .booking-item .content span', ['layout_three']);
-		roavio_elementor_style_options($this, 'Counter One Text', '{{WRAPPER}} .counter-main-box .content p', ['layout_three']);
+		roavio_elementor_style_options($this, 'Counter One Number', '{{WRAPPER}} .booking-item .content span, {{WRAPPER}} .right-box span', ['layout_three', 'layout_eight']);
+		roavio_elementor_style_options($this, 'Counter One Text', '{{WRAPPER}} .counter-main-box .content p,{{WRAPPER}} .right-box p', ['layout_three', 'layout_eight']);
 
 		roavio_elementor_style_options($this, 'Counter Two Number', '{{WRAPPER}} .right-box .count, {{WRAPPER}} .count-content .content h2', ['layout_three', 'layout_five']);
 		roavio_elementor_style_options($this, 'Counter Two Text', '{{WRAPPER}} .right-box p,{{WRAPPER}} .count-content p', ['layout_three', 'layout_five']);
@@ -118,6 +118,10 @@ class About extends Widget_Base
 
 		roavio_elementor_style_options($this, 'Tab Content', '{{WRAPPER}} .right-content .content p', ['layout_four', 'layout_six']);
 		roavio_elementor_style_options($this, 'Tab Features', '{{WRAPPER}} .right-content .content .list li', ['layout_four', 'layout_six']);
+
+		roavio_elementor_style_options($this, 'Travel Items Title', '{{WRAPPER}} .icon-item .content h5', ['layout_eight']);
+		roavio_elementor_style_options($this, 'Travel Items Description', '{{WRAPPER}} .icon-item .content p', ['layout_eight']);
+		roavio_elementor_style_options($this, 'Travel Items Icon', '{{WRAPPER}} .icon-item .icon i', ['layout_eight']);
 
 		$this->end_controls_section();
 
