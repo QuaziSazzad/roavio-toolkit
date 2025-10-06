@@ -241,6 +241,7 @@
            });
        }
 
+
     };
 
     //elementor front start
@@ -260,6 +261,127 @@
 
 
     });
+
+    /*-- Price Range --*/
+    function priceFilter() {
+        if ($(".price-ranger").length) {
+          // Cache DOM elements for better performance
+          const $slider = $(".price-ranger #slider-range");
+          const $minInput = $(".price-ranger .ranger-min-max-block .min");
+          const $maxInput = $(".price-ranger .ranger-min-max-block .max");
+          const $hiddenMinInput = $(".price-ranger .ranger-min-max-block input[name='min-price']");
+          const $hiddenMaxInput = $(".price-ranger .ranger-min-max-block input[name='max-price']");
+          const $filterForm = $(".filter-form");
+          
+          // Get min/max values from data attributes
+          const minPrice = $(".min-price-value").data("min-price-value");
+          const maxPrice = $(".max-price-value").data("max-price-value");
+          const currentMinPrice = $(".current-search-min-value").data("current-search-min-value");
+          const currentMaxPrice = $(".current-search-max-value").data("current-search-max-value");
+          
+          // Initialize slider
+          $slider.slider({
+            range: true,
+            min: minPrice,
+            max: maxPrice,
+            values: [currentMinPrice, currentMaxPrice],
+            slide: function(event, ui) {
+              // Update visible inputs with currency symbol
+              $minInput.val("$" + ui.values[0]);
+              $maxInput.val("$" + ui.values[1]);
+              
+              // Update hidden inputs with raw values
+              $hiddenMinInput.val(ui.values[0]);
+              $hiddenMaxInput.val(ui.values[1]);
+              
+              // Submit the form
+              $filterForm.submit();
+            }
+          });
+          
+          // Set initial values
+          const initialMinValue = $slider.slider("values", 0);
+          const initialMaxValue = $slider.slider("values", 1);
+          
+          // Update visible inputs with currency symbol
+          $minInput.val("$" + initialMinValue);
+          $maxInput.val("$" + initialMaxValue);
+          
+          // Update hidden inputs with raw values
+          $hiddenMinInput.val(initialMinValue);
+          $hiddenMaxInput.val(initialMaxValue);
+        }
+      }
+    
+      priceFilter();
+
+    /**
+     * Handle form filter changes and auto-submit
+     * Automatically submits the filter form when any input changes
+     */
+    function handleFilterFormChanges() {
+      if ($('.filter-form').length) {
+        // Listen for changes on radio buttons and select elements
+        $('.filter-form input[type="radio"], .filter-form select').on('change', function() {
+          $(this).closest('form').submit();
+        });
+        
+        // Listen for changes on checkboxes
+        $('.filter-form input[type="checkbox"]').on('change', function() {
+          $(this).closest('form').submit();
+        });
+        
+        // Handle date range picker if it exists
+        if ($('.filter-form input[name="date"]').length) {
+          $('.filter-form input[name="date"]').on('change', function() {
+            $(this).closest('form').submit();
+          });
+        }
+        
+        // Handle guest input changes
+        $('.filter-form input[name="guest"]').on('change keyup', function() {
+          // Use a small delay to prevent multiple submissions while typing
+          clearTimeout($(this).data('timeout'));
+          $(this).data('timeout', setTimeout(function() {
+            $('.filter-form').submit();
+          }, 800));
+        });
+      }
+    }
+    
+    // Initialize the filter form change handler
+    handleFilterFormChanges();
+
+    /**
+     * Handle sort dropdown changes
+     * Automatically submits the filter form when sort option changes
+     * and assigns the sort value to a hidden field in the filter form
+     */
+    function handleSortChanges() {
+      if ($('.sort').length) {
+        $('.sort').on('change', function() {
+          // Get the selected sort value
+          var sortValue = $(this).val();
+          
+          // Find the filter form
+          var $filterForm = $('.filter-form');
+          
+          // Check if hidden sort field exists, if not create it
+          if ($filterForm.find('input[name="sort"]').length === 0) {
+            $filterForm.append('<input type="hidden" name="sort" value="' + sortValue + '">');
+          } else {
+            // Update existing hidden field
+            $filterForm.find('input[name="sort"]').val(sortValue);
+          }
+          
+          // Submit the form
+          $filterForm.submit();
+        });
+      }
+    }
+    
+    // Initialize the sort change handler
+    handleSortChanges();
 
 
     $('.mc-form').on('submit', function (e) {

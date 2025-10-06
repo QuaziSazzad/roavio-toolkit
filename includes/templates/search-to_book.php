@@ -20,62 +20,18 @@ $date_parts = explode(' - ', $date_range);
 $start_date = isset($date_parts[0]) ? $date_parts[0] : '';
 $end_date = isset($date_parts[1]) ? $date_parts[1] : '';
 
-// Handle sorting by reviews
-$reviews_filter = isset($_GET['reviews']) ? sanitize_text_field($_GET['reviews']) : '';
+$ratings = isset($_GET['reviews']) ? (array) $_GET['reviews'] : array();
 
-// Prepare meta query for reviews filtering
-$meta_query = array();
-
+// Handle reviews filtering
+$reviews_filter = isset($_GET['reviews']) ? (array) $_GET['reviews'] : array();
+// Sanitize each review value
 if (!empty($reviews_filter)) {
-    switch ($reviews_filter) {
-        case '5':
-            $meta_query[] = array(
-                'key' => '_babe_rating',
-                'value' => 5,
-                'compare' => '=',
-                'type' => 'NUMERIC'
-            );
-            break;
-        case '4':
-            $meta_query[] = array(
-                'key' => '_babe_rating',
-                'value' => 4,
-                'compare' => '=',
-                'type' => 'NUMERIC'
-            );
-            break;
-        case '3':
-            $meta_query[] = array(
-                'key' => '_babe_rating',
-                'value' => 3,
-                'compare' => '=',
-                'type' => 'NUMERIC'
-            );
-            break;
-        case '2':
-            $meta_query[] = array(
-                'key' => '_babe_rating',
-                'value' => 2,
-                'compare' => '=',
-                'type' => 'NUMERIC'
-            );
-            break;
-        case '1':
-            $meta_query[] = array(
-                'key' => '_babe_rating',
-                'value' => 1,
-                'compare' => '=',
-                'type' => 'NUMERIC'
-            );
-            break;
-        case 'any':
-            $meta_query[] = array(
-                'key' => '_babe_rating',
-                'compare' => 'EXISTS',
-            );
-            break;
+    foreach ($reviews_filter as $key => $review) {
+        $reviews_filter[$key] = sanitize_text_field($review);
     }
 }
+
+
 
 
 // Build query arguments for searching posts
@@ -83,6 +39,31 @@ $args = array(
     'post_type' => $post_type,
     's' => $search_query,
 );
+
+$selected_ratings = array();
+if (! empty($ratings)) {
+    $rating_meta_query = array(
+        'relation' => 'OR',
+    );
+
+    foreach ($ratings as $rating) {
+        $rating_value = floatval($rating);
+        if ($rating_value >= 1 && $rating_value <= 5) {
+            $rating_meta_query[] = array(
+                'key' => '_rating', // Replace with your custom rating field key
+                'value' => $rating_value,
+                'compare' => '=', // You may adjust this if needed (e.g., '>=', '<=', etc.)
+                'type' => 'NUMERIC',
+            );
+            $selected_ratings[] = $rating_value;
+        }
+    }
+
+    if (! empty($rating_meta_query)) {
+        $args['meta_query'][] = $rating_meta_query;
+    }
+}
+
 
 // Handle location filtering
 $selected_location = array();
@@ -162,47 +143,88 @@ if (! empty($start_date) && ! empty($end_date)) {
     );
 }
 
-// Handle price range filtering
-if ($min_price > 0) {
-    $args['meta_query'][] = array(
-        'key' => 'roavio_general_price',
-        'value' => $min_price,
-        'compare' => '>=',
-        'type' => 'NUMERIC',
-    );
-}
-
-if ($max_price < PHP_INT_MAX) {
-    $args['meta_query'][] = array(
-        'key' => 'roavio_general_price',
-        'value' => $max_price,
-        'compare' => '<=',
-        'type' => 'NUMERIC',
-    );
-}
+// Note: Price filtering will be applied after the query using BABE's price system
+// We cannot filter by price in WP_Query because BABE stores prices in custom tables
 
 // Handle sorting
 $args['orderby'] = 'date'; // Default sorting by date
-if ($sort === 'price') {
-    $args['orderby'] = 'meta_value_num';
-    $args['meta_key'] = 'roavio_general_price';
-} elseif ($sort === 'rating') {
+if ($sort === 'rating') {
     $args['orderby'] = 'meta_value_num';
     $args['meta_key'] = '_rating';
 } elseif ($sort === 'title') {
     $args['orderby'] = 'title';
 }
+// Note: Price sorting will be handled after query using BABE prices
 $args['order'] = $order; // Sorting order (ASC or DESC)
 
-// Pagination
-$blog_post_one_query_paged = get_query_var('paged') ? get_query_var('paged') : 1;
-$args['paged'] = $blog_post_one_query_paged;
-$args['posts_per_page'] = -1; // Show 6 items per page
+// Pagination settings
+$posts_per_page = 9; // Number of items per page
+$current_page = get_query_var('paged') ? get_query_var('paged') : 1;
+$args['posts_per_page'] = -1; // Get all posts first, we'll paginate after filtering
 
 // Execute the query
 $custom_query = new WP_Query($args);
 
-$total_post_count = $custom_query->found_posts;
+// Apply price filtering and sorting using BABE prices
+$filtered_posts = array();
+if ($custom_query->have_posts()) {
+    while ($custom_query->have_posts()) {
+        $custom_query->the_post();
+        $post_id = get_the_ID();
+
+        // Get BABE price for this post
+        $prices = array();
+        if (class_exists('BABE_Post_types')) {
+            $prices = BABE_Post_types::get_post_price_from($post_id);
+        }
+
+        // Get the actual price (use discount price if available, otherwise regular price)
+        $actual_price = 0;
+        if (!empty($prices)) {
+            $actual_price = isset($prices['discount_price_from']) && $prices['discount_price_from'] > 0
+                ? $prices['discount_price_from']
+                : (isset($prices['price_from']) ? $prices['price_from'] : 0);
+        }
+
+        // Apply price filtering
+        $price_matches = true;
+        if ($min_price > 0 && $actual_price < $min_price) {
+            $price_matches = false;
+        }
+        if ($max_price < PHP_INT_MAX && $actual_price > $max_price) {
+            $price_matches = false;
+        }
+
+        // Only include posts that match price criteria
+        if ($price_matches) {
+            $filtered_posts[] = array(
+                'post' => get_post($post_id),
+                'price' => $actual_price
+            );
+        }
+    }
+    wp_reset_postdata();
+
+    // Sort by price if requested
+    if ($sort === 'price') {
+        usort($filtered_posts, function ($a, $b) use ($order) {
+            if ($order === 'ASC') {
+                return $a['price'] <=> $b['price'];
+            } else {
+                return $b['price'] <=> $a['price'];
+            }
+        });
+    }
+}
+
+// Calculate pagination
+$total_post_count = count($filtered_posts);
+$total_pages = ceil($total_post_count / $posts_per_page);
+
+// Slice the filtered posts for current page
+$offset = ($current_page - 1) * $posts_per_page;
+$paged_posts = array_slice($filtered_posts, $offset, $posts_per_page);
+
 $properties = sprintf(
     _n('%d Item', '%d Items', $total_post_count, 'roavio-toolkit'),
     $total_post_count
@@ -219,126 +241,165 @@ $properties = sprintf(
             <div class="row">
                 <div class="col-lg-3 col-12 order-2 order-xl-1">
                     <div class="sticky-style">
-                        <div class="tour-main-sideber">
-                            <div class="tour-sidebar-items">
-                                <div class="widget-title">
-                                    <h4>Filter by Price</h4>
-                                </div>
-                                <div class="price-filter-wrap">
-                                    <div class="price-slider-range"></div>
-                                    <div class="price">
-                                        <span>Price </span>
-                                        <input type="text" id="price" readonly>
+                        <form class="filter-form" action="<?php echo esc_url(home_url('/')); ?>" method="get">
+                            <div class="tour-main-sideber">
+                                <div class="tour-sidebar-items">
+                                    <div class="widget-title">
+                                        <h4>Filter by Price</h4>
+                                    </div>
+                                    <div class="price-ranger">
+                                        <div id="slider-range"></div>
+                                        <div class="ranger-min-max-block">
+                                            <input type="text" readonly class="min">
+                                            <input type="text" readonly class="max">
+                                            <input type="hidden" name="min-price">
+                                            <input type="hidden" name="max-price">
+                                            <input type="hidden" class="current-search-min-value" data-current-search-min-value="<?php echo esc_attr($min_price); ?>">
+                                            <input type="hidden" class="current-search-max-value" data-current-search-max-value="<?php echo esc_attr($max_price); ?>">
+                                            <?php
+                                            global $wpdb;
+
+                                            // Get min and max prices from BABE rates table
+                                            $min_price_query = 0;
+                                            $max_price_query = 1000;
+
+                                            if (class_exists('BABE_Functions')) {
+                                                $rates_table = $wpdb->prefix . 'babe_rates';
+
+                                                // Query to get minimum and maximum prices from BABE rates
+                                                $sql = "SELECT 
+                                                        MIN(t_rate.price_from) AS min_price,
+                                                        MAX(t_rate.price_from) AS max_price
+                                                    FROM {$rates_table} t_rate
+                                                    INNER JOIN {$wpdb->posts} ON {$wpdb->posts}.ID = t_rate.booking_obj_id
+                                                    WHERE {$wpdb->posts}.post_type = 'to_book'
+                                                    AND {$wpdb->posts}.post_status = 'publish'
+                                                    AND t_rate.price_from > 0
+                                                ";
+
+                                                // Execute the SQL query
+                                                $prices = $wpdb->get_row($sql);
+
+                                                $min_price_query = !empty($prices->min_price) ? $prices->min_price : 0;
+                                                $max_price_query = !empty($prices->max_price) ? $prices->max_price : 1000;
+                                            }
+                                            ?>
+                                            <input type="hidden" class="min-price-value" data-min-price-value="<?php echo esc_attr(round($min_price_query)); ?>">
+                                            <input type="hidden" class="max-price-value" data-max-price-value="<?php echo esc_attr(round($max_price_query)); ?>">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="tour-sidebar-items">
-                                <div class="widget-title">
-                                    <h4>Location</h4>
+                                <div class="tour-sidebar-items">
+                                    <div class="widget-title">
+                                        <h4>Location</h4>
+                                    </div>
+                                    <ul class="radio-filter">
+                                        <?php
+                                        $locations = get_terms('ba_location', array('hide_empty' => false));
+                                        foreach ($locations as $location) {
+                                            $checked = in_array($location->slug, $selected_location) ? 'checked' : '';
+                                            $location_id = 'location_' . $location->term_id;
+                                        ?>
+                                            <li>
+                                                <input class="form-check-input" type="checkbox" <?php echo esc_attr($checked); ?> name="location[]" id="<?php echo esc_attr($location_id); ?>" value="<?php echo esc_attr($location->slug); ?>">
+                                                <label for="<?php echo esc_attr($location_id); ?>"><?php echo esc_html($location->name); ?></label>
+                                            </li>
+                                        <?php
+                                        }
+                                        ?>
+                                    </ul>
                                 </div>
-                                <ul class="radio-filter">
-                                    <?php
-                                    $locations = get_terms('ba_location', array('hide_empty' => false));
-                                    foreach ($locations as $location) {
-                                        $checked = in_array($location->slug, $selected_location) ? 'checked' : '';
-                                    ?>
+
+                                <div class="tour-sidebar-items">
+                                    <div class="widget-title">
+                                        <h4>Tour Types</h4>
+                                    </div>
+                                    <ul class="radio-filter">
+                                        <?php
+                                        $ba_types = get_terms('ba_type', array('hide_empty' => false));
+                                        foreach ($ba_types as $type) {
+                                            $checked = in_array($type->slug, $selected_types) ? 'checked' : '';
+                                            $type_id = 'type_' . $type->term_id;
+                                        ?>
+                                            <li>
+                                                <input class="form-check-input" type="checkbox" <?php echo esc_attr($checked); ?> name="type[]" id="<?php echo esc_attr($type_id); ?>" value="<?php echo esc_attr($type->slug); ?>">
+                                                <label for="<?php echo esc_attr($type_id); ?>"><?php echo esc_html($type->name); ?></label>
+                                            </li>
+                                        <?php } ?>
+                                    </ul>
+                                </div>
+
+                                <div class="tour-sidebar-items border-none">
+                                    <div class="widget-title">
+                                        <h4>By Reviews</h4>
+                                    </div>
+                                    <ul class="radio-filter">
                                         <li>
-                                            <input class="form-check-input" type="radio" <?php echo esc_attr($checked); ?> name="location" id="location" value="<?php echo esc_attr($location->slug); ?>">
-                                            <label for="location"><?php echo esc_html($location->name); ?></label>
+                                            <input class="form-check-input" value="5" type="checkbox" <?php echo (is_array($reviews_filter) && in_array('5', $reviews_filter)) ? 'checked' : ''; ?> name="reviews[]" id="review24">
+                                            <label for="review24">
+                                                <span class="ratting">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </span>
+                                            </label>
                                         </li>
-                                    <?php
-                                    }
-                                    ?>
-                                </ul>
-                            </div>
-
-                            <div class="tour-sidebar-items">
-                                <div class="widget-title">
-                                    <h4>Tour Types</h4>
-                                </div>
-                                <ul class="radio-filter">
-                                    <?php
-                                    $ba_types = get_terms('ba_type', array('hide_empty' => false));
-                                    foreach ($ba_types as $type) {
-                                        $checked = in_array($type->slug, $selected_types) ? 'checked' : '';
-                                    ?>
                                         <li>
-                                            <input class="form-check-input" type="radio" <?php echo esc_attr($checked); ?> name="type" id="type" value="<?php echo esc_attr($type->slug); ?>">
-                                            <label for="type">Daily Tours</label>
+                                            <input class="form-check-input" value="4" type="checkbox" <?php echo (is_array($reviews_filter) && in_array('4', $reviews_filter)) ? 'checked' : ''; ?> name="reviews[]" id="review25">
+                                            <label for="review25">
+                                                <span class="ratting">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt white"></i>
+                                                </span>
+                                            </label>
                                         </li>
-                                    <?php } ?>
-                                </ul>
-                            </div>
-
-                            <div class="tour-sidebar-items border-none">
-                                <div class="widget-title">
-                                    <h4>By Reviews</h4>
+                                        <li>
+                                            <input class="form-check-input" value="3" type="checkbox" <?php echo (is_array($reviews_filter) && in_array('3', $reviews_filter)) ? 'checked' : ''; ?> name="reviews[]" id="review26">
+                                            <label for="review26">
+                                                <span class="ratting">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star white"></i>
+                                                    <i class="fas fa-star-half-alt white"></i>
+                                                </span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input class="form-check-input" value="2" type="checkbox" <?php echo (is_array($reviews_filter) && in_array('2', $reviews_filter)) ? 'checked' : ''; ?> name="reviews[]" id="review27">
+                                            <label for="review27">
+                                                <span class="ratting">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star white"></i>
+                                                    <i class="fas fa-star white"></i>
+                                                    <i class="fas fa-star-half-alt white"></i>
+                                                </span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input class="form-check-input" value="1" type="checkbox" <?php echo (is_array($reviews_filter) && in_array('1', $reviews_filter)) ? 'checked' : ''; ?> name="reviews[]" id="review28">
+                                            <label for="review28">
+                                                <span class="ratting">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star white"></i>
+                                                    <i class="fas fa-star white"></i>
+                                                    <i class="fas fa-star white"></i>
+                                                    <i class="fas fa-star-half-alt white"></i>
+                                                </span>
+                                            </label>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="radio-filter">
-                                    <li>
-                                        <input class="form-check-input" value="5" type="radio" <?php (isset($_GET['reviews']) && $_GET['reviews'] == '5') ? 'checked' : ''; ?> name="reviews" id="review24">
-                                        <label for="review24">
-                                            <span class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input class="form-check-input" value="4" type="radio" <?php (isset($_GET['reviews']) && $_GET['reviews'] == '4') ? 'checked' : ''; ?> name="reviews" id="review25">
-                                        <label for="review25">
-                                            <span class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half-alt white"></i>
-                                            </span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input class="form-check-input" value="3" <?php (isset($_GET['reviews']) && $_GET['reviews'] == '3') ? 'checked' : ''; ?> type="radio" name="reviews" id="review26">
-                                        <label for="review26">
-                                            <span class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star white"></i>
-                                                <i class="fas fa-star-half-alt white"></i>
-                                            </span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input class="form-check-input" value="2" <?php (isset($_GET['reviews']) && $_GET['reviews'] == '2') ? 'checked' : ''; ?> type="radio" name="reviews" id="review27">
-                                        <label for="review27">
-                                            <span class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star white"></i>
-                                                <i class="fas fa-star white"></i>
-                                                <i class="fas fa-star-half-alt white"></i>
-                                            </span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input class="form-check-input" value="1" <?php (isset($_GET['reviews']) && $_GET['reviews'] == '1') ? 'checked' : ''; ?> type="radio" name="reviews" id="review28">
-                                        <label for="review28">
-                                            <span class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star white"></i>
-                                                <i class="fas fa-star white"></i>
-                                                <i class="fas fa-star white"></i>
-                                                <i class="fas fa-star-half-alt white"></i>
-                                            </span>
-                                        </label>
-                                    </li>
-                                </ul>
                             </div>
-                        </div>
+                            <input type="hidden" name="filter" value="yes">
+                        </form>
                         <div class="tour-sidebar-bg-image-items">
                             <img src="assets/img/inner-page/tour-sidebar/sidebar-image.jpg" alt="img">
                             <div class="tour-bg-content">
@@ -367,18 +428,22 @@ $properties = sprintf(
                                         </a>
                                     </li>
                                 </ul>
-                                <p>34 Tours found</p>
+                                <p><?php echo esc_html($properties); ?></p>
                             </div>
                             <div class="right-item">
-                                <select class="selectpicker sort " name="sort" tabindex="null">
+                                <h6>Sort By</h6>
+                                <select class="sort short-select" name="sort" tabindex="null">
                                     <option value="date" <?php echo (isset($_GET['sort']) && $_GET['sort'] === 'date') ? 'selected' : ''; ?>>
-                                        <?php esc_html_e('Sort by publish date', 'roavio-toolkit'); ?>
+                                        <?php esc_html_e('Publish date', 'roavio-toolkit'); ?>
+                                    </option>
+                                    <option value="price" <?php echo (isset($_GET['sort']) && $_GET['sort'] === 'price') ? 'selected' : ''; ?>>
+                                        <?php esc_html_e('Price', 'roavio-toolkit'); ?>
                                     </option>
                                     <option value="rating" <?php echo (isset($_GET['sort']) && $_GET['sort'] === 'rating') ? 'selected' : ''; ?>>
-                                        <?php esc_html_e('Sort by ratings', 'roavio-toolkit'); ?>
+                                        <?php esc_html_e('Ratings', 'roavio-toolkit'); ?>
                                     </option>
                                     <option value="title" <?php echo (isset($_GET['sort']) && $_GET['sort'] === 'title') ? 'selected' : ''; ?>>
-                                        <?php esc_html_e('Sort by title', 'roavio-toolkit'); ?>
+                                        <?php esc_html_e('Title', 'roavio-toolkit'); ?>
                                     </option>
                                 </select>
                             </div>
@@ -388,9 +453,14 @@ $properties = sprintf(
                                 <div class="row">
                                     <?php
                                     // Check if there are properties to display
-                                    if ($custom_query->have_posts()) :
-                                        while ($custom_query->have_posts()) : $custom_query->the_post();
-                                            $post_id = get_the_ID();
+                                    if (!empty($paged_posts)) :
+                                        foreach ($paged_posts as $filtered_item) :
+                                            $post = $filtered_item['post'];
+                                            $post_id = $post->ID;
+
+                                            // Setup post data
+                                            setup_postdata($post);
+
                                             // Get property data
                                             $ba_post_meta = BABE_Post_types::get_post($post_id);
 
@@ -401,7 +471,10 @@ $properties = sprintf(
                                             }
 
                                             $discount = isset($ba_post_meta['discount']['discount']) && $ba_post_meta['discount']['discount'] ? $ba_post_meta['discount']['discount'] : false;
-                                            $tour_meta = get_post_meta(get_the_ID(), 'roavio_tour_meta', true);
+                                            $tour_meta = get_post_meta($post_id, 'roavio_tour_meta', true);
+                                            $discount_price_from = isset($prices['discount_price_from']) ? $prices['discount_price_from'] : false;
+                                            $price_from = isset($prices['price_from']) ? $prices['price_from'] : false;
+
                                             $discount_price_from = isset($prices['discount_price_from']) ? $prices['discount_price_from'] : false;
                                             $price_from = isset($prices['price_from']) ? $prices['price_from'] : false;
                                     ?>
@@ -420,7 +493,17 @@ $properties = sprintf(
                                                                 <i class="fa-solid fa-star"></i>
                                                                 (4.8)
                                                             </div>
-                                                            <h5><span>Price</span>$49.00</h5>
+                                                            <h5>
+                                                                <span>Price</span>
+                                                                <?php if (!empty($discount_price_from)) {
+                                                                    echo BABE_Currency::get_currency_price($prices['discount_price_from']);
+                                                                } elseif (!empty($price_from)) {
+                                                                    echo BABE_Currency::get_currency_price($prices['price_from']);
+                                                                } else {
+                                                                    echo BABE_Currency::get_currency_price(0);
+                                                                }
+                                                                ?>
+                                                            </h5>
                                                         </div>
                                                         <h3>
                                                             <a href="<?php the_permalink(); ?>">
@@ -445,11 +528,12 @@ $properties = sprintf(
                                             </div>
 
                                         <?php
-                                        endwhile;
+                                        endforeach;
+                                        wp_reset_postdata();
                                     else:
                                         ?>
                                         <div class="col-12">
-                                            <div class="alert alert-info">
+                                            <div class="alert alert-info no-properties-found">
                                                 <p><?php esc_html_e('No properties found matching your criteria.', 'roavio-toolkit'); ?></p>
                                             </div>
                                         </div>
@@ -459,9 +543,14 @@ $properties = sprintf(
                             <div id="list" class="tab-pane fade">
                                 <?php
                                 // Check if there are properties to display
-                                if ($custom_query->have_posts()) :
-                                    while ($custom_query->have_posts()) : $custom_query->the_post();
-                                        $post_id = get_the_ID();
+                                if (!empty($paged_posts)) :
+                                    foreach ($paged_posts as $filtered_item) :
+                                        $post = $filtered_item['post'];
+                                        $post_id = $post->ID;
+
+                                        // Setup post data
+                                        setup_postdata($post);
+
                                         // Get property data
                                         $ba_post_meta = BABE_Post_types::get_post($post_id);
 
@@ -472,7 +561,7 @@ $properties = sprintf(
                                         }
 
                                         $discount = isset($ba_post_meta['discount']['discount']) && $ba_post_meta['discount']['discount'] ? $ba_post_meta['discount']['discount'] : false;
-                                        $tour_meta = get_post_meta(get_the_ID(), 'roavio_tour_meta', true);
+                                        $tour_meta = get_post_meta($post_id, 'roavio_tour_meta', true);
                                         $discount_price_from = isset($prices['discount_price_from']) ? $prices['discount_price_from'] : false;
                                         $price_from = isset($prices['price_from']) ? $prices['price_from'] : false;
                                 ?>
@@ -514,26 +603,133 @@ $properties = sprintf(
                                             </div>
                                         </div>
                                     <?php
-                                    endwhile;
+                                    endforeach;
+                                    wp_reset_postdata();
                                 else:
                                     ?>
                                     <div class="col-12">
-                                        <div class="alert alert-info">
+                                        <div class="alert alert-info no-properties-found">
                                             <p><?php esc_html_e('No properties found matching your criteria.', 'roavio-toolkit'); ?></p>
                                         </div>
                                     </div>
                                 <?php endif; ?>
                             </div>
                         </div>
-                        <div class="page-nav-wrap">
-                            <ul>
-                                <li><a class="page-numbers active" href="#"><i class="fa-solid fa-chevron-left"></i></a></li>
-                                <li><a class="page-numbers" href="#">1</a></li>
-                                <li><a class="page-numbers" href="#">2</a></li>
-                                <li><a class="page-numbers" href="#">3</a></li>
-                                <li><a class="page-numbers style-2" href="#"><i class="fa-solid fa-chevron-right"></i></a></li>
-                            </ul>
-                        </div>
+                        <?php if ($total_pages > 1) : ?>
+                            <div class="page-nav-wrap">
+                                <ul>
+                                    <?php
+                                    // Build query string with all current filters
+                                    $query_args = array_filter(array(
+                                        'post_type' => $post_type,
+                                        's' => $search_query,
+                                        'location' => isset($_GET['location']) ? $_GET['location'] : '',
+                                        'guest' => $guests,
+                                        'type' => isset($_GET['type']) ? $_GET['type'] : '',
+                                        'min-price' => $min_price > 0 ? $min_price : '',
+                                        'max-price' => $max_price < PHP_INT_MAX ? $max_price : '',
+                                        'date' => $date_range,
+                                        'reviews' => isset($_GET['reviews']) ? $_GET['reviews'] : '',
+                                        'sort' => $sort,
+                                        'order' => $order,
+                                    ));
+
+                                    // Previous page button
+                                    if ($current_page > 1) :
+                                        $prev_args = $query_args;
+                                        $prev_args['paged'] = $current_page - 1;
+                                        $prev_url = add_query_arg($prev_args, home_url('/'));
+                                    ?>
+                                        <li>
+                                            <a class="page-numbers" href="<?php echo esc_url($prev_url); ?>">
+                                                <i class="fa-solid fa-chevron-left"></i>
+                                            </a>
+                                        </li>
+                                    <?php else : ?>
+                                        <li>
+                                            <span class="page-numbers disabled">
+                                                <i class="fa-solid fa-chevron-left"></i>
+                                            </span>
+                                        </li>
+                                    <?php endif; ?>
+
+                                    <?php
+                                    // Page numbers
+                                    $range = 2; // Number of pages to show on each side of current page
+                                    $start_page = max(1, $current_page - $range);
+                                    $end_page = min($total_pages, $current_page + $range);
+
+                                    // Show first page if not in range
+                                    if ($start_page > 1) :
+                                        $first_args = $query_args;
+                                        $first_args['paged'] = 1;
+                                        $first_url = add_query_arg($first_args, home_url('/'));
+                                    ?>
+                                        <li>
+                                            <a class="page-numbers" href="<?php echo esc_url($first_url); ?>">1</a>
+                                        </li>
+                                        <?php if ($start_page > 2) : ?>
+                                            <li><span class="page-numbers">...</span></li>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+
+                                    <?php
+                                    // Show page numbers in range
+                                    for ($i = $start_page; $i <= $end_page; $i++) :
+                                        if ($i == $current_page) :
+                                    ?>
+                                            <li>
+                                                <a class="page-numbers active" href="#"><?php echo esc_html($i); ?></a>
+                                            </li>
+                                        <?php else :
+                                            $page_args = $query_args;
+                                            $page_args['paged'] = $i;
+                                            $page_url = add_query_arg($page_args, home_url('/'));
+                                        ?>
+                                            <li>
+                                                <a class="page-numbers" href="<?php echo esc_url($page_url); ?>"><?php echo esc_html($i); ?></a>
+                                            </li>
+                                        <?php endif; ?>
+                                    <?php endfor; ?>
+
+                                    <?php
+                                    // Show last page if not in range
+                                    if ($end_page < $total_pages) :
+                                        if ($end_page < $total_pages - 1) :
+                                    ?>
+                                            <li><span class="page-numbers">...</span></li>
+                                        <?php endif;
+                                        $last_args = $query_args;
+                                        $last_args['paged'] = $total_pages;
+                                        $last_url = add_query_arg($last_args, home_url('/'));
+                                        ?>
+                                        <li>
+                                            <a class="page-numbers" href="<?php echo esc_url($last_url); ?>"><?php echo esc_html($total_pages); ?></a>
+                                        </li>
+                                    <?php endif; ?>
+
+                                    <?php
+                                    // Next page button
+                                    if ($current_page < $total_pages) :
+                                        $next_args = $query_args;
+                                        $next_args['paged'] = $current_page + 1;
+                                        $next_url = add_query_arg($next_args, home_url('/'));
+                                    ?>
+                                        <li>
+                                            <a class="page-numbers style-2" href="<?php echo esc_url($next_url); ?>">
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </a>
+                                        </li>
+                                    <?php else : ?>
+                                        <li>
+                                            <span class="page-numbers style-2 disabled">
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </span>
+                                        </li>
+                                    <?php endif; ?>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

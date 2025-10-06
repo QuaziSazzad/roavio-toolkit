@@ -71,6 +71,8 @@ class Roavio_Assets
 	 */
 	public function enqueue_scripts()
 	{
+		// Properly enqueue jQuery UI with its CSS
+		wp_enqueue_script('jquery-ui-slider');
 		wp_enqueue_script('magnific-popup');
 		wp_enqueue_script('appear');
 		wp_enqueue_script('nice-select');
