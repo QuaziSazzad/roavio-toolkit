@@ -2,6 +2,7 @@
 
 namespace RoavioToolkit\ElementorAddon\Widgets;
 
+
 use Elementor\Widget_Base;
 
 class Tour extends Widget_Base
@@ -53,6 +54,8 @@ class Tour extends Widget_Base
 					'layout_two' => __('Layout Two', 'roavio-toolkit'),
 					'layout_three' => __('Layout Three', 'roavio-toolkit'),
 					'layout_four' => __('Layout Four', 'roavio-toolkit'),
+					'layout_five' => __('Layout Five', 'roavio-toolkit'),
+					'layout_six' => __('Layout Six', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -60,14 +63,17 @@ class Tour extends Widget_Base
 		$this->add_control(
 			'post_type',
 			[
-				'label'       => esc_html__('Post Type', 'travhub-core'),
+				'label'       => esc_html__('Post Type', 'roavio-toolkit'),
 				'type'        => \Elementor\Controls_Manager::SELECT,
 				'label_block' => false,
 				'options'     => [
-					'cpt'   => esc_html__('Tour Type', 'travhub-core'),
-					'elementor-field'   => esc_html__('With Elementor', 'travhub-core'),
+					'cpt'   => esc_html__('Tour Type', 'roavio-toolkit'),
+					'elementor-field'   => esc_html__('With Elementor', 'roavio-toolkit'),
 				],
 				'default'     => 'cpt',
+				'condition'   => [
+					'layout_type' => ['layout_one', 'layout_two', 'layout_three', 'layout_four'],
+				],
 
 			]
 		);
@@ -128,5 +134,7 @@ class Tour extends Widget_Base
 		include rt_get_elementor_template('tour-two.php');
 		include rt_get_elementor_template('tour-three.php');
 		include rt_get_elementor_template('tour-four.php');
+		include rt_get_elementor_template('tour-five.php');
+		include rt_get_elementor_template('tour-six.php');
 	}
 }

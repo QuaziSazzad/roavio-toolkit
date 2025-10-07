@@ -9,7 +9,7 @@ $this->start_controls_section(
 		'label' => esc_html__('Content', 'roavio-addon'),
 		'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 		'condition' => [
-			'layout_type' => ['layout_one', 'layout_two', 'layout_three', 'layout_four'],
+			'layout_type' => ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six'],
 		]
 	]
 );
@@ -195,9 +195,25 @@ $this->add_control(
 		'return_value' => 'yes',
 		'default' => 'no',
 		'condition' => [
-			'layout_type' => ['layout_one']
+			'layout_type' => ['layout_five', 'layout_six']
 		]
 
+	]
+);
+
+$this->add_control(
+	'button_label',
+	[
+		'label' => esc_html__('Button Label', 'roavio-addon'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'rows' => '2',
+		'placeholder' => esc_html__('Button Label', 'roavio-addon'),
+		'default' => esc_html__('Book Now', 'roavio-addon'),
+		'description' => esc_html__('Keep empty to use default title', 'roavio-addon'),
+		'label_block' => true,
+		'condition' => [
+			'layout_type' => 'layout_six'
+		]
 	]
 );
 

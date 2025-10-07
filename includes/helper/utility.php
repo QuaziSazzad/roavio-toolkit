@@ -23,6 +23,7 @@ class Utility
 	}
 	public function set_image_size()
 	{
+		add_image_size('roavio_blog_406X267', 406, 267, true); //in use
 		add_image_size('roavio_blog_410X270', 410, 270, true); //in use
 		add_image_size('roavio_blog_300X200', 300, 200, true); //in use
 		// add_image_size('roavio_blog_410X270', 410, 270, true); //in use

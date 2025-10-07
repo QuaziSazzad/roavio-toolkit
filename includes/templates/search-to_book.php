@@ -234,8 +234,29 @@ $properties = sprintf(
 <section class="tour-sidebar-section section-padding">
     <div class="container">
         <div class="section-title text-center">
-            <h2 class="wow fadeInUp" data-wow-delay=".3s">Uncover Unique Tours Places</h2>
-            <p class="wow fadeInUp" data-wow-delay=".5s">One site <span class="count">30,500</span><b>+</b> most popular experience you’ll remember</p>
+            <?php
+
+            use RoavioTheme\Classes\Roavio_Helper as Helper;
+
+            $tour_search_title = Helper::get_option('tour_search_title', 'Uncover Unique Tours Places');
+            $tour_search_subtitle_prefix = Helper::get_option('tour_search_subtitle_prefix', 'One site');
+            $tour_search_count = Helper::get_option('tour_search_count', '30,500');
+            $tour_search_subtitle_suffix = Helper::get_option('tour_search_subtitle_suffix', 'most popular experience you\'ll remember');
+            ?>
+            <?php if (!empty($tour_search_title)) : ?>
+                <h2 class="wow fadeInUp" data-wow-delay=".3s"><?php echo esc_html($tour_search_title); ?></h2>
+            <?php endif; ?>
+            <p class="wow fadeInUp" data-wow-delay=".5s">
+                <?php if (!empty($tour_search_subtitle_prefix)) : ?>
+                    <?php echo esc_html($tour_search_subtitle_prefix); ?>
+                <?php endif; ?>
+                <?php if (!empty($tour_search_count)) : ?>
+                    <span class="count"><?php echo esc_html($tour_search_count); ?></span><b>+</b>
+                <?php endif; ?>
+                <?php if (!empty($tour_search_subtitle_suffix)) : ?>
+                    <?php echo esc_html($tour_search_subtitle_suffix); ?>
+                <?php endif; ?>
+            </p>
         </div>
         <div class="tour-sidebar-wrapper">
             <div class="row">
@@ -245,7 +266,7 @@ $properties = sprintf(
                             <div class="tour-main-sideber">
                                 <div class="tour-sidebar-items">
                                     <div class="widget-title">
-                                        <h4>Filter by Price</h4>
+                                        <h4><?php echo esc_html(Helper::get_option('tour_filter_price_title', 'Filter by Price')); ?></h4>
                                     </div>
                                     <div class="price-ranger">
                                         <div id="slider-range"></div>
@@ -292,7 +313,7 @@ $properties = sprintf(
 
                                 <div class="tour-sidebar-items">
                                     <div class="widget-title">
-                                        <h4>Location</h4>
+                                        <h4><?php echo esc_html(Helper::get_option('tour_filter_location_title', 'Location')); ?></h4>
                                     </div>
                                     <ul class="radio-filter">
                                         <?php
@@ -313,7 +334,7 @@ $properties = sprintf(
 
                                 <div class="tour-sidebar-items">
                                     <div class="widget-title">
-                                        <h4>Tour Types</h4>
+                                        <h4><?php echo esc_html(Helper::get_option('tour_filter_types_title', 'Tour Types')); ?></h4>
                                     </div>
                                     <ul class="radio-filter">
                                         <?php
@@ -332,7 +353,7 @@ $properties = sprintf(
 
                                 <div class="tour-sidebar-items border-none">
                                     <div class="widget-title">
-                                        <h4>By Reviews</h4>
+                                        <h4><?php echo esc_html(Helper::get_option('tour_filter_reviews_title', 'By Reviews')); ?></h4>
                                     </div>
                                     <ul class="radio-filter">
                                         <li>
@@ -355,7 +376,7 @@ $properties = sprintf(
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt white"></i>
+                                                    <i class="far fa-star"></i>
                                                 </span>
                                             </label>
                                         </li>
@@ -366,8 +387,8 @@ $properties = sprintf(
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star white"></i>
-                                                    <i class="fas fa-star-half-alt white"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
                                                 </span>
                                             </label>
                                         </li>
@@ -377,9 +398,9 @@ $properties = sprintf(
                                                 <span class="ratting">
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star white"></i>
-                                                    <i class="fas fa-star white"></i>
-                                                    <i class="fas fa-star-half-alt white"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
                                                 </span>
                                             </label>
                                         </li>
@@ -388,10 +409,10 @@ $properties = sprintf(
                                             <label for="review28">
                                                 <span class="ratting">
                                                     <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star white"></i>
-                                                    <i class="fas fa-star white"></i>
-                                                    <i class="fas fa-star white"></i>
-                                                    <i class="fas fa-star-half-alt white"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
                                                 </span>
                                             </label>
                                         </li>
@@ -400,16 +421,34 @@ $properties = sprintf(
                             </div>
                             <input type="hidden" name="filter" value="yes">
                         </form>
-                        <div class="tour-sidebar-bg-image-items">
-                            <img src="assets/img/inner-page/tour-sidebar/sidebar-image.jpg" alt="img">
-                            <div class="tour-bg-content">
-                                <span>xplore The World</span>
-                                <h3>
-                                    <a href="tour-details.html">Best Tourist Place</a>
-                                </h3>
-                                <a href="tour-details.html" class="theme-btn">Explore Tours</a>
+                        <?php
+                        $sidebar_image = Helper::get_option('tour_sidebar_image', '');
+                        $sidebar_tagline = Helper::get_option('tour_sidebar_tagline', 'Explore The World');
+                        $sidebar_title = Helper::get_option('tour_sidebar_title', 'Best Tourist Place');
+                        $sidebar_link = Helper::get_option('tour_sidebar_link', '#');
+                        $sidebar_button_text = Helper::get_option('tour_sidebar_button_text', 'Explore Tours');
+                        $sidebar_button_link = Helper::get_option('tour_sidebar_button_link', '#');
+                        $sidebar_alt_text = Helper::get_option('tour_sidebar_alt_text', 'Tour Sidebar Image');
+
+                        if (!empty($sidebar_image)) :
+                        ?>
+                            <div class="tour-sidebar-bg-image-items">
+                                <img src="<?php echo esc_url($sidebar_image); ?>" alt="<?php echo esc_attr($sidebar_alt_text); ?>">
+                                <div class="tour-bg-content">
+                                    <?php if (!empty($sidebar_tagline)) : ?>
+                                        <span><?php echo esc_html($sidebar_tagline); ?></span>
+                                    <?php endif; ?>
+                                    <?php if (!empty($sidebar_title)) : ?>
+                                        <h3>
+                                            <a href="<?php echo esc_url($sidebar_link); ?>"><?php echo esc_html($sidebar_title); ?></a>
+                                        </h3>
+                                    <?php endif; ?>
+                                    <?php if (!empty($sidebar_button_text)) : ?>
+                                        <a href="<?php echo esc_url($sidebar_button_link); ?>" class="theme-btn"><?php echo esc_html($sidebar_button_text); ?></a>
+                                    <?php endif; ?>
+                                </div>
                             </div>
-                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="col-lg-9 order-1 order-xl-2">
@@ -431,7 +470,7 @@ $properties = sprintf(
                                 <p><?php echo esc_html($properties); ?></p>
                             </div>
                             <div class="right-item">
-                                <h6>Sort By</h6>
+                                <h6><?php echo esc_html(Helper::get_option('tour_sort_label', 'Sort By')); ?></h6>
                                 <select class="sort short-select" name="sort" tabindex="null">
                                     <option value="date" <?php echo (isset($_GET['sort']) && $_GET['sort'] === 'date') ? 'selected' : ''; ?>>
                                         <?php esc_html_e('Publish date', 'roavio-toolkit'); ?>
@@ -534,7 +573,7 @@ $properties = sprintf(
                                         ?>
                                         <div class="col-12">
                                             <div class="alert alert-info no-properties-found">
-                                                <p><?php esc_html_e('No properties found matching your criteria.', 'roavio-toolkit'); ?></p>
+                                                <p><?php echo esc_html(Helper::get_option('tour_no_results_text', 'No properties found matching your criteria.')); ?></p>
                                             </div>
                                         </div>
                                     <?php endif; ?>
@@ -609,7 +648,7 @@ $properties = sprintf(
                                     ?>
                                     <div class="col-12">
                                         <div class="alert alert-info no-properties-found">
-                                            <p><?php esc_html_e('No properties found matching your criteria.', 'roavio-toolkit'); ?></p>
+                                            <p><?php echo esc_html(Helper::get_option('tour_no_results_text', 'No properties found matching your criteria.')); ?></p>
                                         </div>
                                     </div>
                                 <?php endif; ?>

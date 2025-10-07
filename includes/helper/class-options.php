@@ -40,7 +40,7 @@ class Roavio_Options
 		$this->footer_section();
 		$this->page_title_section();
 		$this->blog_section();
-		//$this->portfolio_section();
+		$this->tour_filter();
 		//$this->shop_section();
 		$this->color_scheme_section();
 		$this->typography_section();
@@ -955,52 +955,111 @@ class Roavio_Options
 		]);
 	}
 
-	public function portfolio_section()
+	public function tour_filter()
 	{
 		CSF::createSection($this->options_prefix, [
-			'title'  => esc_html__('Portfolio', 'roavio-toolkit'),
+			'title'  => esc_html__('Tour Filter', 'roavio-toolkit'),
 			'fields' => [
 				[
 					'type'    => 'heading',
-					'content' => esc_html__('Portfolio', 'roavio-toolkit'),
+					'content' => esc_html__('Tour Filter', 'roavio-toolkit'),
 				],
 				[
-					'id'          => 'portfolio_slug',
+					'id'          => 'tour_filter_title',
 					'type'        => 'text',
-					'title'       => esc_html__('Portfolio Slug', 'roavio-toolkit'),
-					'placeholder' => esc_html__('portfolio', 'roavio-toolkit'),
-					'desc'        => esc_html__('You can customize the permalink structure (site_domain/post_type_slug/post_slug) by changing the post type slug (post_type_slug) from here. Don\'t forget to save the permalinks settings from Settings > Permalinks after changing the slug value.', 'roavio-toolkit'),
+					'title'       => esc_html__('Filter Section Title', 'roavio-toolkit'),
+					'placeholder' => esc_html__('Uncover Unique Tours Places', 'roavio-toolkit'),
+					'default'     => esc_html__('Uncover Unique Tours Places', 'roavio-toolkit'),
 				],
 				[
-					'id'       => 'portfolio_post_per_page',
-					'type'     => 'number',
-					'title'    => esc_html__('Post Per Page', 'roavio-toolkit'),
-					'default'  => 9,
-					'subtitle' => esc_html__('Number of posts to show per page', 'roavio-toolkit'),
+					'id'          => 'tour_filter_subtitle',
+					'type'        => 'text',
+					'title'       => esc_html__('Filter Section Subtitle', 'roavio-toolkit'),
+					'placeholder' => esc_html__('One site 30,500+ most popular experience you\'ll remember', 'roavio-toolkit'),
+					'default'     => wp_kses_post(__('One site <span class="count">30,500</span><b>+</b> most popular experience you\'ll remember', 'roavio-toolkit')),
 				],
 				[
-					'type'    => 'subheading',
-					'content' => esc_html__('Portfolio Archive', 'roavio-toolkit'),
-				],
-				[
-					'id'       => 'archive_page_title',
-					'type'     => 'text',
-					'title'    => esc_html__('Page Title', 'roavio-toolkit'),
-					'subtitle' => esc_html__('Archive Page Title', 'roavio-toolkit'),
-					'default'  => esc_html__('Our Portfolio', 'roavio-toolkit'),
-				],
-				[
-					'id'      => 'archive_portfolio_design',
-					'type'    => 'select',
-					'title'   => esc_html__('Portfolio Design', 'roavio-toolkit'),
-					'options' => [
-						'design-one'   => esc_html__('Design One', 'roavio-toolkit'),
-						'design-two'   => esc_html__('Design Two', 'roavio-toolkit'),
-						'design-three' => esc_html__('Design Three', 'roavio-toolkit'),
-						'design-four'  => esc_html__('Design Four', 'roavio-toolkit'),
+					'id'       => 'tour_filter_price',
+					'type'     => 'button_set',
+					'title'    => esc_html__('Price Filter', 'roavio-toolkit'),
+					'subtitle' => esc_html__('Enable or disable price filter section', 'roavio-toolkit'),
+					'options'  => [
+						'yes' => esc_html__('Yes', 'roavio-toolkit'),
+						'no'  => esc_html__('No', 'roavio-toolkit'),
 					],
-					'default' => 'design-one'
-				]
+					'default'  => 'yes',
+				],
+				[
+					'id'       => 'tour_filter_location',
+					'type'     => 'button_set',
+					'title'    => esc_html__('Location Filter', 'roavio-toolkit'),
+					'subtitle' => esc_html__('Enable or disable location filter section', 'roavio-toolkit'),
+					'options'  => [
+						'yes' => esc_html__('Yes', 'roavio-toolkit'),
+						'no'  => esc_html__('No', 'roavio-toolkit'),
+					],
+					'default'  => 'yes',
+				],
+				[
+					'id'       => 'tour_filter_types',
+					'type'     => 'button_set',
+					'title'    => esc_html__('Tour Types Filter', 'roavio-toolkit'),
+					'subtitle' => esc_html__('Enable or disable tour types filter section', 'roavio-toolkit'),
+					'options'  => [
+						'yes' => esc_html__('Yes', 'roavio-toolkit'),
+						'no'  => esc_html__('No', 'roavio-toolkit'),
+					],
+					'default'  => 'yes',
+				],
+				[
+					'id'       => 'tour_filter_reviews',
+					'type'     => 'button_set',
+					'title'    => esc_html__('Reviews Filter', 'roavio-toolkit'),
+					'subtitle' => esc_html__('Enable or disable reviews filter section', 'roavio-toolkit'),
+					'options'  => [
+						'yes' => esc_html__('Yes', 'roavio-toolkit'),
+						'no'  => esc_html__('No', 'roavio-toolkit'),
+					],
+					'default'  => 'yes',
+				],
+				[
+					'id'       => 'tour_filter_sidebar_image',
+					'type'     => 'media',
+					'title'    => esc_html__('Sidebar Promotional Image', 'roavio-toolkit'),
+					'subtitle' => esc_html__('Upload image for sidebar promotional area', 'roavio-toolkit'),
+					'url'      => false,
+				],
+				[
+					'id'          => 'tour_filter_sidebar_title',
+					'type'        => 'text',
+					'title'       => esc_html__('Sidebar Promo Title', 'roavio-toolkit'),
+					'placeholder' => esc_html__('Best Tourist Place', 'roavio-toolkit'),
+					'default'     => esc_html__('Best Tourist Place', 'roavio-toolkit'),
+					'dependency'  => ['tour_filter_sidebar_image', '!=', ''],
+				],
+				[
+					'id'          => 'tour_filter_sidebar_subtitle',
+					'type'        => 'text',
+					'title'       => esc_html__('Sidebar Promo Subtitle', 'roavio-toolkit'),
+					'placeholder' => esc_html__('Explore The World', 'roavio-toolkit'),
+					'default'     => esc_html__('Explore The World', 'roavio-toolkit'),
+					'dependency'  => ['tour_filter_sidebar_image', '!=', ''],
+				],
+				[
+					'id'          => 'tour_filter_sidebar_btn_text',
+					'type'        => 'text',
+					'title'       => esc_html__('Sidebar Button Text', 'roavio-toolkit'),
+					'placeholder' => esc_html__('Explore Tours', 'roavio-toolkit'),
+					'default'     => esc_html__('Explore Tours', 'roavio-toolkit'),
+					'dependency'  => ['tour_filter_sidebar_image', '!=', ''],
+				],
+				[
+					'id'          => 'tour_filter_sidebar_btn_url',
+					'type'        => 'text',
+					'title'       => esc_html__('Sidebar Button URL', 'roavio-toolkit'),
+					'placeholder' => esc_html__('https://example.com/tours', 'roavio-toolkit'),
+					'dependency'  => ['tour_filter_sidebar_image', '!=', ''],
+				],
 			],
 		]);
 	}
