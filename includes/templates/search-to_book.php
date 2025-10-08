@@ -2,6 +2,8 @@
 //volunteer details
 get_header();
 
+use RoavioTheme\Classes\Roavio_Helper as Helper;
+
 $post_type = isset($_GET['post_type']) ? sanitize_text_field($_GET['post_type']) : 'to_book'; // Default to 'to_book' if not specified
 $search_query = isset($_GET['s']) ? sanitize_text_field($_GET['s']) : '';
 
@@ -158,7 +160,7 @@ if ($sort === 'rating') {
 $args['order'] = $order; // Sorting order (ASC or DESC)
 
 // Pagination settings
-$posts_per_page = 9; // Number of items per page
+$posts_per_page = Helper::get_option('tour_per_page', 9); // Number of items per page
 $current_page = get_query_var('paged') ? get_query_var('paged') : 1;
 $args['posts_per_page'] = -1; // Get all posts first, we'll paginate after filtering
 
@@ -235,8 +237,6 @@ $properties = sprintf(
     <div class="container">
         <div class="section-title text-center">
             <?php
-
-            use RoavioTheme\Classes\Roavio_Helper as Helper;
 
             $tour_search_title = Helper::get_option('tour_search_title', 'Uncover Unique Tours Places');
             $tour_search_subtitle_prefix = Helper::get_option('tour_search_subtitle_prefix', 'One site');
@@ -422,18 +422,18 @@ $properties = sprintf(
                             <input type="hidden" name="filter" value="yes">
                         </form>
                         <?php
-                        $sidebar_image = Helper::get_option('tour_sidebar_image', '');
-                        $sidebar_tagline = Helper::get_option('tour_sidebar_tagline', 'Explore The World');
-                        $sidebar_title = Helper::get_option('tour_sidebar_title', 'Best Tourist Place');
-                        $sidebar_link = Helper::get_option('tour_sidebar_link', '#');
-                        $sidebar_button_text = Helper::get_option('tour_sidebar_button_text', 'Explore Tours');
-                        $sidebar_button_link = Helper::get_option('tour_sidebar_button_link', '#');
+                        $sidebar_image = Helper::get_option('tour_filter_sidebar_image', '');
+                        $sidebar_tagline = Helper::get_option('tour_filter_sidebar_subtitle', 'Explore The World');
+                        $sidebar_title = Helper::get_option('tour_filter_sidebar_title', 'Best Tourist Place');
+                        $sidebar_link = Helper::get_option('tour_filter_sidebar_btn_url', '#');
+                        $sidebar_button_text = Helper::get_option('tour_filter_sidebar_btn_text', 'Explore Tours');
+                        $sidebar_button_link = Helper::get_option('tour_filter_sidebar_btn_url', '#');
                         $sidebar_alt_text = Helper::get_option('tour_sidebar_alt_text', 'Tour Sidebar Image');
 
                         if (!empty($sidebar_image)) :
                         ?>
                             <div class="tour-sidebar-bg-image-items">
-                                <img src="<?php echo esc_url($sidebar_image); ?>" alt="<?php echo esc_attr($sidebar_alt_text); ?>">
+                                <img src="<?php echo esc_url($sidebar_image['url']); ?>" alt="<?php echo esc_attr($sidebar_image['alt']); ?>">
                                 <div class="tour-bg-content">
                                     <?php if (!empty($sidebar_tagline)) : ?>
                                         <span><?php echo esc_html($sidebar_tagline); ?></span>
@@ -451,18 +451,25 @@ $properties = sprintf(
                         <?php endif; ?>
                     </div>
                 </div>
+                <?php
+                $active_style = Helper::get_option('active_style', 'grid-style');
+                $active_style = isset($_GET['active_style']) ? $_GET['active_style'] : $active_style;
+
+                $tour_column = Helper::get_option('tour_column', '4');
+                $column = isset($_GET['column']) ? $_GET['active_style'] : $tour_column;
+                ?>
                 <div class="col-lg-9 order-1 order-xl-2">
                     <div class="tour-right-content sticky-style">
                         <div class="tour-list-wrap">
                             <div class="list-wrap">
                                 <ul class="nav">
                                     <li class="nav-item">
-                                        <a href="#grid" data-bs-toggle="tab" class="nav-link active">
+                                        <a href="#grid" data-bs-toggle="tab" class="nav-link <?php echo esc_attr($active_style === 'grid-style' ? 'active' : ''); ?>">
                                             <i class="fa-regular fa-grid-2"></i>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#list" data-bs-toggle="tab" class="nav-link">
+                                        <a href="#list" data-bs-toggle="tab" class="nav-link <?php echo esc_attr($active_style === 'list-style' ? 'active' : ''); ?>">
                                             <i class="fas fa-bars"></i>
                                         </a>
                                     </li>
@@ -488,7 +495,7 @@ $properties = sprintf(
                             </div>
                         </div>
                         <div class="tab-content">
-                            <div id="grid" class="tab-pane fade show active">
+                            <div id="grid" class="tab-pane fade <?php echo esc_attr($active_style === 'grid-style' ? 'show active' : ''); ?>">
                                 <div class="row">
                                     <?php
                                     // Check if there are properties to display
@@ -510,30 +517,43 @@ $properties = sprintf(
                                             }
 
                                             $discount = isset($ba_post_meta['discount']['discount']) && $ba_post_meta['discount']['discount'] ? $ba_post_meta['discount']['discount'] : false;
-                                            $tour_meta = get_post_meta($post_id, 'roavio_tour_meta', true);
+                                            $tour_meta = get_post_meta($post_id, 'roavio_booking_tour_meta', true);
                                             $discount_price_from = isset($prices['discount_price_from']) ? $prices['discount_price_from'] : false;
                                             $price_from = isset($prices['price_from']) ? $prices['price_from'] : false;
 
                                             $discount_price_from = isset($prices['discount_price_from']) ? $prices['discount_price_from'] : false;
                                             $price_from = isset($prices['price_from']) ? $prices['price_from'] : false;
                                     ?>
-                                            <div class="col-xl-4 col-lg-6 col-md-6">
+                                            <div class="col-xl-<?php echo esc_attr($column); ?> col-lg-6 col-md-6">
                                                 <div class="tour-place-item style-2">
                                                     <div class="tour-place-image">
                                                         <?php the_post_thumbnail('roavio_blog_300X200'); ?>
-                                                        <span>10% Off</span>
+                                                        <?php if ($discount) : ?>
+                                                            <span><?php echo esc_html($discount); ?> <?php esc_html_e('% off', 'roavio-toolkit'); ?></span>
+                                                        <?php endif; ?>
                                                         <div class="icon">
-                                                            <i class="fa-regular fa-heart"></i>
+                                                            <?php if (class_exists('RoavioToolkit\Helper\Wishlist')) {
+                                                                echo RoavioToolkit\Helper\Wishlist::html_icon($post_id);
+                                                            }
+                                                            ?>
                                                         </div>
                                                     </div>
+                                                    <?php
+                                                    $total_vote = get_post_meta(get_the_ID(), '_rating_votes_base', true);
+                                                    $rating = get_post_meta(get_the_ID(), '_rating', true);
+                                                    if (empty($rating)) {
+                                                        $rating = 0;
+                                                    }
+                                                    $rating = number_format((float) $rating, 1);
+                                                    ?>
                                                     <div class="tour-place-content">
                                                         <div class="rating-item">
                                                             <div class="star">
                                                                 <i class="fa-solid fa-star"></i>
-                                                                (4.8)
+                                                                (<?php echo esc_html($rating); ?>)
                                                             </div>
                                                             <h5>
-                                                                <span>Price</span>
+                                                                <span><?php echo esc_html_e('Price', 'roavio-toolkit'); ?></span>
                                                                 <?php if (!empty($discount_price_from)) {
                                                                     echo BABE_Currency::get_currency_price($prices['discount_price_from']);
                                                                 } elseif (!empty($price_from)) {
@@ -550,17 +570,21 @@ $properties = sprintf(
                                                             </a>
                                                         </h3>
                                                         <p class="sidebar-text">
-                                                            Bali, Indonesia, often called the Island the Gods, is a paradise known for its....
+                                                            <?php echo wp_trim_words(get_the_excerpt(), 12, '...'); ?>
                                                         </p>
                                                         <ul class="tour-list">
-                                                            <li>
-                                                                <i class="fa-regular fa-location-dot"></i>
-                                                                Bali, Indonesia
-                                                            </li>
-                                                            <li>
-                                                                <i class="fa-regular fa-clock"></i>
-                                                                1 - 3 days
-                                                            </li>
+                                                            <?php if (!empty($tour_meta['tour_address'])) : ?>
+                                                                <li>
+                                                                    <i class="fa-regular fa-location-dot"></i>
+                                                                    <?php echo esc_html($tour_meta['tour_address']); ?>
+                                                                </li>
+                                                            <?php endif; ?>
+                                                            <?php if (!empty($tour_meta['tour_duration'])) : ?>
+                                                                <li>
+                                                                    <i class="fa-regular fa-clock"></i>
+                                                                    <?php echo esc_html($tour_meta['tour_duration']); ?>
+                                                                </li>
+                                                            <?php endif; ?>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -579,7 +603,7 @@ $properties = sprintf(
                                     <?php endif; ?>
                                 </div>
                             </div>
-                            <div id="list" class="tab-pane fade">
+                            <div id="list" class="tab-pane fade <?php echo esc_attr($active_style === 'list-style' ? 'show active' : ''); ?>">
                                 <?php
                                 // Check if there are properties to display
                                 if (!empty($paged_posts)) :
@@ -600,44 +624,69 @@ $properties = sprintf(
                                         }
 
                                         $discount = isset($ba_post_meta['discount']['discount']) && $ba_post_meta['discount']['discount'] ? $ba_post_meta['discount']['discount'] : false;
-                                        $tour_meta = get_post_meta($post_id, 'roavio_tour_meta', true);
+                                        $tour_meta = get_post_meta($post_id, 'roavio_booking_tour_meta', true);
                                         $discount_price_from = isset($prices['discount_price_from']) ? $prices['discount_price_from'] : false;
                                         $price_from = isset($prices['price_from']) ? $prices['price_from'] : false;
                                 ?>
                                         <div class="tour-list-box-items">
                                             <div class="tour-image">
                                                 <?php the_post_thumbnail('roavio_blog_300X200'); ?>
-                                                <span>Featured</span>
                                                 <div class="icon">
-                                                    <i class="fa-regular fa-heart"></i>
+                                                    <?php if (class_exists('RoavioToolkit\Helper\Wishlist')) {
+                                                        echo RoavioToolkit\Helper\Wishlist::html_icon($post_id);
+                                                    }
+                                                    ?>
                                                 </div>
                                             </div>
                                             <div class="tour-content">
                                                 <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                                                 <ul>
-                                                    <li>
-                                                        <i class="fa-regular fa-location-dot"></i>
-                                                        Santorini, Greece
-                                                    </li>
-                                                    <li>
-                                                        <i class="fa-regular fa-timer"></i>
-                                                        1 - 3 days
-                                                    </li>
-                                                    <li>
-                                                        <i class="fa-solid fa-users"></i>
-                                                        1 - 5
-                                                    </li>
+                                                    <?php if (!empty($tour_meta['tour_address'])) : ?>
+                                                        <li>
+                                                            <i class="fa-regular fa-location-dot"></i>
+                                                            <?php echo esc_html($tour_meta['tour_address']); ?>
+                                                        </li>
+                                                    <?php endif; ?>
+                                                    <?php if (!empty($tour_meta['tour_duration'])) : ?>
+                                                        <li>
+                                                            <i class="fa-regular fa-timer"></i>
+                                                            <?php echo esc_html($tour_meta['tour_duration']); ?>
+                                                        </li>
+                                                    <?php endif; ?>
+                                                    <?php if (!empty($tour_meta['people_count'])) : ?>
+                                                        <li>
+                                                            <i class="fa-solid fa-users"></i>
+                                                            <?php echo esc_html($tour_meta['people_count']); ?>
+                                                        </li>
+                                                    <?php endif; ?>
                                                 </ul>
                                                 <div class="bottom-list-items">
                                                     <div class="list-1">
-                                                        <p>Start Price</p>
-                                                        <h4>$49.00</h4>
+                                                        <p><?php esc_html_e('Tours Price', 'roavio-toolkit'); ?></p>
+                                                        <h4>
+                                                            <?php if (!empty($discount_price_from)) {
+                                                                echo BABE_Currency::get_currency_price($prices['discount_price_from']);
+                                                            } elseif (!empty($price_from)) {
+                                                                echo BABE_Currency::get_currency_price($prices['price_from']);
+                                                            } else {
+                                                                echo BABE_Currency::get_currency_price(0);
+                                                            }
+                                                            ?>
+                                                        </h4>
                                                     </div>
+                                                    <?php
+                                                    $total_vote = get_post_meta(get_the_ID(), '_rating_votes_base', true);
+                                                    $rating = get_post_meta(get_the_ID(), '_rating', true);
+                                                    if (empty($rating)) {
+                                                        $rating = 0;
+                                                    }
+                                                    $rating = number_format((float) $rating, 1);
+                                                    ?>
                                                     <div class="list-2">
-                                                        <p>Rating</p>
-                                                        <span><i class="fa-solid fa-star-sharp"></i>4.8 (190k+)</span>
+                                                        <p><?php echo esc_html(!empty($total_vote) ? __('Rating', 'roavio-toolkit') : __('No Rating', 'roavio-toolkit')); ?></p>
+                                                        <span><i class="fa-solid fa-star-sharp"></i><?php echo esc_html($rating); ?> (<?php echo esc_html($total_vote); ?>)</span>
                                                     </div>
-                                                    <a href="tour-details.html" class="theme-btn">View Tour</a>
+                                                    <a href="<?php the_permalink(); ?>" class="theme-btn"><?php echo esc_html(Helper::get_option('tout_btn', 'View Tour')); ?></a>
                                                 </div>
                                             </div>
                                         </div>

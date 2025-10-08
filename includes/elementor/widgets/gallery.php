@@ -53,6 +53,7 @@ class Gallery extends Widget_Base
 					'layout_one' => __('Layout One', 'roavio-toolkit'),
 					'layout_two' => __('Layout Two', 'roavio-toolkit'),
 					'layout_three' => __('Layout Three', 'roavio-toolkit'),
+					'layout_four' => __('Layout Four', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -87,5 +88,6 @@ class Gallery extends Widget_Base
 		include rt_get_elementor_template('gallery-one.php');
 		include rt_get_elementor_template('gallery-two.php');
 		include rt_get_elementor_template('gallery-three.php');
+		include rt_get_elementor_template('gallery-four.php');
 	}
 }

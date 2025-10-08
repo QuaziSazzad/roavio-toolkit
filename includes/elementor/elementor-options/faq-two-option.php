@@ -15,9 +15,10 @@ $this->start_controls_section(
 $this->add_control(
 	'layout_two_title',
 	[
-		'label' => esc_html__('Title', 'roavio-toolkit'),
+		'label' => esc_html__('Section Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Frequently Asked Questions', 'roavio-toolkit'),
+		'default' => esc_html__('Itinerary', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Type your title here', 'roavio-toolkit'),
 		'label_block' => true,
 	]
 );
@@ -25,88 +26,51 @@ $this->add_control(
 $this->add_control(
 	'layout_two_title_tag',
 	[
-		'label'       => esc_html__('Title Tag', 'roavio-toolkit'),
-		'type'        => \Elementor\Controls_Manager::CHOOSE,
-		'label_block' => false,
-		'options'     => [
-			'h1' => [
-				'title' => esc_html__('H1', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h1',
-			],
-			'h2' => [
-				'title' => esc_html__('H2', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h2',
-			],
-			'h3' => [
-				'title' => esc_html__('H3', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h3',
-			],
-			'h4' => [
-				'title' => esc_html__('H4', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h4',
-			],
-			'h5' => [
-				'title' => esc_html__('H5', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h5',
-			],
-			'h6' => [
-				'title' => esc_html__('H6', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h6',
-			],
+		'label' => esc_html__('Section Title Tag', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::SELECT,
+		'default' => 'h3',
+		'options' => [
+			'h1' => esc_html__('H1', 'roavio-toolkit'),
+			'h2' => esc_html__('H2', 'roavio-toolkit'),
+			'h3' => esc_html__('H3', 'roavio-toolkit'),
+			'h4' => esc_html__('H4', 'roavio-toolkit'),
+			'h5' => esc_html__('H5', 'roavio-toolkit'),
+			'h6' => esc_html__('H6', 'roavio-toolkit'),
+			'div' => esc_html__('div', 'roavio-toolkit'),
+			'span' => esc_html__('span', 'roavio-toolkit'),
+			'p' => esc_html__('p', 'roavio-toolkit'),
 		],
-		'default'     => 'h2',
-		'toggle'      => false,
-	]
-);
-
-$this->add_control(
-	'layout_two_subtitle',
-	[
-		'label' => esc_html__('Subtitle', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('FAQs', 'roavio-toolkit'),
-		'label_block' => true,
-	]
-);
-
-
-
-$this->add_control(
-	'layout_two_description',
-	[
-		'label' => esc_html__('Description', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'default' => esc_html__('Cybersecurity is the practice of protecting systems, networks, and data from cyber threats such as hacking, malware, and phishing.', 'roavio-toolkit'),
-		'label_block' => true,
 	]
 );
 
 $repeater = new \Elementor\Repeater();
 
 $repeater->add_control(
-	'layout_two_faq_title',
+	'layout_two_item_title',
 	[
-		'label' => esc_html__('FAQ Title', 'roavio-toolkit'),
+		'label' => esc_html__('Item Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('What is cybersecurity, and it important?', 'roavio-toolkit'),
+		'default' => esc_html__('Day 1 - Arrive at campground', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Type item title here', 'roavio-toolkit'),
 		'label_block' => true,
 	]
 );
 
 $repeater->add_control(
-	'layout_two_faq_content',
+	'layout_two_item_content',
 	[
-		'label' => esc_html__('FAQ Content', 'roavio-toolkit'),
+		'label' => esc_html__('Item Content', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'default' => esc_html__('Use strong, unique passwords and enable multi-factor authentication update software and systems Educate employees about cybersecurity best practices', 'roavio-toolkit'),
+		'default' => esc_html__('The early start ensures you can fully immerse yourself in the tranquility of nature before the world fully awakens. As the morning light filters through the trees, you\'ll experience the crisp, fresh air and the peaceful sounds of the forest. The trail ahead offers both a physical challenge promise of breathtaking.', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Type item content here', 'roavio-toolkit'),
 		'label_block' => true,
 	]
 );
 
 $repeater->add_control(
-	'layout_two_is_active',
+	'layout_two_item_expanded',
 	[
-		'label' => esc_html__('Is Active', 'roavio-toolkit'),
+		'label' => esc_html__('Initially Expanded', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::SWITCHER,
 		'label_on' => esc_html__('Yes', 'roavio-toolkit'),
 		'label_off' => esc_html__('No', 'roavio-toolkit'),
@@ -116,82 +80,26 @@ $repeater->add_control(
 );
 
 $this->add_control(
-	'layout_two_faq_items',
+	'layout_two_items',
 	[
 		'label' => esc_html__('FAQ Items', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::REPEATER,
 		'fields' => $repeater->get_controls(),
 		'default' => [
 			[
-				'layout_two_faq_title' => esc_html__('1. What is cybersecurity, and it important?', 'roavio-toolkit'),
-				'layout_two_faq_content' => esc_html__('Use strong, unique passwords and enable multi-factor authentication update software and systems Educate employees about cybersecurity best practices', 'roavio-toolkit'),
-				'layout_two_is_active' => 'no',
+				'layout_two_item_title' => esc_html__('Day 1 - Arrive at campground', 'roavio-toolkit'),
+				'layout_two_item_content' => esc_html__('The early start ensures you can fully immerse yourself in the tranquility of nature before the world fully awakens. As the morning light filters through the trees, you\'ll experience the crisp, fresh air and the peaceful sounds of the forest. The trail ahead offers both a physical challenge promise of breathtaking.', 'roavio-toolkit'),
 			],
 			[
-				'layout_two_faq_title' => esc_html__('2. How can I protect my organization?', 'roavio-toolkit'),
-				'layout_two_faq_content' => esc_html__('Use strong, unique passwords and enable multi-factor authentication update software and systems Educate employees about cybersecurity best practices', 'roavio-toolkit'),
-				'layout_two_is_active' => 'yes',
+				'layout_two_item_title' => esc_html__('Day 2 - Wake up early and embark on a day hike', 'roavio-toolkit'),
+				'layout_two_item_content' => esc_html__('The early start ensures you can fully immerse yourself in the tranquility of nature before the world fully awakens. As the morning light filters through the trees, you\'ll experience the crisp, fresh air and the peaceful sounds of the forest. The trail ahead offers both a physical challenge promise of breathtaking.', 'roavio-toolkit'),
 			],
 			[
-				'layout_two_faq_title' => esc_html__('3. What is phishing, and how can I avoid it?', 'roavio-toolkit'),
-				'layout_two_faq_content' => esc_html__('Use strong, unique passwords and enable multi-factor authentication update software and systems Educate employees about cybersecurity best practices', 'roavio-toolkit'),
-				'layout_two_is_active' => 'no',
-			],
-			[
-				'layout_two_faq_title' => esc_html__('4. How often should I conduct cybersecurity?', 'roavio-toolkit'),
-				'layout_two_faq_content' => esc_html__('Use strong, unique passwords and enable multi-factor authentication update software and systems Educate employees about cybersecurity best practices', 'roavio-toolkit'),
-				'layout_two_is_active' => 'no',
+				'layout_two_item_title' => esc_html__('Day 3 - Join a guided ranger-led nature walk', 'roavio-toolkit'),
+				'layout_two_item_content' => esc_html__('The early start ensures you can fully immerse yourself in the tranquility of nature before the world fully awakens. As the morning light filters through the trees, you\'ll experience the crisp, fresh air and the peaceful sounds of the forest. The trail ahead offers both a physical challenge promise of breathtaking.', 'roavio-toolkit'),
 			],
 		],
-		'title_field' => '{{{ layout_two_faq_title }}}',
-	]
-);
-
-$this->add_control(
-	'layout_two_image_1',
-	[
-		'label' => esc_html__('Image One', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [
-			'url' => \Elementor\Utils::get_placeholder_image_src(),
-		],
-		'label_block' => true,
-	]
-);
-
-$this->add_control(
-	'layout_two_image_2',
-	[
-		'label' => esc_html__('Image Two', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [
-			'url' => \Elementor\Utils::get_placeholder_image_src(),
-		],
-		'label_block' => true,
-	]
-);
-
-$this->add_control(
-	'layout_two_image_3',
-	[
-		'label' => esc_html__('Image Three', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [
-			'url' => \Elementor\Utils::get_placeholder_image_src(),
-		],
-		'label_block' => true,
-	]
-);
-
-$this->add_control(
-	'layout_two_image_4',
-	[
-		'label' => esc_html__('Image Four', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [
-			'url' => \Elementor\Utils::get_placeholder_image_src(),
-		],
-		'label_block' => true,
+		'title_field' => '{{{ layout_two_item_title }}}',
 	]
 );
 

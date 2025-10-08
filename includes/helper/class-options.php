@@ -1023,6 +1023,13 @@ class Roavio_Options
 					'default'  => 'yes',
 				],
 				[
+					'id'          => 'tout_btn',
+					'type'        => 'text',
+					'title'       => esc_html__('Tour Button Label', 'roavio-toolkit'),
+					'placeholder' => esc_html__('Book Now', 'roavio-toolkit'),
+					'default'     => esc_html__('Book Now', 'roavio-toolkit'),
+				],
+				[
 					'id'       => 'tour_filter_sidebar_image',
 					'type'     => 'media',
 					'title'    => esc_html__('Sidebar Promotional Image', 'roavio-toolkit'),
@@ -1059,6 +1066,35 @@ class Roavio_Options
 					'title'       => esc_html__('Sidebar Button URL', 'roavio-toolkit'),
 					'placeholder' => esc_html__('https://example.com/tours', 'roavio-toolkit'),
 					'dependency'  => ['tour_filter_sidebar_image', '!=', ''],
+				],
+				[
+					'id'       => 'active_style',
+					'type'     => 'button_set',
+					'title'    => esc_html__('Tour Active Style', 'roavio-toolkit'),
+					'subtitle' => esc_html__('Tour active style like List style, Grid Style', 'roavio-toolkit'),
+					'options'  => [
+						'grid-style'  => esc_html__('Grid Style', 'roavio-toolkit'),
+						'list-style'  => esc_html__('List Style', 'roavio-toolkit'),
+					],
+					'default'  => 'grid-style',
+				],
+				[
+					'id'       => 'tour_column',
+					'type'     => 'button_set',
+					'title'    => esc_html__('Column', 'roavio-toolkit'),
+					'subtitle' => esc_html__('How many column should be shown per row?', 'roavio-toolkit'),
+					'options'  => [
+						'6' => esc_html__('Two', 'roavio-toolkit'),
+						'4' => esc_html__('Three', 'roavio-toolkit'),
+					],
+					'default'  => '6',
+				],
+				[
+					'id'          => 'tour_per_page',
+					'type'        => 'number',
+					'title'       => esc_html__('Tour Per Page', 'roavio-toolkit'),
+					'placeholder' => esc_html__('9', 'roavio-toolkit'),
+					'default'     => esc_html__('9', 'roavio-toolkit'),
 				],
 			],
 		]);

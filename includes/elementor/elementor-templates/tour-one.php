@@ -147,7 +147,7 @@
                                 $prices = $ba_post_meta;
                             }
                             $discount = isset($ba_post_meta['discount']['discount']) && $ba_post_meta['discount']['discount'] ? $ba_post_meta['discount']['discount'] : false;
-                            $tour_meta = get_post_meta(get_the_ID(), 'travhub_tour_meta', true);
+                            $tour_meta = get_post_meta(get_the_ID(), 'roavio_tour_meta', true);
                             $discount_price_from = isset($prices['discount_price_from']) ? $prices['discount_price_from'] : false;
                             $price_from = isset($prices['price_from']) ? $prices['price_from'] : false;
                 ?>
