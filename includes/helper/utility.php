@@ -19,7 +19,7 @@ class Utility
 		add_action('wp_ajax_nopriv_subscribe_user', array($this, 'subscribe_user'));
 
 		// add_filter('template_include', array($this, 'location_template'), 99);
-		// add_filter('single_template', array($this, 'booking_details'), 99);
+		add_filter('single_template', array($this, 'booking_details'), 99);
 	}
 	public function set_image_size()
 	{
@@ -91,7 +91,7 @@ class Utility
 		$get_cpt = get_option('elementor_cpt_support');
 		//check if option DOESN'T exist in db
 		if (! $get_cpt) {
-			$get_cpt = ['page',  'portfolio'];
+			$get_cpt = ['page',  'to_book'];
 			update_option('elementor_cpt_support', $get_cpt);
 		}
 
@@ -99,8 +99,8 @@ class Utility
 		else if (! in_array('page', $get_cpt)) {
 			$get_cpt[] = 'page'; //append to array
 			update_option('elementor_cpt_support', $get_cpt); //update database
-		} else if (! in_array('portfolio', $get_cpt)) {
-			$get_cpt[] = 'portfolio'; //append to array
+		} else if (! in_array('to_book', $get_cpt)) {
+			$get_cpt[] = 'to_book'; //append to array
 			update_option('elementor_cpt_support', $get_cpt); //update database
 		}
 	}

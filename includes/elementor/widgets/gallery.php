@@ -63,6 +63,7 @@ class Gallery extends Widget_Base
 		include rt_get_elementor_option('gallery-one-option.php');
 		include rt_get_elementor_option('gallery-two-option.php');
 		include rt_get_elementor_option('gallery-three-option.php');
+		include rt_get_elementor_option('gallery-four-option.php');
 
 		//Content style
 		$this->start_controls_section(
