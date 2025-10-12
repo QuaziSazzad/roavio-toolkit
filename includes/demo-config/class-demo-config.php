@@ -288,7 +288,7 @@ function roavio_update_elementor_container_defaults()
 
 	$kit_settings['container_width'] = [
 		'unit' => 'px',
-		'size' => '1320',
+		'size' => '1290',
 	];
 
 	// Save updated settings

@@ -1,0 +1,80 @@
+<?php
+
+namespace RoavioToolkit\ElementorAddon\Widgets;
+
+use Elementor\Widget_Base;
+
+class Custom_Sidebar extends Widget_Base
+{
+	public function get_name()
+	{
+		return 'roavio-custom-sidebar';
+	}
+
+	public function get_title()
+	{
+		return esc_html__('Custom Sidebar', 'roavio-toolkit');
+	}
+
+	public function get_icon()
+	{
+		return 'eicon-sidebar webtend-logo';
+	}
+
+	public function get_categories()
+	{
+		return ['roavio_elements'];
+	}
+
+	public function get_keywords()
+	{
+		return ['roavio', 'toolkit', 'webtend', 'custom sidebar'];
+	}
+
+	protected function register_controls()
+	{
+
+		$this->start_controls_section(
+			'layout_section',
+			[
+				'label' => __('Layout', 'roavio-toolkit'),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+		$this->add_control(
+			'layout_type',
+			[
+				'label' => __('Select Layout', 'roavio-toolkit'),
+				'type' => \Elementor\Controls_Manager::SELECT2,
+				'default' => 'layout_one',
+				'options' => [
+					'layout_one' => __('Layout One', 'roavio-toolkit'),
+				]
+			]
+		);
+
+		$this->end_controls_section();
+
+		include rt_get_elementor_option('custom-sidebar-one-option.php');
+
+		//Content style
+		$this->start_controls_section(
+			'content_style',
+			[
+				'label' => esc_html__('Content Style', 'roavio-toolkit'),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		//roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .brand-wrapper h6', ['layout_one']);
+
+		$this->end_controls_section();
+	}
+
+	protected function render()
+	{
+		$settings = $this->get_settings_for_display();
+		include rt_get_elementor_template('custom-sidebar-one.php');
+	}
+}

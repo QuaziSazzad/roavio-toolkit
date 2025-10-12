@@ -27,6 +27,38 @@
            },
         });
 
+            //>> Heros Slider Start <<//
+     if($('.heros-slider').length > 0) {
+      const HerosSlider = new Swiper(".heros-slider", {
+          spaceBetween: 30,
+          speed: 1300,
+          loop: true,
+          centeredSlides: true,
+          autoplay: {
+              delay: 2000,
+              disableOnInteraction: false,
+          },
+         
+          breakpoints: {
+              1199: {
+                  slidesPerView: 3,
+              },
+              991: {
+                  slidesPerView: 2,
+              },
+              767: {
+                  slidesPerView: 1,
+              },
+              575: {
+                  slidesPerView: 1,
+              },
+              0: {
+                  slidesPerView: 1,
+              },
+          },
+      });
+      }
+
        function animated_swiper(selector, init) {
            const animated = function animated() {
                $(selector + " [data-animation]").each(function () {

@@ -61,6 +61,7 @@ class Slider extends Widget_Base
 		$this->end_controls_section();
 
 		include rt_get_elementor_option('slider-one-option.php');
+		include rt_get_elementor_option('slider-two-option.php');
 
 		//Content style
 		$this->start_controls_section(
@@ -153,5 +154,6 @@ class Slider extends Widget_Base
 		$settings = $this->get_settings_for_display();
 
 		include rt_get_elementor_template('slider-one.php');
+		include rt_get_elementor_template('slider-two.php');
 	}
 }
