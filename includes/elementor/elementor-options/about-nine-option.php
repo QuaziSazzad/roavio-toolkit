@@ -13,206 +13,242 @@ $this->start_controls_section(
 );
 
 
+// Section Title
 $this->add_control(
 	'layout_nine_title',
 	[
-		'label' => esc_html__('Title', 'roavio-toolkit'),
+		'label' => esc_html__('Section Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'placeholder' => esc_html__('Add title', 'roavio-toolkit'),
-		'default' => esc_html__('Building Future-Ready Solutions for Today\'s Challenges', 'roavio-toolkit'),
+		'default' => esc_html__('Passionate about your adventures with ROAVIO', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
 $this->add_control(
 	'layout_nine_title_tag',
 	[
-		'label'       => esc_html__('Title Tag', 'roavio-toolkit'),
-		'type'        => \Elementor\Controls_Manager::CHOOSE,
-		'label_block' => false,
-		'options'     => [
-			'h1' => [
-				'title' => esc_html__('H1', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h1',
-			],
-			'h2' => [
-				'title' => esc_html__('H2', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h2',
-			],
-			'h3' => [
-				'title' => esc_html__('H3', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h3',
-			],
-			'h4' => [
-				'title' => esc_html__('H4', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h4',
-			],
-			'h5' => [
-				'title' => esc_html__('H5', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h5',
-			],
-			'h6' => [
-				'title' => esc_html__('H6', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h6',
-			],
-		],
+		'label' => esc_html__('Section Title Tag', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::SELECT,
 		'default' => 'h2',
+		'options' => [
+			'h1' => esc_html__('H1', 'roavio-toolkit'),
+			'h2' => esc_html__('H2', 'roavio-toolkit'),
+			'h3' => esc_html__('H3', 'roavio-toolkit'),
+			'h4' => esc_html__('H4', 'roavio-toolkit'),
+			'h5' => esc_html__('H5', 'roavio-toolkit'),
+			'h6' => esc_html__('H6', 'roavio-toolkit'),
+			'div' => esc_html__('div', 'roavio-toolkit'),
+			'span' => esc_html__('span', 'roavio-toolkit'),
+			'p' => esc_html__('p', 'roavio-toolkit'),
+		],
 	]
 );
 
+// Description
 $this->add_control(
-	'layout_nine_subtitle',
+	'layout_nine_description',
 	[
-		'label' => esc_html__('Sub Title', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'placeholder' => esc_html__('Add sub title', 'roavio-toolkit'),
-		'default' => esc_html__('About Company', 'roavio-toolkit'),
-		'label_block' => true
-	]
-);
-
-$this->add_control(
-	'layout_nine_content_left',
-	[
-		'label' => esc_html__('Left Content', 'roavio-toolkit'),
+		'label' => esc_html__('Description', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'placeholder' => esc_html__('Add content', 'roavio-toolkit'),
-		'default' => esc_html__('We are dedicated to transforming businesses through innovative, tailored software solutions With a team skilled professionals commitment cutting-edge technology a specialize creating scalable, user-friendly software.', 'roavio-toolkit'),
+		'default' => esc_html__('We believe travel is more than just a trip—it\'s an experience that shapes your life. Our mission is to create unforgettable journeys that combine adventure, comfort, and authentic cultural encounters.', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
+
+
+// Counter Number
 $this->add_control(
-	'layout_nine_content_right',
+	'layout_nine_counter_number',
 	[
-		'label' => esc_html__('Right Content', 'roavio-toolkit'),
+		'label' => esc_html__('Counter Number', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('10+', 'roavio-toolkit'),
+	]
+);
+
+// Radius Image
+$this->add_control(
+	'layout_nine_radius_image',
+	[
+		'label' => esc_html__('Counter Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [],
+	]
+);
+
+// Video URL
+$this->add_control(
+	'layout_nine_video_url',
+	[
+		'label' => esc_html__('Video URL', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::URL,
+		'placeholder' => esc_html__('https://your-link.com', 'roavio-toolkit'),
+		'default' => [
+			'url' => 'https://www.youtube.com/watch?v=Cn4G2lZ_g2I',
+			'is_external' => true,
+			'nofollow' => true,
+		],
+	]
+);
+
+// Counter Text
+$this->add_control(
+	'layout_nine_counter_text',
+	[
+		'label' => esc_html__('Counter Text', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'placeholder' => esc_html__('Add content', 'roavio-toolkit'),
-		'default' => esc_html__('From custom development and cloud solutions to cybersecurity and data analytics, our services empower organizations to streamline.', 'roavio-toolkit'),
+		'default' => esc_html__('Years of expertise in crafting travel personalized journeys, we are dedicated to providing travel experiences', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
-$this->end_controls_section();
-
-// Trusted Partners Section
-$this->start_controls_section(
-	'layout_nine_trusted_partners',
-	[
-		'label' => esc_html__('Trusted Partners', 'roavio-toolkit'),
-		'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-		'condition' => [
-			'layout_type' => 'layout_nine'
-		]
-	]
-);
-
+// Button Text
 $this->add_control(
-	'layout_nine_partners_title',
+	'layout_nine_button_text',
 	[
-		'label' => esc_html__('Partners Title', 'roavio-toolkit'),
+		'label' => esc_html__('Button Text', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'placeholder' => esc_html__('Add title', 'roavio-toolkit'),
-		'default' => esc_html__('10m+ Trusted Partners', 'roavio-toolkit'),
+		'default' => esc_html__('Learn More Us', 'roavio-toolkit'),
 	]
 );
 
-$partners = new \Elementor\Repeater();
-
-$partners->add_control(
-	'partner_image',
+// Button URL
+$this->add_control(
+	'layout_nine_button_url',
 	[
-		'label' => esc_html__('Partner Image', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::MEDIA,
+		'label' => esc_html__('Button URL', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::URL,
+		'placeholder' => esc_html__('https://your-link.com', 'roavio-toolkit'),
 		'default' => [
-			'url' => \Elementor\Utils::get_placeholder_image_src(),
+			'url' => '#',
+			'is_external' => false,
+			'nofollow' => false,
 		],
 	]
 );
 
+// Right Section Title
 $this->add_control(
-	'layout_nine_partners',
+	'layout_nine_right_title',
 	[
-		'label' => esc_html__('Partners', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::REPEATER,
-		'fields' => $partners->get_controls(),
-		'prevent_empty' => false,
-		'title_field' => esc_html__('Partner', 'roavio-toolkit'),
-	]
-);
-
-$this->add_control(
-	'layout_nine_trustpilot_logo',
-	[
-		'label' => esc_html__('Trustpilot Logo', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [
-			'url' => \Elementor\Utils::get_placeholder_image_src(),
-		],
-	]
-);
-
-$this->add_control(
-	'layout_nine_reviews_text',
-	[
-		'label' => esc_html__('Reviews Text', 'roavio-toolkit'),
+		'label' => esc_html__('Right Section Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'placeholder' => esc_html__('Add reviews text', 'roavio-toolkit'),
-		'default' => esc_html__('8930+ reviews', 'roavio-toolkit'),
+		'default' => esc_html__('We\'re the Right Choice for Real travel Adventures', 'roavio-toolkit'),
+		'label_block' => true,
+		'separator' => 'before',
+	]
+);
+
+// Feature Box 1
+$this->add_control(
+	'layout_nine_feature_heading_1',
+	[
+		'label' => esc_html__('Feature Box 1', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::HEADING,
+		'separator' => 'before',
 	]
 );
 
 $this->add_control(
-	'layout_nine_rating',
+	'layout_nine_feature_icon_1',
 	[
-		'label' => esc_html__('Rating (out of 5)', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::SLIDER,
-		'size_units' => ['rating'],
-		'range' => [
-			'rating' => [
-				'min' => 0,
-				'max' => 5,
-				'step' => 0.1,
-			],
-		],
+		'label' => esc_html__('Icon', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::ICONS,
 		'default' => [
-			'unit' => 'rating',
-			'size' => 5,
+			'value' => 'flaticon-traveling',
+			'library' => 'flaticon',
 		],
 	]
 );
 
-$this->end_controls_section();
-
-
-$this->start_controls_section(
-	'layout_nine_section_image',
+$this->add_control(
+	'layout_nine_feature_title_1',
 	[
-		'label' => esc_html__('Bottom Images', 'roavio-toolkit'),
-		'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-		'condition' => [
-			'layout_type' => 'layout_nine'
-		]
+		'label' => esc_html__('Title', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('Curated by locals', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
 $this->add_control(
-	'layout_nine_bottom_image_one',
+	'layout_nine_feature_description_1',
 	[
-		'label' => esc_html__('Image One', 'roavio-toolkit'),
+		'label' => esc_html__('Description', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXTAREA,
+		'default' => esc_html__('Trips are thoughtfully designed & curated by locals who know their destination', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+// Feature Box 2
+$this->add_control(
+	'layout_nine_feature_heading_2',
+	[
+		'label' => esc_html__('Feature Box 2', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::HEADING,
+		'separator' => 'before',
+	]
+);
+
+$this->add_control(
+	'layout_nine_feature_icon_2',
+	[
+		'label' => esc_html__('Icon', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::ICONS,
+		'default' => [
+			'value' => 'flaticon-traveling-1',
+			'library' => 'flaticon',
+		],
+	]
+);
+
+$this->add_control(
+	'layout_nine_feature_title_2',
+	[
+		'label' => esc_html__('Title', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('Self guided flexibility', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+$this->add_control(
+	'layout_nine_feature_description_2',
+	[
+		'label' => esc_html__('Description', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXTAREA,
+		'default' => esc_html__('Enjoy the freedom to travel at your own pace with our self-guided flexibility.', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+// Left Image
+$this->add_control(
+	'layout_nine_left_image',
+	[
+		'label' => esc_html__('Left Image', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
 		'default' => [
 			'url' => \Elementor\Utils::get_placeholder_image_src(),
 		],
+		'separator' => 'before',
 	]
 );
 
+// Right Image
 $this->add_control(
-	'layout_nine_bottom_image_two',
+	'layout_nine_right_image',
 	[
-		'label' => esc_html__('Image Two', 'roavio-toolkit'),
+		'label' => esc_html__('Right Image', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
 		'default' => [
 			'url' => \Elementor\Utils::get_placeholder_image_src(),
 		],
+		'separator' => 'before',
 	]
 );
+
 
 $this->end_controls_section();

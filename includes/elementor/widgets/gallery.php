@@ -54,6 +54,7 @@ class Gallery extends Widget_Base
 					'layout_two' => __('Layout Two', 'roavio-toolkit'),
 					'layout_three' => __('Layout Three', 'roavio-toolkit'),
 					'layout_four' => __('Layout Four', 'roavio-toolkit'),
+					'layout_five' => __('Layout Five', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -64,6 +65,7 @@ class Gallery extends Widget_Base
 		include rt_get_elementor_option('gallery-two-option.php');
 		include rt_get_elementor_option('gallery-three-option.php');
 		include rt_get_elementor_option('gallery-four-option.php');
+		include rt_get_elementor_option('gallery-five-option.php');
 
 		//Content style
 		$this->start_controls_section(
@@ -90,5 +92,6 @@ class Gallery extends Widget_Base
 		include rt_get_elementor_template('gallery-two.php');
 		include rt_get_elementor_template('gallery-three.php');
 		include rt_get_elementor_template('gallery-four.php');
+		include rt_get_elementor_template('gallery-five.php');
 	}
 }

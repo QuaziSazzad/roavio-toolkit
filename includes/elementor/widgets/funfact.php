@@ -50,7 +50,7 @@ class FunFact extends Widget_Base
 				'default' => 'layout_one',
 				'options' => [
 					'layout_one' => __('Layout One', 'roavio-toolkit'),
-					// 'layout_two' => __('Layout Two', 'roavio-toolkit'),
+					'layout_two' => __('Layout Two', 'roavio-toolkit'),
 					// 'layout_three' => __('Layout Three', 'roavio-toolkit'),
 					// 'layout_four' => __('Layout Four', 'roavio-toolkit'),
 					// 'layout_five' => __('Layout Five', 'roavio-toolkit'),
@@ -62,7 +62,7 @@ class FunFact extends Widget_Base
 
 
 		include rt_get_elementor_option('funfact-one-option.php');
-		// include rt_get_elementor_option('funfact-two-option.php');
+		include rt_get_elementor_option('funfact-two-option.php');
 		// include rt_get_elementor_option('funfact-three-option.php');
 		// include rt_get_elementor_option('funfact-four-option.php');
 		// include rt_get_elementor_option('funfact-five-option.php');
@@ -89,7 +89,7 @@ class FunFact extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 		include rt_get_elementor_template('funfact-one.php');
-		// include rt_get_elementor_template('funfact-two.php');
+		include rt_get_elementor_template('funfact-two.php');
 		// include rt_get_elementor_template('funfact-three.php');
 		// include rt_get_elementor_template('funfact-four.php');
 		// include rt_get_elementor_template('funfact-five.php');

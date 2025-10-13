@@ -1,23 +1,23 @@
 <?php if ('layout_one' == $settings['layout_type']) : ?>
-    <!-- Headline Area Start -->
-    <div class="headline-area rel z-1">
-        <span class="marquee-wrap style-two py-20 rpy-10 bgc-secondary">
-            <span class="marquee-inner left">
-                <?php foreach ($settings['layout_one_sliding_text'] as $index =>  $item) : ?>
-                    <span class="marquee-item"><i class="flaticon-asterisk"></i><?php echo esc_html($item['text']); ?></span>
-                <?php endforeach; ?>
-            </span>
-            <span class="marquee-inner left">
-                <?php foreach ($settings['layout_one_sliding_text'] as $index =>  $item) : ?>
-                    <span class="marquee-item"><i class="flaticon-asterisk"></i><?php echo esc_html($item['text']); ?></span>
-                <?php endforeach; ?>
-            </span>
-            <span class="marquee-inner left">
-                <?php foreach ($settings['layout_one_sliding_text'] as $index =>  $item) : ?>
-                    <span class="marquee-item"><i class="flaticon-asterisk"></i><?php echo esc_html($item['text']); ?></span>
-                <?php endforeach; ?>
-            </span>
-        </span>
+    <!-- Marquee Section Start -->
+    <div class="marquee-section">
+        <div class="mycustom-marque">
+            <div class="scrolling-wrap style-2">
+                <?php for ($i = 0; $i < 3; $i++) : ?>
+                    <div class="comm">
+                        <div></div>
+                        <?php
+                        if (!empty($settings['layout_one_sliding_texts'])) :
+                            foreach ($settings['layout_one_sliding_texts'] as $item) :
+                        ?>
+                                <div class="cmn-textslide"><?php echo esc_html($item['layout_one_slide_text']); ?></div>
+                        <?php
+                            endforeach;
+                        endif;
+                        ?>
+                    </div>
+                <?php endfor; ?>
+            </div>
+        </div>
     </div>
-    <!-- Headline Area End -->
 <?php endif; ?>

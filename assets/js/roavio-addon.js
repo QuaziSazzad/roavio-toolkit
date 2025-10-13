@@ -273,6 +273,32 @@
            });
        }
 
+          //>> Project Hover Js Start <<//
+    const getSlide = $('.main-box, .box-2').length - 1;
+    const slideCal = 100 / getSlide + '%';
+    
+    $('.box-2').css({
+        "width": slideCal
+    });
+    
+    $(document).on('mouseenter', '.box-2', function() {
+        $('.box-2').removeClass('active');
+        $(this).addClass('active');
+    });     
+
+
+      $(document).on('click', '.nav-link[data-bs-toggle="tab"]', function (e) {
+        e.preventDefault();
+        var target = $(this).attr('href');
+        
+        // remove ctive  class
+        $('.nav-link').removeClass('active');
+        $('.tab-pane').removeClass('active show');
+        
+        // active class
+        $(this).addClass('active');
+        $(target).addClass('active show');
+        });
 
     };
 

@@ -7,11 +7,10 @@ $this->start_controls_section(
 		'label' => esc_html__('Content', 'roavio-toolkit'),
 		'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 		'condition' => [
-			'layout_type' => ['layout_two', 'layout_three', 'layout_four', 'layout_five']
+			'layout_type' => ['layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']
 		]
 	]
 );
-
 
 
 $this->add_control(
@@ -160,7 +159,7 @@ $this->add_control(
 		'fields' => $locations->get_controls(),
 		'title_field' => '{{{ location }}}',
 		'condition' => [
-			'layout_type' => ['layout_one', 'layout_four', 'layout_five'],
+			'layout_type' => ['layout_one', 'layout_four', 'layout_five', 'layout_six'],
 		]
 	]
 );
@@ -249,6 +248,33 @@ $this->add_control(
 		'condition' => [
 			'layout_type' => ['layout_two', 'layout_three'],
 		]
+	]
+);
+
+$this->add_control(
+	'layout_one_shape_one',
+	[
+		'label' => esc_html__('Shape One', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [],
+	]
+);
+
+$this->add_control(
+	'layout_one_shape_two',
+	[
+		'label' => esc_html__('Shape Two', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [],
+	]
+);
+
+$this->add_control(
+	'layout_one_shape_three',
+	[
+		'label' => esc_html__('Shape Three', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [],
 	]
 );
 

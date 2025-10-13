@@ -94,11 +94,9 @@ $repeater->add_control(
 $repeater->add_control(
 	'layout_two_box_background',
 	[
-		'label' => esc_html__('Box Background Image', 'roavio-toolkit'),
+		'label' => esc_html__('Box Background Shape', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [
-			'url' => \Elementor\Utils::get_placeholder_image_src(),
-		],
+		'default' => [],
 		'separator' => 'before',
 	]
 );
@@ -128,9 +126,7 @@ $repeater->add_control(
 	[
 		'label' => esc_html__('Small Image', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [
-			'url' => \Elementor\Utils::get_placeholder_image_src(),
-		],
+		'default' => [],
 	]
 );
 
@@ -150,9 +146,7 @@ $repeater->add_control(
 	[
 		'label' => esc_html__('Rating Icon', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [
-			'url' => \Elementor\Utils::get_placeholder_image_src(),
-		],
+		'default' => [],
 	]
 );
 

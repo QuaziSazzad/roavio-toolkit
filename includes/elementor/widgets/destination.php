@@ -54,6 +54,7 @@ class Destination extends Widget_Base
 					'layout_three' => __('Layout three', 'roavio-toolkit'),
 					'layout_four' => __('Layout four', 'roavio-toolkit'),
 					'layout_five' => __('Layout Five', 'roavio-toolkit'),
+					'layout_six' => __('Layout Six', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -89,5 +90,6 @@ class Destination extends Widget_Base
 		include rt_get_elementor_template('destination-three.php');
 		include rt_get_elementor_template('destination-four.php');
 		include rt_get_elementor_template('destination-five.php');
+		include rt_get_elementor_template('destination-six.php');
 	}
 }
