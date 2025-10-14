@@ -66,7 +66,7 @@ class Why_Choose_Us extends Widget_Base
 		$this->end_controls_section();
 
 		include rt_get_elementor_option('why-choose-us-one-option.php');
-		//include rt_get_elementor_option('why-choose-us-two-option.php');
+		include rt_get_elementor_option('why-choose-us-two-option.php');
 
 
 		//Content style
@@ -92,6 +92,6 @@ class Why_Choose_Us extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 		include rt_get_elementor_template('why-choose-us-one.php');
-		//include rt_get_elementor_template('why-choose-us-two.php');
+		include rt_get_elementor_template('why-choose-us-two.php');
 	}
 }

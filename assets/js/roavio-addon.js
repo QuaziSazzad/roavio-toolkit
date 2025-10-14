@@ -273,7 +273,55 @@
            });
        }
 
-          //>> Project Hover Js Start <<//
+         //>> Testimonial box Slider Start <<//
+      if($('.testimonial-box-slider').length > 0) {
+        const TestimonialBoxSlider = new Swiper(".testimonial-box-slider", {
+            spaceBetween: 20,
+            freemode: true,
+            centeredSlides: true,
+            loop: true,
+            speed: 6000,
+            allowTouchMove: false,
+            autoplay: {
+                delay: 1,
+                disableOnInteraction: true,
+            },
+            breakpoints: {
+                991: {
+                    slidesPerView: 2,
+                },
+                0: {
+                    slidesPerView: 1,
+                },
+            },
+        });
+    }
+
+    //>>Testimonial box Slider2 Start <<//
+    if($('.testimonial-box-slider-2').length > 0) {
+        const TestimonialBoxSlider2 = new Swiper(".testimonial-box-slider-2", {
+            spaceBetween: 20,
+            freemode: true,
+            centeredSlides: true,
+            loop: true,
+            speed: 6000,
+            allowTouchMove: false,
+            autoplay: {
+                delay: 1,
+                disableOnInteraction: true,
+            },
+            breakpoints: {
+                991: {
+                    slidesPerView: 2,
+                },
+                0: {
+                    slidesPerView: 1,
+                },
+            },
+        });
+    }
+
+    //>> Project Hover Js Start <<//
     const getSlide = $('.main-box, .box-2').length - 1;
     const slideCal = 100 / getSlide + '%';
     
@@ -299,6 +347,7 @@
         $(this).addClass('active');
         $(target).addClass('active show');
         });
+        
 
     };
 

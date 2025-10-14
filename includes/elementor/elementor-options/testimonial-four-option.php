@@ -14,175 +14,209 @@ $this->start_controls_section(
 
 
 $this->add_control(
-	'layout_four_title',
+	'layout_four_section_title',
 	[
-		'label' => esc_html__('Title', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'placeholder' => esc_html__('Add title', 'roavio-toolkit'),
-		'default' => esc_html__('What Our Clients Say About Solutions', 'roavio-toolkit'),
-	]
-);
-
-$this->add_control(
-	'layout_four_title_tag',
-	[
-		'label'       => esc_html__('Title Tag', 'roavio-toolkit'),
-		'type'        => \Elementor\Controls_Manager::CHOOSE,
-		'label_block' => false,
-		'options'     => [
-			'h1' => [
-				'title' => esc_html__('H1', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h1',
-			],
-			'h2' => [
-				'title' => esc_html__('H2', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h2',
-			],
-			'h3' => [
-				'title' => esc_html__('H3', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h3',
-			],
-			'h4' => [
-				'title' => esc_html__('H4', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h4',
-			],
-			'h5' => [
-				'title' => esc_html__('H5', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h5',
-			],
-			'h6' => [
-				'title' => esc_html__('H6', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h6',
-			],
-		],
-		'default'     => 'h2',
-		'toggle'      => false,
-	]
-);
-
-$this->add_control(
-	'layout_four_subtitle',
-	[
-		'label' => esc_html__('Subtitle', 'roavio-toolkit'),
+		'label' => esc_html__('Section Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'placeholder' => esc_html__('Add subtitle', 'roavio-toolkit'),
-		'default' => esc_html__('Our Testimonials', 'roavio-toolkit'),
+		'default' => esc_html__('100k+ Customer Say Us', 'roavio-toolkit'),
 		'label_block' => true,
 	]
 );
 
-
+$this->add_control(
+	'layout_four_section_title_tag',
+	[
+		'label' => esc_html__('Section Title Tag', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::SELECT,
+		'default' => 'h2',
+		'options' => [
+			'h1' => esc_html__('H1', 'roavio-toolkit'),
+			'h2' => esc_html__('H2', 'roavio-toolkit'),
+			'h3' => esc_html__('H3', 'roavio-toolkit'),
+			'h4' => esc_html__('H4', 'roavio-toolkit'),
+			'h5' => esc_html__('H5', 'roavio-toolkit'),
+			'h6' => esc_html__('H6', 'roavio-toolkit'),
+			'div' => esc_html__('div', 'roavio-toolkit'),
+			'span' => esc_html__('span', 'roavio-toolkit'),
+			'p' => esc_html__('p', 'roavio-toolkit'),
+		],
+	]
+);
 
 $this->add_control(
-	'layout_four_image',
+	'layout_four_section_subtitle',
 	[
-		'label' => esc_html__('Testimonial Image', 'roavio-toolkit'),
+		'label' => esc_html__('Section Subtitle', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('Join over 100,000 satisfied travelers who have experienced', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+// Testimonial Items Repeater
+$repeater = new \Elementor\Repeater();
+
+$repeater->add_control(
+	'layout_four_testimonial_image',
+	[
+		'label' => esc_html__('Client Image', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
 		'default' => [
 			'url' => \Elementor\Utils::get_placeholder_image_src(),
 		],
-		'description' => esc_html__('Upload testimonial section image', 'roavio-toolkit'),
 	]
 );
 
-$layout_four_testimonial = new \Elementor\Repeater();
-
-$layout_four_testimonial->add_control(
-	'title',
+$repeater->add_control(
+	'layout_four_testimonial_content',
 	[
-		'label' => esc_html__('Title', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'placeholder' => esc_html__('Add title', 'roavio-toolkit'),
-		'default' => esc_html__('Excellent Works', 'roavio-toolkit'),
-	]
-);
-
-$layout_four_testimonial->add_control(
-	'rating',
-	[
-		'label' => esc_html__('Rating', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::SELECT,
-		'default' => '4.5',
-		'options' => [
-			'5' => esc_html__('5 Stars', 'roavio-toolkit'),
-			'4.5' => esc_html__('4.5 Stars', 'roavio-toolkit'),
-			'4' => esc_html__('4 Stars', 'roavio-toolkit'),
-			'3.5' => esc_html__('3.5 Stars', 'roavio-toolkit'),
-			'3' => esc_html__('3 Stars', 'roavio-toolkit'),
-			'2.5' => esc_html__('2.5 Stars', 'roavio-toolkit'),
-			'2' => esc_html__('2 Stars', 'roavio-toolkit'),
-			'1.5' => esc_html__('1.5 Stars', 'roavio-toolkit'),
-			'1' => esc_html__('1 Star', 'roavio-toolkit'),
-		],
-	]
-);
-
-$layout_four_testimonial->add_control(
-	'content',
-	[
-		'label' => esc_html__('Content', 'roavio-toolkit'),
+		'label' => esc_html__('Testimonial Content', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'rows' => '3',
-		'placeholder' => esc_html__('Add testimonial content', 'roavio-toolkit'),
-		'default' => esc_html__('Sed ut perspiciatis unde omnis iste natus voluptatem accus antiume dolorem queauy antium totam aperiam eaque quaey veritatis vitaec', 'roavio-toolkit'),
+		'default' => esc_html__('"The trip exceeded all expectations! Every detail was perfectly planned an our local guide made travel adventure experience truly unforgettable."', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
-$layout_four_testimonial->add_control(
-	'name',
+$repeater->add_control(
+	'layout_four_client_name',
 	[
-		'label' => esc_html__('Name', 'roavio-toolkit'),
+		'label' => esc_html__('Client Name', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'placeholder' => esc_html__('Add name', 'roavio-toolkit'),
-		'default' => esc_html__('Andrew D. Bricker', 'roavio-toolkit'),
+		'default' => esc_html__('Michael Thompson', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
-$layout_four_testimonial->add_control(
-	'designation',
+$repeater->add_control(
+	'layout_four_client_designation',
 	[
-		'label' => esc_html__('Designation', 'roavio-toolkit'),
+		'label' => esc_html__('Client Designation', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'placeholder' => esc_html__('Add designation', 'roavio-toolkit'),
-		'default' => esc_html__('CEO & Founder', 'roavio-toolkit'),
+		'default' => esc_html__('Co-Traveler', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
-$layout_four_testimonial->add_control(
-	'icon',
+$repeater->add_control(
+	'layout_four_card_style',
 	[
-		'label' => esc_html__('Quote Icon', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::ICONS,
-		'default' => [
-			'value' => 'fal fa-quote-right',
-			'library' => 'font-awesome',
+		'label' => esc_html__('Card Style', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::SELECT,
+		'default' => 'normal',
+		'options' => [
+			'normal' => esc_html__('Normal', 'roavio-toolkit'),
+			'bg' => esc_html__('With Background', 'roavio-toolkit'),
 		],
 	]
 );
 
 $this->add_control(
-	'layout_four_testimonials',
+	'layout_four_testimonials_top',
 	[
-		'label' => esc_html__('Testimonials', 'roavio-toolkit'),
+		'label' => esc_html__('Top Row Testimonials', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::REPEATER,
-		'fields' => $layout_four_testimonial->get_controls(),
+		'fields' => $repeater->get_controls(),
 		'default' => [
 			[
-				'title' => esc_html__('Excellent Works', 'roavio-toolkit'),
-				'content' => esc_html__('Sed ut perspiciatis unde omnis iste natus voluptatem accus antiume dolorem queauy antium totam aperiam eaque quaey veritatis vitaec', 'roavio-toolkit'),
-				'name' => esc_html__('Andrew D. Bricker', 'roavio-toolkit'),
-				'designation' => esc_html__('CEO & Founder', 'roavio-toolkit'),
-				'rating' => '4.5',
+				'layout_four_client_name' => esc_html__('Michael Thompson', 'roavio-toolkit'),
+				'layout_four_client_designation' => esc_html__('Co-Traveler', 'roavio-toolkit'),
+				'layout_four_card_style' => 'normal',
 			],
 			[
-				'title' => esc_html__('Excellent Works', 'roavio-toolkit'),
-				'content' => esc_html__('On the other hand denounce righteous indignations and dislike men who beguiled and demoralized by the charms of pleasure moment blinded foresee', 'roavio-toolkit'),
-				'name' => esc_html__('Jose T. McMichael', 'roavio-toolkit'),
-				'designation' => esc_html__('Senior Manager', 'roavio-toolkit'),
-				'rating' => '4.5',
+				'layout_four_client_name' => esc_html__('Sarah Johnson', 'roavio-toolkit'),
+				'layout_four_client_designation' => esc_html__('Adventure Seeker', 'roavio-toolkit'),
+				'layout_four_card_style' => 'bg',
+			],
+			[
+				'layout_four_client_name' => esc_html__('David Wilson', 'roavio-toolkit'),
+				'layout_four_client_designation' => esc_html__('Travel Enthusiast', 'roavio-toolkit'),
+				'layout_four_card_style' => 'normal',
 			],
 		],
-		'title_field' => '{{{ name }}}',
+		'title_field' => '{{{ layout_four_client_name }}}',
+	]
+);
+
+$repeater2 = new \Elementor\Repeater();
+
+$repeater2->add_control(
+	'layout_four_testimonial_image_bottom',
+	[
+		'label' => esc_html__('Client Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [
+			'url' => \Elementor\Utils::get_placeholder_image_src(),
+		],
+	]
+);
+
+$repeater2->add_control(
+	'layout_four_testimonial_content_bottom',
+	[
+		'label' => esc_html__('Testimonial Content', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXTAREA,
+		'default' => esc_html__('"The trip exceeded all expectations! Every detail was perfectly planned an our local guide made travel adventure experience truly unforgettable."', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+$repeater2->add_control(
+	'layout_four_client_name_bottom',
+	[
+		'label' => esc_html__('Client Name', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('Michael Thompson', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+$repeater2->add_control(
+	'layout_four_client_designation_bottom',
+	[
+		'label' => esc_html__('Client Designation', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('Co-Traveler', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+$repeater2->add_control(
+	'layout_four_card_style_bottom',
+	[
+		'label' => esc_html__('Card Style', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::SELECT,
+		'default' => 'normal',
+		'options' => [
+			'normal' => esc_html__('Normal', 'roavio-toolkit'),
+			'bg' => esc_html__('With Background', 'roavio-toolkit'),
+		],
+	]
+);
+
+$this->add_control(
+	'layout_four_testimonials_bottom',
+	[
+		'label' => esc_html__('Bottom Row Testimonials', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::REPEATER,
+		'fields' => $repeater2->get_controls(),
+		'default' => [
+			[
+				'layout_four_client_name_bottom' => esc_html__('Michael Thompson', 'roavio-toolkit'),
+				'layout_four_client_designation_bottom' => esc_html__('Co-Traveler', 'roavio-toolkit'),
+				'layout_four_card_style_bottom' => 'normal',
+			],
+			[
+				'layout_four_client_name_bottom' => esc_html__('Emily Parker', 'roavio-toolkit'),
+				'layout_four_client_designation_bottom' => esc_html__('Travel Blogger', 'roavio-toolkit'),
+				'layout_four_card_style_bottom' => 'bg',
+			],
+			[
+				'layout_four_client_name_bottom' => esc_html__('Robert Brown', 'roavio-toolkit'),
+				'layout_four_client_designation_bottom' => esc_html__('Frequent Traveler', 'roavio-toolkit'),
+				'layout_four_card_style_bottom' => 'normal',
+			],
+		],
+		'title_field' => '{{{ layout_four_client_name_bottom }}}',
 	]
 );
 

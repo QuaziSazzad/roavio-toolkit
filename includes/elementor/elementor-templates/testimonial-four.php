@@ -1,75 +1,84 @@
 <?php if ('layout_four' == $settings['layout_type']) : ?>
-    <!-- Testimonials Area Three Start -->
-    <section class="testimonials-three-area py-130 rpy-100">
+    <!-- Testimonial Section-3 Start -->
+    <section class="testimonial-section-3 section-padding fix">
         <div class="container">
-            <div class="row gap-80 align-items-center">
-                <div class="col-xl-7 col-lg-6">
-                    <div class="testimonials-three-image rmb-55 wow fadeInLeft delay-0-2s">
-                        <?php rt_elementor_rendered_image($settings, 'layout_four_image'); ?>
-                    </div>
-                </div>
-                <div class="col-xl-5 col-lg-6">
-                    <div class="testimonials-three-wrap wow fadeInRight delay-0-2s">
-                        <div class="section-title mb-45">
-                            <?php if (!empty($settings['layout_four_subtitle'])) : ?>
-                                <span class="sub-title mb-10"><?php echo rt_kses_basic($settings['layout_four_subtitle']); ?></span>
-                            <?php endif; ?>
-                            <?php if (!empty($settings['layout_four_title'])) : ?>
-                                <<?php echo esc_attr($settings['layout_four_title_tag']); ?>><?php echo rt_kses_basic($settings['layout_four_title']); ?></<?php echo esc_attr($settings['layout_four_title_tag']); ?>>
-                            <?php endif; ?>
-                        </div>
-                        <div class="testimonial-five-slider">
-                            <?php foreach ($settings['layout_four_testimonials'] as $item) : ?>
-                                <div class="testimonial-item-four">
-                                    <div class="content">
-                                        <div class="testi-header">
-                                            <?php if (!empty($item['title'])) : ?>
-                                                <h4><?php echo rt_kses_basic($item['title']); ?></h4>
-                                            <?php endif; ?>
-                                            <?php if (!empty($item['rating'])) : ?>
-                                                <div class="ratting">
-                                                    <?php
-                                                    $rating = floatval($item['rating']);
-                                                    $full_stars = floor($rating);
-                                                    $half_star = ($rating - $full_stars) >= 0.5;
+            <div class="section-title text-center">
+                <?php if (!empty($settings['layout_four_section_title'])) : ?>
+                    <<?php echo esc_attr($settings['layout_four_section_title_tag']); ?> class="wow fadeInUp" data-wow-delay=".3s">
+                        <?php echo rt_kses_basic($settings['layout_four_section_title']); ?>
+                    </<?php echo esc_attr($settings['layout_four_section_title_tag']); ?>>
+                <?php endif; ?>
 
-                                                    for ($i = 0; $i < $full_stars; $i++) {
-                                                        echo '<i class="fas fa-star"></i>';
-                                                    }
-
-                                                    if ($half_star) {
-                                                        echo '<i class="fas fa-star-half-alt"></i>';
-                                                    }
-                                                    ?>
-                                                </div>
-                                            <?php endif; ?>
-                                        </div>
-                                        <?php if (!empty($item['content'])) : ?>
-                                            <div class="testi-text">
-                                                <?php echo rt_kses_basic($item['content']); ?>
-                                            </div>
-                                        <?php endif; ?>
-                                        <div class="testi-footer">
-                                            <div class="icon">
-                                                <?php \Elementor\Icons_Manager::render_icon($item['icon'], ['aria-hidden' => 'true']); ?>
-                                            </div>
-                                            <div class="title">
-                                                <?php if (!empty($item['name'])) : ?>
-                                                    <h4><?php echo rt_kses_basic($item['name']); ?></h4>
-                                                <?php endif; ?>
-                                                <?php if (!empty($item['designation'])) : ?>
-                                                    <span class="designation"><?php echo rt_kses_basic($item['designation']); ?></span>
-                                                <?php endif; ?>
-                                            </div>
-                                        </div>
-                                    </div>
+                <?php if (!empty($settings['layout_four_section_subtitle'])) : ?>
+                    <p class="wow fadeInUp" data-wow-delay=".5s"><?php echo rt_kses_basic($settings['layout_four_section_subtitle']); ?></p>
+                <?php endif; ?>
+            </div>
+        </div>
+        <div class="testimonial-box-wrapper style-1">
+            <div class="swiper testimonial-box-slider">
+                <div class="swiper-wrapper slide-transtion">
+                    <?php foreach ($settings['layout_four_testimonials_top'] as $item) : ?>
+                        <div class="swiper-slide brand-slide-element">
+                            <div class="testimonial-card-item-3 <?php echo esc_attr($item['layout_four_card_style'] === 'bg' ? 'bg' : ''); ?>">
+                                <div class="thumb">
+                                    <?php rt_elementor_rendered_image($item, 'layout_four_testimonial_image'); ?>
                                 </div>
-                            <?php endforeach; ?>
+                                <div class="content">
+                                    <div class="icon">
+                                        <i class="flaticon-left-quote"></i>
+                                    </div>
+                                    <?php if (!empty($item['layout_four_testimonial_content'])) : ?>
+                                        <p>
+                                            <?php echo rt_kses_basic($item['layout_four_testimonial_content']); ?>
+                                        </p>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($item['layout_four_client_name'])) : ?>
+                                        <h5><?php echo rt_kses_basic($item['layout_four_client_name']); ?>,</h5>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($item['layout_four_client_designation'])) : ?>
+                                        <span><?php echo rt_kses_basic($item['layout_four_client_designation']); ?></span>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-box-wrapper style-2">
+            <div dir="rtl" class="swiper testimonial-box-slider-2">
+                <div class="swiper-wrapper slide-transtion">
+                    <?php foreach ($settings['layout_four_testimonials_bottom'] as $item) : ?>
+                        <div class="swiper-slide brand-slide-element">
+                            <div class="testimonial-card-item-3 <?php echo esc_attr($item['layout_four_card_style_bottom'] === 'bg' ? 'bg' : ''); ?>">
+                                <div class="content">
+                                    <div class="icon">
+                                        <i class="flaticon-left-quote"></i>
+                                    </div>
+                                    <?php if (!empty($item['layout_four_testimonial_content_bottom'])) : ?>
+                                        <p>
+                                            <?php echo rt_kses_basic($item['layout_four_testimonial_content_bottom']); ?>
+                                        </p>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($item['layout_four_client_name_bottom'])) : ?>
+                                        <h5><?php echo rt_kses_basic($item['layout_four_client_name_bottom']); ?>,</h5>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($item['layout_four_client_designation_bottom'])) : ?>
+                                        <span><?php echo rt_kses_basic($item['layout_four_client_designation_bottom']); ?></span>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="thumb">
+                                    <?php rt_elementor_rendered_image($item, 'layout_four_testimonial_image_bottom'); ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Testimonials Area Three End -->
 <?php endif; ?>

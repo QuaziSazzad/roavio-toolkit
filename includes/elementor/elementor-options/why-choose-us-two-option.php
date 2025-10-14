@@ -14,12 +14,11 @@ $this->start_controls_section(
 
 
 $this->add_control(
-	'layout_two_title',
+	'layout_two_section_title',
 	[
-		'label' => esc_html__('Title', 'roavio-toolkit'),
+		'label' => esc_html__('Section Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Empowering Businesses With Advanced IT Solutions', 'roavio-toolkit'),
-		'placeholder' => esc_html__('Type your title here', 'roavio-toolkit'),
+		'default' => esc_html__('Why Choose Our Agency', 'roavio-toolkit'),
 		'label_block' => true,
 	]
 );
@@ -27,122 +26,124 @@ $this->add_control(
 $this->add_control(
 	'layout_two_title_tag',
 	[
-		'label'       => esc_html__('Title Tag', 'roavio-toolkit'),
-		'type'        => \Elementor\Controls_Manager::CHOOSE,
-		'label_block' => false,
-		'options'     => [
-			'h1' => [
-				'title' => esc_html__('H1', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h1',
-			],
-			'h2' => [
-				'title' => esc_html__('H2', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h2',
-			],
-			'h3' => [
-				'title' => esc_html__('H3', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h3',
-			],
-			'h4' => [
-				'title' => esc_html__('H4', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h4',
-			],
-			'h5' => [
-				'title' => esc_html__('H5', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h5',
-			],
-			'h6' => [
-				'title' => esc_html__('H6', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h6',
-			],
+		'label' => esc_html__('Section Title Tag', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::SELECT,
+		'default' => 'h2',
+		'options' => [
+			'h1' => esc_html__('H1', 'roavio-toolkit'),
+			'h2' => esc_html__('H2', 'roavio-toolkit'),
+			'h3' => esc_html__('H3', 'roavio-toolkit'),
+			'h4' => esc_html__('H4', 'roavio-toolkit'),
+			'h5' => esc_html__('H5', 'roavio-toolkit'),
+			'h6' => esc_html__('H6', 'roavio-toolkit'),
+			'div' => esc_html__('div', 'roavio-toolkit'),
+			'span' => esc_html__('span', 'roavio-toolkit'),
+			'p' => esc_html__('p', 'roavio-toolkit'),
 		],
-		'default'     => 'h2',
-		'toggle'      => false,
 	]
 );
 
 $this->add_control(
-	'layout_two_subtitle',
+	'layout_two_section_subtitle',
 	[
-		'label' => esc_html__('Subtitle', 'roavio-toolkit'),
+		'label' => esc_html__('Section Subtitle', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Why Choose Us', 'roavio-toolkit'),
-		'placeholder' => esc_html__('Type your subtitle here', 'roavio-toolkit'),
+		'default' => esc_html__('Crafting Join over 100,000 satisfied travelers who have experienced', 'roavio-toolkit'),
 		'label_block' => true,
 	]
 );
 
+// Repeater for feature boxes
 $repeater = new \Elementor\Repeater();
 
 $repeater->add_control(
-	'layout_two_item_icon',
+	'layout_two_box_icon',
 	[
 		'label' => esc_html__('Icon', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::ICONS,
 		'default' => [
-			'value' => 'flaticon-idea',
-			'library' => 'flaticon',
+			'value' => 'flaticon-traveling',
+			'library' => 'solid',
 		],
 	]
 );
 
 $repeater->add_control(
-	'layout_two_item_title',
+	'layout_two_box_title',
 	[
 		'label' => esc_html__('Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Customizable Solutions', 'roavio-toolkit'),
-		'placeholder' => esc_html__('Type your title here', 'roavio-toolkit'),
+		'default' => esc_html__('Locally Crafted Journeys', 'roavio-toolkit'),
 		'label_block' => true,
 	]
 );
 
 $repeater->add_control(
-	'layout_two_item_description',
+	'layout_two_box_description',
 	[
 		'label' => esc_html__('Description', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'default' => esc_html__('Providing highly customizable solutions tailored to each client\'s unique needs can set you apart. Clients are looking.', 'roavio-toolkit'),
-		'placeholder' => esc_html__('Type your description here', 'roavio-toolkit'),
+		'default' => esc_html__('Every journey we offer is thoughtfully curated by locals who know their destinations best.', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
 $this->add_control(
-	'layout_two_items',
+	'layout_two_feature_boxes',
 	[
-		'label' => esc_html__('Feature Items', 'roavio-toolkit'),
+		'label' => esc_html__('Feature Boxes', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::REPEATER,
 		'fields' => $repeater->get_controls(),
 		'default' => [
 			[
-				'layout_two_item_icon' => [
-					'value' => 'flaticon-idea',
-					'library' => 'flaticon',
-				],
-				'layout_two_item_title' => esc_html__('Customizable Solutions', 'roavio-toolkit'),
-				'layout_two_item_description' => esc_html__('Providing highly customizable solutions tailored to each client\'s unique needs can set you apart. Clients are looking.', 'roavio-toolkit'),
+				'layout_two_box_title' => esc_html__('Locally Crafted Journeys', 'roavio-toolkit'),
+				'layout_two_box_description' => esc_html__('Every journey we offer is thoughtfully curated by locals who know their destinations best.', 'roavio-toolkit'),
 			],
 			[
-				'layout_two_item_icon' => [
-					'value' => 'flaticon-grow',
-					'library' => 'flaticon',
-				],
-				'layout_two_item_title' => esc_html__('Scalability & Flexibility', 'roavio-toolkit'),
-				'layout_two_item_description' => esc_html__('Scalable solutions allow companies to grow without needing to overhaul their software infrastructure architecture.', 'roavio-toolkit'),
+				'layout_two_box_title' => esc_html__('Self guided flexibility', 'roavio-toolkit'),
+				'layout_two_box_description' => esc_html__('Enjoy the freedom to explore at your own pace with our self-guided flexibility.', 'roavio-toolkit'),
 			],
 			[
-				'layout_two_item_icon' => [
-					'value' => 'flaticon-data-protection',
-					'library' => 'flaticon',
-				],
-				'layout_two_item_title' => esc_html__('Security & Compliance', 'roavio-toolkit'),
-				'layout_two_item_description' => esc_html__('Prioritizing security ensures protection and compliance with industry standards and regulations, safeguarding against.', 'roavio-toolkit'),
+				'layout_two_box_title' => esc_html__('No hidden charge included', 'roavio-toolkit'),
+				'layout_two_box_description' => esc_html__('We believe in transparent pricing, so what you see is exactly what you pay.', 'roavio-toolkit'),
+			],
+			[
+				'layout_two_box_title' => esc_html__('Custom tours package', 'roavio-toolkit'),
+				'layout_two_box_description' => esc_html__('Design your dream trip with our custom tour packages, tailored to your preferences', 'roavio-toolkit'),
 			],
 		],
-		'title_field' => '{{{ layout_two_item_title }}}',
+		'title_field' => '{{{ layout_two_box_title }}}',
 	]
 );
 
+// Background Images
+$this->add_control(
+	'layout_two_left_shape_image',
+	[
+		'label' => esc_html__('Left Shape Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [],
+		'separator' => 'before',
+	]
+);
+
+$this->add_control(
+	'layout_two_right_shape_image',
+	[
+		'label' => esc_html__('Right Shape Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [],
+	]
+);
+
+$this->add_control(
+	'layout_two_bottom_shape_image',
+	[
+		'label' => esc_html__('Bottom Shape Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [],
+	]
+);
 
 
 $this->end_controls_section();
