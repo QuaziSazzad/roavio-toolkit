@@ -52,6 +52,18 @@ $layout_one_nav_menu->add_control(
 	]
 );
 
+$layout_one_nav_menu->add_control(
+	'icon',
+	[
+		'label' => esc_html__('Icon', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::ICONS,
+		'default' => [
+			'value' => 'fa-solid fa-chevron-right',
+			'library' => 'font-awesome',
+		],
+	]
+);
+
 $this->add_control(
 	'layout_one_nav_menu',
 	[

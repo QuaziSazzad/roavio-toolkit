@@ -70,7 +70,7 @@ class Sliding_Text extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Text', '{{WRAPPER}} .marquee-wrap .marquee-item', ['layout_one']);
+		roavio_elementor_style_options($this, 'Text', '{{WRAPPER}} .cmn-textslide', ['layout_one', 'layout_two']);
 
 		$this->end_controls_section();
 	}

@@ -78,12 +78,12 @@ class Why_Choose_Us extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one']);
-		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one']);
+		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one', 'layout_two']);
+		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one', 'layout_two']);
 
-		roavio_elementor_style_options($this, 'Features Title', '{{WRAPPER}} .choose-us-content h5', ['layout_one']);
-		roavio_elementor_style_options($this, 'Features Description', '{{WRAPPER}}  .choose-us-content p', ['layout_one']);
-		roavio_elementor_style_options($this, 'Features Icon', '{{WRAPPER}} .icon i', ['layout_one']);
+		roavio_elementor_style_options($this, 'Features Title', '{{WRAPPER}} .choose-us-content h5,{{WRAPPER}} .choose-us-box-items-3 h5', ['layout_one', 'layout_two']);
+		roavio_elementor_style_options($this, 'Features Description', '{{WRAPPER}}  .choose-us-content p,{{WRAPPER}} .choose-us-box-items-3 p', ['layout_one', 'layout_two']);
+		roavio_elementor_style_options($this, 'Features Icon', '{{WRAPPER}} .icon i,{{WRAPPER}} .choose-us-box-items-3 .icon i', ['layout_one', 'layout_two']);
 
 		$this->end_controls_section();
 	}

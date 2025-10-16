@@ -663,15 +663,17 @@ class Recent_Post extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one', 'layout_two']);
-		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one', 'layout_two']);
+		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one', 'layout_two', 'layout_three']);
+		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one', 'layout_two', 'layout_three']);
 
-		roavio_elementor_style_options($this, 'Post Title', '{{WRAPPER}} .news-content h3 a', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five']);
-		roavio_elementor_style_options($this, 'Category', '{{WRAPPER}} .news-content span', ['layout_one', 'layout_three']);
+		roavio_elementor_style_options($this, 'Post Title', '{{WRAPPER}} .news-content h3 a,{{WRAPPER}} .news-white-bg h4 a', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five']);
+		roavio_elementor_style_options($this, 'Category', '{{WRAPPER}} .news-content span,{{WRAPPER}} .news-wrapper-3 .news-white-bg span', ['layout_one', 'layout_three']);
 		//roavio_elementor_style_options($this, 'Summary Text', '{{WRAPPER}} .blog-item .content p, {{WRAPPER}} .summary-text, {{WRAPPER}} .content p', ['layout_one', 'layout_two', 'layout_three', 'layout_five']);
 		//roavio_elementor_style_options($this, 'Author', '{{WRAPPER}} .blog-item-five .content .author a,{{WRAPPER}} .blog-meta li:first-child a', ['layout_four', 'layout_five']);
-		roavio_elementor_style_options($this, 'Date', '{{WRAPPER}} .news-image span', ['layout_one', 'layout_two', 'layout_three', 'layout_five']);
-		roavio_elementor_style_options($this, 'Read More', '{{WRAPPER}} .link-btn', ['layout_one', 'layout_two', 'layout_four', 'layout_five']);
+
+		roavio_elementor_style_options($this, 'Read More', '{{WRAPPER}} .link-btn', ['layout_one', 'layout_two', 'layout_three']);
+		roavio_elementor_style_options($this, 'Date', '{{WRAPPER}} .news-image span,{{WRAPPER}} .news-image .box h3', ['layout_one', 'layout_two', 'layout_three', 'layout_five']);
+		roavio_elementor_style_options($this, 'Month', '{{WRAPPER}} .news-wrapper-3 .news-image-items-3 .news-image .box h6', ['layout_one', 'layout_two', 'layout_three']);
 
 		//roavio_elementor_style_options($this, 'Meta', '{{WRAPPER}} .content .blog-meta li,{{WRAPPER}} .blog-item-five .content .blog-meta li a ', ['layout_four']);
 

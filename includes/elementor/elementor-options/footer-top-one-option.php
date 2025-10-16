@@ -75,9 +75,7 @@ $this->add_control(
 	[
 		'label' => esc_html__('Logo Image', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [
-			'url' => \Elementor\Utils::get_placeholder_image_src(),
-		],
+		'default' => [],
 	]
 );
 

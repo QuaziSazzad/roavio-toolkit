@@ -93,9 +93,9 @@ class Roavio_Elementor_Addon
 		// include_once RT_ELEMENTOR . '/widgets/social-icon.php';
 		// include_once RT_ELEMENTOR . '/widgets/skills.php';
 		// include_once RT_ELEMENTOR . '/widgets/experience.php';
-		// include_once RT_ELEMENTOR . '/widgets/footer-contact.php';
+		include_once RT_ELEMENTOR . '/widgets/footer-contact.php';
 		//include_once RT_ELEMENTOR . '/widgets/footer-about.php';
-		// include_once RT_ELEMENTOR . '/widgets/footer-nav.php';
+		include_once RT_ELEMENTOR . '/widgets/footer-nav.php';
 		include_once RT_ELEMENTOR . '/widgets/footer-top.php';
 		// include_once RT_ELEMENTOR . '/widgets/footer-newsletter.php';
 		// include_once RT_ELEMENTOR . '/widgets/footer-shape.php';
@@ -134,8 +134,8 @@ class Roavio_Elementor_Addon
 		// $widgets_manager->register(new Widgets\Latest_Work());
 		// $widgets_manager->register(new Widgets\Pricing());
 		// $widgets_manager->register(new Widgets\Portfolio_Details());
-		// $widgets_manager->register(new Widgets\Footer_Contact());
-		// $widgets_manager->register(new Widgets\Footer_Nav());
+		$widgets_manager->register(new Widgets\Footer_Contact());
+		$widgets_manager->register(new Widgets\Footer_Nav());
 		$widgets_manager->register(new Widgets\Footer_Top());
 		// $widgets_manager->register(new Widgets\Footer_About());
 		// $widgets_manager->register(new Widgets\Footer_Newsletter());

@@ -78,7 +78,7 @@ class Gallery extends Widget_Base
 		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_two', 'layout_three']);
 		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_two', 'layout_three']);
 
-		roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .activities-content h4 a,{{WRAPPER}} .gallery-content h4 a', ['layout_one', 'layout_two', 'layout_three']);
+		roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .activities-content h4 a,{{WRAPPER}} .gallery-content h4 a,{{WRAPPER}} .project-content h4 a', ['layout_one', 'layout_two', 'layout_three', 'layout_five']);
 		roavio_elementor_style_options($this, 'Category', '{{WRAPPER}} .gallery-content p', ['layout_three']);
 
 

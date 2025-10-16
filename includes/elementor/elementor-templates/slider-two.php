@@ -9,7 +9,7 @@
                             <?php rt_elementor_rendered_image($slide, 'layout_two_slide_image'); ?>
                             <div class="hero-content">
                                 <?php if (!empty($slide['layout_two_slide_title'])) : ?>
-                                    <<?php echo esc_attr($slide['layout_two_title_tag']); ?>><?php echo rt_kses_basic($slide['layout_two_slide_title']); ?></<?php echo esc_attr($slide['layout_two_title_tag']); ?>>
+                                    <<?php echo esc_attr($slide['layout_two_title_tag']); ?> class="title"><?php echo rt_kses_basic($slide['layout_two_slide_title']); ?></<?php echo esc_attr($slide['layout_two_title_tag']); ?>>
                                 <?php endif; ?>
 
                                 <?php if (!empty($slide['layout_two_slide_description'])) : ?>

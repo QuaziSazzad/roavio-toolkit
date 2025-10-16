@@ -8,13 +8,13 @@
                         <div class="feature-memories-content">
                             <div class="section-title mb-0">
                                 <?php if (!empty($settings['layout_ten_title'])) : ?>
-                                    <<?php echo esc_attr($settings['layout_ten_title_tag']); ?> class="text-white">
+                                    <<?php echo esc_attr($settings['layout_ten_title_tag']); ?> class="text-white sec-title">
                                         <?php echo rt_kses_basic($settings['layout_ten_title']); ?>
                                     </<?php echo esc_attr($settings['layout_ten_title_tag']); ?>>
                                 <?php endif; ?>
                             </div>
                             <?php if (!empty($settings['layout_ten_text'])) : ?>
-                                <p class="text">
+                                <p class="text description">
                                     <?php echo rt_kses_basic($settings['layout_ten_text']); ?>
                                 </p>
                             <?php endif; ?>
@@ -26,7 +26,7 @@
                     <div class="col-lg-7">
                         <div class="feature-memories-right">
                             <?php if (!empty($settings['layout_ten_text_2'])) : ?>
-                                <p class="text-2">
+                                <p class="text-2 description">
                                     <?php echo rt_kses_basic($settings['layout_ten_text_2']); ?>
                                 </p>
                             <?php endif; ?>

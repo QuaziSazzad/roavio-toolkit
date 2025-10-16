@@ -9,8 +9,8 @@ if ('layout_one' == $settings['layout_type']) : ?>
                 <div class="offcanvas__content">
                     <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
                         <div class="offcanvas__logo">
-                            <a href="index.html">
-                                <img src="assets/img/logo/black-logo.svg" alt="logo-img">
+                            <a href="<?php echo esc_url(home_url('/')); ?>">
+                                <img src="<?php echo esc_url($settings['mobile_logo']['url']); ?>" width="<?php echo esc_attr($settings['mobile_logo_size']['width']); ?>" height="<?php echo esc_attr($settings['mobile_logo_size']['height']); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" title="<?php echo esc_attr(get_bloginfo('name')); ?>">
                             </a>
                         </div>
                         <div class="offcanvas__close">
@@ -19,36 +19,27 @@ if ('layout_one' == $settings['layout_type']) : ?>
                             </button>
                         </div>
                     </div>
-                    <p class="text d-none d-xl-block">
-                        Nullam dignissim, ante scelerisque the is euismod fermentum odio sem semper the is erat, a feugiat leo urna eget eros. Duis Aenean a imperdiet risus.
-                    </p>
+                    <?php if (!empty($settings['sidebar_content'])) : ?>
+                        <p class="text d-none d-xl-block">
+                            <?php echo wp_kses_post($settings['sidebar_content']); ?>
+                        </p>
+                    <?php endif; ?>
                     <div class="mobile-menu fix mb-3"></div>
                     <div class="offcanvas__contact">
-                        <h3>Get Appointment</h3>
-                        <form action="#" id="contact-form" method="POST" class="contact-form-items">
-                            <div class="row g-4">
-                                <div class="col-lg-12">
-                                    <div class="form-clt">
-                                        <input type="text" name="name" id="name33" placeholder="Name">
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-clt">
-                                        <input type="text" name="name" id="email33" placeholder="Email Address">
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-clt">
-                                        <textarea name="message" id="message2" placeholder="Enter message..."></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                        <?php if ($settings['sidebar_contact_title']) : ?>
+                            <h3><?php echo esc_html($settings['sidebar_contact_title']) ?></h3>
+                        <?php endif; ?>
+                        <?php if (!empty($settings['layout_one_select_cf7_form'])) :
+                            echo do_shortcode('[contact-form-7 id="' . esc_attr($settings['layout_one_select_cf7_form']) . '"]');
+                        endif; ?>
                         <div class="social-icon d-flex align-items-center">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <?php
+                            if (!empty($settings['sidebar_social_icons'])) :
+                                foreach ($settings['sidebar_social_icons'] as $social_icon) :
+                            ?>
+                                    <a href="<?php echo esc_url($social_icon['social_url']['url']); ?>" <?php if (!empty($social_icon['social_url']['is_external'])) : ?> target="_blank" <?php endif; ?>><?php \Elementor\Icons_Manager::render_icon($social_icon['social_icon'], ['aria-hidden' => 'true']); ?></a>
+                            <?php endforeach;
+                            endif; ?>
                         </div>
                     </div>
                 </div>
@@ -60,36 +51,21 @@ if ('layout_one' == $settings['layout_type']) : ?>
     <div class="header-top-section">
         <div class="container-fluid">
             <div class="header-top-wrapper">
-                <p>Welcome to <span>Roavio</span> travel agency, need helps for travel guide <b>Let’s Talk</b></p>
+                <?php if (!empty($settings['top_text'])) : ?>
+                    <p><?php echo wp_kses_post($settings['top_text']); ?></p>
+                <?php endif; ?>
                 <div class="header-right">
-                    <div class="flag-wrap">
-                        <i class="fa-solid fa-globe"></i>
-                        <div class="nice-select" tabindex="0">
-                            <span class="current">
-                                English
-                            </span>
-                            <ul class="list">
-                                <li data-value="1" class="option selected focus">
-                                    English
-                                </li>
-                                <li data-value="1" class="option">
-                                    Bangla
-                                </li>
-                                <li data-value="1" class="option">
-                                    Hindi
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                     <ul class="header-list">
-                        <li>
-                            <i class="fa-solid fa-envelope"></i>
-                            <a href="mailto:support@gmail.com">Email : support@gmail.com</a>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-phone-flip"></i>
-                            <a href="tel:+1-234-567-889">Call : +1-234-567-889</a>
-                        </li>
+                        <?php if (!empty($settings['contact_list'])) : ?>
+                            <?php foreach ($settings['contact_list'] as $item) : ?>
+                                <li>
+                                    <?php \Elementor\Icons_Manager::render_icon($item['contact_icon'], ['aria-hidden' => 'true'], 'i'); ?>
+                                    <a href="<?php echo esc_url($item['contact_url']); ?>">
+                                        <?php echo esc_html($item['contact_label']); ?> <?php echo esc_html($item['contact_info']); ?>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
@@ -103,130 +79,43 @@ if ('layout_one' == $settings['layout_type']) : ?>
                 <div class="header-main">
                     <div class="header-left">
                         <div class="logo">
-                            <a href="index.html" class="header-logo">
-                                <img src="assets/img/logo/black-logo.svg" alt="logo-img">
+                            <a href="<?php echo esc_url(home_url('/')); ?>" class="header-logo">
+                                <img src="<?php echo esc_url($settings['logo']['url']); ?>" width="<?php echo esc_attr($settings['logo_size']['width']); ?>" height="<?php echo esc_attr($settings['logo_size']['height']); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" title="<?php echo esc_attr(get_bloginfo('name')); ?>">
                             </a>
                         </div>
                         <div class="mean__menu-wrapper">
                             <div class="main-menu">
                                 <nav id="mobile-menu" style="display: block;">
-                                    <ul>
-                                        <li class="has-dropdown active menu-thumb">
-                                            <a href="index.html">
-                                                Home
-                                                <i class="fa-solid fa-chevron-down"></i>
-                                            </a>
-                                            <ul class="submenu has-homemenu">
-                                                <li>
-                                                    <div class="homemenu-items">
-                                                        <div class="homemenu">
-                                                            <div class="homemenu-thumb">
-                                                                <img src="assets/img/header/home-1.jpg" alt="img">
-                                                                <div class="demo-button">
-                                                                    <a href="index.html" class="theme-btn">
-                                                                        Multi Page
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="homemenu-content text-center">
-                                                                <h4 class="homemenu-title">
-                                                                    Home 01
-                                                                </h4>
-                                                            </div>
-                                                        </div>
-                                                        <div class="homemenu">
-                                                            <div class="homemenu-thumb mb-15">
-                                                                <img src="assets/img/header/home-2.jpg" alt="img">
-                                                                <div class="demo-button">
-                                                                    <a href="index-2.html" class="theme-btn">
-                                                                        Multi Page
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="homemenu-content text-center">
-                                                                <h4 class="homemenu-title">
-                                                                    Home 02
-                                                                </h4>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="has-dropdown active d-xl-none">
-                                            <a href="index.html" class="border-none">
-                                                Home
-                                            </a>
-                                            <ul class="submenu">
-                                                <li><a href="index.html">Home 01</a></li>
-                                                <li><a href="index-2.html">Home 02</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="destination-details.html">
-                                                Destinations
-                                                <i class="fa-solid fa-chevron-down"></i>
-                                            </a>
-                                            <ul class="submenu">
-                                                <li><a href="destination.html">Destinations</a></li>
-                                                <li><a href="destination-details.html">Destinations Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="tour-details.html">
-                                                Tours
-                                                <i class="fa-solid fa-chevron-down"></i>
-                                            </a>
-                                            <ul class="submenu">
-                                                <li><a href="tour.html">Tours</a></li>
-                                                <li><a href="tour-list.html">Tours List</a></li>
-                                                <li><a href="tour-details.html">Tours Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="has-dropdown">
-                                            <a href="news-details.html">
-                                                Pages
-                                                <i class="fa-solid fa-chevron-down"></i>
-                                            </a>
-                                            <ul class="submenu">
-                                                <li>
-                                                    <a href="contact.html">About US</a>
-                                                </li>
-                                                <li><a href="team.html">Team</a></li>
-                                                <li><a href="team-details.html">Team Details</a></li>
-                                                <li><a href="faq.html">Our Faq</a></li>
-                                                <li><a href="404.html">404 Page</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="news-details.html">
-                                                Blog
-                                                <i class="fa-solid fa-chevron-down"></i>
-                                            </a>
-                                            <ul class="submenu">
-                                                <li><a href="news.html">Blog Standard</a></li>
-                                                <li><a href="news-grid.html">Blog Grid</a></li>
-                                                <li><a href="news-details.html">Blog Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="contact.html">Contact Us</a>
-                                        </li>
-                                    </ul>
+                                    <?php
+                                    wp_nav_menu(
+                                        array(
+                                            'menu' => $settings['nav_menu'],
+                                            'menu_class' => 'navigation clearfix',
+                                            'container'       => '',
+                                            'fallback_cb'     => false,
+                                            'container_class' => '',
+                                            'walker'          => new Roavio_Nav_Walker()
+                                        )
+                                    );
+                                    ?>
                                 </nav>
                             </div>
                         </div>
                     </div>
                     <div class="header-right d-flex justify-content-end align-items-center">
-                        <div class="search-widget">
-                            <form action="#">
-                                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                <input type="text" placeholder="Search">
-                            </form>
-                        </div>
-                        <div class="header-button">
-                            <a href="contact.html" class="theme-btn">Book Now</a>
-                        </div>
+                        <?php if ('yes' == $settings['enable_search']) : ?>
+                            <div class="search-widget">
+                                <form action="<?php esc_url(home_url('/')); ?>">
+                                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                    <input type="text" name="s" placeholder="<?php esc_attr($settings['search_placeholder']); ?>">
+                                </form>
+                            </div>
+                        <?php endif; ?>
+                        <?php if (!empty($settings['button_label'])) : ?>
+                            <div class="header-button">
+                                <a href="<?php echo esc_url($settings['button_url']['url']); ?>" <?php if (!empty($settings['button_url']['is_external'])) : ?> target="_blank" <?php endif; ?> class="theme-btn"><?php echo esc_html($settings['button_label']); ?></a>
+                            </div>
+                        <?php endif; ?>
                         <div class="header__hamburger d-xl-none my-auto">
                             <div class="sidebar__toggle">
                                 <i class="fas fa-bars"></i>

@@ -72,11 +72,11 @@ class Slider extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .hero-1 .hero-content .title', ['layout_one', 'layout_two']);
-		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .hero-1 .hero-content p', ['layout_one']);
+		roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .hero-1 .hero-content .title, {{WRAPPER}} .hero-3 .hero-image .hero-content .title', ['layout_one', 'layout_two']);
+		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .hero-1 .hero-content p, {{WRAPPER}} .hero-3 .hero-image .hero-content p', ['layout_one', 'layout_two']);
 
-		roavio_elementor_style_options($this, 'Count Text', '{{WRAPPER}} .hero-1 .counter-item .content p', ['layout_one']);
-		roavio_elementor_style_options($this, 'Count Number', '{{WRAPPER}} .count', ['layout_one']);
+		roavio_elementor_style_options($this, 'Count Text', '{{WRAPPER}} .hero-1 .counter-item .content p,{{WRAPPER}} .cont p ', ['layout_one', 'layout_two']);
+		roavio_elementor_style_options($this, 'Count Number', '{{WRAPPER}} .count,{{WRAPPER}} .cont h2 span.count', ['layout_one', 'layout_two']);
 		$this->end_controls_section();
 
 		$this->start_controls_section(

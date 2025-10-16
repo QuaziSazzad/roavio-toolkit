@@ -77,11 +77,11 @@ class Faq extends Widget_Base
 			]
 		);
 
-		// roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .section-title h2', ['layout_one', 'layout_two', 'layout_four', 'layout_five', 'layout_six']);
-		// roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .section-title .sub-title', ['layout_one', 'layout_two', 'layout_four', 'layout_six']);
+		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_four']);
+		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .description', ['layout_four']);
 
-		// roavio_elementor_style_options($this, 'Faq Title', '{{WRAPPER}} .accordion-header .title', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
-		// roavio_elementor_style_options($this, 'Faq Description', '{{WRAPPER}} .accordion-body p', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
+		roavio_elementor_style_options($this, 'Faq Title', '{{WRAPPER}} .accordion .accordion-item h2 button', ['layout_four']);
+		roavio_elementor_style_options($this, 'Faq Description', '{{WRAPPER}} .accordion-item .accordion-body p', ['layout_four']);
 
 		$this->end_controls_section();
 	}

@@ -64,45 +64,5 @@ $this->add_control(
 	]
 );
 
-$this->add_control(
-	'layout_two_animation_speed',
-	[
-		'label' => esc_html__('Animation Speed', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::SLIDER,
-		'size_units' => ['px'],
-		'range' => [
-			'px' => [
-				'min' => 1,
-				'max' => 50,
-				'step' => 1,
-			],
-		],
-		'default' => [
-			'unit' => 'px',
-			'size' => 20,
-		],
-		'selectors' => [
-			'{{WRAPPER}} .mycustom-marque .scrolling-wrap' => 'animation-duration: {{SIZE}}s;',
-		],
-	]
-);
-
-$this->add_control(
-	'layout_two_direction',
-	[
-		'label' => esc_html__('Sliding Direction', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::SELECT,
-		'default' => 'left',
-		'options' => [
-			'left' => esc_html__('Left to Right', 'roavio-toolkit'),
-			'right' => esc_html__('Right to Left', 'roavio-toolkit'),
-		],
-		'selectors' => [
-			'{{WRAPPER}} .mycustom-marque .scrolling-wrap' => 'animation-direction: {{VALUE}};',
-		],
-	]
-);
-
-
 
 $this->end_controls_section();

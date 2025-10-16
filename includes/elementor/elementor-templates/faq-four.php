@@ -10,13 +10,13 @@
         <div class="container">
             <div class="section-title text-center">
                 <?php if (!empty($settings['layout_four_section_title'])) : ?>
-                    <<?php echo esc_attr($settings['layout_four_title_tag']); ?> class="text-white wow fadeInUp" data-wow-delay=".3s">
+                    <<?php echo esc_attr($settings['layout_four_title_tag']); ?> class="text-white wow fadeInUp sec-title" data-wow-delay=".3s">
                         <?php echo rt_kses_basic($settings['layout_four_section_title']); ?>
                     </<?php echo esc_attr($settings['layout_four_title_tag']); ?>>
                 <?php endif; ?>
 
                 <?php if (!empty($settings['layout_four_section_description'])) : ?>
-                    <p class="text-white wow fadeInUp" data-wow-delay=".5s">
+                    <p class="text-white wow fadeInUp description" data-wow-delay=".5s">
                         <?php echo rt_kses_basic($settings['layout_four_section_description']); ?>
                     </p>
                 <?php endif; ?>

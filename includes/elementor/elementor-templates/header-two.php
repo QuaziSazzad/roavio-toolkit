@@ -3,103 +3,67 @@
 use RoavioTheme\Classes\Roavio_Nav_Walker;
 
 if ('layout_two' == $settings['layout_type']) : ?>
-    <!-- main header -->
-    <div class="main-header">
 
-        <div class="header-top-wrap rel for-border-none">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="top-left text-center text-lg-start">
-                            <ul>
-                                <li><?php \Elementor\Icons_Manager::render_icon($settings['email_icon'], ['aria-hidden' => 'true']); ?><?php echo esc_html($settings['call_text']); ?> <a href="<?php echo esc_url($settings['call_url']); ?>"><?php echo esc_html($settings['call_number']); ?></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class=" col-lg-8">
-                        <div class="top-right text-center text-lg-end">
-                            <ul>
-                                <li><?php \Elementor\Icons_Manager::render_icon($settings['email_icon'], ['aria-hidden' => 'true']); ?><?php echo esc_html($settings['email_text']); ?> <a href="mailto:<?php echo esc_attr($settings['email_address']); ?>"><?php echo esc_html($settings['email_address']); ?></a></li>
-                                <li>
-                                    <div class="social-style-one">
-                                        <span><?php echo esc_html($settings['social_title']); ?></span>
-                                        <?php
-                                        if (!empty($settings['social_icons'])) :
-                                            foreach ($settings['social_icons'] as $social_icon) :
-                                        ?>
-                                                <a href="<?php echo esc_url($social_icon['social_url']['url']); ?>"><?php \Elementor\Icons_Manager::render_icon($social_icon['social_icon'], ['aria-hidden' => 'true'], 'i'); ?></a>
-                                        <?php endforeach;
-                                        endif; ?>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--Header-Upper-->
-        <div class="header-upper">
-            <div class="container-fluid clearfix">
-
-                <div class="header-inner before-after-none rel d-flex align-items-center for-border">
-                    <div class="logo-outer me-5 pe-xl-4">
+    <!-- Header Section Start -->
+    <header id="header-sticky" class="header-1 header-2">
+        <div class="container-fluid">
+            <div class="mega-menu-wrapper">
+                <div class="header-main">
+                    <div class="header-left">
                         <div class="logo">
-                            <a href="<?php echo esc_url(home_url('/')); ?>">
+                            <a href="<?php echo esc_url(home_url('/')); ?>" class="header-logo">
                                 <img src="<?php echo esc_url($settings['logo']['url']); ?>" width="<?php echo esc_attr($settings['logo_size']['width']); ?>" height="<?php echo esc_attr($settings['logo_size']['height']); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" title="<?php echo esc_attr(get_bloginfo('name')); ?>">
+                            </a>
+                            <a href="<?php echo esc_url(home_url('/')); ?>" class="header-logo-2">
+                                <img src="<?php echo esc_url($settings['sticky_logo']['url']); ?>" width="<?php echo esc_attr($settings['logo_size']['width']); ?>" height="<?php echo esc_attr($settings['logo_size']['height']); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" title="<?php echo esc_attr(get_bloginfo('name')); ?>">
                             </a>
                         </div>
                     </div>
-
-                    <div class="nav-outer clearfix">
-                        <!-- Main Menu -->
-                        <nav class="main-menu navbar-expand-lg">
-                            <div class="navbar-header py-15">
-                                <div class="mobile-logo">
-                                    <a href="<?php echo esc_url(home_url('/')); ?>">
-                                        <img src="<?php echo esc_url($settings['mobile_logo']['url']); ?>" width="<?php echo esc_attr($settings['mobile_logo_size']['width']); ?>" height="<?php echo esc_attr($settings['mobile_logo_size']['height']); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" title="<?php echo esc_attr(get_bloginfo('name')); ?>">
-                                    </a>
-                                </div>
-
-                                <!-- Toggle Button -->
-                                <button type="button" class="navbar-toggle" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
+                    <div class="header-right d-flex justify-content-end align-items-center">
+                        <div class="mean__menu-wrapper">
+                            <div class="main-menu">
+                                <nav id="mobile-menu">
+                                    <?php
+                                    wp_nav_menu(
+                                        array(
+                                            'menu' => $settings['nav_menu'],
+                                            'menu_class' => 'navigation clearfix',
+                                            'container'       => '',
+                                            'fallback_cb'     => false,
+                                            'container_class' => '',
+                                            'walker'          => new Roavio_Nav_Walker()
+                                        )
+                                    );
+                                    ?>
+                                </nav>
                             </div>
-
-                            <?php
-                            wp_nav_menu(
-                                array(
-                                    'menu' => $settings['nav_menu'],
-                                    'menu_class' => 'navigation clearfix',
-                                    'container'       => 'div',
-                                    'fallback_cb'     => false,
-                                    'container_class' => 'navbar-collapse collapse clearfix',
-                                    'walker'          => new Roavio_Nav_Walker()
-                                )
-                            );
-                            ?>
-                        </nav>
-                        <!-- Main Menu End-->
-                    </div>
-
-                    <!-- Menu Button -->
-                    <div class="menu-btns ms-lg-auto">
-                        <?php if (!empty($settings['button_label'])) : ?>
-                            <a href="<?php echo esc_url($settings['button_url']['url']); ?>" <?php if (!empty($settings['button_url']['is_external'])) : ?> target="_blank" <?php endif; ?> class="theme-btn btn-small ms-lg-4"><?php echo esc_html($settings['button_label']); ?></a>
+                        </div>
+                        <?php if ('yes' == $settings['enable_search']) : ?>
+                            <a href="#" class="main-header__search search-toggler">
+                                <i class="fa-regular fa-magnifying-glass"></i>
+                            </a>
                         <?php endif; ?>
-                        <!-- menu sidbar -->
-                        <div class="menu-sidebar ms-4">
-                            <button class="bg-transparent"></button>
+                        <div class="header__hamburger my-auto">
+                            <div class="sidebar__toggle">
+                                <i class="fa-solid fa-bars-staggered"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--End Header Upper-->
+        </div>
+    </header>
+
+    <!-- Search Area Start -->
+    <div class="search-popup">
+        <div class="search-popup__overlay search-toggler"></div>
+        <div class="search-popup__content">
+            <form role="search" method="get" class="search-popup__form" action="<?php esc_url(home_url('/')); ?>">
+                <input type="text" id="search" name="s" placeholder="<?php esc_attr($settings['search_placeholder']); ?>">
+                <button type="submit" aria-label="search submit" class="search-btn">
+                    <span><i class="fa-regular fa-magnifying-glass"></i></span>
+                </button>
+            </form>
         </div>
     </div>
-
 <?php endif; ?>

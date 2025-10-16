@@ -3,70 +3,128 @@
 use RoavioTheme\Classes\Roavio_Nav_Walker;
 
 if ('layout_three' == $settings['layout_type']) : ?>
-    <!-- main header -->
-    <div class="main-header style-three">
-
-        <!--Header-Upper-->
-        <div class="header-upper">
-            <div class="container container-1580 clearfix">
-
-                <div class="header-inner before-after-none rel d-flex align-items-center">
-                    <div class="logo-outer">
-                        <div class="logo">
+    <div class="fix-area">
+        <div class="offcanvas__info">
+            <div class="offcanvas__wrapper">
+                <div class="offcanvas__content">
+                    <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                        <div class="offcanvas__logo">
                             <a href="<?php echo esc_url(home_url('/')); ?>">
-                                <img src="<?php echo esc_url($settings['logo']['url']); ?>" width="<?php echo esc_attr($settings['logo_size']['width']); ?>" height="<?php echo esc_attr($settings['logo_size']['height']); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" title="<?php echo esc_attr(get_bloginfo('name')); ?>">
+                                <img src="<?php echo esc_url($settings['mobile_logo']['url']); ?>" width="<?php echo esc_attr($settings['mobile_logo_size']['width']); ?>" height="<?php echo esc_attr($settings['mobile_logo_size']['height']); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" title="<?php echo esc_attr(get_bloginfo('name')); ?>">
                             </a>
                         </div>
+                        <div class="offcanvas__close">
+                            <button>
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
                     </div>
-
-                    <div class="nav-outer ms-lg-auto me-lg-auto clearfix">
-                        <!-- Main Menu -->
-                        <nav class="main-menu navbar-expand-lg">
-                            <div class="navbar-header py-15">
-                                <div class="mobile-logo">
-                                    <a href="<?php echo esc_url(home_url('/')); ?>">
-                                        <img src="<?php echo esc_url($settings['mobile_logo']['url']); ?>" width="<?php echo esc_attr($settings['mobile_logo_size']['width']); ?>" height="<?php echo esc_attr($settings['mobile_logo_size']['height']); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" title="<?php echo esc_attr(get_bloginfo('name')); ?>">
-                                    </a>
-                                </div>
-
-                                <!-- Toggle Button -->
-                                <button type="button" class="navbar-toggle" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                            </div>
-
-                            <?php
-                            wp_nav_menu(
-                                array(
-                                    'menu' => $settings['nav_menu'],
-                                    'menu_class' => 'navigation clearfix',
-                                    'container'       => 'div',
-                                    'fallback_cb'     => false,
-                                    'container_class' => 'navbar-collapse collapse clearfix',
-                                    'walker'          => new Roavio_Nav_Walker()
-                                )
-                            );
-                            ?>
-
-                        </nav>
-                        <!-- Main Menu End-->
-                    </div>
-
-                    <!-- Menu Button -->
-                    <div class="menu-btns">
-                        <?php if (!empty($settings['button_label'])) : ?>
-                            <a href="<?php echo esc_url($settings['button_url']['url']); ?>" <?php if (!empty($settings['button_url']['is_external'])) : ?> target="_blank" <?php endif; ?> class="theme-btn btn-small ms-lg-4"><?php echo esc_html($settings['button_label']); ?></a>
+                    <?php if (!empty($settings['sidebar_content'])) : ?>
+                        <p class="text d-none d-xl-block">
+                            <?php echo wp_kses_post($settings['sidebar_content']); ?>
+                        </p>
+                    <?php endif; ?>
+                    <div class="mobile-menu fix mb-3"></div>
+                    <div class="offcanvas__contact">
+                        <?php if ($settings['sidebar_contact_title']) : ?>
+                            <h3><?php echo esc_html($settings['sidebar_contact_title']) ?></h3>
                         <?php endif; ?>
-                        <!-- menu sidbar -->
-                        <div class="menu-sidebar ms-4">
-                            <button class="bg-transparent"></button>
+                        <?php if (!empty($settings['layout_one_select_cf7_form'])) :
+                            echo do_shortcode('[contact-form-7 id="' . esc_attr($settings['layout_one_select_cf7_form']) . '"]');
+                        endif; ?>
+                        <div class="social-icon d-flex align-items-center">
+                            <?php if (!empty($settings['sidebar_social_icons'])) :
+                                foreach ($settings['sidebar_social_icons'] as $social_icon) :
+                            ?>
+                                    <a href="<?php echo esc_url($social_icon['social_url']['url']); ?>" <?php if (!empty($social_icon['social_url']['is_external'])) : ?> target="_blank" <?php endif; ?>><?php \Elementor\Icons_Manager::render_icon($social_icon['social_icon'], ['aria-hidden' => 'true']); ?></a>
+                            <?php endforeach;
+                            endif; ?>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--End Header Upper-->
         </div>
     </div>
+    <div class="offcanvas__overlay"></div>
+
+    <!-- Header-Top Section Start -->
+    <div class="header-top-section">
+        <div class="container-fluid">
+            <div class="header-top-wrapper">
+                <?php if (!empty($settings['top_text'])) : ?>
+                    <p><?php echo wp_kses_post($settings['top_text']); ?></p>
+                <?php endif; ?>
+                <div class="header-right">
+                    <div class="flag-wrap">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <ul class="header-list">
+                        <?php if (!empty($settings['contact_list'])) : ?>
+                            <?php foreach ($settings['contact_list'] as $item) : ?>
+                                <li>
+                                    <?php \Elementor\Icons_Manager::render_icon($item['contact_icon'], ['aria-hidden' => 'true'], 'i'); ?>
+                                    <a href="<?php echo esc_url($item['contact_url']); ?>"><?php echo esc_html($item['contact_label']); ?> <?php echo esc_html($item['contact_info']); ?></a>
+                                </li>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Section Start -->
+    <header id="header-sticky" class="header-1">
+        <div class="container-fluid">
+            <div class="mega-menu-wrapper">
+                <div class="header-main">
+                    <div class="header-left">
+                        <div class="logo">
+                            <a href="<?php echo esc_url(home_url('/')); ?>" class="header-logo">
+                                <img src="<?php echo esc_url($settings['logo']['url']); ?>" width="<?php echo esc_attr($settings['logo_size']['width']); ?>" height="<?php echo esc_attr($settings['logo_size']['height']); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" title="<?php echo esc_attr(get_bloginfo('name')); ?>">
+                            </a>
+                        </div>
+                        <div class="mean__menu-wrapper">
+                            <div class="main-menu">
+                                <nav id="mobile-menu">
+                                    <?php
+                                    wp_nav_menu(
+                                        array(
+                                            'menu' => $settings['nav_menu'],
+                                            'menu_class' => 'navigation clearfix',
+                                            'container'       => '',
+                                            'fallback_cb'     => false,
+                                            'container_class' => '',
+                                            'walker'          => new Roavio_Nav_Walker()
+                                        )
+                                    );
+                                    ?>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-right d-flex justify-content-end align-items-center">
+                        <?php if ('yes' == $settings['enable_search']) : ?>
+                            <div class="search-widget">
+                                <form action="<?php echo esc_url(home_url('/')); ?>">
+                                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                    <input type="text" name="s" placeholder="<?php esc_attr($settings['search_placeholder']); ?>">
+                                </form>
+                            </div>
+                        <?php endif; ?>
+                        <?php if (!empty($settings['button_label'])) : ?>
+                            <div class="header-button">
+                                <a href="<?php echo esc_url($settings['button_url']['url']); ?>" <?php if (!empty($settings['button_url']['is_external'])) : ?> target="_blank" <?php endif; ?> class="theme-btn color"><?php echo esc_html($settings['button_label']); ?></a>
+                            </div>
+                        <?php endif; ?>
+                        <div class="header__hamburger d-xl-none my-auto">
+                            <div class="sidebar__toggle">
+                                <i class="fas fa-bars"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 <?php endif; ?>

@@ -3,7 +3,7 @@
 $this->start_controls_section(
 	'logo_section',
 	[
-		'label' => __('Site Logo', 'roavio-toolkit'),
+		'label' => esc_html__('Site Logo', 'roavio-toolkit'),
 		'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 	]
 );
@@ -11,7 +11,7 @@ $this->start_controls_section(
 $this->add_control(
 	'logo',
 	[
-		'label' => __('Logo', 'roavio-toolkit'),
+		'label' => esc_html__('Logo', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
 		'default' => [
 			'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -20,11 +20,25 @@ $this->add_control(
 );
 
 $this->add_control(
+	'sticky_logo',
+	[
+		'label' => esc_html__('Stikcy Logo', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [
+			'url' => \Elementor\Utils::get_placeholder_image_src(),
+		],
+		'condition' => [
+			'layout_type' => ['layout_two']
+		]
+	]
+);
+
+$this->add_control(
 	'logo_size',
 	[
-		'label' => __('Logo Size', 'roavio-toolkit'),
+		'label' => esc_html__('Logo Size', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::IMAGE_DIMENSIONS,
-		'description' => __('Set Logo Size.', 'roavio-toolkit'),
+		'description' => esc_html__('Set Logo Size.', 'roavio-toolkit'),
 		'default' => [
 			'width' => '123',
 			'height' => '35',
@@ -35,7 +49,7 @@ $this->add_control(
 $this->add_control(
 	'mobile_logo',
 	[
-		'label' => __('Mobile Logo', 'roavio-toolkit'),
+		'label' => esc_html__('Mobile Logo', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
 		'default' => [
 			'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -46,9 +60,9 @@ $this->add_control(
 $this->add_control(
 	'mobile_logo_size',
 	[
-		'label' => __('Mobile Logo Size', 'roavio-toolkit'),
+		'label' => esc_html__('Mobile Logo Size', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::IMAGE_DIMENSIONS,
-		'description' => __('Set Logo Size.', 'roavio-toolkit'),
+		'description' => esc_html__('Set Logo Size.', 'roavio-toolkit'),
 		'default' => [
 			'width' => '123',
 			'height' => '35',
@@ -62,7 +76,7 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'nav_section',
 	[
-		'label' => __('Navigation', 'roavio-toolkit'),
+		'label' => esc_html__('Navigation', 'roavio-toolkit'),
 		'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 	]
 );
@@ -83,6 +97,9 @@ $this->start_controls_section(
 	[
 		'label' => esc_html__('Top Bar Settings', 'roavio-toolkit'),
 		'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+		'condition' => [
+			'layout_type' =>  ['layout_one']
+		]
 	]
 );
 
@@ -94,131 +111,90 @@ $this->add_control(
 		'default' => esc_html__('Default Text', 'roavio-toolkit'),
 		'label_block' => true,
 		'condition' => [
-			'layout_type' =>  ['layout_four', 'layout_six']
+			'layout_type' =>  ['layout_one']
 		]
 	]
 );
 
-$this->add_control(
-	'email_text',
-	[
-		'label' => esc_html__('Email Text', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Support :', 'roavio-toolkit'),
-		'label_block' => true,
-		'condition' => [
-			'layout_type' => ['layout_one', 'layout_two']
-		]
-	]
-);
+// Contact Information Options
 
-$this->add_control(
-	'email_address',
-	[
-		'label' => esc_html__('Email Address', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('uintechinfo@gmail.com', 'roavio-toolkit'),
-		'label_block' => true,
-		'condition' => [
-			'layout_type' => ['layout_one', 'layout_two', 'layout_four']
-		]
-	]
-);
+$contact_items = new \Elementor\Repeater();
 
-$this->add_control(
-	'email_icon',
+$contact_items->add_control(
+	'contact_icon',
 	[
-		'label' => __('Email Icon', 'roavio-toolkit'),
+		'label' => esc_html__('Icon', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::ICONS,
 		'default' => [
-			'value' => 'far fa-envelope',
-			'library' => 'custom-icon',
+			'value' => 'fa-solid fa-envelope',
+			'library' => 'solid',
 		],
-		'condition' => [
-			'layout_type' => ['layout_one', 'layout_two']
-		]
+		'label_block' => true,
 	]
 );
 
-$this->add_control(
-	'social_title',
+$contact_items->add_control(
+	'contact_label',
 	[
-		'label' => esc_html__('Social Title', 'roavio-toolkit'),
+		'label' => esc_html__('Label', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Follow Us', 'roavio-toolkit'),
-		'label_block' => true,
-		'condition' => [
-			'layout_type' => ['layout_one', 'layout_two', 'layout_four']
-		]
-	]
-);
-
-$social_icons = new \Elementor\Repeater();
-
-$social_icons->add_control(
-	'social_icon',
-	[
-		'label' => __('Select Icon', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::ICONS,
-		'default' => [
-			'value' => 'fab fa-facebook-f',
-			'library' => 'brand',
-		],
+		'default' => esc_html__('Email :', 'roavio-toolkit'),
 		'label_block' => true,
 	]
 );
 
-$social_icons->add_control(
-	'social_url',
+$contact_items->add_control(
+	'contact_info',
 	[
-		'label' => __('Add Url', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::URL,
-		'placeholder' => __('#', 'roavio-toolkit'),
-		'show_external' => false,
-		'default' => [
-			'url' => '#',
-			'is_external' => false,
-			'nofollow' => false,
-		],
-		'show_label' => false,
+		'label' => esc_html__('Contact Info', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('support@gmail.com', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+$contact_items->add_control(
+	'contact_url',
+	[
+		'label' => esc_html__('URL', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('mailto:support@gmail.com', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
 $this->add_control(
-	'social_icons',
+	'contact_list',
 	[
-		'label' => __('Social Icons', 'roavio-toolkit'),
+		'label' => esc_html__('Contact Items', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::REPEATER,
-		'fields' => $social_icons->get_controls(),
-		'prevent_empty' => false,
+		'fields' => $contact_items->get_controls(),
 		'default' => [
 			[
-				'social_url' => [
-					'url' => '#',
-					'is_external' => false,
-					'nofollow' => false,
+				'contact_icon' => [
+					'value' => 'fa-solid fa-envelope',
+					'library' => 'solid',
 				],
+				'contact_label' => esc_html__('Email :', 'roavio-toolkit'),
+				'contact_info' => esc_html__('support@gmail.com', 'roavio-toolkit'),
+				'contact_url' => esc_html__('mailto:support@gmail.com', 'roavio-toolkit'),
 			],
-
+			[
+				'contact_icon' => [
+					'value' => 'fa-solid fa-phone-flip',
+					'library' => 'solid',
+				],
+				'contact_label' => esc_html__('Call :', 'roavio-toolkit'),
+				'contact_info' => esc_html__('+1-234-567-889', 'roavio-toolkit'),
+				'contact_url' => esc_html__('tel:+1-234-567-889', 'roavio-toolkit'),
+			],
 		],
+		'title_field' => '{{{ contact_label }}} {{{ contact_info }}}',
 		'condition' => [
-			'layout_type' => ['layout_one', 'layout_two', 'layout_four']
+			'layout_type' => ['layout_one'],
 		]
 	]
 );
-
-$this->add_control(
-	'sidebar_icon',
-	[
-		'label' => esc_html__('Sidebar Icon', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [],
-		'condition' => [
-			'layout_type' => 'layout_four'
-		]
-	]
-);
-
 
 
 $this->end_controls_section();
@@ -233,66 +209,37 @@ $this->start_controls_section(
 );
 
 $this->add_control(
-	'call_text',
+	'enable_search',
 	[
-		'label' => esc_html__('Call Text', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Need any help? Call :', 'roavio-toolkit'),
-		'label_block' => true,
-		'condition' => [
-			'layout_type' => ['layout_one', 'layout_two']
-		]
+		'label'        => esc_html__('Enable Search?', 'roavio-toolkit'),
+		'type'         => \Elementor\Controls_Manager::SWITCHER,
+		'label_on'     => esc_html__('Yes', 'roavio-toolkit'),
+		'label_off'    => esc_html__('No', 'roavio-toolkit'),
+		'default'      => 'yes',
+		'return_value' => 'yes',
 	]
 );
 
 $this->add_control(
-	'call_number',
+	'search_placeholder',
 	[
-		'label' => esc_html__('Call Number', 'roavio-toolkit'),
+		'label' => esc_html__('Search Placeholder', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('+000 (123) 45 88', 'roavio-toolkit'),
+		'default' => esc_html__('Search', 'roavio-toolkit'),
 		'label_block' => true,
 		'condition' => [
-			'layout_type' => ['layout_one', 'layout_two', 'layout_five']
+			'enable_search' => 'yes'
 		]
 	]
 );
 
-$this->add_control(
-	'call_url',
-	[
-		'label' => esc_html__('Call Url', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('callto:+000(123)4588', 'roavio-toolkit'),
-		'show_external' => false,
-		'label_block' => true,
-		'condition' => [
-			'layout_type' => ['layout_one', 'layout_two', 'layout_five']
-		]
-	]
-);
-
-$this->add_control(
-	'call_icon',
-	[
-		'label' => __('Call Icon', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::ICONS,
-		'default' => [
-			'value' => 'far fa-phone',
-			'library' => 'custom-icon',
-		],
-		'condition' => [
-			'layout_type' => ['layout_one', 'layout_two', 'layout_five']
-		]
-	]
-);
 
 $this->add_control(
 	'button_label',
 	[
 		'label' => esc_html__('Button Label', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Start Projects', 'roavio-toolkit'),
+		'default' => esc_html__('Book Now', 'roavio-toolkit'),
 		'label_block' => true,
 	]
 );
@@ -326,102 +273,32 @@ $this->start_controls_section(
 );
 
 $this->add_control(
-	'sidebar_title',
+	'sidebar_content',
 	[
-		'label' => esc_html__('Title', 'roavio-toolkit'),
+		'label' => esc_html__('Sidebar Content', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXTAREA,
+		'default' => esc_html__(' Nullam dignissim, ante scelerisque the is euismod fermentum odio sem semper the is erat, a feugiat leo urna eget eros. Duis Aenean a imperdiet risus.', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+$this->add_control(
+	'sidebar_contact_title',
+	[
+		'label' => esc_html__('Contact Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Recent Post', 'roavio-toolkit'),
+		'default' => esc_html__('Get Appointment', 'roavio-toolkit'),
 		'label_block' => true,
 	]
 );
 
 $this->add_control(
-	'post_from',
+	'layout_one_select_cf7_form',
 	[
-		'label'   => esc_html__('Post From', 'roavio-toolkit'),
-		'type'    => \Elementor\Controls_Manager::SELECT,
-		'options' => [
-			'all'           => esc_html__('All Posts', 'roavio-toolkit'),
-			'categories'    => esc_html__('Categories', 'roavio-toolkit'),
-			'specific-post' => esc_html__('Specific Posts', 'roavio-toolkit'),
-		],
-		'default' => 'all',
-	]
-);
-
-$this->add_control(
-	'post_ids',
-	[
-		'label'       => esc_html__('Select Posts', 'roavio-toolkit'),
-		'type'        => \Elementor\Controls_Manager::SELECT2,
-		'options'     => rt_select_post(),
-		'multiple'    => true,
+		'label' => esc_html__('Select your contact form 7', 'roavio-addon'),
 		'label_block' => true,
-		'condition'   => [
-			'post_from' => 'specific-post',
-		],
-	]
-);
-
-$this->add_control(
-	'cat_slugs',
-	[
-		'label'       => esc_html__('Select Categories', 'roavio-toolkit'),
-		'type'        => \Elementor\Controls_Manager::SELECT2,
-		'options'     => rt_select_category(),
-		'multiple'    => true,
-		'label_block' => true,
-		'condition'   => [
-			'post_from' => 'categories',
-		],
-	]
-);
-
-$this->add_control(
-	'post_limit',
-	[
-		'label'   => esc_html__('Limit Item', 'roavio-toolkit'),
-		'type'    => \Elementor\Controls_Manager::NUMBER,
-		'default' => 3,
-		'min'     => 1,
-	]
-);
-
-$this->add_control(
-	'title_word',
-	[
-		'label'   => esc_html__('Title Length', 'roavio-toolkit'),
-		'type'    => \Elementor\Controls_Manager::NUMBER,
-		'default' => 4,
-	]
-);
-
-$this->add_control(
-	'order_by',
-	[
-		'label'   => esc_html__('Order By', 'roavio-toolkit'),
-		'type'    => \Elementor\Controls_Manager::SELECT,
-		'options' => [
-			'ID'     => esc_html__('ID', 'roavio-toolkit'),
-			'author' => esc_html__('Author', 'roavio-toolkit'),
-			'title'  => esc_html__('Title', 'roavio-toolkit'),
-			'date'   => esc_html__('Date', 'roavio-toolkit'),
-			'rand'   => esc_html__('Random', 'roavio-toolkit'),
-		],
-		'default' => 'date',
-	]
-);
-
-$this->add_control(
-	'sort_order',
-	[
-		'label'   => esc_html__('Sort Order', 'roavio-toolkit'),
-		'type'    => \Elementor\Controls_Manager::SELECT,
-		'options' => [
-			'ASC'  => esc_html__('Ascending', 'roavio-toolkit'),
-			'DESC' => esc_html__('Descending', 'roavio-toolkit'),
-		],
-		'default' => 'DESC',
+		'type' => \Elementor\Controls_Manager::SELECT,
+		'options' => rt_select_post('wpcf7_contact_form'),
 	]
 );
 

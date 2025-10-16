@@ -61,10 +61,10 @@ class Footer_Top extends Widget_Base
 		$this->end_controls_section();
 
 		include rt_get_elementor_option('footer-top-one-option.php');
-		include rt_get_elementor_option('footer-top-two-option.php');
-		include rt_get_elementor_option('footer-top-three-option.php');
-		include rt_get_elementor_option('footer-top-four-option.php');
-		include rt_get_elementor_option('footer-top-five-option.php');
+		// include rt_get_elementor_option('footer-top-two-option.php');
+		// include rt_get_elementor_option('footer-top-three-option.php');
+		// include rt_get_elementor_option('footer-top-four-option.php');
+		// include rt_get_elementor_option('footer-top-five-option.php');
 
 		//Content style
 		$this->start_controls_section(

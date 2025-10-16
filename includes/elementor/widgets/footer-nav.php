@@ -51,8 +51,8 @@ class Footer_Nav extends Widget_Base
 				'default' => 'layout_one',
 				'options' => [
 					'layout_one' => __('Layout One', 'roavio-toolkit'),
-					'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					'layout_three' => __('Layout Three', 'roavio-toolkit'),
+					// 'layout_two' => __('Layout Two', 'roavio-toolkit'),
+					// 'layout_three' => __('Layout Three', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -81,7 +81,7 @@ class Footer_Nav extends Widget_Base
 		$settings = $this->get_settings_for_display();
 
 		include rt_get_elementor_template('footer-nav-one.php');
-		include rt_get_elementor_template('footer-nav-two.php');
-		include rt_get_elementor_template('footer-nav-three.php');
+		// include rt_get_elementor_template('footer-nav-two.php');
+		// include rt_get_elementor_template('footer-nav-three.php');
 	}
 }
