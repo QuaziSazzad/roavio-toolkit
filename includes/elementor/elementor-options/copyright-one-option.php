@@ -13,6 +13,17 @@ $this->start_controls_section(
 );
 
 $this->add_control(
+	'layout_one_brand_text',
+	[
+		'label' => esc_html__('Brand Text', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXTAREA,
+		'placeholder' => esc_html__('Add brand text', 'roavio-toolkit'),
+		'default' => esc_html__('Roavio', 'roavio-toolkit'),
+		'label_block' => true
+	]
+);
+
+$this->add_control(
 	'layout_one_copyright',
 	[
 		'label' => esc_html__('Copyright Text', 'roavio-toolkit'),
@@ -23,53 +34,6 @@ $this->add_control(
 	]
 );
 
-$layout_one_nav_menu = new \Elementor\Repeater();
-
-$layout_one_nav_menu->add_control(
-	'title',
-	[
-		'label' => esc_html__('Nav Title', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'placeholder' => esc_html__('Add nav title', 'roavio-toolkit'),
-		'default' => esc_html__('Refund', 'roavio-toolkit'),
-		'label_block' => true
-	]
-);
-
-$layout_one_nav_menu->add_control(
-	'url',
-	[
-		'label' => __('Add Nav Url', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::URL,
-		'placeholder' => __('#', 'roavio-toolkit'),
-		'show_external' => false,
-		'default' => [
-			'url' => '#',
-			'is_external' => false,
-			'nofollow' => false,
-		],
-		'show_label' => false,
-	]
-);
-
-$this->add_control(
-	'layout_one_nav_menu',
-	[
-		'label' => __('Nav Menu', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::REPEATER,
-		'fields' => $layout_one_nav_menu->get_controls(),
-		'prevent_empty' => false,
-		'default' => [
-			[
-				'social_url' => [
-					'url' => '#',
-					'is_external' => false,
-					'nofollow' => false,
-				],
-			],
-		],
-	]
-);
 
 $this->add_control(
 	'layout_one_enable_back_to_top',
@@ -89,7 +53,7 @@ $this->add_control(
 		'label' => __('Icon', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::ICONS,
 		'default' => [
-			'value' => 'far fa-arrow-up',
+			'value' => 'fa-solid fa-chevron-up',
 			'library' => 'custom-icon',
 		],
 		'condition' => [

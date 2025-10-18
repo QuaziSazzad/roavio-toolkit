@@ -40,7 +40,18 @@ $this->add_control(
 		'label' => esc_html__('Placeholder Text', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
 		'placeholder' => esc_html__('Add Placeholder Text', 'roavio-toolkit'),
-		'default' => esc_html__('Email here', 'roavio-toolkit'),
+		'default' => esc_html__('Email Address', 'roavio-toolkit'),
+		'label_block' => true
+	]
+);
+
+$this->add_control(
+	'layout_one_btn_label',
+	[
+		'label' => esc_html__('Button Label', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'placeholder' => esc_html__('Add Button Label', 'roavio-toolkit'),
+		'default' => esc_html__('Subscribe', 'roavio-toolkit'),
 		'label_block' => true
 	]
 );

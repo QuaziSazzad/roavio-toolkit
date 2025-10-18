@@ -1,15 +1,24 @@
 <?php if ('layout_one' == $settings['layout_type']) : ?>
-    <div class="footer-widget newsletter-widget" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1500" data-aos-offset="50">
+    <div class="single-footer-widget">
         <?php if (!empty($settings['layout_one_title'])) : ?>
-            <h5 class="footer-title"><?php echo esc_html($settings['layout_one_title']); ?></h5>
+            <div class="wid-title">
+                <h4><?php echo rt_kses_basic($settings['layout_one_title']); ?></h4>
+            </div>
         <?php endif; ?>
-        <?php if (!empty($settings['layout_one_summary_text'])) : ?>
-            <p><?php echo esc_html($settings['layout_one_summary_text']); ?></p>
-        <?php endif; ?>
-        <form class="newsletter-form mt-30 mc-form" action="#">
-            <input type="email" class="mc-form__input" placeholder="<?php echo esc_attr($settings['layout_one_placeholder']); ?>" required>
-            <button type="submit"><i class="far fa-paper-plane"></i></button>
-        </form>
-        <p class="mc-form__feedback text-white"></p>
+        <div class="newsletter-content">
+            <?php if (!empty($settings['layout_one_summary_text'])) : ?>
+                <p>
+                    <?php echo rt_kses_basic($settings['layout_one_summary_text']); ?>
+                </p>
+            <?php endif; ?>
+            <form action="#" class="mc-form">
+                <div class="form-clt">
+                    <input type="text" class="mc-form__input" name="email" id="email" placeholder="<?php echo esc_attr($settings['layout_one_placeholder']); ?>">
+                    <button type="submit" class="theme-btn">
+                        <?php echo esc_html($settings['layout_one_btn_label']); ?>
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 <?php endif; ?>

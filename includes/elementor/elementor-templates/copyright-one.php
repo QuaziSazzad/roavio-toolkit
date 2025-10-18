@@ -1,26 +1,19 @@
 <?php if ('layout_one' == $settings['layout_type']) : ?>
-    <div class="container">
-        <div class="footer-bottom pt-30 pb-15">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="copyright-text">
-                        <p><?php echo rt_kses_basic($settings['layout_one_copyright']); ?></p>
-                    </div>
-                </div>
-                <?php if (is_array($settings['layout_one_nav_menu'])) :  ?>
-                    <div class="col-lg-6 text-lg-end">
-                        <ul class="footer-bottom-nav">
-                            <?php foreach ($settings['layout_one_nav_menu'] as $nav_menu) : ?>
-                                <li><a href="<?php echo esc_url($nav_menu['url']['url']); ?>" <?php if (!empty($nav_menu['url']['is_external'])) : ?> target="_blank" <?php endif; ?>><?php echo esc_html($nav_menu['title']); ?></a></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="footer-wrapper">
+                <?php if (!empty($settings['layout_one_brand_text'])) : ?>
+                    <h2 class="wow fadeInUp" data-wow-delay=".3s"><?php echo rt_kses_basic($settings['layout_one_brand_text']); ?></h2>
                 <?php endif; ?>
+                <div class="text-item wow fadeInUp" data-wow-delay=".5s">
+                    <?php if (!empty($settings['layout_one_copyright'])) : ?>
+                        <p><?php echo rt_kses_basic($settings['layout_one_copyright']); ?></p>
+                    <?php endif; ?>
+                    <?php if (!empty($settings['layout_one_enable_back_to_top'])) : ?>
+                        <a href="#" class="icon"><i class="fa-solid fa-chevron-up"></i></a>
+                    <?php endif; ?>
+                </div>
             </div>
-            <?php if ('yes' == $settings['layout_one_enable_back_to_top']): ?>
-                <!-- Scroll Top Button -->
-                <button class="scroll-top scroll-to-target" data-target="html"><?php \Elementor\Icons_Manager::render_icon($settings['layout_one_icon'], ['aria-hidden' => 'true'], 'i'); ?></button>
-            <?php endif; ?>
         </div>
     </div>
 <?php endif; ?>

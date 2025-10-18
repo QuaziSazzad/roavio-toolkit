@@ -24,47 +24,54 @@ $this->add_control(
 	]
 );
 
-$this->add_control(
-	'layout_one_call_title',
+$layout_one_social_icons = new \Elementor\Repeater();
+
+$layout_one_social_icons->add_control(
+	'social_icon',
 	[
-		'label' => esc_html__('Call Title', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'placeholder' => esc_html__('Add Call Title', 'roavio-toolkit'),
-		'default' => esc_html__('Need Any Help?', 'roavio-toolkit'),
-		'label_block' => true
+		'label' => __('Select Icon', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::ICONS,
+		'default' => [
+			'value' => 'fab fa-facebook-f',
+			'library' => 'brand',
+		],
+		'label_block' => true,
+	]
+);
+
+$layout_one_social_icons->add_control(
+	'social_url',
+	[
+		'label' => __('Add Url', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::URL,
+		'placeholder' => __('#', 'roavio-toolkit'),
+		'show_external' => false,
+		'default' => [
+			'url' => '#',
+			'is_external' => false,
+			'nofollow' => false,
+		],
+		'show_label' => false,
 	]
 );
 
 $this->add_control(
-	'layout_one_call_text',
+	'layout_one_social_icons',
 	[
-		'label' => esc_html__('Call Text', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'placeholder' => esc_html__('Add Call Text', 'roavio-toolkit'),
-		'default' => esc_html__(' Call :', 'roavio-toolkit'),
-		'label_block' => true
-	]
-);
+		'label' => __('Social Icons', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::REPEATER,
+		'fields' => $layout_one_social_icons->get_controls(),
+		'prevent_empty' => false,
+		'default' => [
+			[
+				'social_url' => [
+					'url' => '#',
+					'is_external' => false,
+					'nofollow' => false,
+				],
+			],
 
-$this->add_control(
-	'layout_one_call_number',
-	[
-		'label' => esc_html__('Call Number', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'placeholder' => esc_html__('Add Call Number', 'roavio-toolkit'),
-		'default' => esc_html__('+000 (123) 45 88', 'roavio-toolkit'),
-		'label_block' => true
-	]
-);
-
-$this->add_control(
-	'layout_one_call_url',
-	[
-		'label' => esc_html__('Call Url', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'placeholder' => esc_html__('Add Call Url', 'roavio-toolkit'),
-		'default' => esc_html__('callto:+000(123)4588', 'roavio-toolkit'),
-		'label_block' => true
+		],
 	]
 );
 
