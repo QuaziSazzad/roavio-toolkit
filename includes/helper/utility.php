@@ -18,7 +18,7 @@ class Utility
 		add_action('wp_ajax_subscribe_user', array($this, 'subscribe_user'));
 		add_action('wp_ajax_nopriv_subscribe_user', array($this, 'subscribe_user'));
 
-		// add_filter('template_include', array($this, 'location_template'), 99);
+		add_filter('template_include', array($this, 'location_template'), 99);
 		add_filter('single_template', array($this, 'booking_details'), 99);
 	}
 	public function set_image_size()
@@ -43,6 +43,23 @@ class Utility
             * from our plugin directory.
             */
 			return RT_INCLUDES . '/templates/single-to_book.php';
+		}
+
+		return $template;
+	}
+
+	public function location_template($template)
+	{
+		global $post;
+
+		if (is_tax('ba_location') && locate_template(array('location-to_book.php')) !== $template) {
+			/*
+            * This is a 'to_book' post
+            * AND a 'single to_book template' is not found on
+            * theme or child theme directories, so load it
+            * from our plugin directory.
+            */
+			return RT_INCLUDES . '/templates/location-to_book.php';
 		}
 
 		return $template;

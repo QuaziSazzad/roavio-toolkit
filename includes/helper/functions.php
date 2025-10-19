@@ -809,3 +809,25 @@ function roavio_to_book_meta($post_id)
 		}
 	}
 }
+
+
+/**
+ * get all pages
+ */
+if (!function_exists('roavio_core_get_pages_for_select')) :
+	function roavio_core_get_pages_for_select()
+	{
+		$pages = get_pages(array(
+			'post_type' => 'page',
+			'posts_per_page' => -1,
+			'sort_column' => 'post_title',
+			'sort_order' => 'ASC'
+		));
+
+		$options = array('' => esc_html__('Select a page', 'roavio-toolkit'));
+		foreach ($pages as $page) {
+			$options[$page->post_name] = $page->post_title;
+		}
+		return $options;
+	}
+endif;

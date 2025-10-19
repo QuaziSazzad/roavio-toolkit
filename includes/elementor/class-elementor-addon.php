@@ -87,6 +87,7 @@ class Roavio_Elementor_Addon
 		include_once RT_ELEMENTOR . '/widgets/tour.php';
 		include_once RT_ELEMENTOR . '/widgets/tour-details.php';
 		include_once RT_ELEMENTOR . '/widgets/contact.php';
+		include_once RT_ELEMENTOR . '/widgets/custom-sidebar.php';
 		// include_once RT_ELEMENTOR . '/widgets/latest-work.php';
 		// include_once RT_ELEMENTOR . '/widgets/pricing.php';
 		// include_once RT_ELEMENTOR . '/widgets/portfolio-details.php';
@@ -98,6 +99,7 @@ class Roavio_Elementor_Addon
 		include_once RT_ELEMENTOR . '/widgets/footer-nav.php';
 		include_once RT_ELEMENTOR . '/widgets/footer-top.php';
 		include_once RT_ELEMENTOR . '/widgets/footer-newsletter.php';
+		include_once RT_ELEMENTOR . '/widgets/footer-three.php';
 		// include_once RT_ELEMENTOR . '/widgets/footer-shape.php';
 		include_once RT_ELEMENTOR . '/widgets/copyright.php';
 
@@ -118,6 +120,7 @@ class Roavio_Elementor_Addon
 		$widgets_manager->register(new Widgets\Testimonial());
 		$widgets_manager->register(new Widgets\Faq());
 		$widgets_manager->register(new Widgets\Tour_Details());
+		$widgets_manager->register(new Widgets\Custom_Sidebar());
 		// $widgets_manager->register(new Widgets\Integrating());
 		// $widgets_manager->register(new Widgets\Portfolio());
 		$widgets_manager->register(new Widgets\Recent_Post());
@@ -139,6 +142,7 @@ class Roavio_Elementor_Addon
 		$widgets_manager->register(new Widgets\Footer_Top());
 		$widgets_manager->register(new Widgets\Footer_About());
 		$widgets_manager->register(new Widgets\Footer_Newsletter());
+		$widgets_manager->register(new Widgets\Footer_Three());
 		// $widgets_manager->register(new Widgets\Footer_Shape());
 		$widgets_manager->register(new Widgets\Copyright());
 	}

@@ -973,6 +973,12 @@ class Roavio_Metaboxes
 					'title'       => esc_html__('Address', 'roavio-toolkit'),
 					'placeholder' => esc_html__('Address', 'roavio-toolkit'),
 				],
+				[
+					'id'    => 'selected_page',
+					'type'  => 'select',
+					'title' => esc_html__('Select Page', 'roavio-toolkit'),
+					'options' => 'pages',
+				],
 			],
 		]);
 	}
