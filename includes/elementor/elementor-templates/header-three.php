@@ -4,7 +4,7 @@ use RoavioTheme\Classes\Roavio_Nav_Walker;
 
 if ('layout_three' == $settings['layout_type']) : ?>
     <div class="fix-area">
-        <div class="offcanvas__info">
+        <div class="offcanvas__info style-left">
             <div class="offcanvas__wrapper">
                 <div class="offcanvas__content">
                     <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
@@ -13,7 +13,7 @@ if ('layout_three' == $settings['layout_type']) : ?>
                                 <img src="<?php echo esc_url($settings['mobile_logo']['url']); ?>" width="<?php echo esc_attr($settings['mobile_logo_size']['width']); ?>" height="<?php echo esc_attr($settings['mobile_logo_size']['height']); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" title="<?php echo esc_attr(get_bloginfo('name')); ?>">
                             </a>
                         </div>
-                        <div class="offcanvas__close">
+                        <div class="offcanvas__close style-3">
                             <button>
                                 <i class="fas fa-times"></i>
                             </button>
@@ -21,19 +21,20 @@ if ('layout_three' == $settings['layout_type']) : ?>
                     </div>
                     <?php if (!empty($settings['sidebar_content'])) : ?>
                         <p class="text d-none d-xl-block">
-                            <?php echo wp_kses_post($settings['sidebar_content']); ?>
+                            <?php echo esc_html($settings['sidebar_content']); ?>
                         </p>
                     <?php endif; ?>
                     <div class="mobile-menu fix mb-3"></div>
                     <div class="offcanvas__contact">
                         <?php if ($settings['sidebar_contact_title']) : ?>
-                            <h3><?php echo esc_html($settings['sidebar_contact_title']) ?></h3>
+                            <h3><?php echo esc_html($settings['sidebar_contact_title']); ?></h3>
                         <?php endif; ?>
                         <?php if (!empty($settings['layout_one_select_cf7_form'])) :
                             echo do_shortcode('[contact-form-7 id="' . esc_attr($settings['layout_one_select_cf7_form']) . '"]');
                         endif; ?>
                         <div class="social-icon d-flex align-items-center">
-                            <?php if (!empty($settings['sidebar_social_icons'])) :
+                            <?php
+                            if (!empty($settings['sidebar_social_icons'])) :
                                 foreach ($settings['sidebar_social_icons'] as $social_icon) :
                             ?>
                                     <a href="<?php echo esc_url($social_icon['social_url']['url']); ?>" <?php if (!empty($social_icon['social_url']['is_external'])) : ?> target="_blank" <?php endif; ?>><?php \Elementor\Icons_Manager::render_icon($social_icon['social_icon'], ['aria-hidden' => 'true']); ?></a>
@@ -50,34 +51,40 @@ if ('layout_three' == $settings['layout_type']) : ?>
     <!-- Header-Top Section Start -->
     <div class="header-top-section">
         <div class="container-fluid">
-            <div class="header-top-wrapper">
+            <div class="header-top-wrapper style-3">
+                <ul class="header-list">
+                    <?php if (!empty($settings['contact_list'])) : ?>
+                        <?php foreach ($settings['contact_list'] as $item) : ?>
+                            <li>
+                                <?php \Elementor\Icons_Manager::render_icon($item['contact_icon'], ['aria-hidden' => 'true'], 'i'); ?>
+                                <a href="<?php echo esc_url($item['contact_url']); ?>"><?php echo esc_html($item['contact_label']); ?> <?php echo esc_html($item['contact_info']); ?></a>
+                            </li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </ul>
                 <?php if (!empty($settings['top_text'])) : ?>
                     <p><?php echo wp_kses_post($settings['top_text']); ?></p>
                 <?php endif; ?>
                 <div class="header-right">
-                    <div class="flag-wrap">
-                        <i class="fa-solid fa-globe"></i>
+                    <div class="social-icon">
+                        <?php
+                        if (!empty($settings['social_icons'])) :
+                            foreach ($settings['social_icons'] as $social_icon) :
+                        ?>
+                                <a href="<?php echo esc_url($social_icon['social_url']['url']); ?>" <?php if (!empty($social_icon['social_url']['is_external'])) : ?> target="_blank" <?php endif; ?>><?php \Elementor\Icons_Manager::render_icon($social_icon['social_icon'], ['aria-hidden' => 'true']); ?></a>
+                        <?php endforeach;
+                        endif; ?>
+
                     </div>
-                    <ul class="header-list">
-                        <?php if (!empty($settings['contact_list'])) : ?>
-                            <?php foreach ($settings['contact_list'] as $item) : ?>
-                                <li>
-                                    <?php \Elementor\Icons_Manager::render_icon($item['contact_icon'], ['aria-hidden' => 'true'], 'i'); ?>
-                                    <a href="<?php echo esc_url($item['contact_url']); ?>"><?php echo esc_html($item['contact_label']); ?> <?php echo esc_html($item['contact_info']); ?></a>
-                                </li>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </ul>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- Header Section Start -->
     <header id="header-sticky" class="header-1">
         <div class="container-fluid">
             <div class="mega-menu-wrapper">
-                <div class="header-main">
+                <div class="header-main style-3">
                     <div class="header-left">
                         <div class="logo">
                             <a href="<?php echo esc_url(home_url('/')); ?>" class="header-logo">
@@ -106,7 +113,7 @@ if ('layout_three' == $settings['layout_type']) : ?>
                     <div class="header-right d-flex justify-content-end align-items-center">
                         <?php if ('yes' == $settings['enable_search']) : ?>
                             <div class="search-widget">
-                                <form action="<?php echo esc_url(home_url('/')); ?>">
+                                <form action="<?php esc_url(home_url('/')); ?>">
                                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                                     <input type="text" name="s" placeholder="<?php esc_attr($settings['search_placeholder']); ?>">
                                 </form>

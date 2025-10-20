@@ -27,7 +27,7 @@ if ('layout_one' == $settings['layout_type']) : ?>
                     <div class="mobile-menu fix mb-3"></div>
                     <div class="offcanvas__contact">
                         <?php if ($settings['sidebar_contact_title']) : ?>
-                            <h3><?php echo esc_html($settings['sidebar_contact_title']) ?></h3>
+                            <h3><?php echo esc_html($settings['sidebar_contact_title']); ?></h3>
                         <?php endif; ?>
                         <?php if (!empty($settings['layout_one_select_cf7_form'])) :
                             echo do_shortcode('[contact-form-7 id="' . esc_attr($settings['layout_one_select_cf7_form']) . '"]');

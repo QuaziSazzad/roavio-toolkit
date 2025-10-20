@@ -59,6 +59,7 @@ class Roavio_Elementor_Addon
 	{
 		include_once RT_ELEMENTOR . '/widgets/header.php';
 		//include_once RT_ELEMENTOR . '/widgets/banner.php';
+		include_once RT_ELEMENTOR . '/widgets/page-banner.php';
 		include_once RT_ELEMENTOR . '/widgets/slider.php';
 		include_once RT_ELEMENTOR . '/widgets/funfact.php';
 		include_once RT_ELEMENTOR . '/widgets/about.php';
@@ -106,6 +107,7 @@ class Roavio_Elementor_Addon
 		$widgets_manager->register(new Widgets\Header());
 		//$widgets_manager->register(new Widgets\Banner());
 		$widgets_manager->register(new Widgets\Slider());
+		$widgets_manager->register(new Widgets\Page_Banner());
 		$widgets_manager->register(new Widgets\FunFact());
 		$widgets_manager->register(new Widgets\About());
 		$widgets_manager->register(new Widgets\Gallery());

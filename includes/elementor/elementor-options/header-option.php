@@ -111,7 +111,7 @@ $this->add_control(
 		'default' => esc_html__('Default Text', 'roavio-toolkit'),
 		'label_block' => true,
 		'condition' => [
-			'layout_type' =>  ['layout_one']
+			'layout_type' =>  ['layout_one', 'layout_three']
 		]
 	]
 );
@@ -191,7 +191,7 @@ $this->add_control(
 		],
 		'title_field' => '{{{ contact_label }}} {{{ contact_info }}}',
 		'condition' => [
-			'layout_type' => ['layout_one'],
+			'layout_type' => ['layout_one', 'layout_three'],
 		]
 	]
 );
@@ -257,6 +257,60 @@ $this->add_control(
 			'nofollow' => false,
 		],
 		'show_label' => false,
+	]
+);
+
+$social_icons = new \Elementor\Repeater();
+
+$social_icons->add_control(
+	'social_icon',
+	[
+		'label' => esc_html__('Select Icon', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::ICONS,
+		'default' => [
+			'value' => 'fab fa-facebook-f',
+			'library' => 'brand',
+		],
+		'label_block' => true,
+	]
+);
+
+$social_icons->add_control(
+	'social_url',
+	[
+		'label' => esc_html__('Add Url', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::URL,
+		'placeholder' => esc_html__('#', 'roavio-toolkit'),
+		'show_external' => false,
+		'default' => [
+			'url' => '#',
+			'is_external' => false,
+			'nofollow' => false,
+		],
+		'show_label' => false,
+	]
+);
+
+$this->add_control(
+	'social_icons',
+	[
+		'label' => esc_html__('Social Icons', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::REPEATER,
+		'fields' => $social_icons->get_controls(),
+		'prevent_empty' => false,
+		'default' => [
+			[
+				'social_url' => [
+					'url' => '#',
+					'is_external' => false,
+					'nofollow' => false,
+				],
+			],
+
+		],
+		'condition' => [
+			'layout_type' => ['layout_three']
+		]
 	]
 );
 
