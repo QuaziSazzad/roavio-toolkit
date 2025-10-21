@@ -30,18 +30,14 @@ if ('layout_six' == $settings['layout_type']) :
     <!-- Tour sidebar Section Start -->
     <section class="tour-no-sidebar-section section-padding">
         <div class="container custom-container-6">
-            <?php
-            if ($settings['section_title'] || $settings['sub_title']) :
-            ?>
-                <div class="section-title text-center">
-                    <?php if ($settings['section_title']) : ?>
-                        <<?php echo esc_attr($settings['title_tag']); ?> class="wow fadeInUp" data-wow-delay=".3s"><?php echo rt_kses_basic($settings['section_title']); ?></<?php echo esc_attr($settings['title_tag']); ?>>
-                    <?php endif; ?>
-                    <?php if ($settings['sub_title']) : ?>
-                        <<?php echo esc_attr($settings['sub_title_tag']); ?> class="wow fadeInUp" data-wow-delay=".5s"><?php echo rt_kses_basic($settings['sub_title']); ?></<?php echo esc_attr($settings['sub_title_tag']); ?>>
-                    <?php endif; ?>
-                </div>
-            <?php endif; ?>
+            <div class="section-title text-center">
+                <?php if ($settings['section_title']) : ?>
+                    <<?php echo esc_attr($settings['title_tag']); ?> class="wow fadeInUp" data-wow-delay=".3s"><?php echo rt_kses_basic($settings['section_title']); ?></<?php echo esc_attr($settings['title_tag']); ?>>
+                <?php endif; ?>
+                <?php if ($settings['sub_title']) : ?>
+                    <p class="wow fadeInUp" data-wow-delay=".5s"><?php echo rt_kses_basic($settings['sub_title']); ?></p>
+                <?php endif; ?>
+            </div>
             <div class="tour-no-sidebar-wrapper">
                 <div class="row g-4">
                     <?php
@@ -73,18 +69,19 @@ if ('layout_six' == $settings['layout_type']) :
                                 <div class="sideber-image">
                                     <?php the_post_thumbnail('roavio_blog_300X200'); ?>
                                     <?php if ($discount) : ?>
-                                        <span><?php echo esc_html($discount); ?> <?php esc_html_e('% Off', 'roavio-toolkit'); ?></span>
+                                        <span><?php echo esc_html($discount); ?> <?php esc_html_e('% off', 'roavio-toolkit'); ?></span>
                                     <?php endif; ?>
+
                                     <div class="icon">
                                         <?php if (class_exists('RoavioToolkit\Helper\Wishlist')) {
                                             echo RoavioToolkit\Helper\Wishlist::html_icon($post_id);
                                         } ?>
                                     </div>
                                 </div>
-                                <?php
-                                $total_vote = get_post_meta(get_the_ID(), '_rating_votes_base', true);
-                                ?>
                                 <div class="sideber-content">
+                                    <?php
+                                    $total_vote = get_post_meta(get_the_ID(), '_rating_votes_base', true);
+                                    ?>
                                     <div class="rating-item">
                                         <?php if (!empty($total_vote)) : ?>
                                             <div class="star">
@@ -127,8 +124,21 @@ if ('layout_six' == $settings['layout_type']) :
                                         <?php endif; ?>
                                     </ul>
                                     <div class="share-item">
-                                        <a href="<?php the_permalink(); ?>" class="theme-btn"><?php echo esc_html($settings['button_label']); ?></a>
-                                        <a href="<?php the_permalink(); ?>" class="arrow-icon"><i class="fa-regular fa-share-nodes"></i></a>
+                                        <div class="small-button">
+                                            <a href="<?php the_permalink(); ?>" class="theme-btn"><?php echo esc_html($settings['button_label']); ?></a>
+                                        </div>
+                                        <div class="social-profile">
+                                            <ul>
+                                                <?php
+                                                $post_url = urlencode(get_permalink());
+                                                $post_title = urlencode(get_the_title());
+                                                ?>
+                                                <li><a href="<?php echo esc_url('https://www.facebook.com/sharer/sharer.php?u=' . $post_url . '&t=' . $post_title); ?>" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+                                                <li><a href="<?php echo esc_url('https://twitter.com/intent/tweet?url=' . $post_url . '&text=' . $post_title); ?>" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+                                                <li><a href="<?php echo esc_url('https://www.linkedin.com/shareArticle?mini=true&url=' . $post_url . '&title=' . $post_title); ?>" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                                            </ul>
+                                            <span class="plus-btn"><i class="fa-regular fa-share-nodes"></i></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

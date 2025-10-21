@@ -20,43 +20,51 @@
                             <?php if (!empty($settings['layout_two_search_title'])) : ?>
                                 <h3><?php echo rt_kses_basic($settings['layout_two_search_title']); ?></h3>
                             <?php endif; ?>
-                            <div class="box-item-2">
-                                <div class="form-clt">
-                                    <div class="form">
-                                        <select class="single-select w-100">
-                                            <option>Where to go</option>
-                                            <option>Travel destinations</option>
-                                            <option>Local places</option>
-                                            <option>Adventure</option>
-                                        </select>
+                            <form action="<?php echo esc_url(home_url('/')); ?>" method="GET">
+                                <div class="box-item-2">
+                                    <div class="form-clt">
+                                        <div class="form">
+                                            <select class="single-select w-100">
+                                                <option><?php echo esc_html($settings['layout_two_location_label']); ?></option>
+                                                <?php
+                                                $locations = get_terms('ba_location', array('hide_empty' => false));
+                                                foreach ($locations as $location) {
+                                                ?>
+                                                    <option value="<?php echo esc_attr($location->slug); ?>"><?php echo esc_html($location->name); ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-clt">
+                                        <div class="form">
+                                            <select class="single-select w-100">
+                                                <option><?php echo esc_html($settings['layout_two_tour_label']); ?></option>
+                                                <?php
+                                                $types = get_terms('ba_type', array('hide_empty' => false));
+                                                foreach ($types as $type) {
+                                                ?>
+                                                    <option value="<?php echo esc_attr($type->slug); ?>"><?php echo esc_html($type->name); ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-clt">
+                                        <div class="form">
+                                            <input type="text" class="w-100  single-select" name="guest" placeholder="<?php echo esc_html($settings['layout_two_tour_guest_label']); ?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-clt">
+                                        <button class="theme-btn" type="submit">
+                                            <?php echo esc_html($settings['layout_two_submit_label']); ?>
+                                        </button>
                                     </div>
                                 </div>
-                                <div class="form-clt">
-                                    <div class="form">
-                                        <select class="single-select w-100">
-                                            <option>Where to go</option>
-                                            <option>Travel destinations</option>
-                                            <option>Local places</option>
-                                            <option>Adventure</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-clt">
-                                    <div class="form">
-                                        <select class="single-select w-100">
-                                            <option>Travel type</option>
-                                            <option>Travel destinations</option>
-                                            <option>Local places</option>
-                                            <option>Adventure</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-clt">
-                                    <button class="theme-btn" type="submit">
-                                        Find Tours
-                                    </button>
-                                </div>
-                            </div>
+                                <input type="hidden" name="filter" value="yes">
+                            </form>
                         </div>
                     </div>
                 </div>

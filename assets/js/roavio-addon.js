@@ -27,7 +27,27 @@
            },
         });
 
-            //>> Heros Slider Start <<//
+         //>> Video Popup Start <<//
+      $(".img-popup").magnificPopup({
+        type: "image",
+        gallery: {
+          enabled: true,
+        },
+      });
+
+      $(".img-popup2").magnificPopup({
+        type: "image",
+        gallery: {
+          enabled: true,
+        },
+      });
+  
+      $(".video-popup").magnificPopup({
+        type: "iframe",
+        callbacks: {},
+      });
+
+       //>> Heros Slider Start <<//
      if($('.heros-slider').length > 0) {
       const HerosSlider = new Swiper(".heros-slider", {
           spaceBetween: 30,
@@ -135,6 +155,41 @@
                },
            });
        }
+
+                    
+              //>> Testimonial Slider Start <<//
+              if($('.testimonial-slider').length > 0) {
+                const testimonialSlider = new Swiper(".testimonial-slider", {
+                spaceBetween: 30,
+                speed: 1300,
+                loop: true,
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".dot2",
+                    clickable: true,
+                },
+                breakpoints: {
+                    1199: {
+                        slidesPerView: 1,
+                    },
+                    991: {
+                        slidesPerView: 1,
+                    },
+                    767: {
+                        slidesPerView: 1,
+                    },
+                    575: {
+                        slidesPerView: 1,
+                    },
+                    0: {
+                        slidesPerView: 1,
+                    },
+                },
+            });
+          }
 
            //>> Testimonial Slider Start <<//
            if($('.testimonial-slider-2').length > 0) {
@@ -321,18 +376,11 @@
         });
     }
 
-    //>> Project Hover Js Start <<//
-    const getSlide = $('.main-box, .box-2').length - 1;
-    const slideCal = 100 / getSlide + '%';
-    
-    $('.box-2').css({
-        "width": slideCal
-    });
     
     $(document).on('mouseenter', '.box-2', function() {
-        $('.box-2').removeClass('active');
-        $(this).addClass('active');
-    });     
+      $('.box-2').removeClass('active');
+      $(this).addClass('active');
+      });     
 
 
       $(document).on('click', '.nav-link[data-bs-toggle="tab"]', function (e) {

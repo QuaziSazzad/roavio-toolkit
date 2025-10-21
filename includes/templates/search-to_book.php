@@ -232,6 +232,78 @@ $properties = sprintf(
     $total_post_count
 );
 ?>
+
+<!-- Breadcrumb Section Start -->
+<div class="breadcrumb-wrapper-2 style-tour-page bg-cover" style="background-image: url(assets/img/inner-page/breadcrumb/bg-4.jpg);">
+    <div class="container">
+        <div class="page-heading">
+            <div class="breadcrumb-sub-title">
+                <h1 class="wow fadeInUp" data-wow-delay=".3s">Tour filter sidebar</h1>
+            </div>
+            <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".5s">
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+                <li class="style-2">
+                    Tour filter sidebar
+                </li>
+            </ul>
+            <div class="from-box wow fadeInUp" data-wow-delay=".3s">
+                <h3>Find adventure that suits your needs</h3>
+                <form action="<?php echo esc_url(home_url('/')); ?>" method="GET">
+                    <div class="box-item-2">
+                        <div class="form-clt">
+                            <div class="form">
+                                <select class="single-select w-100">
+                                    <option>Where to go</option>
+                                    <?php
+                                    $locations = get_terms('ba_location', array('hide_empty' => false));
+                                    foreach ($locations as $location) {
+                                    ?>
+                                        <option value="<?php echo esc_attr($location->slug); ?>"><?php echo esc_html($location->name); ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-clt">
+                            <div class="form">
+                                <select class="single-select w-100">
+                                    <option>Where to go</option>
+                                    <?php
+                                    $types = get_terms('ba_type', array('hide_empty' => false));
+                                    foreach ($types as $type) {
+                                    ?>
+                                        <option value="<?php echo esc_attr($type->slug); ?>"><?php echo esc_html($type->name); ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-clt">
+                            <div class="form">
+                                <input type="text" class="w-100  single-select" name="guest" placeholder="Guest">
+                            </div>
+                        </div>
+                        <div class="form-clt">
+                            <button class="theme-btn" type="submit">
+                                Find Tours
+                            </button>
+                        </div>
+                    </div>
+                    <input type="hidden" name="filter" value="yes">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <!-- Tour sidebar Section Start -->
 <section class="tour-sidebar-section section-padding">
     <div class="container">

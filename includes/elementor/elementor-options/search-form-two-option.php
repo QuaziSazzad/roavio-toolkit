@@ -111,6 +111,51 @@ $this->add_control(
 	]
 );
 
+$this->add_control(
+	'layout_two_location_label',
+	[
+		'label' => esc_html__('Location Label', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'placeholder' => esc_html__('Add Location Label', 'roavio-toolkit'),
+		'default' => esc_html__('Where to go', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+$this->add_control(
+	'layout_two_tour_label',
+	[
+		'label' => esc_html__('Tour Type Label', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'placeholder' => esc_html__('Add Tour Label', 'roavio-toolkit'),
+		'default' => esc_html__('Tour type', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+$this->add_control(
+	'layout_two_tour_guest_label',
+	[
+		'label' => esc_html__('Tour Guest', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'placeholder' => esc_html__('Add Guest Label', 'roavio-toolkit'),
+		'default' => esc_html__('Guest', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+
+$this->add_control(
+	'layout_two_submit_label',
+	[
+		'label' => esc_html__('Button Label', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'placeholder' => esc_html__('Add Button Label', 'roavio-toolkit'),
+		'default' => esc_html__(' Find Tours', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
 
 $this->end_controls_section();
 
