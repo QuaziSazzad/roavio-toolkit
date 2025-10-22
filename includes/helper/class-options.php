@@ -957,7 +957,14 @@ class Roavio_Options
 
 	public function tour_filter()
 	{
+
 		CSF::createSection($this->options_prefix, [
+			'id'    => 'search_filter_options',
+			'title' => esc_html__('Filter Options', 'roavio-toolkit'),
+		]);
+
+		CSF::createSection($this->options_prefix, [
+			'parent' => 'search_filter_options',
 			'title'  => esc_html__('Tour Filter', 'roavio-toolkit'),
 			'fields' => [
 				[
@@ -1096,6 +1103,121 @@ class Roavio_Options
 					'placeholder' => esc_html__('9', 'roavio-toolkit'),
 					'default'     => esc_html__('9', 'roavio-toolkit'),
 				],
+			],
+		]);
+
+		CSF::createSection($this->options_prefix, [
+			'parent' => 'search_filter_options',
+			'title'  => esc_html__('Filter Page Banner', 'roavio-toolkit'),
+			'fields' => [
+				[
+					'type'    => 'heading',
+					'content' => esc_html__('Filter Page Banner', 'roavio-toolkit'),
+				],
+				[
+					'id'       => 'filter_page_show_banner',
+					'type'     => 'button_set',
+					'title'    => esc_html__('Show Page Banner', 'roavio-toolkit'),
+					'subtitle' => esc_html__('Enable or disable page banner section', 'roavio-toolkit'),
+					'options'  => [
+						'yes' => esc_html__('Yes', 'roavio-toolkit'),
+						'no'  => esc_html__('No', 'roavio-toolkit'),
+					],
+					'default'  => 'yes',
+				],
+				[
+					'id'          => 'filter_page_banner_bg',
+					'type'        => 'media',
+					'title'       => esc_html__('Banner Background Image', 'roavio-toolkit'),
+					'subtitle'    => esc_html__('Upload background image for filter page banner', 'roavio-toolkit'),
+					'library'     => 'image',
+					'url'         => false,
+					'dependency'  => ['filter_page_show_banner', '==', 'yes'],
+				],
+				[
+					'id'          => 'filter_page_title',
+					'type'        => 'text',
+					'title'       => esc_html__('Banner Title', 'roavio-toolkit'),
+					'placeholder' => esc_html__('Tour filter sidebar', 'roavio-toolkit'),
+					'default'     => esc_html__('Tour filter sidebar', 'roavio-toolkit'),
+					'dependency'  => ['filter_page_show_banner', '==', 'yes'],
+				],
+				[
+					'id'          => 'filter_page_form_title',
+					'type'        => 'text',
+					'title'       => esc_html__('Form Title', 'roavio-toolkit'),
+					'placeholder' => esc_html__('Find adventure that suits your needs', 'roavio-toolkit'),
+					'default'     => esc_html__('Find adventure that suits your needs', 'roavio-toolkit'),
+					'dependency'  => ['filter_page_show_banner', '==', 'yes'],
+				],
+				[
+					'id'       => 'filter_page_show_form',
+					'type'     => 'button_set',
+					'title'    => esc_html__('Show Search Form', 'roavio-toolkit'),
+					'subtitle' => esc_html__('Enable or disable search form in banner', 'roavio-toolkit'),
+					'options'  => [
+						'yes' => esc_html__('Yes', 'roavio-toolkit'),
+						'no'  => esc_html__('No', 'roavio-toolkit'),
+					],
+					'default'  => 'yes',
+					'dependency' => ['filter_page_show_banner', '==', 'yes'],
+				],
+				[
+					'id'       => 'filter_page_show_location',
+					'type'     => 'button_set',
+					'title'    => esc_html__('Show Location Field', 'roavio-toolkit'),
+					'subtitle' => esc_html__('Enable or disable location field in search form', 'roavio-toolkit'),
+					'options'  => [
+						'yes' => esc_html__('Yes', 'roavio-toolkit'),
+						'no'  => esc_html__('No', 'roavio-toolkit'),
+					],
+					'default'  => 'yes',
+					'dependency' => ['filter_page_show_form|filter_page_show_banner', '==|==', 'yes|yes'],
+				],
+				[
+					'id'       => 'filter_page_show_type',
+					'type'     => 'button_set',
+					'title'    => esc_html__('Show Type Field', 'roavio-toolkit'),
+					'subtitle' => esc_html__('Enable or disable type field in search form', 'roavio-toolkit'),
+					'options'  => [
+						'yes' => esc_html__('Yes', 'roavio-toolkit'),
+						'no'  => esc_html__('No', 'roavio-toolkit'),
+					],
+					'default'  => 'yes',
+					'dependency' => ['filter_page_show_form|filter_page_show_banner', '==|==', 'yes|yes'],
+				],
+				[
+					'id'       => 'filter_page_show_guest',
+					'type'     => 'button_set',
+					'title'    => esc_html__('Show Guest Field', 'roavio-toolkit'),
+					'subtitle' => esc_html__('Enable or disable guest field in search form', 'roavio-toolkit'),
+					'options'  => [
+						'yes' => esc_html__('Yes', 'roavio-toolkit'),
+						'no'  => esc_html__('No', 'roavio-toolkit'),
+					],
+					'default'  => 'yes',
+					'dependency' => ['filter_page_show_form|filter_page_show_banner', '==|==', 'yes|yes'],
+				],
+				[
+					'id'          => 'filter_page_button_text',
+					'type'        => 'text',
+					'title'       => esc_html__('Button Text', 'roavio-toolkit'),
+					'placeholder' => esc_html__('Find Tours', 'roavio-toolkit'),
+					'default'     => esc_html__('Find Tours', 'roavio-toolkit'),
+					'dependency'  => ['filter_page_show_form|filter_page_show_banner', '==|==', 'yes|yes'],
+				],
+				[
+					'id'       => 'filter_page_breadcrumb',
+					'type'     => 'button_set',
+					'title'    => esc_html__('Show Breadcrumb', 'roavio-toolkit'),
+					'subtitle' => esc_html__('Enable or disable breadcrumb in banner', 'roavio-toolkit'),
+					'options'  => [
+						'yes' => esc_html__('Yes', 'roavio-toolkit'),
+						'no'  => esc_html__('No', 'roavio-toolkit'),
+					],
+					'default'  => 'yes',
+					'dependency' => ['filter_page_show_banner', '==', 'yes'],
+				]
 			],
 		]);
 	}

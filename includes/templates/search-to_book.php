@@ -234,73 +234,106 @@ $properties = sprintf(
 ?>
 
 <!-- Breadcrumb Section Start -->
-<div class="breadcrumb-wrapper-2 style-tour-page bg-cover" style="background-image: url(assets/img/inner-page/breadcrumb/bg-4.jpg);">
-    <div class="container">
-        <div class="page-heading">
-            <div class="breadcrumb-sub-title">
-                <h1 class="wow fadeInUp" data-wow-delay=".3s">Tour filter sidebar</h1>
-            </div>
-            <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".5s">
-                <li>
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
-                <li class="style-2">
-                    Tour filter sidebar
-                </li>
-            </ul>
-            <div class="from-box wow fadeInUp" data-wow-delay=".3s">
-                <h3>Find adventure that suits your needs</h3>
-                <form action="<?php echo esc_url(home_url('/')); ?>" method="GET">
-                    <div class="box-item-2">
-                        <div class="form-clt">
-                            <div class="form">
-                                <select class="single-select w-100">
-                                    <option>Where to go</option>
-                                    <?php
-                                    $locations = get_terms('ba_location', array('hide_empty' => false));
-                                    foreach ($locations as $location) {
-                                    ?>
-                                        <option value="<?php echo esc_attr($location->slug); ?>"><?php echo esc_html($location->name); ?></option>
-                                    <?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-clt">
-                            <div class="form">
-                                <select class="single-select w-100">
-                                    <option>Where to go</option>
-                                    <?php
-                                    $types = get_terms('ba_type', array('hide_empty' => false));
-                                    foreach ($types as $type) {
-                                    ?>
-                                        <option value="<?php echo esc_attr($type->slug); ?>"><?php echo esc_html($type->name); ?></option>
-                                    <?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-clt">
-                            <div class="form">
-                                <input type="text" class="w-100  single-select" name="guest" placeholder="Guest">
-                            </div>
-                        </div>
-                        <div class="form-clt">
-                            <button class="theme-btn" type="submit">
-                                Find Tours
-                            </button>
-                        </div>
+<?php
+$show_banner = Helper::get_option('filter_page_show_banner', 'yes');
+if ($show_banner === 'yes') :
+    $banner_bg = Helper::get_option('filter_page_banner_bg');
+    $banner_title = Helper::get_option('filter_page_title', 'Tour filter sidebar');
+    $form_title = Helper::get_option('filter_page_form_title', 'Find adventure that suits your needs');
+    $show_form = Helper::get_option('filter_page_show_form', 'yes');
+    $show_location = Helper::get_option('filter_page_show_location', 'yes');
+    $show_type = Helper::get_option('filter_page_show_type', 'yes');
+    $show_guest = Helper::get_option('filter_page_show_guest', 'yes');
+    $button_text = Helper::get_option('filter_page_button_text', 'Find Tours');
+    $show_breadcrumb = Helper::get_option('filter_page_breadcrumb', 'yes');
+
+    $banner_bg_url = isset($banner_bg['url']) ? $banner_bg['url'] : 'assets/img/inner-page/breadcrumb/bg-4.jpg';
+?>
+    <div class="breadcrumb-wrapper-2 style-tour-page bg-cover" style="background-image: url(<?php echo esc_url($banner_bg_url); ?>);">
+        <div class="container">
+            <div class="page-heading">
+                <?php if (!empty($banner_title)) : ?>
+                    <div class="breadcrumb-sub-title">
+                        <h1 class="wow fadeInUp" data-wow-delay=".3s"><?php echo esc_html($banner_title); ?></h1>
                     </div>
-                    <input type="hidden" name="filter" value="yes">
-                </form>
+                <?php endif; ?>
+
+                <?php if ($show_breadcrumb === 'yes') : ?>
+                    <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".5s">
+                        <li>
+                            <a href="<?php echo esc_url(home_url('/')); ?>">
+                                <?php echo esc_html__('Home', 'roavio-toolkit'); ?>
+                            </a>
+                        </li>
+                        <li class="style-2">
+                            <?php echo esc_html($banner_title); ?>
+                        </li>
+                    </ul>
+                <?php endif; ?>
+
+                <?php if ($show_form === 'yes') : ?>
+                    <div class="from-box wow fadeInUp" data-wow-delay=".3s">
+                        <?php if (!empty($form_title)) : ?>
+                            <h3><?php echo esc_html($form_title); ?></h3>
+                        <?php endif; ?>
+                        <form action="<?php echo esc_url(home_url('/')); ?>" method="GET">
+                            <div class="box-item-2">
+                                <?php if ($show_location === 'yes') : ?>
+                                    <div class="form-clt">
+                                        <div class="form">
+                                            <select class="single-select w-100" name="location">
+                                                <?php
+                                                $locations = get_terms('ba_location', array('hide_empty' => false));
+                                                foreach ($locations as $location) {
+                                                ?>
+                                                    <option value="<?php echo esc_attr($location->slug); ?>" <?php selected(isset($_GET['location']) && $_GET['location'] === $location->slug); ?>><?php echo esc_html($location->name); ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ($show_type === 'yes') : ?>
+                                    <div class="form-clt">
+                                        <div class="form">
+                                            <select class="single-select w-100" name="type">
+                                                <?php
+                                                $types = get_terms('ba_type', array('hide_empty' => false));
+                                                foreach ($types as $type) {
+                                                ?>
+                                                    <option value="<?php echo esc_attr($type->slug); ?>" <?php selected(isset($_GET['type']) && $_GET['type'] === $type->slug); ?>><?php echo esc_html($type->name); ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ($show_guest === 'yes') : ?>
+                                    <div class="form-clt">
+                                        <div class="form">
+                                            <input type="text" class="w-100 single-select" name="guest" placeholder="<?php echo esc_attr__('Guest', 'roavio-toolkit'); ?>" value="<?php echo isset($_GET['guest']) ? esc_attr($_GET['guest']) : ''; ?>">
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+
+                                <div class="form-clt">
+                                    <button class="theme-btn" type="submit">
+                                        <?php echo esc_html($button_text); ?>
+                                    </button>
+                                </div>
+                            </div>
+                            <input type="hidden" name="filter" value="yes">
+                        </form>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
-</div>
+<?php endif; ?>
 
 
 
@@ -492,6 +525,7 @@ $properties = sprintf(
                                 </div>
                             </div>
                             <input type="hidden" name="filter" value="yes">
+                            <input type="hidden" name="guest" value="<?php echo esc_attr(isset($_GET['guest']) ? $_GET['guest'] : ''); ?>">
                         </form>
                         <?php
                         $sidebar_image = Helper::get_option('tour_filter_sidebar_image', '');

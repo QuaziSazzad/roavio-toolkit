@@ -55,6 +55,7 @@ class Page_Banner extends Widget_Base
 					'layout_two' => esc_html__('Layout Two', 'roavio-toolkit'),
 					'layout_three' => esc_html__('Layout Three', 'roavio-toolkit'),
 					'layout_four' => esc_html__('Layout Four', 'roavio-toolkit'),
+					'layout_five' => esc_html__('Layout Five(Destination)', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -65,6 +66,7 @@ class Page_Banner extends Widget_Base
 		include rt_get_elementor_option('page-banner-two-option.php');
 		include rt_get_elementor_option('page-banner-three-option.php');
 		include rt_get_elementor_option('page-banner-four-option.php');
+		include rt_get_elementor_option('page-banner-five-option.php');
 
 		//Content style
 		$this->start_controls_section(
@@ -92,5 +94,6 @@ class Page_Banner extends Widget_Base
 		include rt_get_elementor_template('page-banner-two.php');
 		include rt_get_elementor_template('page-banner-three.php');
 		include rt_get_elementor_template('page-banner-four.php');
+		include rt_get_elementor_template('page-banner-five.php');
 	}
 }
