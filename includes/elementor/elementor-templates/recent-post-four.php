@@ -3,20 +3,10 @@
 use RoavioTheme\Classes\Roavio_Post_Helper;
 
 if ('layout_four' == $settings['layout_type']) : ?>
-    <!-- Blog Area Two start -->
-    <section class="blog-area-three pb-70 rpb-40 rel z-1">
+    <!-- News Section Start -->
+    <section class="news-section-2 section-padding pt-0 fix">
         <div class="container">
-
-            <div class="section-title text-center mb-60 wow fadeInUp delay-0-2s">
-                <?php if (!empty($settings['layout_one_sub_title'])) : ?>
-                    <span class="sub-title mb-10"><?php echo esc_html($settings['layout_one_sub_title']); ?></span>
-                <?php endif; ?>
-                <?php if (!empty($settings['layout_one_title'])) : ?>
-                    <<?php echo esc_attr($settings['layout_one_title_tag']); ?>><?php echo esc_html($settings['layout_one_title']); ?></<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
-                <?php endif; ?>
-            </div>
-
-            <div class="row justify-content-center">
+            <div class="row g-4">
                 <?php if ('cpt' == $settings['post_type']) :
 
                     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -59,40 +49,29 @@ if ('layout_four' == $settings['layout_type']) : ?>
                         $excerpt_count = $settings['excerpt_count'];
 
                 ?>
-                        <div class="col-lg-6">
-                            <div class="blog-item-five wow fadeInUp delay-0-2s">
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                            <div class="news-card-items mt-0">
                                 <?php if (has_post_thumbnail() && 'yes' === $settings['show_thumbnail']): ?>
-                                    <div class="image">
+                                    <div class="news-image">
                                         <?php echo get_the_post_thumbnail($idd, $settings['post_thumbnail_size']); ?>
+                                        <span><?php the_time('d F'); ?></span>
                                     </div>
                                 <?php endif; ?>
-                                <div class="content">
-                                    <ul class="blog-meta">
-                                        <li><i class="far fa-calendar-alt"></i> <a href="<?php the_permalink(); ?>"><?php the_time('d F Y'); ?></a></li>
-                                        <li><i class="far fa-calendar-alt"></i> <a href="<?php comments_link(); ?>">
-                                                <?php
-                                                $count = get_comments_number();
-                                                if ($count === 0) {
-                                                    echo esc_html__('No Comments', 'roavio-toolkit');
-                                                } elseif ($count === 1) {
-                                                    echo esc_html__('Comment (1)', 'roavio-toolkit');
-                                                } else {
-                                                    printf(
-                                                        esc_html__('Comments (%d)', 'roavio-toolkit'),
-                                                        $count
-                                                    );
-                                                }
-                                                ?>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <<?php echo rt_escape_tags($settings['title_tag'], 'h4'); ?>>
-                                        <a href="<?php the_permalink(); ?>"><?php echo esc_html($the_title); ?></a>
-                                    </<?php echo rt_escape_tags($settings['title_tag'], 'h4'); ?>>
-                                    <div class="author-more">
-                                        <span class="author"><?php echo esc_html__('By', 'roavio-toolkit'); ?> <a href="<?php the_permalink(); ?>"><?php the_author(); ?></a></span>
-                                        <a href="<?php the_permalink(); ?>" class="read-more"><?php echo esc_html($settings['read_more_text']); ?> <i class="far fa-arrow-right"></i></a>
-                                    </div>
+                                <div class="news-content">
+                                    <?php
+                                    if (has_category()) :
+                                        $categories = get_the_category();
+                                    ?>
+                                        <span><?php echo esc_html($categories[0]->name); ?></span>
+                                    <?php endif; ?>
+                                    <<?php echo rt_escape_tags($settings['title_tag'], 'h3'); ?>>
+                                        <a href="<?php the_permalink(); ?>">
+                                            <?php echo esc_html($the_title); ?>
+                                        </a>
+                                    </<?php echo rt_escape_tags($settings['title_tag'], 'h3'); ?>>
+                                    <?php if ('yes' === $settings['show_read_more'] && ! empty($settings['read_more_text'])) : ?>
+                                        <a href="<?php the_permalink(); ?>" class="link-btn"><?php echo esc_html($settings['read_more_text']); ?> <i class="fa-solid fa-chevron-right"></i></a>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -105,11 +84,10 @@ if ('layout_four' == $settings['layout_type']) : ?>
                     }
                     ?>
                 <?php endif; ?>
-
                 <?php if ('elementor-field' == $settings['post_type']) : ?>
                     <?php
-                    if (is_array($settings['layout_four_post_list'])) :
-                        foreach ($settings['layout_four_post_list'] as $post) :
+                    if (is_array($settings['layout_one_post_list'])) :
+                        foreach ($settings['layout_one_post_list'] as $post) :
 
                             $custom_post_post_query_args = array(
                                 'post_type' => 'post',
@@ -130,32 +108,20 @@ if ('layout_four' == $settings['layout_type']) : ?>
                                 $categories_list = get_the_terms($idd, 'category', '', '', '');
 
                             ?>
-                                <div class="col-lg-6">
-                                    <div class="blog-item-five wow fadeInUp delay-0-4s">
-                                        <div class="image">
+                                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                                    <div class="news-card-items mt-0">
+                                        <div class="news-image">
                                             <?php rt_elementor_rendered_image($post, 'image'); ?>
+                                            <span><?php the_time('d F'); ?></span>
                                         </div>
-                                        <div class="content">
-                                            <ul class="blog-meta">
-                                                <li><i class="far fa-calendar-alt"></i> <a href="<?php the_permalink(); ?>"><?php the_time('d F Y'); ?></a></li>
-                                                <li><i class="far fa-calendar-alt"></i> <a href="<?php comments_link(); ?>">
-                                                        <?php
-                                                        $count = get_comments_number();
-                                                        if ($count === 0) {
-                                                            echo esc_html__('No Comments', 'roavio-toolkit');
-                                                        } elseif ($count === 1) {
-                                                            echo esc_html__('Comment (1)', 'roavio-toolkit');
-                                                        } else {
-                                                            printf(
-                                                                esc_html__('Comments (%d)', 'roavio-toolkit'),
-                                                                $count
-                                                            );
-                                                        }
-                                                        ?>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                            <h4>
+                                        <div class="news-content">
+                                            <?php
+                                            if (has_category()) :
+                                                $categories = get_the_category();
+                                            ?>
+                                                <span><?php echo esc_html($categories_list[0]->name); ?></span>
+                                            <?php endif; ?>
+                                            <<?php echo rt_escape_tags($settings['title_tag'], 'h3'); ?>>
                                                 <a href="<?php the_permalink(); ?>">
                                                     <?php
                                                     if (!empty($post['title'])):
@@ -165,11 +131,10 @@ if ('layout_four' == $settings['layout_type']) : ?>
                                                     endif;
                                                     ?>
                                                 </a>
-                                            </h4>
-                                            <div class="author-more">
-                                                <span class="author"><?php echo esc_html__('By', 'roavio-toolkit'); ?> <a href="<?php the_permalink(); ?>"><?php the_author(); ?></a></span>
-                                                <a href="<?php the_permalink(); ?>" class="read-more"><?php echo esc_html($settings['read_more_text']); ?> <i class="far fa-arrow-right"></i></a>
-                                            </div>
+                                            </<?php echo rt_escape_tags($settings['title_tag'], 'h3'); ?>>
+                                            <?php if ('yes' === $settings['show_read_more'] && ! empty($settings['read_more_text'])) : ?>
+                                                <a href="<?php the_permalink(); ?>" class="link-btn"><?php echo esc_html($settings['read_more_text']); ?><i class="fa-solid fa-chevron-right"></i></a>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>
@@ -180,7 +145,11 @@ if ('layout_four' == $settings['layout_type']) : ?>
                     endif; ?>
                 <?php endif; ?>
             </div>
+            <?php if ('yes' === $settings['show_pagination'] && 'cpt' == $settings['post_type']) : ?>
+                <div class="page-nav-wrap text-center">
+                    <?php Roavio_Post_Helper::pagination($wp_query); ?>
+                </div>
+            <?php endif; ?>
         </div>
     </section>
-    <!-- Blog Area Two end -->
 <?php endif; ?>

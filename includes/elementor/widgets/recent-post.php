@@ -74,7 +74,7 @@ class Recent_Post extends Widget_Base
 					'layout_two' => __('Layout Two', 'roavio-toolkit'),
 					'layout_three' => __('Layout Three', 'roavio-toolkit'),
 					'layout_four' => __('Layout Four', 'roavio-toolkit'),
-					'layout_five' => __('Layout Five', 'roavio-toolkit'),
+					//'layout_five' => __('Layout Five', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -91,7 +91,7 @@ class Recent_Post extends Widget_Base
 				],
 				'default'     => 'cpt',
 				'condition' => [
-					'layout_type!' => 'layout_three',
+					'layout_type!' => ['layout_three', 'layout_five']
 				]
 
 			]
@@ -105,7 +105,7 @@ class Recent_Post extends Widget_Base
 				'label' => __('Header Section', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 				'condition' => [
-					'layout_type!' => 'layout_six',
+					'layout_type' => ['layout_one', 'layout_two', 'layout_three'],
 				]
 			]
 		);
@@ -505,7 +505,7 @@ class Recent_Post extends Widget_Base
 				'fields' => $layout_one_post_list->get_controls(),
 				'prevent_empty' => false,
 				'condition' => [
-					'layout_type' => ['layout_one'],
+					'layout_type' => ['layout_one', 'layout_four'],
 				],
 				'title_field' => '{{{ title }}}',
 			]
@@ -692,7 +692,7 @@ class Recent_Post extends Widget_Base
 		include rt_get_elementor_template('recent-post-one.php');
 		include rt_get_elementor_template('recent-post-two.php');
 		include rt_get_elementor_template('recent-post-three.php');
-		// include rt_get_elementor_template('recent-post-four.php');
-		// include rt_get_elementor_template('recent-post-five.php');
+		include rt_get_elementor_template('recent-post-four.php');
+		//include rt_get_elementor_template('recent-post-five.php');
 	}
 }

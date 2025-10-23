@@ -72,10 +72,8 @@ class Footer_Newsletter extends Widget_Base
 			]
 		);
 
-		// roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .footer-title,{{WRAPPER}} .section-title h2', ['layout_one', 'layout_two', 'layout_three']);
-		// roavio_elementor_style_options($this, 'Summary Text', '{{WRAPPER}} .newsletter-widget p, {{WRAPPER}} .widget_newsletter p', ['layout_one', 'layout_three']);
-		// roavio_elementor_style_options($this, 'Social Title', '{{WRAPPER}} .text-white', ['layout_three']);
-		// roavio_elementor_style_options($this, 'Social Icon', '{{WRAPPER}} .social-style-one a i', ['layout_three']);
+		roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .footer-title,{{WRAPPER}} .wid-title h4', ['layout_one']);
+		roavio_elementor_style_options($this, 'Summary Text', '{{WRAPPER}} .newsletter-content p', ['layout_one']);
 
 		$this->end_controls_section();
 	}

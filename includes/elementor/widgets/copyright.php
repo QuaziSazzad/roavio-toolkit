@@ -74,8 +74,8 @@ class Copyright extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Copyright Text', '{{WRAPPER}} .copyright-text p', ['layout_one', 'layout_two', 'layout_three']);
-		roavio_elementor_style_options($this, 'Nav Text', '{{WRAPPER}} .footer-bottom-nav li a, {{WRAPPER}}  .footer-bottom-menu ul li a', ['layout_one', 'layout_three']);
+		roavio_elementor_style_options($this, 'Copyright Text', '{{WRAPPER}} .text-item p', ['layout_one']);
+		roavio_elementor_style_options($this, 'Brand Text', '{{WRAPPER}} .footer-wrapper h2', ['layout_one']);
 
 		$this->end_controls_section();
 	}

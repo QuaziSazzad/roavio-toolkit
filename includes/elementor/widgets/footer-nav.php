@@ -70,8 +70,8 @@ class Footer_Nav extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .footer-title', ['layout_one', 'layout_two', 'layout_three']);
-		roavio_elementor_style_options($this, 'Nav', '{{WRAPPER}} li a', ['layout_one', 'layout_two', 'layout_three']);
+		roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .wid-title h4', ['layout_one', 'layout_two', 'layout_three']);
+		roavio_elementor_style_options($this, 'Nav', '{{WRAPPER}} .list-area li a', ['layout_one', 'layout_two', 'layout_three']);
 
 		$this->end_controls_section();
 	}

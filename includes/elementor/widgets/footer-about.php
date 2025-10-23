@@ -79,13 +79,9 @@ class Footer_About extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .footer-title', ['layout_two']);
-		roavio_elementor_style_options($this, 'Summary Text', '{{WRAPPER}} .text p, {{WRAPPER}} .widget-about p, {{WRAPPER}} .footer-widget  p', ['layout_one', 'layout_two', 'layout_three']);
-		roavio_elementor_style_options($this, 'Call Title', '{{WRAPPER}} .info-item .content', ['layout_one']);
-		roavio_elementor_style_options($this, 'Call Number ', '{{WRAPPER}} .info-item .content a', ['layout_one']);
-		roavio_elementor_style_options($this, 'Button Text', '{{WRAPPER}} .read-more', ['layout_three']);
+		roavio_elementor_style_options($this, 'Summary Text', '{{WRAPPER}} .footer-content p', ['layout_one']);
 
-		roavio_elementor_style_options($this, 'Social Icon', '{{WRAPPER}} .social-style-two a i ', ['layout_two']);
+		roavio_elementor_style_options($this, 'Social Icon', '{{WRAPPER}} .social-icon a', ['layout_one']);
 
 		$this->end_controls_section();
 	}

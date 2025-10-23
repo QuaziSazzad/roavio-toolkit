@@ -76,17 +76,15 @@ class Header extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Top bar Text', '{{WRAPPER}} .header-top .top-middle,{{WRAPPER}}  .header-top .top-left>ul>li a,{{WRAPPER}} .header-top .text .hello', ['layout_four', 'layout_six']);
+		roavio_elementor_style_options($this, 'Top bar Text', '{{WRAPPER}} .header-top-wrapper p,{{WRAPPER}} .header-top-wrapper.style-3 p', ['layout_one', 'layout_three']);
+		roavio_elementor_style_options($this, 'Top Contact Text', '{{WRAPPER}} .header-list li a', ['layout_one', 'layout_three']);
+		roavio_elementor_style_options($this, 'Top Contact Icon', '{{WRAPPER}} .header-list li i', ['layout_one', 'layout_three']);
 
-		roavio_elementor_style_options($this, 'Call', '{{WRAPPER}} .header-top .top-middle,{{WRAPPER}} .header-one .header-number a, header-number i', ['layout_five']);
 
-		roavio_elementor_style_options($this, 'Top bar Label', '{{WRAPPER}} .top-left ul li,{{WRAPPER}} .top-right ul li', ['layout_one', 'layout_two']);
-		roavio_elementor_style_options($this, 'Top bar Value', '{{WRAPPER}} .top-left ul li a,{{WRAPPER}} .top-right ul li', ['layout_one', 'layout_two']);
+		// roavio_elementor_style_options($this, 'Social Title', '{{WRAPPER}} .top-right ul .social-style-one span, {{WRAPPER}} .top-right span', ['layout_one', 'layout_two', 'layout_four']);
+		roavio_elementor_style_options($this, 'Social Icon', '{{WRAPPER}} .social-icon i', ['layout_three']);
 
-		roavio_elementor_style_options($this, 'Social Title', '{{WRAPPER}} .top-right ul .social-style-one span, {{WRAPPER}} .top-right span', ['layout_one', 'layout_two', 'layout_four']);
-		roavio_elementor_style_options($this, 'Social Icon', '{{WRAPPER}} .social-style-one a i, {{WRAPPER}} .social-icons a i', ['layout_one', 'layout_two', 'layout_four']);
-
-		roavio_elementor_style_options($this, 'Nav', '{{WRAPPER}} .main-menu .navbar-collapse li a', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
+		roavio_elementor_style_options($this, 'Nav', '{{WRAPPER}} .main-menu ul li a', ['layout_one', 'layout_two', 'layout_three']);
 
 		$this->end_controls_section();
 
@@ -95,6 +93,9 @@ class Header extends Widget_Base
 			[
 				'label' => esc_html__('Button Style', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'layout_type' => ['layout_one', 'layout_three'],
+				],
 			]
 		);
 

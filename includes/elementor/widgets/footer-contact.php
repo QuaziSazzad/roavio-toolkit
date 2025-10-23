@@ -75,8 +75,8 @@ class Footer_Contact extends Widget_Base
 			]
 		);
 
-		// roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .footer-title', ['layout_one']);
-		// roavio_elementor_style_options($this, 'Content', '{{WRAPPER}} .widget-contact ul li a,{{WRAPPER}} .widget-contact ul li ', ['layout_one']);
+		roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .wid-title h4', ['layout_one']);
+		roavio_elementor_style_options($this, 'Content', '{{WRAPPER}} .content h6, {{WRAPPER}} .content h6 a ', ['layout_one']);
 
 		$this->end_controls_section();
 	}

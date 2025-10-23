@@ -11,10 +11,10 @@
                             </a>
                         <?php endif; ?>
                         <?php if ($settings['layout_two_sub_title']) : ?>
-                            <<?php echo esc_attr($settings['layout_two_sub_title_tag']); ?> class="wow fadeInUp" data-wow-delay=".5s"><?php echo rt_kses_basic($settings['layout_two_sub_title']); ?></<?php echo esc_attr($settings['layout_two_sub_title_tag']); ?>>
+                            <<?php echo esc_attr($settings['layout_two_sub_title_tag']); ?> class="wow fadeInUp section-sub-title" data-wow-delay=".5s"><?php echo rt_kses_basic($settings['layout_two_sub_title']); ?></<?php echo esc_attr($settings['layout_two_sub_title_tag']); ?>>
                         <?php endif; ?>
                         <?php if ($settings['layout_two_title']) : ?>
-                            <<?php echo esc_attr($settings['layout_two_title_tag']); ?> class="wow img-custom-anim-left"><?php echo rt_kses_basic($settings['layout_two_title']); ?></<?php echo esc_attr($settings['layout_two_title_tag']); ?>>
+                            <<?php echo esc_attr($settings['layout_two_title_tag']); ?> class="wow img-custom-anim-left section-title"><?php echo rt_kses_basic($settings['layout_two_title']); ?></<?php echo esc_attr($settings['layout_two_title_tag']); ?>>
                         <?php endif; ?>
                         <div class="from-box wow fadeInUp" data-wow-delay=".3s">
                             <?php if (!empty($settings['layout_two_search_title'])) : ?>
