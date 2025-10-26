@@ -95,7 +95,7 @@ class About extends Widget_Base
 
 		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six', 'layout_seven', 'layout_eight', 'layout_nine', 'layout_ten']);
 		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one', 'layout_eight']);
-		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .about-right-item .content p,{{WRAPPER}} .adventure-wrapper .text,{{WRAPPER}} .about-content .text,{{WRAPPER}} .description', ['layout_one', 'layout_two', 'layout_four', 'layout_five', 'layout_six', 'layout_nine', 'layout_ten']);
+		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .about-right-item .content p,{{WRAPPER}} .adventure-wrapper .text,{{WRAPPER}} .about-content .text,{{WRAPPER}} .description', ['layout_one', 'layout_two', 'layout_four', 'layout_five', 'layout_six', 'layout_nine', 'layout_ten', 'layout_seven']);
 
 		roavio_elementor_style_options($this, 'Features List', '{{WRAPPER}} .list-item .list li', ['layout_one']);
 
@@ -127,9 +127,9 @@ class About extends Widget_Base
 		roavio_elementor_style_options($this, 'Count Text', '{{WRAPPER}} .about-left-item .right-item p', ['layout_nine']);
 		roavio_elementor_style_options($this, 'Count Number', '{{WRAPPER}} .count-box .count', ['layout_nine']);
 
-		roavio_elementor_style_options($this, 'Features Title', '{{WRAPPER}} .icon-item .content h5,{{WRAPPER}} .feature-item .icon-item h5', ['layout_nine', 'layout_ten']);
-		roavio_elementor_style_options($this, 'Features Text', '{{WRAPPER}} .icon-item .content p,{{WRAPPER}} .feature-memories-item .feature-item p ', ['layout_nine', 'layout_ten']);
-		roavio_elementor_style_options($this, 'Features Icon', '{{WRAPPER}} .about-box .icon-item .icon i,{{WRAPPER}} .icon-item .icon i', ['layout_nine', 'layout_ten']);
+		roavio_elementor_style_options($this, 'Features Title', '{{WRAPPER}} .icon-item .content h5,{{WRAPPER}} .feature-item .icon-item h5', ['layout_nine', 'layout_ten', 'layout_seven']);
+		roavio_elementor_style_options($this, 'Features Text', '{{WRAPPER}} .icon-item .content p,{{WRAPPER}} .feature-memories-item .feature-item p ', ['layout_nine', 'layout_ten', 'layout_seven']);
+		roavio_elementor_style_options($this, 'Features Icon', '{{WRAPPER}} .about-box .icon-item .icon i,{{WRAPPER}} .icon-item .icon i', ['layout_nine', 'layout_ten', 'layout_seven']);
 		roavio_elementor_style_options($this, 'List Items', '{{WRAPPER}} .list-box-item .list li', ['layout_ten']);
 		$this->end_controls_section();
 
@@ -139,7 +139,7 @@ class About extends Widget_Base
 				'label' => esc_html__('Button Style', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 				'condition' => [
-					'layout_type' => ['layout_one', 'layout_four', 'layout_six'],
+					'layout_type' => ['layout_one', 'layout_four', 'layout_six', 'layout_seven'],
 				],
 			]
 		);

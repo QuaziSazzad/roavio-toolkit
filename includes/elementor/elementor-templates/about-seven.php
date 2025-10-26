@@ -8,13 +8,13 @@
                         <div class="tour-dedicated-content">
                             <div class="section-title mb-0">
                                 <?php if (!empty($settings['layout_seven_title'])) : ?>
-                                    <<?php echo esc_attr($settings['layout_seven_title_tag']); ?> class="wow fadeInUp" data-wow-delay=".3s">
+                                    <<?php echo esc_attr($settings['layout_seven_title_tag']); ?> class="wow fadeInUp sec-title" data-wow-delay=".3s">
                                         <?php echo rt_kses_basic($settings['layout_seven_title']); ?>
                                     </<?php echo esc_attr($settings['layout_seven_title_tag']); ?>>
                                 <?php endif; ?>
 
                                 <?php if (!empty($settings['layout_seven_description'])) : ?>
-                                    <p class="text">
+                                    <p class="text description">
                                         <?php echo rt_kses_basic($settings['layout_seven_description']); ?>
                                     </p>
                                 <?php endif; ?>

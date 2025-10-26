@@ -79,7 +79,7 @@ class Contact extends Widget_Base
 
 
 		roavio_elementor_style_options($this, 'Contact Label', '{{WRAPPER}} .content h5', ['layout_one']);
-		roavio_elementor_style_options($this, 'Contact Content', '{{WRAPPER}} .content h6 a', ['layout_one']);
+		roavio_elementor_style_options($this, 'Contact Content', '{{WRAPPER}} .content h6 a, {{WRAPPER}} .content h6', ['layout_one']);
 
 		$this->end_controls_section();
 	}

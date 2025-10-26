@@ -4,13 +4,13 @@
         <div class="container">
             <div class="section-title text-center">
                 <?php if (!empty($settings['layout_two_section_title'])) : ?>
-                    <<?php echo esc_attr($settings['layout_two_title_tag']); ?> class="wow fadeInUp" data-wow-delay=".3s">
+                    <<?php echo esc_attr($settings['layout_two_title_tag']); ?> class="wow fadeInUp sec-title" data-wow-delay=".3s">
                         <?php echo rt_kses_basic($settings['layout_two_section_title']); ?>
                     </<?php echo esc_attr($settings['layout_two_title_tag']); ?>>
                 <?php endif; ?>
 
                 <?php if (!empty($settings['layout_two_section_subtitle'])) : ?>
-                    <<?php echo esc_attr($settings['layout_two_sub_title_tag']); ?> class="wow fadeInUp" data-wow-delay=".5s"><?php echo rt_kses_basic($settings['layout_two_section_subtitle']); ?></<?php echo esc_attr($settings['layout_two_sub_title_tag']); ?>>
+                    <<?php echo esc_attr($settings['layout_two_sub_title_tag']); ?> class="wow fadeInUp sec-sub-title" data-wow-delay=".5s"><?php echo rt_kses_basic($settings['layout_two_section_subtitle']); ?></<?php echo esc_attr($settings['layout_two_sub_title_tag']); ?>>
                 <?php endif; ?>
             </div>
             <div class="row">
@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="team-content">
                                     <?php if (!empty($item['layout_two_team_name'])) : ?>
-                                        <h3>
+                                        <h3 class="name">
                                             <?php if (!empty($item['layout_two_member_link']['url'])) : ?>
                                                 <a href="<?php echo esc_url($item['layout_two_member_link']['url']); ?>"
                                                     <?php echo !empty($item['layout_two_member_link']['is_external']) ? 'target="_blank"' : ''; ?>

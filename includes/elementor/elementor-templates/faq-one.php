@@ -9,10 +9,10 @@
     ?>
     <div class="faq-wrapper">
         <div class="faq-left-content">
-            <div class="section-title mb-0">
-                <?php printf('<%1$s>%2$s</%1$s>', esc_html($title_tag), esc_html($title)); ?>
+            <div class=" mb-0">
+                <?php printf('<%1$s class="sec-title">%2$s</%1$s>', esc_html($title_tag), esc_html($title)); ?>
             </div>
-            <p class="text">
+            <p class="text description">
                 <?php echo esc_html($description); ?>
             </p>
 

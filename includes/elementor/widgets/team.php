@@ -75,7 +75,7 @@ class Team extends Widget_Base
 		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one', 'layout_two', 'layout_three']);
 		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one', 'layout_two', 'layout_three']);
 
-		roavio_elementor_style_options($this, 'Name', '{{WRAPPER}} .team-content h3 a ', ['layout_one', 'layout_two', 'layout_three']);
+		roavio_elementor_style_options($this, 'Name', '{{WRAPPER}} .team-content h3 a,{{WRAPPER}} .name ', ['layout_one', 'layout_two', 'layout_three']);
 		roavio_elementor_style_options($this, 'Designation', '{{WRAPPER}} .team-content p', ['layout_one', 'layout_two', 'layout_three']);
 
 		$this->end_controls_section();

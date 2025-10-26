@@ -68,12 +68,15 @@ class TeamDetails extends Widget_Base
 			]
 		);
 
-		// roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_two', 'layout_three']);
-		// roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .subtitle', ['layout_two', 'layout_three']);
+		roavio_elementor_style_options($this, 'Name', '{{WRAPPER}} .details-info h3', ['layout_one']);
+		roavio_elementor_style_options($this, 'Designation', '{{WRAPPER}} .details-info span', ['layout_one']);
+		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .team-details-content p', ['layout_one']);
+		roavio_elementor_style_options($this, 'Social Icon', '{{WRAPPER}} .social-icon i', ['layout_one']);
+		roavio_elementor_style_options($this, 'Skill Title', '{{WRAPPER}} .progress-wrap .pro-items .pro-head .title', ['layout_one']);
 
-		// roavio_elementor_style_options($this, 'Name', '{{WRAPPER}} .team-item .content h5', ['layout_one', 'layout_two', 'layout_three']);
-		// roavio_elementor_style_options($this, 'Designation', '{{WRAPPER}} .content span', ['layout_one', 'layout_two', 'layout_three']);
-		// roavio_elementor_style_options($this, 'Social Icon', '{{WRAPPER}} .team-item.style-two .image .social-style-one a', ['layout_two', 'layout_three']);
+		roavio_elementor_style_options($this, 'Education Section Title', '{{WRAPPER}} .team-single-history h3', ['layout_one']);
+		roavio_elementor_style_options($this, 'Education Title', '{{WRAPPER}} .team-single-history h5', ['layout_one']);
+		roavio_elementor_style_options($this, 'Education Description', '{{WRAPPER}} .team-single-history p', ['layout_one']);
 
 		$this->end_controls_section();
 	}

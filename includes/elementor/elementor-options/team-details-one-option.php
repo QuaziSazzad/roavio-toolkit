@@ -4,7 +4,7 @@
 $this->start_controls_section(
 	'layout_one_left_content',
 	[
-		'label' => esc_html__('Left Content', 'roavio-toolkit'),
+		'label' => esc_html__(' Content', 'roavio-toolkit'),
 		'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 		'condition' => [
 			'layout_type' => 'layout_one'

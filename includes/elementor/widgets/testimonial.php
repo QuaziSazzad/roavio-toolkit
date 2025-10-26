@@ -77,8 +77,8 @@ class Testimonial extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one', 'layout_two', 'layout_four']);
-		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one', 'layout_two', 'layout_four']);
+		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one', 'layout_two', 'layout_three', 'layout_four']);
+		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one', 'layout_two', 'layout_three', 'layout_four']);
 
 
 		roavio_elementor_style_options($this, 'Name', '{{WRAPPER}}  .testimonial-content .content h4,{{WRAPPER}} .info-content h6,{{WRAPPER}} .content h5', ['layout_one', 'layout_two', 'layout_three', 'layout_four']);

@@ -3,11 +3,11 @@
         <div class="best-tourist-box">
             <div class="top-content">
                 <?php if (!empty($settings['layout_one_subtitle'])) : ?>
-                    <h6><?php echo esc_html($settings['layout_one_subtitle']); ?></h6>
+                    <h6 class="sec-sub-title"><?php echo esc_html($settings['layout_one_subtitle']); ?></h6>
                 <?php endif; ?>
 
                 <?php if (!empty($settings['layout_one_title'])) : ?>
-                    <h3>
+                    <h3 class="sec-title">
                         <?php echo esc_html($settings['layout_one_title']); ?>
                     </h3>
                 <?php endif; ?>

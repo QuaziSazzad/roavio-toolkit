@@ -77,11 +77,11 @@ class Faq extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_four']);
-		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .description', ['layout_four']);
+		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title, {{WRAPPER}} .section-title', ['layout_one', 'layout_four']);
+		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .description', ['layout_one', 'layout_four']);
 
-		roavio_elementor_style_options($this, 'Faq Title', '{{WRAPPER}} .accordion .accordion-item h2 button', ['layout_four']);
-		roavio_elementor_style_options($this, 'Faq Description', '{{WRAPPER}} .accordion-item .accordion-body p', ['layout_four']);
+		roavio_elementor_style_options($this, 'Faq Title', '{{WRAPPER}} .accordion .accordion-item h2 button', ['layout_one', 'layout_four']);
+		roavio_elementor_style_options($this, 'Faq Description', '{{WRAPPER}} .accordion-item .accordion-body p', ['layout_one', 'layout_four']);
 
 		$this->end_controls_section();
 	}

@@ -2,7 +2,7 @@
     <div class="destination-details-wrapper">
         <div class="price-box-item">
             <?php if (!empty($settings['layout_two_title'])) : ?>
-                <h3><?php echo esc_html($settings['layout_two_title']); ?></h3>
+                <h3 class="sec-title"><?php echo esc_html($settings['layout_two_title']); ?></h3>
             <?php endif; ?>
             <div class="price-item">
                 <div class="price">
