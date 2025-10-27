@@ -56,6 +56,7 @@ class Page_Banner extends Widget_Base
 					'layout_three' => esc_html__('Layout Three', 'roavio-toolkit'),
 					'layout_four' => esc_html__('Layout Four', 'roavio-toolkit'),
 					'layout_five' => esc_html__('Layout Five(Destination)', 'roavio-toolkit'),
+					'layout_six' => esc_html__('Layout Six(Tour Details)', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -67,6 +68,7 @@ class Page_Banner extends Widget_Base
 		include rt_get_elementor_option('page-banner-three-option.php');
 		include rt_get_elementor_option('page-banner-four-option.php');
 		include rt_get_elementor_option('page-banner-five-option.php');
+		include rt_get_elementor_option('page-banner-six-option.php');
 
 		//Content style
 		$this->start_controls_section(
@@ -77,11 +79,14 @@ class Page_Banner extends Widget_Base
 			]
 		);
 
-		// roavio_elementor_style_options($this, 'Title', '{{WRAPPER}} .hero-1 .hero-content h1', ['layout_one', 'layout_two']);
-		// roavio_elementor_style_options($this, 'Sub Title', '{{WRAPPER}} .hero-1 .hero-content p ', ['layout_one']);
+		roavio_elementor_style_options($this, 'Page Title', '{{WRAPPER}} .page-heading h1, {{WRAPPER}} .breadcrumb-sub-title', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five']);
+		roavio_elementor_style_options($this, 'Home Text', '{{WRAPPER}} .breadcrumb-items li:first-child a', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five']);
+		roavio_elementor_style_options($this, 'Current Page Text', '{{WRAPPER}} .breadcrumb-items li:last-child, {{WRAPPER}} li.style-2 a', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five']);
 
-		// roavio_elementor_style_options($this, 'Count Text', '{{WRAPPER}} .hero-1 .counter-item .content p', ['layout_one']);
-		// roavio_elementor_style_options($this, 'Count Number', '{{WRAPPER}} .count', ['layout_one']);
+
+		roavio_elementor_style_options($this, 'Count Number', '{{WRAPPER}} .content h2,{{WRAPPER}} .content.style-2 .text h2', ['layout_two', 'layout_four']);
+		roavio_elementor_style_options($this, 'Count Text', '{{WRAPPER}} .breadcrumb-top-items .content p,{{WRAPPER}} .content.style-2 .text p', ['layout_two', 'layout_four']);
+
 
 		$this->end_controls_section();
 	}
@@ -95,5 +100,6 @@ class Page_Banner extends Widget_Base
 		include rt_get_elementor_template('page-banner-three.php');
 		include rt_get_elementor_template('page-banner-four.php');
 		include rt_get_elementor_template('page-banner-five.php');
+		include rt_get_elementor_template('page-banner-six.php');
 	}
 }

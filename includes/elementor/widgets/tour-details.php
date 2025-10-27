@@ -54,7 +54,6 @@ class Tour_Details extends Widget_Base
 					'layout_two' => __('Layout Two', 'roavio-toolkit'),
 					'layout_three' => __('Layout Three (Comments)', 'roavio-toolkit'),
 					'layout_four' => __('Layout Four (Sidebar)', 'roavio-toolkit'),
-					'layout_five' => __('Layout Five (Sidebar)', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -75,7 +74,89 @@ class Tour_Details extends Widget_Base
 			]
 		);
 
-		//roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one']);
+		roavio_elementor_style_options($this, 'Overview  Title', '{{WRAPPER}} .overview-title', ['layout_one', 'layout_two']);
+		roavio_elementor_style_options($this, 'Overview  Description', '{{WRAPPER}} .overview-desc', ['layout_one', 'layout_two']);
+		roavio_elementor_style_options($this, 'Exclude/Include Title', '{{WRAPPER}} .in-ex-title', ['layout_one']);
+		roavio_elementor_style_options($this, 'Exclude/Include Items', '{{WRAPPER}} .list li', ['layout_one']);
+		roavio_elementor_style_options($this, 'Items', '{{WRAPPER}} .list li, {{WRAPPER}} .list-2 li', ['layout_two']);
+
+		roavio_elementor_style_options($this, 'Comment Section Title', '{{WRAPPER}} .comments-title', 'layout_three');
+		roavio_elementor_style_options($this, 'Commenter Name', '{{WRAPPER}} .comment-area .content h6 a', 'layout_three');
+		roavio_elementor_style_options($this, 'Commenter Date', '{{WRAPPER}} .comment-item .content > span', 'layout_three');
+
+		roavio_elementor_style_options($this, 'Booking from Title', '{{WRAPPER}} #booking_form::before', ['layout_four']);
+		roavio_elementor_style_options($this, 'Booking from Label', '{{WRAPPER}} .booking-form-block .booking_form_input_label', ['layout_four']);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'button_style',
+			[
+				'label' => esc_html__('Button Style', 'roavio-toolkit'),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'layout_type' => ['layout_four'],
+				],
+			]
+		);
+
+		$this->add_control(
+			'button_color',
+			[
+				'label'     => esc_html__('Text Color', 'roavio-toolkit'),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}} .btn' => 'color: {{VALUE}} !important;',
+				],
+			]
+		);
+
+		$this->add_control(
+			'button_bg',
+			[
+				'label'     => esc_html__('Background Color', 'roavio-toolkit'),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}} .btn, a.btn' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'button_hover_color',
+			[
+				'label'     => esc_html__('Hover Color', 'roavio-toolkit'),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}} .btn:hover, a.btn:hover' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+
+		$this->add_control(
+			'button_hover_bg',
+			[
+				'label'     => esc_html__('Hover Background Color', 'roavio-toolkit'),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}} .btn:hover, a.btn:hover' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name'     => 'button_typography',
+				'selector' => '{{WRAPPER}} .theme-btn',
+				'label' => esc_html__(' Typography', 'roavio-addon'),
+			]
+		);
 
 		$this->end_controls_section();
 	}
@@ -88,6 +169,5 @@ class Tour_Details extends Widget_Base
 		include rt_get_elementor_template('tour-details-two.php');
 		include rt_get_elementor_template('tour-details-three.php');
 		include rt_get_elementor_template('tour-details-four.php');
-		include rt_get_elementor_template('tour-details-five.php');
 	}
 }

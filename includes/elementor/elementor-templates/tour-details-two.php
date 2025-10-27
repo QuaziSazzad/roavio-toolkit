@@ -3,13 +3,13 @@
         <div class="tour-details-content">
             <div class="tour-left-content">
                 <?php if (!empty($settings['layout_two_title'])) : ?>
-                    <<?php echo esc_attr($settings['layout_two_title_tag']); ?>>
+                    <<?php echo esc_attr($settings['layout_two_title_tag']); ?> class="overview-title">
                         <?php echo rt_kses_basic($settings['layout_two_title']); ?>
                     </<?php echo esc_attr($settings['layout_two_title_tag']); ?>>
                 <?php endif; ?>
 
                 <?php if (!empty($settings['layout_two_description'])) : ?>
-                    <p class="mt-3">
+                    <p class="mt-3 overview-desc">
                         <?php echo rt_kses_basic($settings['layout_two_description']); ?>
                     </p>
                 <?php endif; ?>

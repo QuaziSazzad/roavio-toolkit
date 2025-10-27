@@ -53,6 +53,8 @@ class Custom_Sidebar extends Widget_Base
 					'layout_two' => esc_html__('Layout Two', 'roavio-toolkit'),
 					'layout_three' => esc_html__('Layout Three', 'roavio-toolkit'),
 					'layout_four' => esc_html__('Layout Four', 'roavio-toolkit'),
+					'layout_five' => esc_html__('Layout Five', 'roavio-toolkit'),
+					'layout_six' => esc_html__('Layout Six', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -63,6 +65,8 @@ class Custom_Sidebar extends Widget_Base
 		include rt_get_elementor_option('custom-sidebar-two-option.php');
 		include rt_get_elementor_option('custom-sidebar-three-option.php');
 		include rt_get_elementor_option('custom-sidebar-four-option.php');
+		include rt_get_elementor_option('custom-sidebar-five-option.php');
+		include rt_get_elementor_option('custom-sidebar-six-option.php');
 
 		//Content style
 		$this->start_controls_section(
@@ -73,12 +77,14 @@ class Custom_Sidebar extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title a,{{WRAPPER}} .sec-title', ['layout_one', 'layout_two', 'layout_three', 'layout_four']);
-		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one', 'layout_three', 'layout_four']);
+		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title a,{{WRAPPER}} .sec-title', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
+		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one', 'layout_three', 'layout_four', 'layout_six']);
 
 		roavio_elementor_style_options($this, 'Price Text', '{{WRAPPER}} .price-item .price h6', ['layout_two',]);
 		roavio_elementor_style_options($this, 'Price', '{{WRAPPER}} .price-item .price h2', ['layout_two',]);
 		roavio_elementor_style_options($this, 'Bottom Text', '{{WRAPPER}} .price-box-item h6', ['layout_two',]);
+
+		roavio_elementor_style_options($this, 'Contact Items', '{{WRAPPER}} .list-style-one li a', ['layout_five']);
 
 		$this->end_controls_section();
 
@@ -88,7 +94,7 @@ class Custom_Sidebar extends Widget_Base
 				'label' => esc_html__('Button Style', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 				'condition' => [
-					'layout_type' => ['layout_one', 'layout_two', 'layout_three'],
+					'layout_type' => ['layout_one', 'layout_two', 'layout_three', 'layout_six'],
 				],
 			]
 		);
@@ -161,5 +167,7 @@ class Custom_Sidebar extends Widget_Base
 		include rt_get_elementor_template('custom-sidebar-two.php');
 		include rt_get_elementor_template('custom-sidebar-three.php');
 		include rt_get_elementor_template('custom-sidebar-four.php');
+		include rt_get_elementor_template('custom-sidebar-five.php');
+		include rt_get_elementor_template('custom-sidebar-six.php');
 	}
 }

@@ -3,13 +3,13 @@
         <div class="tour-details-content">
             <div class="tour-left-content">
                 <?php if (!empty($settings['layout_one_overview_title'])) : ?>
-                    <<?php echo esc_attr($settings['layout_one_overview_title_tag']); ?>>
+                    <<?php echo esc_attr($settings['layout_one_overview_title_tag']); ?> class="overview-title">
                         <?php echo rt_kses_basic($settings['layout_one_overview_title']); ?>
                     </<?php echo esc_attr($settings['layout_one_overview_title_tag']); ?>>
                 <?php endif; ?>
 
                 <?php if (!empty($settings['layout_one_overview_description'])) : ?>
-                    <p class="mt-3 mb-3">
+                    <p class="mt-3 mb-3 overview-desc">
                         <?php echo rt_kses_basic($settings['layout_one_overview_description']); ?>
                     </p>
                 <?php endif; ?>
@@ -24,7 +24,7 @@
                     <div class="col-lg-6">
                         <div class="list-item">
                             <?php if (!empty($settings['layout_one_included_title'])) : ?>
-                                <<?php echo esc_attr($settings['layout_one_included_title_tag']); ?>>
+                                <<?php echo esc_attr($settings['layout_one_included_title_tag']); ?> class="in-ex-title">
                                     <?php echo rt_kses_basic($settings['layout_one_included_title']); ?>
                                 </<?php echo esc_attr($settings['layout_one_included_title_tag']); ?>>
                             <?php endif; ?>
@@ -44,7 +44,7 @@
                     <div class="col-lg-6">
                         <div class="list-item">
                             <?php if (!empty($settings['layout_one_excluded_title'])) : ?>
-                                <<?php echo esc_attr($settings['layout_one_excluded_title_tag']); ?>>
+                                <<?php echo esc_attr($settings['layout_one_excluded_title_tag']); ?> class="in-ex-title">
                                     <?php echo rt_kses_basic($settings['layout_one_excluded_title']); ?>
                                 </<?php echo esc_attr($settings['layout_one_excluded_title_tag']); ?>>
                             <?php endif; ?>

@@ -39,7 +39,7 @@ class Faq extends Widget_Base
 		$this->start_controls_section(
 			'layout_section',
 			[
-				'label' => __('Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Layout', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -47,14 +47,14 @@ class Faq extends Widget_Base
 		$this->add_control(
 			'layout_type',
 			[
-				'label' => __('Select Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Select Layout', 'roavio-toolkit'),
 				'type' => \Elementor\Controls_Manager::SELECT2,
 				'default' => 'layout_one',
 				'options' => [
-					'layout_one' => __('Layout One', 'roavio-toolkit'),
-					'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					'layout_three' => __('Layout Three', 'roavio-toolkit'),
-					'layout_four' => __('Layout Four', 'roavio-toolkit'),
+					'layout_one' => esc_html__('Layout One', 'roavio-toolkit'),
+					'layout_two' => esc_html__('Layout Two', 'roavio-toolkit'),
+					'layout_three' => esc_html__('Layout Three', 'roavio-toolkit'),
+					'layout_four' => esc_html__('Layout Four', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -80,8 +80,10 @@ class Faq extends Widget_Base
 		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title, {{WRAPPER}} .section-title', ['layout_one', 'layout_four']);
 		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .description', ['layout_one', 'layout_four']);
 
-		roavio_elementor_style_options($this, 'Faq Title', '{{WRAPPER}} .accordion .accordion-item h2 button', ['layout_one', 'layout_four']);
-		roavio_elementor_style_options($this, 'Faq Description', '{{WRAPPER}} .accordion-item .accordion-body p', ['layout_one', 'layout_four']);
+		roavio_elementor_style_options($this, 'Faq Title', '{{WRAPPER}} .accordion .accordion-item h2 button,{{WRAPPER}} .accordion-two .accordion-item .accordion-button,{{WRAPPER}} .accordion-one .accordion-item .accordion-button', ['layout_one', 'layout_two', 'layout_three', 'layout_four']);
+		roavio_elementor_style_options($this, 'Faq Description', '{{WRAPPER}} .accordion-item .accordion-body p', ['layout_one', 'layout_two', 'layout_three', 'layout_four']);
+
+
 
 		$this->end_controls_section();
 	}
