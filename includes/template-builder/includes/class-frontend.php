@@ -69,7 +69,9 @@ class Template_Frontend
 ?>
 
 			<!-- Scroll Top Button -->
-			<button class="scroll-top scroll-to-target" data-target="html"><span class="fas fa-angle-double-up"></span></button>
+			<button id="back-top" class="back-to-top show">
+				<i class="fa-regular fa-arrow-up"></i>
+			</button>
 			<?php }
 	}
 

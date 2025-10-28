@@ -39,7 +39,7 @@ $this->add_control(
 	[
 		'label' => esc_html__('Destination Text', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('Destination Details', 'roavio-toolkit'),
+		'default' => esc_html__('Tour Details', 'roavio-toolkit'),
 		'label_block' => true,
 	]
 );
