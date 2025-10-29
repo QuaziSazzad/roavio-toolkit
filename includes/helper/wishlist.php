@@ -23,14 +23,12 @@ class Wishlist
 
 	function wishlist_add()
 	{
-		// Set proper content type for JSON response
-		header('Content-Type: application/json');
-
 		// Verify nonce for security
 		if (!check_ajax_referer('roavio-ajax-security-nonce', 'security', false)) {
 			wp_send_json_error(array(
 				'message' => esc_html__('Security check failed. Please refresh the page and try again.', 'roavio-toolkit')
 			));
+			wp_die(); // Ensure execution stops
 		}
 
 		// Validate required parameters
@@ -38,6 +36,7 @@ class Wishlist
 			wp_send_json_error(array(
 				'message' => esc_html__('Missing required parameters.', 'roavio-toolkit')
 			));
+			wp_die(); // Ensure execution stops
 		}
 
 		$status = sanitize_text_field($_POST['status']);
@@ -49,14 +48,16 @@ class Wishlist
 			wp_send_json_error(array(
 				'message' => esc_html__('Invalid post ID.', 'roavio-toolkit')
 			));
+			wp_die(); // Ensure execution stops
 		}
 
 		// Check if user is logged in
 		if (!is_user_logged_in()) {
-			wp_send_json_success(array(
+			wp_send_json_error(array(
 				'logged_in' => false,
 				'message' => esc_html__('Please log in to add items to your wishlist.', 'roavio-toolkit')
 			));
+			wp_die(); // Ensure execution stops
 		}
 
 		if ($status == 'add') {
@@ -77,6 +78,7 @@ class Wishlist
 				'status' => 'add',
 				'message' => esc_html__('Added to wishlist!', 'roavio-toolkit')
 			));
+			wp_die(); // Ensure execution stops
 		}
 
 		if ($status == 'remove') {
@@ -88,6 +90,8 @@ class Wishlist
 						unset($wishlist[$key]);
 					}
 				}
+				// Re-index array to prevent JSON encoding issues
+				$wishlist = array_values($wishlist);
 			}
 			update_user_meta($user_id, 'roavio_wishlist', $wishlist);
 
@@ -97,12 +101,14 @@ class Wishlist
 				'status' => 'remove',
 				'message' => esc_html__('Removed from wishlist!', 'roavio-toolkit')
 			));
+			wp_die(); // Ensure execution stops
 		}
 
 		// If we get here, the status was invalid
 		wp_send_json_error(array(
 			'message' => esc_html__('Invalid action.', 'roavio-toolkit')
 		));
+		wp_die(); // Ensure execution stops
 	}
 
 	public static function html_icon($post_id)

@@ -716,5 +716,76 @@
     }
   );
 
+  // Remove Wishlist
+  $(document).on("click", ".fa-times.roavio", function (e) {
+    // Prevent the default link behavior and stop propagation
+    e.preventDefault();
+    e.stopPropagation();
+    
+    // Cache frequently used elements
+    var $this = $(this);
+    var $row = $this.closest("tr");
+
+    // Get post ID from data attribute
+    var post_id = $this.data("post_id");
+    
+    // Validate post ID
+    if (!post_id || post_id <= 0) {
+      console.error("Invalid post ID");
+      return false;
+    }
+
+    // Add loading state
+    $this.addClass("loading");
+    $row.css("opacity", "0.5");
+
+    // Perform an AJAX request
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      url: RoavioObject.ajax_url,
+      data: {
+        action: "roavio_wishlist",
+        post_id: post_id,
+        status: "remove",
+        security: RoavioObject.security_nonce
+      },
+      success: function (response) {
+        if (response.success) {
+          // Fade out the row before removing
+          $row.fadeOut(300, function() {
+            $(this).remove();
+            
+            // Check if there are any rows left in the table
+            var $tbody = $("table.common-table tbody");
+            if ($tbody.find("tr").length === 0) {
+              // Reload page to show empty wishlist message
+              location.reload();
+            }
+          });
+        } else {
+          // Show error message
+          console.error("Error:", response.data.message || "Failed to remove item");
+          $this.removeClass("loading");
+          $row.css("opacity", "1");
+          
+          // Optionally show error message to user
+          if (response.data && response.data.message) {
+            alert(response.data.message);
+          }
+        }
+      },
+      error: function (xhr, textStatus, errorThrown) {
+        // Handle errors gracefully and log details
+        console.error("AJAX Error:", errorThrown);
+        $this.removeClass("loading");
+        $row.css("opacity", "1");
+        alert("Failed to remove item. Please try again.");
+      }
+    });
+
+    return false;
+  });
+
 
 })(jQuery);

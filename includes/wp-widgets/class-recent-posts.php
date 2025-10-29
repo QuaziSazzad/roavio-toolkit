@@ -13,7 +13,7 @@ class Roavio_Recent_Posts extends WP_Widget
 	public function __construct()
 	{
 		$widget_ops = array(
-			'classname'   => 'roavio-wp-recent-posts widget-news',
+			'classname'   => 'roavio-wp-recent-posts widget-news single-sideber-widget',
 			'description' => __('A custom widget to display recent posts with various options', 'roavio-toolkit')
 		);
 
@@ -34,29 +34,40 @@ class Roavio_Recent_Posts extends WP_Widget
 			echo $args['before_title'] . apply_filters('widget_title', $title) . $args['after_title'];
 		}
 
-		$recent_posts = new WP_Query(array(
-			'posts_per_page'      => $num_posts,
-			'post_status'         => 'publish',
-			'ignore_sticky_posts' => true
-		));
+?>
 
-		if ($recent_posts->have_posts()) {
-			echo '<ul>';
-			while ($recent_posts->have_posts()) {
-				$recent_posts->the_post();
-				echo '<li>';
-				if ('yes' === $show_thumbnail && has_post_thumbnail()) {
-					echo '<div class="image">' . get_the_post_thumbnail(get_the_ID(), 'roavio_blog_100X80') . '</div>';
+		<div class="recent-post-area">
+			<?php
+			$recent_posts = new WP_Query(array(
+				'posts_per_page'      => $num_posts,
+				'post_status'         => 'publish',
+				'ignore_sticky_posts' => true
+			));
+			if ($recent_posts->have_posts()) {
+				while ($recent_posts->have_posts()) {
+					$recent_posts->the_post();
+			?>
+					<div class="recent-items">
+						<div class="recent-thumb">
+							<?php if ('yes' === $show_thumbnail && has_post_thumbnail()) { ?>
+								<?php the_post_thumbnail('roavio_blog_100X100'); ?>
+							<?php } ?>
+						</div>
+						<div class="recent-content">
+							<span><?php the_date('j F Y'); ?></span>
+							<h5>
+								<a href="<?php the_permalink(); ?>">
+									<?php echo esc_html(wp_trim_words(get_the_title(), $trim_words)); ?>
+								</a>
+							</h5>
+						</div>
+					</div>
+			<?php wp_reset_postdata();
 				}
-				echo '<div class="content">';
-				echo '<h5><a href="' . get_permalink() . '" >' . wp_trim_words(get_the_title(), $trim_words) . '</a></h5>';
-				echo '<span class="date">' . get_the_date() . '</span>';
-				echo '</div>';
-				echo '</li>';
-			}
-			echo '</ul>';
-			wp_reset_postdata();
-		}
+			} ?>
+		</div>
+
+	<?php
 
 		echo $args['after_widget'];
 	}
@@ -68,7 +79,7 @@ class Roavio_Recent_Posts extends WP_Widget
 		$trim_words     = ! empty($instance['trim_words']) ? $instance['trim_words'] : 10;
 		$show_date      = $instance['show_date'] ?? 'yes';
 		$show_thumbnail = $instance['show_thumbnail'] ?? 'yes';
-?>
+	?>
 		<p>
 			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'roavio-toolkit'); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>">

@@ -89,6 +89,7 @@ class Roavio_Elementor_Addon
 		include_once RT_ELEMENTOR . '/widgets/tour-details.php';
 		include_once RT_ELEMENTOR . '/widgets/contact.php';
 		include_once RT_ELEMENTOR . '/widgets/custom-sidebar.php';
+		include_once RT_ELEMENTOR . '/widgets/wishlist.php';
 		// include_once RT_ELEMENTOR . '/widgets/latest-work.php';
 		// include_once RT_ELEMENTOR . '/widgets/pricing.php';
 		// include_once RT_ELEMENTOR . '/widgets/portfolio-details.php';
@@ -123,6 +124,7 @@ class Roavio_Elementor_Addon
 		$widgets_manager->register(new Widgets\Faq());
 		$widgets_manager->register(new Widgets\Tour_Details());
 		$widgets_manager->register(new Widgets\Custom_Sidebar());
+		$widgets_manager->register(new Widgets\Wishlist());
 		// $widgets_manager->register(new Widgets\Integrating());
 		// $widgets_manager->register(new Widgets\Portfolio());
 		$widgets_manager->register(new Widgets\Recent_Post());

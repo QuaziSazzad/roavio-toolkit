@@ -26,9 +26,9 @@ class Utility
 		add_image_size('roavio_blog_406X267', 406, 267, true); //in use
 		add_image_size('roavio_blog_410X270', 410, 270, true); //in use
 		add_image_size('roavio_blog_300X200', 300, 200, true); //in use
-		// add_image_size('roavio_blog_410X270', 410, 270, true); //in use
+		add_image_size('roavio_wishlist_140X140', 140, 140, true); //in use
 		// add_image_size('roavio_blog_80X64', 80, 64, true); //in use
-		// add_image_size('roavio_blog_100X80', 100, 80, true); //in use
+		add_image_size('roavio_blog_100X100', 100, 100, true); //in use
 	}
 
 	public function booking_details($template)
