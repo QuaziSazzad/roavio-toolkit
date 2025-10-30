@@ -12,7 +12,7 @@ class Roavio_Categories extends WP_Widget
 	public function __construct()
 	{
 		$widget_ops = array(
-			'classname'   => 'roavio-wp-categories widget-category',
+			'classname'   => 'roavio-wp-categories widget-category single-sideber-widget',
 			'description' => __('A custom widget to display categories with post counts', 'roavio-toolkit')
 		);
 
@@ -42,22 +42,17 @@ class Roavio_Categories extends WP_Widget
 		);
 
 		$categories = get_categories($cat_args);
-
 		if ($categories) {
-			echo '<ul>';
-			foreach ($categories as $category) {
-				echo '<li>';
-				echo '<a href="' . get_category_link($category->term_id) . '">' . esc_html($category->name) . '</a>';
-				if ('yes' === $show_count) {
-					echo ' <span>(' . $category->count . ')</span>';
-				}
-				echo '</li>';
-			}
-			echo '</ul>';
-		} else {
-			echo '<p>' . __('No categories found.', 'roavio-toolkit') . '</p>';
-		}
+?>
 
+			<ul>
+				<?php foreach ($categories as $category) { ?>
+					<li><a href="<?php echo esc_url(get_category_link($category->term_id)); ?>"><?php echo esc_html($category->name); ?></a><span>(<?php echo esc_html($category->count); ?>)</span></li>
+				<?php } ?>
+
+			</ul>
+		<?php
+		}
 		echo $args['after_widget'];
 	}
 
@@ -69,7 +64,7 @@ class Roavio_Categories extends WP_Widget
 		$orderby = ! empty($instance['orderby']) ? $instance['orderby'] : 'name';
 		$order = ! empty($instance['order']) ? $instance['order'] : 'ASC';
 		$number = ! empty($instance['number']) ? $instance['number'] : '';
-?>
+		?>
 		<p>
 			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'roavio-toolkit'); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>">
