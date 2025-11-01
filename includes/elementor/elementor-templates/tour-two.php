@@ -103,7 +103,9 @@
                                             $rating = number_format((float) $rating, 1);
                                             ?>
                                             <span><?php esc_html_e('Rating', 'roavio-toolkit'); ?></span>
-                                            <h6><i class="fa-solid fa-star"></i><?php echo esc_html($rating); ?> (<?php echo esc_html($total_vote); ?>)</h6>
+                                            <?php if (!empty($total_vote)) : ?>
+                                                <h6><i class="fa-solid fa-star"></i><?php echo esc_html($rating); ?> (<?php echo esc_html($total_vote); ?>)</h6>
+                                            <?php endif; ?>
                                         </div>
                                         <a href="<?php the_permalink(); ?>" class="theme-btn"><?php esc_html_e('View Tour', 'roavio-toolkit'); ?></a>
                                     </div>

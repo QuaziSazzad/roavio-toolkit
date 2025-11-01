@@ -376,6 +376,41 @@
         });
     }
 
+      //>> Top Slider Start <<//
+      if($('.top-slider').length > 0) {
+        const topSlider = new Swiper(".top-slider", {
+            spaceBetween: 20,
+            speed: 1300,
+            loop: true,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+              nextEl: ".array-prev",
+              prevEl: ".array-next",
+          },
+            breakpoints: {
+                1199: {
+                    slidesPerView: 5,
+                },
+                991: {
+                    slidesPerView: 4,
+                },
+                767: {
+                    slidesPerView: 3,
+                },
+                575: {
+                    slidesPerView: 2,
+                },
+                0: {
+                    slidesPerView: 1.3,
+                },
+            },
+        });
+        }
+  
+
     
     $(document).on('mouseenter', '.box-2', function() {
       $('.box-2').removeClass('active');

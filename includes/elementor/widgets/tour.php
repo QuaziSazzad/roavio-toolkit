@@ -38,7 +38,7 @@ class Tour extends Widget_Base
 		$this->start_controls_section(
 			'layout_section',
 			[
-				'label' => __('Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Layout', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -46,16 +46,17 @@ class Tour extends Widget_Base
 		$this->add_control(
 			'layout_type',
 			[
-				'label' => __('Select Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Select Layout', 'roavio-toolkit'),
 				'type' => \Elementor\Controls_Manager::SELECT2,
 				'default' => 'layout_one',
 				'options' => [
-					'layout_one' => __('Layout One', 'roavio-toolkit'),
-					'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					'layout_three' => __('Layout Three', 'roavio-toolkit'),
-					'layout_four' => __('Layout Four', 'roavio-toolkit'),
-					'layout_five' => __('Layout Five', 'roavio-toolkit'),
-					'layout_six' => __('Layout Six', 'roavio-toolkit'),
+					'layout_one' => esc_html__('Layout One', 'roavio-toolkit'),
+					'layout_two' => esc_html__('Layout Two', 'roavio-toolkit'),
+					'layout_three' => esc_html__('Layout Three', 'roavio-toolkit'),
+					'layout_four' => esc_html__('Layout Four', 'roavio-toolkit'),
+					'layout_five' => esc_html__('Layout Five', 'roavio-toolkit'),
+					'layout_six' => esc_html__('Layout Six', 'roavio-toolkit'),
+					'layout_seven' => esc_html__('Layout Seven', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -82,6 +83,102 @@ class Tour extends Widget_Base
 
 		include rt_get_elementor_option('tour-option.php');
 
+		$this->start_controls_section(
+			'layout_seven_slider_content',
+			[
+				'label' => esc_html__('Slider Content', 'roavio-toolkit'),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				'condition' => [
+					'layout_type' => 'layout_seven',
+				]
+			]
+		);
+
+		$this->add_control(
+			'layout_seven_enable_slider',
+			[
+				'label' => esc_html__('Enable Slider', 'roavio-toolkit'),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__('Yes', 'roavio-toolkit'),
+				'label_off' => esc_html__('No', 'roavio-toolkit'),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+
+		$repeater = new \Elementor\Repeater();
+
+		$repeater->add_control(
+			'layout_seven_tab_title',
+			[
+				'label' => esc_html__('Title', 'roavio-toolkit'),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__('Family Tours', 'roavio-toolkit'),
+				'label_block' => true,
+			]
+		);
+
+		$repeater->add_control(
+			'url',
+			[
+				'label' => esc_html__('URL', 'roavio-toolkit'),
+				'type' => \Elementor\Controls_Manager::URL,
+				'placeholder' => esc_html__('https://your-link.com', 'roavio-toolkit'),
+				'default' => [
+					'url' => '#',
+					'is_external' => false,
+					'nofollow' => false,
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'image',
+			[
+				'label' => esc_html__('Image', 'roavio-toolkit'),
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'default' => [],
+			]
+		);
+
+
+		$this->add_control(
+			'layout_seven_tabs',
+			[
+				'label' => esc_html__('Tabs', 'roavio-toolkit'),
+				'type' => \Elementor\Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				'default' => [
+					[
+						'layout_seven_tab_title' => esc_html__('Family Tours', 'roavio-toolkit'),
+						'layout_seven_tab_id' => 'technical',
+					],
+					[
+						'layout_seven_tab_title' => esc_html__('Couple Tours', 'roavio-toolkit'),
+						'layout_seven_tab_id' => 'work',
+					],
+					[
+						'layout_seven_tab_title' => esc_html__('Group Tours', 'roavio-toolkit'),
+						'layout_seven_tab_id' => 'ambition',
+					],
+					[
+						'layout_seven_tab_title' => esc_html__('Adventure Tours', 'roavio-toolkit'),
+						'layout_seven_tab_id' => 'skill',
+					],
+					[
+						'layout_seven_tab_title' => esc_html__('Safari & Wildlife', 'roavio-toolkit'),
+						'layout_seven_tab_id' => 'safari',
+					],
+				],
+				'title_field' => '{{{ layout_seven_tab_title }}}',
+				'condition' => [
+					'layout_seven_enable_slider' => 'yes',
+				]
+			]
+		);
+
+
+		$this->end_controls_section();
 
 		//Content style
 		$this->start_controls_section(
@@ -136,5 +233,6 @@ class Tour extends Widget_Base
 		include rt_get_elementor_template('tour-four.php');
 		include rt_get_elementor_template('tour-five.php');
 		include rt_get_elementor_template('tour-six.php');
+		include rt_get_elementor_template('tour-seven.php');
 	}
 }

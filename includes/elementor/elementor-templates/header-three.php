@@ -115,7 +115,7 @@ if ('layout_three' == $settings['layout_type']) : ?>
                             <div class="search-widget">
                                 <form action="<?php esc_url(home_url('/')); ?>">
                                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                    <input type="text" name="s" placeholder="<?php esc_attr($settings['search_placeholder']); ?>">
+                                    <input type="text" name="s" placeholder="<?php echo esc_attr($settings['search_placeholder']); ?>">
                                 </form>
                             </div>
                         <?php endif; ?>

@@ -48,8 +48,10 @@
                                                 <a href="<?php echo esc_url($url); ?>"><?php echo esc_html($item['location']); ?></a>
                                             </h3>
                                         <?php endif; ?>
-                                        <?php if (!empty($address)) : ?>
-                                            <p><?php echo esc_html($address); ?></p>
+                                        <?php if (!empty($item['address'])) : ?>
+                                            <p><?php echo esc_html($item['address']); ?></p>
+                                        <?php else: ?>
+                                            <?php echo esc_html($address); ?>
                                         <?php endif; ?>
                                     </div>
                                 </div>
