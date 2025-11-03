@@ -39,7 +39,7 @@ if ('layout_seven' == $settings['layout_type']) :
                     <h2 class="wow fadeInUp" data-wow-delay=".3s"><?php echo esc_html($settings['section_title']); ?></h2>
                 <?php endif; ?>
                 <?php if ($settings['sub_title']) : ?>
-                    <p class="wow fadeInUp" data-wow-delay=".5s"><?php echo esc_html($settings['sub_title']); ?></p>
+                    <p class="wow fadeInUp" data-wow-delay=".5s"><?php echo rt_kses_basic($settings['sub_title']); ?></p>
                 <?php endif; ?>
 
             </div>
@@ -119,11 +119,12 @@ if ('layout_seven' == $settings['layout_type']) :
                                     }
                                     $rating = number_format((float) $rating, 1);
                                     ?>
-                                    <li class="style-2">
-                                        <i class="fa-solid fa-star"></i>
-                                        <?php echo esc_html($rating); ?> (<?php echo esc_html($total_vote); ?>)
-                                    </li>
-
+                                    <?php if (!empty($total_vote)) : ?>
+                                        <li class="style-2">
+                                            <i class="fa-solid fa-star"></i>
+                                            <?php echo esc_html($rating); ?> (<?php echo esc_html($total_vote); ?>)
+                                        </li>
+                                    <?php endif; ?>
                                 </ul>
                                 <h4>
                                     <a href="<?php the_permalink(); ?>">

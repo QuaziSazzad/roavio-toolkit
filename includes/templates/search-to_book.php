@@ -826,6 +826,7 @@ if ($show_banner === 'yes') :
                                         'reviews' => isset($_GET['reviews']) ? $_GET['reviews'] : '',
                                         'sort' => $sort,
                                         'order' => $order,
+                                        'filter' => 'yes',
                                     ));
 
                                     // Previous page button
