@@ -4,12 +4,12 @@
             <?php if (!empty($settings['layout_one_section_title']) || !empty($settings['layout_one_section_subtitle'])) : ?>
                 <div class="section-title text-center">
                     <?php if (!empty($settings['layout_one_section_title'])) : ?>
-                        <<?php echo esc_attr($settings['layout_one_section_title_tag']); ?> class="wow fadeInUp sec-title" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                        <<?php echo esc_attr($settings['layout_one_section_title_tag']); ?> class="text-anim sec-title">
                             <?php echo rt_kses_basic($settings['layout_one_section_title']); ?>
                         </<?php echo esc_attr($settings['layout_one_section_title_tag']); ?>>
                     <?php endif; ?>
                     <?php if (!empty($settings['layout_one_section_subtitle'])) : ?>
-                        <<?php echo esc_attr($settings['layout_one_subtitle_tag']); ?> class="wow fadeInUp sec-sub-title" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                        <<?php echo esc_attr($settings['layout_one_subtitle_tag']); ?> class="wow fadeInUp sec-sub-title">
                             <?php echo rt_kses_basic($settings['layout_one_section_subtitle']); ?>
                         </<?php echo esc_attr($settings['layout_one_subtitle_tag']); ?>>
                     <?php endif; ?>

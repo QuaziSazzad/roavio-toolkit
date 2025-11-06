@@ -68,11 +68,7 @@ class Portfolio extends Widget_Base
 				'default' => 'layout_one',
 				'options' => [
 					'layout_one' => __('Layout One', 'roavio-toolkit'),
-					'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					'layout_three' => __('Layout Three', 'roavio-toolkit'),
-					'layout_four' => __('Layout Four', 'roavio-toolkit'),
-					'layout_five' => __('Layout Five', 'roavio-toolkit'),
-					'layout_six' => __('Layout Six', 'roavio-toolkit'),
+
 				]
 			]
 		);
@@ -806,11 +802,7 @@ class Portfolio extends Widget_Base
 		$settings = $this->get_settings_for_display();
 
 		include rt_get_elementor_template('portfolio-one.php');
-		include rt_get_elementor_template('portfolio-two.php');
-		include rt_get_elementor_template('portfolio-three.php');
-		include rt_get_elementor_template('portfolio-four.php');
-		include rt_get_elementor_template('portfolio-five.php');
-		include rt_get_elementor_template('portfolio-six.php');
+
 
 ?>
 

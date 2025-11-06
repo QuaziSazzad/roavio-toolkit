@@ -81,7 +81,7 @@ if ('layout_three' == $settings['layout_type']) : ?>
         </div>
     </div>
     <!-- Header Section Start -->
-    <header id="header-sticky" class="header-1">
+    <div id="header-sticky" class="header-1">
         <div class="container-fluid">
             <div class="mega-menu-wrapper">
                 <div class="header-main style-3">
@@ -113,7 +113,7 @@ if ('layout_three' == $settings['layout_type']) : ?>
                     <div class="header-right d-flex justify-content-end align-items-center">
                         <?php if ('yes' == $settings['enable_search']) : ?>
                             <div class="search-widget">
-                                <form action="<?php esc_url(home_url('/')); ?>">
+                                <form action="<?php echo esc_url(home_url('/')); ?>">
                                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                                     <input type="text" name="s" placeholder="<?php echo esc_attr($settings['search_placeholder']); ?>">
                                 </form>
@@ -133,5 +133,5 @@ if ('layout_three' == $settings['layout_type']) : ?>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
 <?php endif; ?>

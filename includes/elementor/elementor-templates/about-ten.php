@@ -8,7 +8,7 @@
                         <div class="feature-memories-content">
                             <div class="section-title mb-0">
                                 <?php if (!empty($settings['layout_ten_title'])) : ?>
-                                    <<?php echo esc_attr($settings['layout_ten_title_tag']); ?> class="text-white sec-title">
+                                    <<?php echo esc_attr($settings['layout_ten_title_tag']); ?> class="text-white sec-title text-anim">
                                         <?php echo rt_kses_basic($settings['layout_ten_title']); ?>
                                     </<?php echo esc_attr($settings['layout_ten_title_tag']); ?>>
                                 <?php endif; ?>

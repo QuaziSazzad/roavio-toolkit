@@ -58,8 +58,6 @@ class Footer_Three extends Widget_Base
 				'default' => 'layout_one',
 				'options' => [
 					'layout_one' => __('Layout One', 'roavio-toolkit'),
-					// 'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					// 'layout_three' => __('Layout Three', 'roavio-toolkit'),
 				]
 			]
 		);

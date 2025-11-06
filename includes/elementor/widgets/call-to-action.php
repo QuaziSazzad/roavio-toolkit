@@ -39,7 +39,7 @@ class Call_To_Action extends Widget_Base
 		$this->start_controls_section(
 			'layout_section',
 			[
-				'label' => __('Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Layout', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -47,13 +47,11 @@ class Call_To_Action extends Widget_Base
 		$this->add_control(
 			'layout_type',
 			[
-				'label' => __('Select Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Select Layout', 'roavio-toolkit'),
 				'type' => \Elementor\Controls_Manager::SELECT2,
 				'default' => 'layout_one',
 				'options' => [
-					'layout_one' => __('Layout One', 'roavio-toolkit'),
-					// 'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					// 'layout_three' => __('Layout Three', 'roavio-toolkit'),
+					'layout_one' => esc_html__('Layout One', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -61,8 +59,6 @@ class Call_To_Action extends Widget_Base
 		$this->end_controls_section();
 
 		include rt_get_elementor_option('call-to-action-one-option.php');
-		// include rt_get_elementor_option('call-to-action-two-option.php');
-		// include rt_get_elementor_option('call-to-action-three-option.php');
 
 		//Content style
 		$this->start_controls_section(
@@ -158,7 +154,5 @@ class Call_To_Action extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 		include rt_get_elementor_template('call-to-action-one.php');
-		// include rt_get_elementor_template('call-to-action-two.php');
-		// include rt_get_elementor_template('call-to-action-three.php');
 	}
 }

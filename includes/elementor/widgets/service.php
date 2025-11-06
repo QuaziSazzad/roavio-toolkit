@@ -50,17 +50,6 @@ class Service extends Widget_Base
 				'default' => 'layout_one',
 				'options' => [
 					'layout_one' => __('Layout One', 'roavio-toolkit'),
-					'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					'layout_three' => __('Layout Three', 'roavio-toolkit'),
-					'layout_four' => __('Layout Four', 'roavio-toolkit'),
-					'layout_five' => __('Layout Five', 'roavio-toolkit'),
-					'layout_six' => __('Layout Six', 'roavio-toolkit'),
-					'layout_seven' => __('Layout Seven', 'roavio-toolkit'),
-					'layout_eight' => __('Layout Eight', 'roavio-toolkit'),
-					'layout_nine' => __('Layout Nine', 'roavio-toolkit'),
-					'layout_ten' => __('Layout Ten', 'roavio-toolkit'),
-					'layout_eleven' => __('Layout Eleven', 'roavio-toolkit'),
-					'layout_twelve' => __('Layout Twelve', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -68,17 +57,7 @@ class Service extends Widget_Base
 		$this->end_controls_section();
 
 		include rt_get_elementor_option('service-one-option.php');
-		include rt_get_elementor_option('service-two-option.php');
-		include rt_get_elementor_option('service-three-option.php');
-		include rt_get_elementor_option('service-four-option.php');
-		include rt_get_elementor_option('service-five-option.php');
-		include rt_get_elementor_option('service-six-option.php');
-		include rt_get_elementor_option('service-seven-option.php');
-		include rt_get_elementor_option('service-eight-option.php');
-		include rt_get_elementor_option('service-nine-option.php');
-		include rt_get_elementor_option('service-ten-option.php');
-		include rt_get_elementor_option('service-eleven-option.php');
-		include rt_get_elementor_option('service-twelve-option.php');
+
 
 		//Content style
 		$this->start_controls_section(
@@ -179,16 +158,5 @@ class Service extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 		include rt_get_elementor_template('service-one.php');
-		include rt_get_elementor_template('service-two.php');
-		include rt_get_elementor_template('service-three.php');
-		include rt_get_elementor_template('service-four.php');
-		include rt_get_elementor_template('service-five.php');
-		include rt_get_elementor_template('service-six.php');
-		include rt_get_elementor_template('service-seven.php');
-		include rt_get_elementor_template('service-eight.php');
-		include rt_get_elementor_template('service-nine.php');
-		include rt_get_elementor_template('service-ten.php');
-		include rt_get_elementor_template('service-eleven.php');
-		include rt_get_elementor_template('service-twelve.php');
 	}
 }

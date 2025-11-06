@@ -6,7 +6,7 @@
                 <div class="col-xl-7 col-lg-9">
                     <div class="feature-bg-content">
                         <?php if (!empty($settings['layout_one_title'])) : ?>
-                            <h2 class="wow fadeInUp title" data-wow-delay=".3s">
+                            <h2 class="title text-anim">
                                 <?php echo esc_html($settings['layout_one_title']); ?>
                                 <?php rt_elementor_rendered_image($settings, 'layout_one_client_image'); ?>
                                 <?php echo esc_html($settings['layout_one_title_second_part']); ?>

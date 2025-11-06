@@ -8,7 +8,7 @@ if ('layout_one' == $settings['layout_type']) : ?>
         <div class="container custom-container-2">
             <div class="section-title text-center">
                 <?php if (!empty($settings['layout_one_title'])) : ?>
-                    <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="wow fadeInUp sec-title" data-wow-delay=".3s">
+                    <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="fadeInUp sec-title text-anim">
                         <?php echo esc_html($settings['layout_one_title']); ?>
                     </<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
                 <?php endif; ?>

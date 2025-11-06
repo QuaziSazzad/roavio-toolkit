@@ -50,7 +50,7 @@ if ('layout_two' == $settings['layout_type']) : ?>
     <div class="offcanvas__overlay"></div>
 
     <!-- Header Section Start -->
-    <header id="header-sticky" class="header-1 header-2">
+    <div id="header-sticky" class="header-1 header-2">
         <div class="container-fluid">
             <div class="mega-menu-wrapper">
                 <div class="header-main">
@@ -97,13 +97,13 @@ if ('layout_two' == $settings['layout_type']) : ?>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
 
     <!-- Search Area Start -->
     <div class="search-popup">
         <div class="search-popup__overlay search-toggler"></div>
         <div class="search-popup__content">
-            <form role="search" method="get" class="search-popup__form" action="#">
+            <form role="search" method="get" class="search-popup__form" action="<?php echo esc_url(home_url('/')); ?>">
                 <input type="text" id="search" name="s" placeholder="<?php esc_html_e('Search Here...', 'roavio-toolkit'); ?>">
                 <button type="submit" aria-label="search submit" class="search-btn">
                     <span><i class="fa-regular fa-magnifying-glass"></i></span>

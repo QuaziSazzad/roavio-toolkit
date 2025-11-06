@@ -38,7 +38,7 @@ class Footer_Nav extends Widget_Base
 		$this->start_controls_section(
 			'layout_section',
 			[
-				'label' => __('Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Layout', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -46,13 +46,11 @@ class Footer_Nav extends Widget_Base
 		$this->add_control(
 			'layout_type',
 			[
-				'label' => __('Select Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Select Layout', 'roavio-toolkit'),
 				'type' => \Elementor\Controls_Manager::SELECT2,
 				'default' => 'layout_one',
 				'options' => [
-					'layout_one' => __('Layout One', 'roavio-toolkit'),
-					// 'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					// 'layout_three' => __('Layout Three', 'roavio-toolkit'),
+					'layout_one' => esc_html__('Layout One', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -81,7 +79,5 @@ class Footer_Nav extends Widget_Base
 		$settings = $this->get_settings_for_display();
 
 		include rt_get_elementor_template('footer-nav-one.php');
-		// include rt_get_elementor_template('footer-nav-two.php');
-		// include rt_get_elementor_template('footer-nav-three.php');
 	}
 }

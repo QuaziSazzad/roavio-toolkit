@@ -74,7 +74,6 @@ class Recent_Post extends Widget_Base
 					'layout_two' => __('Layout Two', 'roavio-toolkit'),
 					'layout_three' => __('Layout Three', 'roavio-toolkit'),
 					'layout_four' => __('Layout Four', 'roavio-toolkit'),
-					//'layout_five' => __('Layout Five', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -693,6 +692,5 @@ class Recent_Post extends Widget_Base
 		include rt_get_elementor_template('recent-post-two.php');
 		include rt_get_elementor_template('recent-post-three.php');
 		include rt_get_elementor_template('recent-post-four.php');
-		//include rt_get_elementor_template('recent-post-five.php');
 	}
 }

@@ -36,7 +36,7 @@ if ('layout_seven' == $settings['layout_type']) :
         <div class="container custom-container-7">
             <div class="section-title text-center">
                 <?php if ($settings['section_title']) : ?>
-                    <h2 class="wow fadeInUp" data-wow-delay=".3s"><?php echo esc_html($settings['section_title']); ?></h2>
+                    <h2 class="text-anim"><?php echo esc_html($settings['section_title']); ?></h2>
                 <?php endif; ?>
                 <?php if ($settings['sub_title']) : ?>
                     <p class="wow fadeInUp" data-wow-delay=".5s"><?php echo rt_kses_basic($settings['sub_title']); ?></p>

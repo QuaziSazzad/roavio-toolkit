@@ -5,7 +5,7 @@
             <?php if (!empty($settings['section_title']) ||  !empty($settings['section_sub_title'])) : ?>
                 <div class="section-title text-center">
                     <?php if (!empty($settings['section_title'])) : ?>
-                        <<?php echo esc_html($settings['title_tag']); ?> class="wow fadeInUp sec-title" data-wow-delay=".3s"><?php echo rt_kses_basic($settings['section_title']); ?></<?php echo esc_html($settings['title_tag']); ?>>
+                        <<?php echo esc_html($settings['title_tag']); ?> class="text-anim sec-title"><?php echo rt_kses_basic($settings['section_title']); ?></<?php echo esc_html($settings['title_tag']); ?>>
                     <?php endif; ?>
                     <?php if (!empty($settings['section_sub_title'])) : ?>
                         <<?php echo esc_html($settings['section_sub_title_tag']); ?> class="wow fadeInUp sec-sub-title" data-wow-delay=".5s"><?php echo rt_kses_basic($settings['section_sub_title']); ?></<?php echo esc_html($settings['section_sub_title_tag']); ?>>

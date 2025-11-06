@@ -38,7 +38,7 @@ class Footer_Newsletter extends Widget_Base
 		$this->start_controls_section(
 			'layout_section',
 			[
-				'label' => __('Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Layout', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -46,13 +46,11 @@ class Footer_Newsletter extends Widget_Base
 		$this->add_control(
 			'layout_type',
 			[
-				'label' => __('Select Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Select Layout', 'roavio-toolkit'),
 				'type' => \Elementor\Controls_Manager::SELECT2,
 				'default' => 'layout_one',
 				'options' => [
-					'layout_one' => __('Layout One', 'roavio-toolkit'),
-					// 'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					// 'layout_three' => __('Layout Three', 'roavio-toolkit'),
+					'layout_one' => esc_html__('Layout One', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -60,8 +58,6 @@ class Footer_Newsletter extends Widget_Base
 		$this->end_controls_section();
 
 		include rt_get_elementor_option('footer-newsletter-one-option.php');
-		// include rt_get_elementor_option('footer-newsletter-two-option.php');
-		// include rt_get_elementor_option('footer-newsletter-three-option.php');
 
 		//Content style
 		$this->start_controls_section(
@@ -83,7 +79,5 @@ class Footer_Newsletter extends Widget_Base
 		$settings = $this->get_settings_for_display();
 
 		include rt_get_elementor_template('footer-newsletter-one.php');
-		// include rt_get_elementor_template('footer-newsletter-two.php');
-		// include rt_get_elementor_template('footer-newsletter-three.php');
 	}
 }

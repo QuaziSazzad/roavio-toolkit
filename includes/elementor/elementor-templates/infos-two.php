@@ -6,7 +6,7 @@
                 <?php if (!empty($settings['layout_two_title']) || !empty($settings['layout_two_sub_title'])) : ?>
                     <div class="section-title text-center mb-0">
                         <?php if (!empty($settings['layout_two_title'])) : ?>
-                            <<?php echo esc_attr($settings['layout_two_title_tag']); ?> class="text-white wow fadeInUp sec-title" data-wow-delay=".3s"><?php echo esc_html($settings['layout_two_title']); ?></<?php echo esc_attr($settings['layout_two_title_tag']); ?>>
+                            <<?php echo esc_attr($settings['layout_two_title_tag']); ?> class="text-white fadeInUp sec-title text-anim"><?php echo esc_html($settings['layout_two_title']); ?></<?php echo esc_attr($settings['layout_two_title_tag']); ?>>
                         <?php endif; ?>
                         <?php if (!empty($settings['layout_two_sub_title'])) : ?>
                             <<?php echo esc_attr($settings['layout_two_sub_title_tag']); ?> class="text-white wow fadeInUp sec-sub-title" data-wow-delay=".5s"><?php echo esc_html($settings['layout_two_sub_title']); ?></<?php echo esc_attr($settings['layout_two_sub_title_tag']); ?>>

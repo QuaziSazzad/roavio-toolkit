@@ -8,7 +8,7 @@
                         <div class="about-content">
                             <div class="section-title mb-0">
                                 <?php if (!empty($settings['layout_nine_title'])) : ?>
-                                    <<?php echo esc_attr($settings['layout_nine_title_tag']); ?> class="wow fadeInUp sec-title" data-wow-delay=".3s">
+                                    <<?php echo esc_attr($settings['layout_nine_title_tag']); ?> class="text-anim sec-title">
                                         <?php echo rt_kses_basic($settings['layout_nine_title']); ?>
                                     </<?php echo esc_attr($settings['layout_nine_title_tag']); ?>>
                                 <?php endif; ?>
@@ -26,7 +26,7 @@
                                     <div class="count-item">
                                         <?php if (!empty($settings['layout_nine_counter_number'])) : ?>
                                             <div class="count-box">
-                                                <h2><span class="count"><?php echo esc_html($settings['layout_nine_counter_number']); ?></span></h2>
+                                                <h2><span class="count"><?php echo esc_html($settings['layout_nine_counter_number']); ?></span><?php echo esc_html($settings['layout_nine_counter_symbol']); ?></h2>
                                             </div>
                                         <?php endif; ?>
                                         <div class="radius-image">

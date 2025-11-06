@@ -11,13 +11,14 @@
                     <?php echo rt_kses_basic($settings['layout_one_summary_text']); ?>
                 </p>
             <?php endif; ?>
-            <form action="#" class="mc-form">
+            <form class="mc-form">
                 <div class="form-clt">
-                    <input type="text" class="mc-form__input" name="email" id="email" placeholder="<?php echo esc_attr($settings['layout_one_placeholder']); ?>">
+                    <input type="text" class="mc-form__input" name="email" placeholder="<?php echo esc_attr($settings['layout_one_placeholder']); ?>">
                     <button type="submit" class="theme-btn">
                         <?php echo esc_html($settings['layout_one_btn_label']); ?>
                     </button>
                 </div>
+                <p class="mc-form__feedback text-white"></p>
             </form>
         </div>
     </div>

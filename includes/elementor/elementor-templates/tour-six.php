@@ -32,7 +32,7 @@ if ('layout_six' == $settings['layout_type']) :
         <div class="container custom-container-6">
             <div class="section-title text-center">
                 <?php if ($settings['section_title']) : ?>
-                    <<?php echo esc_attr($settings['title_tag']); ?> class="wow fadeInUp sec-title" data-wow-delay=".3s"><?php echo rt_kses_basic($settings['section_title']); ?></<?php echo esc_attr($settings['title_tag']); ?>>
+                    <<?php echo esc_attr($settings['title_tag']); ?> class="text-anim sec-title"><?php echo rt_kses_basic($settings['section_title']); ?></<?php echo esc_attr($settings['title_tag']); ?>>
                 <?php endif; ?>
                 <?php if ($settings['sub_title']) : ?>
                     <p class="wow fadeInUp sec-sub-title" data-wow-delay=".5s"><?php echo rt_kses_basic($settings['sub_title']); ?></p>

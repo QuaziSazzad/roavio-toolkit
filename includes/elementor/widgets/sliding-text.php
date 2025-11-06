@@ -51,7 +51,6 @@ class Sliding_Text extends Widget_Base
 				'options' => [
 					'layout_one' => __('Layout One', 'roavio-toolkit'),
 					'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					// 'layout_three' => __('Layout Three', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -80,6 +79,5 @@ class Sliding_Text extends Widget_Base
 		$settings = $this->get_settings_for_display();
 		include rt_get_elementor_template('sliding-text-one.php');
 		include rt_get_elementor_template('sliding-text-two.php');
-		// include rt_get_elementor_template('sliding-text-three.php');
 	}
 }

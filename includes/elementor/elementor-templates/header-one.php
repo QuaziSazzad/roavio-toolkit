@@ -30,7 +30,7 @@ if ('layout_one' == $settings['layout_type']) : ?>
                             <h3><?php echo esc_html($settings['sidebar_contact_title']); ?></h3>
                         <?php endif; ?>
                         <?php if (!empty($settings['layout_one_select_cf7_form'])) :
-                            echo do_shortcode('[contact-form-7 id="' . esc_attr($settings['layout_one_select_cf7_form']) . '"]');
+                            echo str_replace("<br />", "", trim(do_shortcode('[contact-form-7 id="' . $settings['layout_one_select_cf7_form'] . '" ]')));
                         endif; ?>
                         <div class="social-icon d-flex align-items-center">
                             <?php
@@ -73,7 +73,7 @@ if ('layout_one' == $settings['layout_type']) : ?>
     </div>
 
     <!-- Header Section Start -->
-    <header id="header-sticky" class="header-1">
+    <nav id="header-sticky" class="header-1">
         <div class="container-fluid">
             <div class="mega-menu-wrapper">
                 <div class="header-main">
@@ -105,7 +105,7 @@ if ('layout_one' == $settings['layout_type']) : ?>
                     <div class="header-right d-flex justify-content-end align-items-center">
                         <?php if ('yes' == $settings['enable_search']) : ?>
                             <div class="search-widget">
-                                <form action="<?php esc_url(home_url('/')); ?>">
+                                <form action="<?php echo esc_url(home_url('/')); ?>">
                                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                                     <input type="text" name="s" placeholder="<?php echo esc_attr($settings['search_placeholder']); ?>">
                                 </form>
@@ -125,5 +125,5 @@ if ('layout_one' == $settings['layout_type']) : ?>
                 </div>
             </div>
         </div>
-    </header>
+    </nav>
 <?php endif; ?>

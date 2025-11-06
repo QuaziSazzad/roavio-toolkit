@@ -1,116 +1,125 @@
 ; (function ($) {
     "use strict";
 
-    var WidgetDefaultHandler = function ($scope) {
+    var WidgetDefaultHandler = function ($scope, $) {
 
         // ## Video Popup
         if ($scope.find('.video-play').length) {
-            $('.video-play').magnificPopup({
+            $scope.find('.video-play').magnificPopup({
                 type: 'video',
             });
         }
 
-        const sliderActive2 = ".hero-slider";
-        const sliderInit2 = new Swiper(sliderActive2, {
-            loop: true,
-            slidesPerView: 1,
-            effect: "fade",
-            speed: 3000,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            },
-            
-            pagination: {
-               el: ".dot",
-               clickable: true,
-           },
-        });
+        // ## Hero Slider
+        if ($scope.find('.hero-slider').length) {
+            const sliderActive2 = $scope.find(".hero-slider")[0];
+            const sliderInit2 = new Swiper(sliderActive2, {
+                loop: true,
+                slidesPerView: 1,
+                effect: "fade",
+                speed: 3000,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                
+                pagination: {
+                   el: ".dot",
+                   clickable: true,
+               },
+            });
 
-         //>> Video Popup Start <<//
-      $(".img-popup").magnificPopup({
-        type: "image",
-        gallery: {
-          enabled: true,
-        },
-      });
+            // Animated Swiper
+            function animated_swiper(selector, init) {
+                const animated = function animated() {
+                    $scope.find(selector + " [data-animation]").each(function () {
+                        let anim = $(this).data("animation");
+                        let delay = $(this).data("delay");
+                        let duration = $(this).data("duration");
+                        $(this)
+                            .removeClass("anim" + anim)
+                            .addClass(anim + " animated")
+                            .css({
+                                webkitAnimationDelay: delay,
+                                animationDelay: delay,
+                                webkitAnimationDuration: duration,
+                                animationDuration: duration,
+                            })
+                            .one("animationend", function () {
+                                $(this).removeClass(anim + " animated");
+                            });
+                    });
+                };
+                animated();
+                init.on("slideChange", function () {
+                    $scope.find(selector + " [data-animation]").removeClass("animated");
+                });
+                init.on("slideChange", animated);
+            }
+            animated_swiper(".hero-slider", sliderInit2);
+        }
 
-      $(".img-popup2").magnificPopup({
-        type: "image",
-        gallery: {
-          enabled: true,
-        },
-      });
+         //>> Image Popup Start <<//
+        if ($scope.find('.img-popup').length) {
+            $scope.find(".img-popup").magnificPopup({
+                type: "image",
+                gallery: {
+                    enabled: true,
+                },
+            });
+        }
+
+        if ($scope.find('.img-popup2').length) {
+            $scope.find(".img-popup2").magnificPopup({
+                type: "image",
+                gallery: {
+                    enabled: true,
+                },
+            });
+        }
   
-      $(".video-popup").magnificPopup({
-        type: "iframe",
-        callbacks: {},
-      });
+        if ($scope.find('.video-popup').length) {
+            $scope.find(".video-popup").magnificPopup({
+                type: "iframe",
+                callbacks: {},
+            });
+        }
 
        //>> Heros Slider Start <<//
-     if($('.heros-slider').length > 0) {
-      const HerosSlider = new Swiper(".heros-slider", {
-          spaceBetween: 30,
-          speed: 1300,
-          loop: true,
-          centeredSlides: true,
-          autoplay: {
-              delay: 2000,
-              disableOnInteraction: false,
-          },
-         
-          breakpoints: {
-              1199: {
-                  slidesPerView: 3,
-              },
-              991: {
-                  slidesPerView: 2,
-              },
-              767: {
-                  slidesPerView: 1,
-              },
-              575: {
-                  slidesPerView: 1,
-              },
-              0: {
-                  slidesPerView: 1,
-              },
-          },
-      });
-      }
-
-       function animated_swiper(selector, init) {
-           const animated = function animated() {
-               $(selector + " [data-animation]").each(function () {
-                   let anim = $(this).data("animation");
-                   let delay = $(this).data("delay");
-                   let duration = $(this).data("duration");
-                   $(this)
-                       .removeClass("anim" + anim)
-                       .addClass(anim + " animated")
-                       .css({
-                           webkitAnimationDelay: delay,
-                           animationDelay: delay,
-                           webkitAnimationDuration: duration,
-                           animationDuration: duration,
-                       })
-                       .one("animationend", function () {
-                           $(this).removeClass(anim + " animated");
-                       });
-               });
-           };
-           animated();
-           init.on("slideChange", function () {
-               $(sliderActive2 + " [data-animation]").removeClass("animated");
-           });
-           init.on("slideChange", animated);
-       }
-       animated_swiper(sliderActive2, sliderInit2);
-
+        if ($scope.find('.heros-slider').length > 0) {
+            const HerosSlider = new Swiper($scope.find(".heros-slider")[0], {
+                spaceBetween: 30,
+                speed: 1300,
+                loop: true,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: false,
+                },
+               
+                breakpoints: {
+                    1199: {
+                        slidesPerView: 3,
+                    },
+                    991: {
+                        slidesPerView: 2,
+                    },
+                    767: {
+                        slidesPerView: 1,
+                    },
+                    575: {
+                        slidesPerView: 1,
+                    },
+                    0: {
+                        slidesPerView: 1,
+                    },
+                },
+            });
+        }
 
         // ## Scroll to Top
         if ($scope.find('.scroll-to-target').length) {
-            $(".scroll-to-target").on('click', function () {
+            $scope.find(".scroll-to-target").on('click', function () {
                 var target = $(this).attr('data-target');
                 // animate
                 $('html, body').animate({
@@ -120,46 +129,46 @@
             });
         }
 
-
         // ## Nice Select
-        $('select').niceSelect();
+        if ($scope.find('select').length) {
+            $scope.find('select').niceSelect();
+        }
 
-          //>> Brand Slider Start <<//
-          if($('.brand-slider').length > 0) {
-            const BrandSlider = new Swiper(".brand-slider", {
-               spaceBetween: 30,
-               speed: 1300,
-               loop: true,
-               centeredSlides: true,
-               autoplay: {
-                   delay: 2000,
-                   disableOnInteraction: false,
-               },
+        //>> Brand Slider Start <<//
+        if ($scope.find('.brand-slider').length > 0) {
+            const BrandSlider = new Swiper($scope.find(".brand-slider")[0], {
+                spaceBetween: 30,
+                speed: 1300,
+                loop: true,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: false,
+                },
    
-               breakpoints: {
-                   1199: {
-                       slidesPerView: 7,
-                   },
-                   991: {
-                       slidesPerView: 4,
-                   },
-                   767: {
-                       slidesPerView: 3,
-                   },
-                   575: {
-                       slidesPerView: 2,
-                   },
-                   0: {
-                       slidesPerView: 2,
-                   },
-               },
-           });
-       }
+                breakpoints: {
+                    1199: {
+                        slidesPerView: 7,
+                    },
+                    991: {
+                        slidesPerView: 4,
+                    },
+                    767: {
+                        slidesPerView: 3,
+                    },
+                    575: {
+                        slidesPerView: 2,
+                    },
+                    0: {
+                        slidesPerView: 2,
+                    },
+                },
+            });
+        }
 
-                    
-              //>> Testimonial Slider Start <<//
-              if($('.testimonial-slider').length > 0) {
-                const testimonialSlider = new Swiper(".testimonial-slider", {
+        //>> Testimonial Slider Start <<//
+        if ($scope.find('.testimonial-slider').length > 0) {
+            const testimonialSlider = new Swiper($scope.find(".testimonial-slider")[0], {
                 spaceBetween: 30,
                 speed: 1300,
                 loop: true,
@@ -189,248 +198,254 @@
                     },
                 },
             });
-          }
+        }
 
-           //>> Testimonial Slider Start <<//
-           if($('.testimonial-slider-2').length > 0) {
-            const TestimonialSlider2 = new Swiper(".testimonial-slider-2", {
-            spaceBetween: 30,
-            speed: 1300,
-            loop: true,
-            autoplay: {
-                delay: 2000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".dot2",
-                clickable: true,
-            },
-            breakpoints: {
-                1199: {
-                    slidesPerView: 3,
+        //>> Testimonial Slider 2 Start <<//
+        if ($scope.find('.testimonial-slider-2').length > 0) {
+            const TestimonialSlider2 = new Swiper($scope.find(".testimonial-slider-2")[0], {
+                spaceBetween: 30,
+                speed: 1300,
+                loop: true,
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: false,
                 },
-                991: {
-                    slidesPerView: 2,
+                pagination: {
+                    el: ".dot2",
+                    clickable: true,
                 },
-                767: {
-                    slidesPerView: 2,
+                breakpoints: {
+                    1199: {
+                        slidesPerView: 3,
+                    },
+                    991: {
+                        slidesPerView: 2,
+                    },
+                    767: {
+                        slidesPerView: 2,
+                    },
+                    575: {
+                        slidesPerView: 1,
+                    },
+                    0: {
+                        slidesPerView: 1,
+                    },
                 },
-                575: {
-                    slidesPerView: 1,
-                },
-                0: {
-                    slidesPerView: 1,
-                },
-            },
-        });
-    }
+            });
+        }
    
-      //>> Hero-1 Slider Start <<//
-        if($('.adventure-slider').length > 0) {
-          const AdventurelSlider = new Swiper(".adventure-slider", {
-          spaceBetween: 30,
-          speed: 1300,
-          loop: true,
-          autoplay: {
-              delay: 2000,
-              disableOnInteraction: false,
-          },
-          pagination: {
-              el: ".dot3",
-              clickable: true,
-          },
-          breakpoints: {
-              1199: {
-                  slidesPerView: 4,
-              },
-              991: {
-                  slidesPerView:3,
-              },
-              767: {
-                  slidesPerView: 2,
-              },
-              575: {
-                  slidesPerView: 1,
-              },
-              0: {
-                  slidesPerView: 1,
-              },
-          },
-      });
-      }
+        //>> Adventure Slider Start <<//
+        if ($scope.find('.adventure-slider').length > 0) {
+            const AdventurelSlider = new Swiper($scope.find(".adventure-slider")[0], {
+                spaceBetween: 30,
+                speed: 1300,
+                loop: true,
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".dot3",
+                    clickable: true,
+                },
+                breakpoints: {
+                    1199: {
+                        slidesPerView: 4,
+                    },
+                    991: {
+                        slidesPerView:3,
+                    },
+                    767: {
+                        slidesPerView: 2,
+                    },
+                    575: {
+                        slidesPerView: 1,
+                    },
+                    0: {
+                        slidesPerView: 1,
+                    },
+                },
+            });
+        }
 
-          //>> gallery Slider Start <<//
-          if($('.gallery-slider').length > 0) {
-            const GallerySlider = new Swiper(".gallery-slider", {
-               spaceBetween: 10,
-               speed: 1300,
-               loop: true,
-               autoplay: {
-                   delay: 2000,
-                   disableOnInteraction: false,
-               },
+        //>> Gallery Slider Start <<//
+        if ($scope.find('.gallery-slider').length > 0) {
+            const GallerySlider = new Swiper($scope.find(".gallery-slider")[0], {
+                spaceBetween: 10,
+                speed: 1300,
+                loop: true,
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: false,
+                },
    
-               breakpoints: {
-                   1399: {
-                       slidesPerView: 5,
-                   },
-                   1199: {
-                       slidesPerView: 4,
-                   },
-                   991: {
-                       slidesPerView: 3.5,
-                   },
-                   767: {
-                       slidesPerView: 2.8,
-                   },
-                   575: {
-                       slidesPerView: 1.5,
-                   },
-                   0: {
-                       slidesPerView: 1.1,
-                   },
-               },
-           });
-       }
+                breakpoints: {
+                    1399: {
+                        slidesPerView: 5,
+                    },
+                    1199: {
+                        slidesPerView: 4,
+                    },
+                    991: {
+                        slidesPerView: 3.5,
+                    },
+                    767: {
+                        slidesPerView: 2.8,
+                    },
+                    575: {
+                        slidesPerView: 1.5,
+                    },
+                    0: {
+                        slidesPerView: 1.1,
+                    },
+                },
+            });
+        }
    
-        //>> gallery Slider2 Start <<//
-           if ($('.gallery-slider-2').length > 0) {
-            const GallerySlider2 = new Swiper(".gallery-slider-2", {
-               spaceBetween: 10,
-               speed: 1300,
-               loop: true,
-               autoplay: {
-                   delay: 2000,
-                   disableOnInteraction: false,
+        //>> Gallery Slider 2 Start <<//
+        if ($scope.find('.gallery-slider-2').length > 0) {
+            const GallerySlider2 = new Swiper($scope.find(".gallery-slider-2")[0], {
+                spaceBetween: 10,
+                speed: 1300,
+                loop: true,
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: false,
                     reverseDirection: true,
-               },
+                },
    
-               breakpoints: {
-                   1399: {
-                       slidesPerView: 5,
-                   },
-                   1199: {
-                       slidesPerView: 4,
-                   },
-                   991: {
-                       slidesPerView: 3.5,
-                   },
-                   767: {
-                       slidesPerView: 2.8,
-                   },
-                   575: {
-                       slidesPerView: 1.5,
-                   },
-                   0: {
-                       slidesPerView: 1.1,
-                   },
-               },
-           });
-       }
+                breakpoints: {
+                    1399: {
+                        slidesPerView: 5,
+                    },
+                    1199: {
+                        slidesPerView: 4,
+                    },
+                    991: {
+                        slidesPerView: 3.5,
+                    },
+                    767: {
+                        slidesPerView: 2.8,
+                    },
+                    575: {
+                        slidesPerView: 1.5,
+                    },
+                    0: {
+                        slidesPerView: 1.1,
+                    },
+                },
+            });
+        }
 
-         //>> Testimonial box Slider Start <<//
-      if($('.testimonial-box-slider').length > 0) {
-        const TestimonialBoxSlider = new Swiper(".testimonial-box-slider", {
-            spaceBetween: 20,
-            freemode: true,
-            centeredSlides: true,
-            loop: true,
-            speed: 6000,
-            allowTouchMove: false,
-            autoplay: {
-                delay: 1,
-                disableOnInteraction: true,
-            },
-            breakpoints: {
-                991: {
-                    slidesPerView: 2,
+        //>> Testimonial Box Slider Start <<//
+        if ($scope.find('.testimonial-box-slider').length > 0) {
+            const TestimonialBoxSlider = new Swiper($scope.find(".testimonial-box-slider")[0], {
+                spaceBetween: 20,
+                freemode: true,
+                centeredSlides: true,
+                loop: true,
+                speed: 6000,
+                allowTouchMove: false,
+                autoplay: {
+                    delay: 1,
+                    disableOnInteraction: true,
                 },
-                0: {
-                    slidesPerView: 1,
+                breakpoints: {
+                    991: {
+                        slidesPerView: 2,
+                    },
+                    0: {
+                        slidesPerView: 1,
+                    },
                 },
-            },
-        });
-    }
+            });
+        }
 
-    //>>Testimonial box Slider2 Start <<//
-    if($('.testimonial-box-slider-2').length > 0) {
-        const TestimonialBoxSlider2 = new Swiper(".testimonial-box-slider-2", {
-            spaceBetween: 20,
-            freemode: true,
-            centeredSlides: true,
-            loop: true,
-            speed: 6000,
-            allowTouchMove: false,
-            autoplay: {
-                delay: 1,
-                disableOnInteraction: true,
-            },
-            breakpoints: {
-                991: {
-                    slidesPerView: 2,
+        //>> Testimonial Box Slider 2 Start <<//
+        if ($scope.find('.testimonial-box-slider-2').length > 0) {
+            const TestimonialBoxSlider2 = new Swiper($scope.find(".testimonial-box-slider-2")[0], {
+                spaceBetween: 20,
+                freemode: true,
+                centeredSlides: true,
+                loop: true,
+                speed: 6000,
+                allowTouchMove: false,
+                autoplay: {
+                    delay: 1,
+                    disableOnInteraction: true,
                 },
-                0: {
-                    slidesPerView: 1,
+                breakpoints: {
+                    991: {
+                        slidesPerView: 2,
+                    },
+                    0: {
+                        slidesPerView: 1,
+                    },
                 },
-            },
-        });
-    }
+            });
+        }
 
-      //>> Top Slider Start <<//
-      if($('.top-slider').length > 0) {
-        const topSlider = new Swiper(".top-slider", {
-            spaceBetween: 20,
-            speed: 1300,
-            loop: true,
-            autoplay: {
-                delay: 2000,
-                disableOnInteraction: false,
-            },
-            navigation: {
-              nextEl: ".array-prev",
-              prevEl: ".array-next",
-          },
-            breakpoints: {
-                1199: {
-                    slidesPerView: 5,
+        //>> Top Slider Start <<//
+        if ($scope.find('.top-slider').length > 0) {
+            const topSlider = new Swiper($scope.find(".top-slider")[0], {
+                spaceBetween: 20,
+                speed: 1300,
+                loop: true,
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: false,
                 },
-                991: {
-                    slidesPerView: 4,
+                navigation: {
+                    nextEl: ".array-prev",
+                    prevEl: ".array-next",
                 },
-                767: {
-                    slidesPerView: 3,
+                breakpoints: {
+                    1199: {
+                        slidesPerView: 5,
+                    },
+                    991: {
+                        slidesPerView: 4,
+                    },
+                    767: {
+                        slidesPerView: 3,
+                    },
+                    575: {
+                        slidesPerView: 2,
+                    },
+                    0: {
+                        slidesPerView: 1.3,
+                    },
                 },
-                575: {
-                    slidesPerView: 2,
-                },
-                0: {
-                    slidesPerView: 1.3,
-                },
-            },
-        });
+            });
         }
   
+        //>> Counterup Start <<//
+        if ($scope.find('.count').length) {
+            $scope.find(".count").counterUp({
+                delay: 15,
+                time: 4000,
+            });
+        }
 
-    
-    $(document).on('mouseenter', '.box-2', function() {
-      $('.box-2').removeClass('active');
-      $(this).addClass('active');
-      });     
-
-
-      $(document).on('click', '.nav-link[data-bs-toggle="tab"]', function (e) {
-        e.preventDefault();
-        var target = $(this).attr('href');
-        
-        // remove ctive  class
-        $('.nav-link').removeClass('active');
-        $('.tab-pane').removeClass('active show');
-        
-        // active class
-        $(this).addClass('active');
-        $(target).addClass('active show');
+        // Box hover effect
+        $scope.find('.box-2').on('mouseenter', function() {
+            $scope.find('.box-2').removeClass('active');
+            $(this).addClass('active');
         });
-        
+
+        // Tab navigation
+        $scope.find('.nav-link[data-bs-toggle="tab"]').on('click', function (e) {
+            e.preventDefault();
+            var target = $(this).attr('href');
+            
+            // Remove active class
+            $scope.find('.nav-link').removeClass('active');
+            $scope.find('.tab-pane').removeClass('active show');
+            
+            // Add active class
+            $(this).addClass('active');
+            $scope.find(target).addClass('active show');
+        });
 
     };
 
@@ -448,7 +463,57 @@
   ========================================================================== */
 
     $(window).on('load', function () {
+      //>> Wow Animation Start <<//
+      new WOW().init();
 
+      if ($(".text-anim").length) {
+        let staggerAmount = 0.03,
+            translateXValue = 20,
+            delayValue = 0.1,
+            easeType = "power2.out",
+            animatedTextElements = document.querySelectorAll(".text-anim");
+
+        animatedTextElements.forEach(element => {
+            let animationSplitText = new SplitText(element, { type: "chars, words" });
+
+            ScrollTrigger.create({
+                trigger: element,
+                start: "top 85%",
+                onEnter: () => {
+                    gsap.from(animationSplitText.chars, {
+                        duration: 1,
+                        delay: delayValue,
+                        x: translateXValue,
+                        autoAlpha: 0,
+                        stagger: staggerAmount,
+                        ease: easeType,
+                    });
+                },
+            });
+        });
+    }
+
+
+ /* ================================
+       Smooth Scroller And Title Animation Js Start
+    ================================ */
+    if ($('#smooth-wrapper').length && $('#smooth-content').length) {
+        gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
+
+        gsap.config({
+            nullTargetWarn: false,
+        });
+
+        let smoother = ScrollSmoother.create({
+            wrapper: "#smooth-wrapper",
+            content: "#smooth-content",
+            smooth: 2,
+            effects: true,
+            smoothTouch: 0.1,
+            normalizeScroll: false,
+            ignoreMobileResize: true,
+        });
+    }
 
     });
 

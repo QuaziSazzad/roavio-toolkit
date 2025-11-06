@@ -4,7 +4,7 @@
         <div class="container">
             <div class="section-title text-center">
                 <?php if (!empty($settings['layout_two_section_title'])) : ?>
-                    <<?php echo esc_attr($settings['layout_two_title_tag']); ?> class="wow fadeInUp sec-title" data-wow-delay=".3s">
+                    <<?php echo esc_attr($settings['layout_two_title_tag']); ?> class="text-anim sec-title">
                         <?php echo rt_kses_basic($settings['layout_two_section_title']); ?>
                     </<?php echo esc_attr($settings['layout_two_title_tag']); ?>>
                 <?php endif; ?>

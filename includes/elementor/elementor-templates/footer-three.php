@@ -1,6 +1,6 @@
 <?php if ('layout_one' == $settings['layout_type']) : ?>
     <!-- Footer Section Start -->
-    <footer class="footer-section-3 fix">
+    <div class="footer-section-3 fix">
         <?php if (!empty($settings['layout_one_bg_text'])) :   ?>
             <h2 class="text"><?php echo esc_html($settings['layout_one_bg_text']); ?></h2>
         <?php endif; ?>
@@ -228,5 +228,5 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
 <?php endif; ?>

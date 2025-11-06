@@ -31,8 +31,17 @@ class Roavio_Assets
 
 	public function register_scripts()
 	{
-		// wp_register_style('aos', RT_VENDOR . '/aos/aos.css', [], '1.1.0');
-		// wp_register_script('aos', RT_VENDOR . '/aos/aos.js', ['jquery'], '1.1.0', true);
+		wp_register_script('wow', RT_VENDOR . '/wow/wow.min.js', ['jquery'], '1.1.0', true);
+		wp_register_script('waypoints', RT_VENDOR . '/waypoint/jquery.waypoints.js', ['jquery'], '1.1.0', true);
+		wp_register_script('counterup', RT_VENDOR . '/counter/jquery.counterup.min.js', ['jquery'], '1.1.0', true);
+
+		// GSAP and ScrollTrigger scripts
+		wp_register_script('viewport', RT_VENDOR . '/viewport.jquery.js', ['jquery'], '1.0.0', true);
+		wp_register_script('gsap', RT_VENDOR . '/gsap.min.js', ['jquery'], '3.12.0', true);
+		wp_register_script('scroll-trigger', RT_VENDOR . '/ScrollTrigger.min.js', ['gsap'], '3.12.0', true);
+		wp_register_script('scroll-smoother', RT_VENDOR . '/ScrollSmoother.min.js', ['gsap', 'scroll-trigger'], '3.12.0', true);
+		wp_register_script('split-type', RT_VENDOR . '/split-type.min.js', ['jquery'], '1.0.0', true);
+		wp_register_script('SplitText', RT_VENDOR . '/SplitText.min.js', ['jquery'], '1.0.0', true);
 
 		wp_register_style('nice-select', RT_VENDOR . '/nice-select/nice-select.min.css', [], '1.1.0');
 		wp_register_script('nice-select', RT_VENDOR . '/nice-select/jquery.nice-select.min.js', ['jquery'], '1.1.0', true);
@@ -57,7 +66,6 @@ class Roavio_Assets
 	{
 
 		wp_enqueue_style('magnific-popup');
-		//wp_enqueue_style('aos');
 		wp_enqueue_style('swiper');
 		wp_enqueue_style('nice-select');
 		wp_enqueue_style('roavio-flat-icons');
@@ -73,10 +81,18 @@ class Roavio_Assets
 	{
 		// Properly enqueue jQuery UI with its CSS
 		wp_enqueue_script('jquery-ui-slider');
+		wp_enqueue_script('viewport');
+		wp_enqueue_script('gsap');
+		wp_enqueue_script('scroll-trigger');
+		wp_enqueue_script('scroll-smoother');
+		wp_enqueue_script('split-type');
+		wp_enqueue_script('SplitText');
 		wp_enqueue_script('magnific-popup');
 		wp_enqueue_script('appear');
 		wp_enqueue_script('nice-select');
-		wp_enqueue_script('aos');
+		wp_enqueue_script('wow');
+		wp_enqueue_script('waypoints');
+		wp_enqueue_script('counterup');
 		wp_enqueue_script('swiper');
 		wp_enqueue_script('isotope');
 		wp_enqueue_script('imagesloaded');

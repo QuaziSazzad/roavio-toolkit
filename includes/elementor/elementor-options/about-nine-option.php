@@ -63,7 +63,17 @@ $this->add_control(
 	[
 		'label' => esc_html__('Counter Number', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'default' => esc_html__('10+', 'roavio-toolkit'),
+		'default' => esc_html__('10', 'roavio-toolkit'),
+	]
+);
+
+// Counter Number
+$this->add_control(
+	'layout_nine_counter_symbol',
+	[
+		'label' => esc_html__('Counter Symbol', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'default' => esc_html__('+', 'roavio-toolkit'),
 	]
 );
 

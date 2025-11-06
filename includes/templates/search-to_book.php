@@ -349,7 +349,7 @@ if ($show_banner === 'yes') :
             $tour_search_subtitle_suffix = Helper::get_option('tour_search_subtitle_suffix', 'most popular experience you\'ll remember');
             ?>
             <?php if (!empty($tour_search_title)) : ?>
-                <h2 class="wow fadeInUp" data-wow-delay=".3s"><?php echo esc_html($tour_search_title); ?></h2>
+                <h2 class="text-anim"><?php echo esc_html($tour_search_title); ?></h2>
             <?php endif; ?>
             <p class="wow fadeInUp" data-wow-delay=".5s">
                 <?php if (!empty($tour_search_subtitle_prefix)) : ?>
@@ -584,7 +584,7 @@ if ($show_banner === 'yes') :
                             </div>
                             <div class="right-item">
                                 <h6><?php echo esc_html(Helper::get_option('tour_sort_label', 'Sort By')); ?></h6>
-                                <select class="sort short-select" name="sort" tabindex="null">
+                                <select class="sort short-select" name="sort">
                                     <option value="date" <?php echo (isset($_GET['sort']) && $_GET['sort'] === 'date') ? 'selected' : ''; ?>>
                                         <?php esc_html_e('Publish date', 'roavio-toolkit'); ?>
                                     </option>

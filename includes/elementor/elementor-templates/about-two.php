@@ -9,7 +9,7 @@
                             <div class="col-xl-6 col-lg-6">
                                 <?php if (!empty($settings['layout_two_title'])) : ?>
                                     <div class="section-title mb-0">
-                                        <<?php echo esc_attr($settings['layout_two_title_tag']); ?> class="wow fadeInUp sec-title" data-wow-delay=".3s">
+                                        <<?php echo esc_attr($settings['layout_two_title_tag']); ?> class="fadeInUp sec-title text-anim">
                                             <?php echo rt_kses_basic($settings['layout_two_title']); ?>
                                         </<?php echo esc_attr($settings['layout_two_title_tag']); ?>>
                                     </div>

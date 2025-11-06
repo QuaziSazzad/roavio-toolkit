@@ -10,7 +10,7 @@
     <div class="faq-wrapper">
         <div class="faq-left-content">
             <div class=" mb-0">
-                <?php printf('<%1$s class="sec-title">%2$s</%1$s>', esc_html($title_tag), esc_html($title)); ?>
+                <?php printf('<%1$s class="sec-title text-anim">%2$s</%1$s>', esc_html($title_tag), esc_html($title)); ?>
             </div>
             <p class="text description">
                 <?php echo esc_html($description); ?>

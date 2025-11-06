@@ -50,10 +50,6 @@ class Sponsors extends Widget_Base
 				'default' => 'layout_one',
 				'options' => [
 					'layout_one' => __('Layout One', 'roavio-toolkit'),
-					'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					'layout_three' => __('Layout Three', 'roavio-toolkit'),
-					'layout_four' => __('Layout Four', 'roavio-toolkit'),
-					'layout_five' => __('Layout Five', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -61,10 +57,6 @@ class Sponsors extends Widget_Base
 		$this->end_controls_section();
 
 		include rt_get_elementor_option('sponsors-one-option.php');
-		include rt_get_elementor_option('sponsors-two-option.php');
-		include rt_get_elementor_option('sponsors-three-option.php');
-		include rt_get_elementor_option('sponsors-four-option.php');
-		include rt_get_elementor_option('sponsors-five-option.php');
 
 		//Content style
 		$this->start_controls_section(
@@ -84,9 +76,5 @@ class Sponsors extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 		include rt_get_elementor_template('sponsors-one.php');
-		// include rt_get_elementor_template('sponsors-two.php');
-		// include rt_get_elementor_template('sponsors-three.php');
-		// include rt_get_elementor_template('sponsors-four.php');
-		// include rt_get_elementor_template('sponsors-five.php');
 	}
 }

@@ -8,7 +8,7 @@
                         <div class="about-content">
                             <?php if (!empty($settings['layout_four_title'])) : ?>
                                 <div class="section-title mb-0">
-                                    <<?php echo esc_attr($settings['layout_four_title_tag']); ?> class="wow fadeInUp sec-title" data-wow-delay=".3s">
+                                    <<?php echo esc_attr($settings['layout_four_title_tag']); ?> class="sec-title text-anim">
                                         <?php echo rt_kses_basic($settings['layout_four_title']); ?>
                                     </<?php echo esc_attr($settings['layout_four_title_tag']); ?>>
                                 </div>

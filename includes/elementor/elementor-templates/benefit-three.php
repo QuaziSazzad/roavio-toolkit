@@ -4,7 +4,7 @@
         <div class="container custom-container-4">
             <div class="section-title text-center">
                 <?php if ($settings['layout_three_title']) : ?>
-                    <<?php echo esc_attr($settings['layout_three_title_tag']); ?> class="wow fadeInUp sec-title" data-wow-delay=".3s"><?php echo rt_kses_basic($settings['layout_three_title']); ?></<?php echo esc_attr($settings['layout_three_title_tag']); ?>>
+                    <<?php echo esc_attr($settings['layout_three_title_tag']); ?> class="text-anim sec-title"><?php echo rt_kses_basic($settings['layout_three_title']); ?></<?php echo esc_attr($settings['layout_three_title_tag']); ?>>
                 <?php endif; ?>
                 <?php if ($settings['layout_three_sub_title']) : ?>
                     <<?php echo esc_attr($settings['layout_three_sub_title_tag']); ?> class="wow fadeInUp sec-sub-title" data-wow-delay=".5s">

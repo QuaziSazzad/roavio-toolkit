@@ -12,7 +12,7 @@ if ('layout_three' == $settings['layout_type']) : ?>
                         <div class="news-left-content">
                             <?php if (!empty($settings['layout_one_title'])) : ?>
                                 <div class="section-title mb-0">
-                                    <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="wow fadeInUp sec-title" data-wow-delay=".3s"><?php echo esc_html($settings['layout_one_title']); ?></<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
+                                    <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="text-anim sec-title"><?php echo esc_html($settings['layout_one_title']); ?></<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
                                 </div>
                             <?php endif; ?>
                             <?php if (!empty($settings['layout_one_sub_title'])) : ?>

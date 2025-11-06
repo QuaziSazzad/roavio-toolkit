@@ -56,9 +56,6 @@ class Header extends Widget_Base
 					'layout_one' => __('Layout One', 'roavio-toolkit'),
 					'layout_two' => __('Layout Two', 'roavio-toolkit'),
 					'layout_three' => __('Layout Three', 'roavio-toolkit'),
-					'layout_four' => __('Layout Four', 'roavio-toolkit'),
-					'layout_five' => __('Layout Five', 'roavio-toolkit'),
-					'layout_six' => __('Layout Six', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -81,7 +78,6 @@ class Header extends Widget_Base
 		roavio_elementor_style_options($this, 'Top Contact Icon', '{{WRAPPER}} .header-list li i', ['layout_one', 'layout_three']);
 
 
-		// roavio_elementor_style_options($this, 'Social Title', '{{WRAPPER}} .top-right ul .social-style-one span, {{WRAPPER}} .top-right span', ['layout_one', 'layout_two', 'layout_four']);
 		roavio_elementor_style_options($this, 'Social Icon', '{{WRAPPER}} .social-icon i', ['layout_three']);
 
 		roavio_elementor_style_options($this, 'Nav', '{{WRAPPER}} .main-menu ul li a', ['layout_one', 'layout_two', 'layout_three']);
@@ -179,9 +175,5 @@ class Header extends Widget_Base
 		include rt_get_elementor_template('header-one.php');
 		include rt_get_elementor_template('header-two.php');
 		include rt_get_elementor_template('header-three.php');
-		// include rt_get_elementor_template('header-four.php');
-		// include rt_get_elementor_template('header-five.php');
-		// include rt_get_elementor_template('header-six.php');
-		// include rt_get_elementor_template('header-sidebar.php');
 	}
 }

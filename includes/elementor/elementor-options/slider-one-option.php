@@ -15,16 +15,6 @@ $this->start_controls_section(
 // Slider Content Repeater
 $repeater = new \Elementor\Repeater();
 
-$repeater->add_control(
-	'layout_one_slide_background_image',
-	[
-		'label' => esc_html__('Background Image', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [
-			'url' => \Elementor\Utils::get_placeholder_image_src(),
-		],
-	]
-);
 
 $repeater->add_control(
 	'layout_one_slide_title',
@@ -137,6 +127,18 @@ $repeater->add_control(
 		'type' => \Elementor\Controls_Manager::TEXT,
 		'default' => esc_html__('Years of experience', 'roavio-toolkit'),
 		'placeholder' => esc_html__('Enter text', 'roavio-toolkit'),
+	]
+);
+
+
+$repeater->add_control(
+	'layout_one_slide_background_image',
+	[
+		'label' => esc_html__('Background Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [
+			'url' => \Elementor\Utils::get_placeholder_image_src(),
+		],
 	]
 );
 

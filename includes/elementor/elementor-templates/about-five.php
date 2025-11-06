@@ -8,7 +8,7 @@
                         <div class="commitment-content">
                             <?php if (!empty($settings['layout_five_title'])) : ?>
                                 <div class="section-title mb-0">
-                                    <<?php echo esc_attr($settings['layout_five_title_tag']); ?> class="text-white sec-title">
+                                    <<?php echo esc_attr($settings['layout_five_title_tag']); ?> class="text-white sec-title text-anim">
                                         <?php echo rt_kses_basic($settings['layout_five_title']); ?>
                                     </<?php echo esc_attr($settings['layout_five_title_tag']); ?>>
                                 </div>

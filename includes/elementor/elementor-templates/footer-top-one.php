@@ -20,12 +20,9 @@
                             <?php endif; ?>
                             <div class="section-title mb-0">
                                 <?php if (!empty($settings['layout_one_title'])) : ?>
-                                    <?php
-                                    $title_tag = !empty($settings['layout_one_title_tag']) ? $settings['layout_one_title_tag'] : 'h2';
-                                    ?>
-                                    <<?php echo esc_attr($title_tag); ?> class="sec-title text-white">
+                                    <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="sec-title text-white text-anim">
                                         <?php echo esc_html($settings['layout_one_title']); ?>
-                                    </<?php echo esc_attr($title_tag); ?>>
+                                    </<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
                                 <?php endif; ?>
                             </div>
                             <?php if (!empty($settings['layout_one_description'])) : ?>

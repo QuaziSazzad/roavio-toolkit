@@ -65,8 +65,6 @@ class Faq extends Widget_Base
 		include rt_get_elementor_option('faq-two-option.php');
 		include rt_get_elementor_option('faq-three-option.php');
 		include rt_get_elementor_option('faq-four-option.php');
-		// include rt_get_elementor_option('faq-five-option.php');
-		// include rt_get_elementor_option('faq-six-option.php');
 
 		//Content style
 		$this->start_controls_section(
@@ -95,7 +93,5 @@ class Faq extends Widget_Base
 		include rt_get_elementor_template('faq-two.php');
 		include rt_get_elementor_template('faq-three.php');
 		include rt_get_elementor_template('faq-four.php');
-		// include rt_get_elementor_template('faq-five.php');
-		// include rt_get_elementor_template('faq-six.php');
 	}
 }

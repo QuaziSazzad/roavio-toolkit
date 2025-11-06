@@ -53,8 +53,7 @@ class Copyright extends Widget_Base
 				'default' => 'layout_one',
 				'options' => [
 					'layout_one' => __('Layout One', 'roavio-toolkit'),
-					// 'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					// 'layout_three' => __('Layout Three', 'roavio-toolkit'),
+
 				]
 			]
 		);
@@ -62,8 +61,6 @@ class Copyright extends Widget_Base
 		$this->end_controls_section();
 
 		include rt_get_elementor_option('copyright-one-option.php');
-		// include rt_get_elementor_option('copyright-two-option.php');
-		// include rt_get_elementor_option('copyright-three-option.php');
 
 		//Content style
 		$this->start_controls_section(
@@ -85,7 +82,5 @@ class Copyright extends Widget_Base
 		$settings = $this->get_settings_for_display();
 
 		include rt_get_elementor_template('copyright-one.php');
-		// include rt_get_elementor_template('copyright-two.php');
-		// include rt_get_elementor_template('copyright-three.php');
 	}
 }
