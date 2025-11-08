@@ -108,18 +108,12 @@ class Roavio_Demo_Config
 				]
 			);
 
-			if ('IT Solutions' === $selected_import['import_file_name']) {
-				$front_page_name  = 'IT Solutions';
-			} elseif ('Software Company' === $selected_import['import_file_name']) {
-				$front_page_name  = 'Software Company';
-			} elseif ('Cyber Security' === $selected_import['import_file_name']) {
-				$front_page_name  = 'Cyber Security';
-			} elseif ('AI Software' === $selected_import['import_file_name']) {
-				$front_page_name  = 'AI Software';
-			} elseif ('Web Development' === $selected_import['import_file_name']) {
-				$front_page_name  = 'Web Development';
-			} elseif ('IT Services' === $selected_import['import_file_name']) {
-				$front_page_name  = 'IT Services';
+			if ('Home One' === $selected_import['import_file_name']) {
+				$front_page_name  = 'Home One';
+			} elseif ('Home Two' === $selected_import['import_file_name']) {
+				$front_page_name  = 'Home Two';
+			} elseif ('Home Three' === $selected_import['import_file_name']) {
+				$front_page_name  = 'Home Three';
 			}
 
 			$front_page_array = get_posts([
@@ -134,7 +128,7 @@ class Roavio_Demo_Config
 			update_option('page_on_front', $front_page_id);
 
 			$blog_page = get_posts([
-				'title'     => 'Blog',
+				'title'     => 'Blog Sidebar',
 				'post_type' => 'page',
 			]);
 
@@ -243,12 +237,9 @@ class Roavio_Demo_Config
 	public function demo_files()
 	{
 		return [
-			["id" => 1, "name" => 'IT Solutions', "file" => "it-solutions", "preview" => "https://wp.webtend.net/roavio/"],
-			["id" => 2, "name" => 'Software Company', "file" => "software-company", "preview" => "https://wp.webtend.net/roavio/software-company/"],
-			["id" => 3, "name" => 'Cyber Security', "file" => "cyber-security", "preview" => "https://wp.webtend.net/roavio/cyber-security/"],
-			["id" => 4, "name" => 'AI Software', "file" => "ai-software", "preview" => "https://wp.webtend.net/roavio/ai-software/"],
-			["id" => 5, "name" => 'Web Development', "file" => "web-development", "preview" => "https://wp.webtend.net/roavio/web-development/"],
-			["id" => 6, "name" => 'IT Services', "file" => "it-services", "preview" => "https://wp.webtend.net/roavio/it-services/"],
+			["id" => 1, "name" => 'Home One', "file" => "home-one", "preview" => "https://wp.webtend.net/roavio/"],
+			["id" => 2, "name" => 'Home Two', "file" => "home-two", "preview" => "https://wp.webtend.net/roavio/home-two/"],
+			["id" => 3, "name" => 'Home Three', "file" => "home-three", "preview" => "https://wp.webtend.net/roavio/home-three/"],
 		];
 	}
 }
