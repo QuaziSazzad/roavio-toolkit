@@ -45,7 +45,7 @@ class About extends Widget_Base
 		$this->start_controls_section(
 			'layout_section',
 			[
-				'label' => __('Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Layout', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -53,20 +53,21 @@ class About extends Widget_Base
 		$this->add_control(
 			'layout_type',
 			[
-				'label' => __('Select Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Select Layout', 'roavio-toolkit'),
 				'type' => \Elementor\Controls_Manager::SELECT2,
 				'default' => 'layout_one',
 				'options' => [
-					'layout_one' => __('Layout One', 'roavio-toolkit'),
-					'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					'layout_three' => __('Layout Three', 'roavio-toolkit'),
-					'layout_four' => __('Layout Four', 'roavio-toolkit'),
-					'layout_five' => __('Layout Five', 'roavio-toolkit'),
-					'layout_six' => __('Layout Six', 'roavio-toolkit'),
-					'layout_seven' => __('Layout Seven', 'roavio-toolkit'),
-					'layout_eight' => __('Layout Eight', 'roavio-toolkit'),
-					'layout_nine' => __('Layout Nine', 'roavio-toolkit'),
-					'layout_ten' => __('Layout Ten', 'roavio-toolkit'),
+					'layout_one' => esc_html__('Layout One', 'roavio-toolkit'),
+					'layout_two' => esc_html__('Layout Two', 'roavio-toolkit'),
+					'layout_three' => esc_html__('Layout Three', 'roavio-toolkit'),
+					'layout_four' => esc_html__('Layout Four', 'roavio-toolkit'),
+					'layout_five' => esc_html__('Layout Five', 'roavio-toolkit'),
+					'layout_six' => esc_html__('Layout Six', 'roavio-toolkit'),
+					'layout_seven' => esc_html__('Layout Seven', 'roavio-toolkit'),
+					'layout_eight' => esc_html__('Layout Eight', 'roavio-toolkit'),
+					'layout_nine' => esc_html__('Layout Nine', 'roavio-toolkit'),
+					'layout_ten' => esc_html__('Layout Ten', 'roavio-toolkit'),
+					'layout_eleven' => esc_html__('Layout Eleven', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -83,6 +84,7 @@ class About extends Widget_Base
 		include rt_get_elementor_option('about-eight-option.php');
 		include rt_get_elementor_option('about-nine-option.php');
 		include rt_get_elementor_option('about-ten-option.php');
+		include rt_get_elementor_option('about-eleven-option.php');
 
 		//Content style
 		$this->start_controls_section(
@@ -218,5 +220,6 @@ class About extends Widget_Base
 		include rt_get_elementor_template('about-eight.php');
 		include rt_get_elementor_template('about-nine.php');
 		include rt_get_elementor_template('about-ten.php');
+		include rt_get_elementor_template('about-eleven.php');
 	}
 }

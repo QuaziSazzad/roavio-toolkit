@@ -418,6 +418,62 @@
                 },
             });
         }
+
+        // Swiper init
+        if ($scope.find('.team-slider-4').length > 0) {
+            new Swiper(".team-slider-4", {
+                spaceBetween: 30,
+                speed: 1300,
+                loop: true,
+                autoplay: { delay: 2000, disableOnInteraction: false },
+                navigation: {
+                    nextEl: ".array-prev",
+                    prevEl: ".array-next",
+                },
+                pagination: {
+                    el: ".dot3",
+                    clickable: true,
+                },
+                breakpoints: {
+                    1199: { slidesPerView: 4 },
+                    991: { slidesPerView: 3 },
+                    767: { slidesPerView: 2 },
+                    575: { slidesPerView: 1 },
+                    0: { slidesPerView: 1 },
+                },
+            });
+        }
+
+    // Hover effect
+    const teamCards = document.querySelectorAll('.team-card-items-4');
+    teamCards.forEach(card => {
+        const image = card.querySelector('.team-image img');
+        card.addEventListener('mouseenter', () => {
+            image.style.height = '350px';
+            image.style.transform = 'translateY(-50px)';
+        });
+        card.addEventListener('mouseleave', () => {
+            image.style.height = '300px';
+            image.style.transform = 'translateY(0)';
+        });
+    });
+        //>> Hero-1 Slider Start <<//
+         const sliderActive2 = ".hero-slider";
+         const sliderInit2 = new Swiper(sliderActive2, {
+             loop: true,
+             slidesPerView: 1,
+             effect: "fade",
+             speed: 3000,
+             autoplay: {
+                 delay: 3000,
+                 disableOnInteraction: false,
+             },
+             
+             pagination: {
+                el: ".dot",
+                clickable: true,
+            },
+         });
   
         //>> Counterup Start <<//
         if ($scope.find('.count').length) {

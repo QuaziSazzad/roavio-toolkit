@@ -37,7 +37,7 @@ class Destination extends Widget_Base
 		$this->start_controls_section(
 			'layout_section',
 			[
-				'label' => __('Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Layout', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -45,16 +45,17 @@ class Destination extends Widget_Base
 		$this->add_control(
 			'layout_type',
 			[
-				'label' => __('Select Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Select Layout', 'roavio-toolkit'),
 				'type' => \Elementor\Controls_Manager::SELECT2,
 				'default' => 'layout_one',
 				'options' => [
-					'layout_one' => __('Layout One', 'roavio-toolkit'),
-					'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					'layout_three' => __('Layout three', 'roavio-toolkit'),
-					'layout_four' => __('Layout four', 'roavio-toolkit'),
-					'layout_five' => __('Layout Five', 'roavio-toolkit'),
-					'layout_six' => __('Layout Six', 'roavio-toolkit'),
+					'layout_one' => esc_html__('Layout One', 'roavio-toolkit'),
+					'layout_two' => esc_html__('Layout Two', 'roavio-toolkit'),
+					'layout_three' => esc_html__('Layout three', 'roavio-toolkit'),
+					'layout_four' => esc_html__('Layout four', 'roavio-toolkit'),
+					'layout_five' => esc_html__('Layout Five', 'roavio-toolkit'),
+					'layout_six' => esc_html__('Layout Six', 'roavio-toolkit'),
+					'layout_seven' => esc_html__('Layout Seven', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -91,5 +92,6 @@ class Destination extends Widget_Base
 		include rt_get_elementor_template('destination-four.php');
 		include rt_get_elementor_template('destination-five.php');
 		include rt_get_elementor_template('destination-six.php');
+		include rt_get_elementor_template('destination-seven.php');
 	}
 }

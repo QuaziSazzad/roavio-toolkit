@@ -223,16 +223,16 @@ $locations_two->add_control(
 $locations_two->add_control(
 	'column',
 	[
-		'label' => __('Select Column Class', 'roavio-toolkit'),
+		'label' => esc_html__('Select Column Class', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::SELECT2,
 		'default' => 'col-xl-3',
 		'options' => [
-			'col-xl-6' => __('col-xl-6', 'roavio-toolkit'),
-			'col-xl-5' => __('col-xl-5', 'roavio-toolkit'),
-			'col-xl-4' => __('col-xl-4', 'roavio-toolkit'),
-			'col-xl-3' => __('col-xl-3', 'roavio-toolkit'),
-			'col-xl-2' => __('col-xl-2', 'roavio-toolkit'),
-			'col-xl-1' => __('col-xl-1', 'roavio-toolkit'),
+			'col-xl-6' => esc_html__('col-xl-6', 'roavio-toolkit'),
+			'col-xl-5' => esc_html__('col-xl-5', 'roavio-toolkit'),
+			'col-xl-4' => esc_html__('col-xl-4', 'roavio-toolkit'),
+			'col-xl-3' => esc_html__('col-xl-3', 'roavio-toolkit'),
+			'col-xl-2' => esc_html__('col-xl-2', 'roavio-toolkit'),
+			'col-xl-1' => esc_html__('col-xl-1', 'roavio-toolkit'),
 		]
 	]
 );
@@ -246,7 +246,7 @@ $this->add_control(
 		'fields' => $locations_two->get_controls(),
 		'title_field' => '{{{ location }}}',
 		'condition' => [
-			'layout_type' => ['layout_two', 'layout_three'],
+			'layout_type' => ['layout_two', 'layout_three', 'layout_seven'],
 		]
 	]
 );
@@ -257,6 +257,9 @@ $this->add_control(
 		'label' => esc_html__('Shape One', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
 		'default' => [],
+		'condition' => [
+			'layout_type' => ['layout_six'],
+		]
 	]
 );
 
@@ -266,6 +269,9 @@ $this->add_control(
 		'label' => esc_html__('Shape Two', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
 		'default' => [],
+		'condition' => [
+			'layout_type' => ['layout_six'],
+		]
 	]
 );
 
@@ -275,6 +281,9 @@ $this->add_control(
 		'label' => esc_html__('Shape Three', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
 		'default' => [],
+		'condition' => [
+			'layout_type' => ['layout_six'],
+		]
 	]
 );
 

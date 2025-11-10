@@ -51,6 +51,7 @@ class FunFact extends Widget_Base
 				'options' => [
 					'layout_one' => esc_html__('Layout One', 'roavio-toolkit'),
 					'layout_two' => esc_html__('Layout Two', 'roavio-toolkit'),
+					'layout_three' => esc_html__('Layout Three', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -60,6 +61,7 @@ class FunFact extends Widget_Base
 
 		include rt_get_elementor_option('funfact-one-option.php');
 		include rt_get_elementor_option('funfact-two-option.php');
+		include rt_get_elementor_option('funfact-three-option.php');
 
 		//General style
 		$this->start_controls_section(
@@ -85,5 +87,6 @@ class FunFact extends Widget_Base
 		$settings = $this->get_settings_for_display();
 		include rt_get_elementor_template('funfact-one.php');
 		include rt_get_elementor_template('funfact-two.php');
+		include rt_get_elementor_template('funfact-three.php');
 	}
 }

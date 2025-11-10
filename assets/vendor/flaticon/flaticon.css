@@ -11,15 +11,14 @@
 
 @font-face {
     font-family: "flaticon";
-    src: url("../flacticon/flaticon.woff2?cef08f2128e7b835527b1524b7bbbcfb") format("woff2"),
-url("../flacticon/flaticon.woff?cef08f2128e7b835527b1524b7bbbcfb") format("woff"),
-url("../flacticon/flaticon.eot?cef08f2128e7b835527b1524b7bbbcfb#iefix") format("embedded-opentype"),
-url("../flacticon/flaticon.ttf?cef08f2128e7b835527b1524b7bbbcfb") format("truetype"),
-url("../flacticon/flaticon.svg?cef08f2128e7b835527b1524b7bbbcfb#flaticon_roavio") format("svg")
+    src: url("../flacticon/flaticon.woff2?aa544ecf36a50e010c42c095dbaaca90") format("woff2"),
+url("../flacticon/flaticon.woff?aa544ecf36a50e010c42c095dbaaca90") format("woff"),
+url("../flacticon/flaticon.eot?aa544ecf36a50e010c42c095dbaaca90#iefix") format("embedded-opentype"),
+url("../flacticon/flaticon.ttf?aa544ecf36a50e010c42c095dbaaca90") format("truetype"),
+url("../flacticon/flaticon.svg?aa544ecf36a50e010c42c095dbaaca90#flaticon_roavio") format("svg")
 }
 
-
-i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before , span[class^="flaticon-"]:before, span[class*=" flaticon-"]:before {
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
     font-family: flaticon !important;
     font-style: normal;
     font-weight: normal !important;
@@ -98,5 +97,50 @@ i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before , span[class^="flati
 }
 .flaticon-holiday-trip:before {
     content: "\f117";
+}
+.flaticon-tourist-1:before {
+    content: "\f118";
+}
+.flaticon-travel-insurance:before {
+    content: "\f119";
+}
+.flaticon-journey:before {
+    content: "\f11a";
+}
+.flaticon-flight-plan:before {
+    content: "\f11b";
+}
+.flaticon-tourist-2:before {
+    content: "\f11c";
+}
+.flaticon-family:before {
+    content: "\f11d";
+}
+.flaticon-wedding:before {
+    content: "\f11e";
+}
+.flaticon-win:before {
+    content: "\f11f";
+}
+.flaticon-hiking:before {
+    content: "\f120";
+}
+.flaticon-safari:before {
+    content: "\f121";
+}
+.flaticon-airplane:before {
+    content: "\f122";
+}
+.flaticon-cutlery:before {
+    content: "\f123";
+}
+.flaticon-swimming-pool:before {
+    content: "\f124";
+}
+.flaticon-stationary-bike:before {
+    content: "\f125";
+}
+.flaticon-washing-machine:before {
+    content: "\f126";
 }
 
