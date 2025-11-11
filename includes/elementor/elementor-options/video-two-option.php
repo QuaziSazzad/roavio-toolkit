@@ -12,124 +12,33 @@ $this->start_controls_section(
 	]
 );
 
-
+// Video URL
 $this->add_control(
-	'layout_two_title',
+	'layout_two_video_url',
 	[
-		'label' => esc_html__('Title', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'placeholder' => esc_html__('Add title', 'roavio-toolkit'),
-		'default' => esc_html__('Default Title', 'roavio-toolkit'),
-	]
-);
-
-$this->add_control(
-	'layout_two_title_tag',
-	[
-		'label'       => esc_html__('Title Tag', 'roavio-toolkit'),
-		'type'        => \Elementor\Controls_Manager::CHOOSE,
-		'label_block' => false,
-		'options'     => [
-			'h1' => [
-				'title' => esc_html__('H1', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h1',
-			],
-			'h2' => [
-				'title' => esc_html__('H2', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h2',
-			],
-			'h3' => [
-				'title' => esc_html__('H3', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h3',
-			],
-			'h4' => [
-				'title' => esc_html__('H4', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h4',
-			],
-			'h5' => [
-				'title' => esc_html__('H5', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h5',
-			],
-			'h6' => [
-				'title' => esc_html__('H6', 'roavio-toolkit'),
-				'icon'  => 'eicon-editor-h6',
-			],
-		],
-		'default'     => 'h2',
-		'toggle'      => false,
-	]
-);
-
-$this->add_control(
-	'layout_two_sub_title',
-	[
-		'label' => esc_html__('Sub Title', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'placeholder' => esc_html__('Add Sub title', 'roavio-toolkit'),
-		'default' => esc_html__('Default Sub Title', 'roavio-toolkit'),
-	]
-);
-
-
-$this->add_control(
-	'layout_two_button_url',
-	[
-		'label' => esc_html__('Button Url', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::URL,
-		'placeholder' => esc_html__('#', 'roavio-toolkit'),
-		'show_external' => false,
-		'default' => [
-			'url' => '#',
-			'is_external' => false,
-			'nofollow' => false,
-		],
-		'show_label' => false,
-	]
-);
-
-
-$layout_two_video_list = new \Elementor\Repeater();
-
-$layout_two_video_list->add_control(
-	'title',
-	[
-		'label' => esc_html__('Title', 'roavio-toolkit'),
+		'label' => esc_html__('Video URL', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
-		'rows' => '2',
-		'placeholder' => esc_html__('Add Title', 'roavio-toolkit'),
-		'default' => esc_html__('Default Title', 'roavio-toolkit'),
-		'label_block' => true
+		'label_block' => true,
+		'default' => esc_html__('https://www.youtube.com/watch?v=Cn4G2lZ_g2I', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Enter video URL', 'roavio-toolkit'),
 	]
 );
 
-$layout_two_video_list->add_control(
-	'description',
+// Shape Image
+$this->add_control(
+	'layout_two_shape_image',
 	[
-		'label' => esc_html__('Description', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'rows' => '2',
-		'placeholder' => esc_html__('Add Description', 'roavio-toolkit'),
-		'default' => esc_html__('Default Description', 'roavio-toolkit'),
-		'label_block' => true
+		'label' => esc_html__('Shape Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [],
 	]
 );
 
-$layout_two_video_list->add_control(
-	'video_url',
+// Video Background Image
+$this->add_control(
+	'layout_two_video_bg_image',
 	[
-		'label' => esc_html__('Video Url', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::TEXT,
-		'rows' => '2',
-		'placeholder' => esc_html__('Add Video Url', 'roavio-toolkit'),
-		'default' => esc_html__('#', 'roavio-toolkit'),
-		'label_block' => true
-	]
-);
-
-$layout_two_video_list->add_control(
-	'image',
-	[
-		'label' => esc_html__('Image', 'roavio-toolkit'),
+		'label' => esc_html__('Video Background Image', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
 		'default' => [
 			'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -137,41 +46,38 @@ $layout_two_video_list->add_control(
 	]
 );
 
+
+
+// Brand Section Title
 $this->add_control(
-	'layout_two_video_list',
+	'layout_two_brand_title',
 	[
-		'label' => esc_html__('Video List', 'roavio-toolkit'),
+		'label' => esc_html__('Brand Section Title', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXT,
+		'label_block' => true,
+		'default' => esc_html__('Relied upon by top-performing teams worldwide', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Enter brand section title', 'roavio-toolkit'),
+	]
+);
+
+// Brand Logos
+$this->add_control(
+	'layout_two_brand_logos',
+	[
+		'label' => esc_html__('Brand Logos', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::REPEATER,
-		'fields' => $layout_two_video_list->get_controls(),
-		'prevent_empty' => false,
-		'title_field' => '{{{ title }}}',
+		'fields' => [
+			[
+				'name' => 'brand_logo',
+				'label' => esc_html__('Brand Logo', 'roavio-toolkit'),
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'default' => [],
+			],
+		],
+		'default' => [],
+		'title_field' => esc_html__('Brand Logo', 'roavio-toolkit'),
 	]
 );
 
-$this->end_controls_section();
-
-$this->start_controls_section(
-	'layout_two_section_class',
-	[
-		'label' => esc_html__('Classes', 'roavio-toolkit'),
-		'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-		'condition' => [
-			'layout_type' => 'layout_two'
-		]
-	]
-);
-
-$this->add_control(
-	'layout_two_button_style',
-	[
-		'label' => __('Button Style', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::SELECT2,
-		'default' => 'theme-btn style-two mb-25',
-		'options' => [
-			'theme-btn style-two mb-25' => __('For Light', 'roavio-toolkit'),
-			'theme-btn color-white mb-25' => __('For Dark', 'roavio-toolkit'),
-		]
-	]
-);
 
 $this->end_controls_section();

@@ -3,256 +3,161 @@
 use RoavioTheme\Classes\Roavio_Post_Helper;
 
 if ('layout_five' == $settings['layout_type']) : ?>
-    <!-- News Section Start -->
-    <section class="news-section section-padding pt-0">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-8 col-12">
-                    <div class="news-card-items mt-0">
-                        <div class="news-image">
-                            <img src="assets/img/home-1/news/news-17.jpg" alt="img">
-                            <span>18 August</span>
-                        </div>
-                        <div class="news-content">
-                            <span>Tours & travel</span>
-                            <h3>
-                                <a href="news-details.html">
-                                    BBest Family-Friendly Travel Spots Around the World Eco-Friendly Travel
-                                    How to Make Your Trips Sustainable
-                                </a>
-                            </h3>
-                            <a href="news-details.html" class="link-btn">Read More <i class="fa-solid fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="news-card-items">
-                                <div class="news-image">
-                                    <img src="assets/img/home-1/news/news-8.jpg" alt="img">
-                                    <span>18 August</span>
-                                </div>
-                                <div class="news-content">
-                                    <span>Tours & travel</span>
-                                    <h3>
-                                        <a href="news-details.html">
-                                            Highlight trending destinations and why they’re worth exploring.
-                                        </a>
-                                    </h3>
-                                    <a href="news-details.html" class="link-btn">Read More <i class="fa-solid fa-chevron-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="news-card-items">
-                                <div class="news-image">
-                                    <img src="assets/img/home-1/news/news-9.jpg" alt="img">
-                                    <span>20 August</span>
-                                </div>
-                                <div class="news-content">
-                                    <span>Tours & travel</span>
-                                    <h3>
-                                        <a href="news-details.html">
-                                            Tips on itinerary planning, booking, and travel hacks.
-                                        </a>
-                                    </h3>
-                                    <a href="news-details.html" class="link-btn">Read More <i class="fa-solid fa-chevron-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="news-card-items">
-                                <div class="news-image">
-                                    <img src="assets/img/home-1/news/news-10.jpg" alt="img">
-                                    <span>23 August</span>
-                                </div>
-                                <div class="news-content">
-                                    <span>Tours & travel</span>
-                                    <h3>
-                                        <a href="news-details.html">
-                                            Focus on destinations suitable for families with kids.
-                                        </a>
-                                    </h3>
-                                    <a href="news-details.html" class="link-btn">Read More <i class="fa-solid fa-chevron-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="news-card-items">
-                                <div class="news-image">
-                                    <img src="assets/img/home-1/news/news-11.jpg" alt="img">
-                                    <span>24 August</span>
-                                </div>
-                                <div class="news-content">
-                                    <span>Tours & travel</span>
-                                    <h3>
-                                        <a href="news-details.html">
-                                            Guide to enjoying luxury stays and experiences without overspending.
-                                        </a>
-                                    </h3>
-                                    <a href="news-details.html" class="link-btn">Read More <i class="fa-solid fa-chevron-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="news-card-items">
-                                <div class="news-image">
-                                    <img src="assets/img/home-1/news/news-18.jpg" alt="img">
-                                    <span>18 August</span>
-                                </div>
-                                <div class="news-content">
-                                    <span>Tours & travel</span>
-                                    <h3>
-                                        <a href="news-details.html">
-                                            Best Family-Friendly Travel Spots Around the World Eco-Friendly Travel
-                                            How to Make Your Trips Sustainable
-                                        </a>
-                                    </h3>
-                                    <a href="news-details.html" class="link-btn">Read More <i class="fa-solid fa-chevron-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="news-card-items">
-                                <div class="news-image">
-                                    <img src="assets/img/home-1/news/news-14.jpg" alt="img">
-                                    <span>23 August</span>
-                                </div>
-                                <div class="news-content">
-                                    <span>Tours & travel</span>
-                                    <h3>
-                                        <a href="news-details.html">
-                                            Focus on destinations suitable for families with kids.
-                                        </a>
-                                    </h3>
-                                    <a href="news-details.html" class="link-btn">Read More <i class="fa-solid fa-chevron-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="news-card-items">
-                                <div class="news-image">
-                                    <img src="assets/img/home-1/news/news-15.jpg" alt="img">
-                                    <span>24 August</span>
-                                </div>
-                                <div class="news-content">
-                                    <span>Tours & travel</span>
-                                    <h3>
-                                        <a href="news-details.html">
-                                            Guide to enjoying luxury stays and experiences without overspending.
-                                        </a>
-                                    </h3>
-                                    <a href="news-details.html" class="link-btn">Read More <i class="fa-solid fa-chevron-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-12">
-                    <div class="main-sideber sticky-style">
-                        <div class="single-sideber-widget">
-                            <div class="search-widget">
-                                <form action="#">
-                                    <input type="text" placeholder="Search">
-                                    <button type="submit"><i class="fa-regular fa-magnifying-glass"></i></button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="single-sideber-widget">
-                            <div class="widget-title">
-                                <h4>Categories</h4>
-                            </div>
-                            <ul>
-                                <li><a href="news-details.html">Beach & Water Activities</a><span>(3)</span></li>
-                                <li><a href="news-details.html">Wildlife & Safari Tours</a><span>(5)</span></li>
-                                <li><a href="news-details.html">Trekking & Hiking</a><span>(8)</span></li>
-                                <li><a href="news-details.html">Cruise & Boat Tours</a><span>(2)</span></li>
-                                <li><a href="news-details.html">Shopping & Market Tours</a><span>(4)</span></li>
-                                <li><a href="news-details.html">Nightlife & Entertainment</a><span>(6)</span></li>
-                            </ul>
-                        </div>
-                        <div class="single-sideber-widget">
-                            <div class="widget-title">
-                                <h4>Recent Post</h4>
-                            </div>
-                            <div class="recent-post-area">
-                                <div class="recent-items">
-                                    <div class="recent-thumb">
-                                        <img src="assets/img/home-1/news/pp-1.jpg" alt="img">
-                                    </div>
-                                    <div class="recent-content">
-                                        <span>20 August 2025</span>
-                                        <h5>
-                                            <a href="news-details.html">
-                                                Best Family-Friendly Travel Spots Around the World
-                                            </a>
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div class="recent-items">
-                                    <div class="recent-thumb">
-                                        <img src="assets/img/home-1/news/p-2.jpg" alt="img">
-                                    </div>
-                                    <div class="recent-content">
-                                        <span>23 August 2025</span>
-                                        <h5>
-                                            <a href="news-details.html">
-                                                Luxury Travel on a Budget Secrets Revealed
-                                            </a>
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div class="recent-items">
-                                    <div class="recent-thumb">
-                                        <img src="assets/img/home-1/news/pp-3.jpg" alt="img">
-                                    </div>
-                                    <div class="recent-content">
-                                        <span>24 August 2025</span>
-                                        <h5>
-                                            <a href="news-details.html">
-                                                Ultimate Beach Destinations for Your Next Holiday
-                                            </a>
-                                        </h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-sideber-widget">
-                            <div class="widget-title">
-                                <h4>Recent Post</h4>
-                            </div>
-                            <div class="tagcloud">
-                                <a href="news-details.html">Travel</a>
-                                <a href="news-details.html">Guide</a>
-                                <a href="news-details.html">Hiking</a>
-                                <a href="news-details.html">Boat</a>
-                                <a href="news-details.html">Wildlife</a>
-                                <a href="news-details.html">Beach</a>
-                                <a href="news-details.html">Activities</a>
-                                <a href="news-details.html">City</a>
-                                <a href="news-details.html">Road</a>
-                            </div>
-                        </div>
-                        <div class="tour-bg-image">
-                            <img src="assets/img/home-1/news/news-19.jpg" alt="img">
-                            <div class="tour-bg-content">
-                                <span>xplore The World</span>
-                                <h3>
-                                    <a href="tour-details.html">Best Tourist Place</a>
-                                </h3>
-                                <a href="tour-details.html" class="theme-btn">Explore Tours</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- News Section-4 Start -->
+    <section class="news-section-4 section-padding fix pt-0">
+        <div class="container custom-container-2">
+            <div class="section-title text-center">
+                <?php if (!empty($settings['layout_one_title'])) : ?>
+                    <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="text-anim"><?php echo rt_kses_basic($settings['layout_one_title']); ?></<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
+                <?php endif; ?>
+                <?php if (!empty($settings['layout_one_summary_text'])) : ?>
+                    <p class="wow fadeInUp" data-wow-delay=".5s"><?php echo wp_kses_post($settings['layout_one_summary_text']); ?></p>
+                <?php endif; ?>
             </div>
-            <div class="page-nav-wrap">
-                <ul>
-                    <li><a class="page-numbers active" href="#"><i class="fa-solid fa-chevron-left"></i></a></li>
-                    <li><a class="page-numbers" href="#">1</a></li>
-                    <li><a class="page-numbers" href="#">2</a></li>
-                    <li><a class="page-numbers" href="#">3</a></li>
-                    <li><a class="page-numbers style-2" href="#"><i class="fa-solid fa-chevron-right"></i></a></li>
-                </ul>
+            <div class="row">
+                <?php if ('cpt' == $settings['post_type']) :
+
+                    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+                    $args = [
+                        'post_type'           => 'post',
+                        'post_status'         => 'publish',
+                        'posts_per_page'      => $settings['post_limit'],
+                        'orderby'             => $settings['order_by'],
+                        'order'               => $settings['sort_order'],
+                        'ignore_sticky_posts' => 1,
+                        'paged'               => $paged
+                    ];
+
+                    if ('categories' == $settings['post_from'] && $settings['cat_slugs']) {
+                        $args['tax_query'] = [
+                            [
+                                'taxonomy' => 'category',
+                                'field'    => 'slug',
+                                'terms'    => $settings['cat_slugs'],
+                            ],
+                        ];
+                    }
+
+                    if ('specific-post' == $settings['post_from'] && $settings['post_ids']) {
+                        $args['post__in'] = $settings['post_ids'];
+                    }
+
+                    $wp_query = new WP_Query($args);
+
+                    while ($wp_query->have_posts()): $wp_query->the_post();
+                        $idd = get_the_ID();
+
+                        if ($settings['title_word']) {
+                            $the_title = wp_trim_words(get_the_title(), $settings['title_word'], '..');
+                        } else {
+                            $the_title = get_the_title();
+                        }
+
+                        $excerpt_count = $settings['excerpt_count'];
+
+                ?>
+                        <div class="col-xl-3 col-lg-6 col-md-6">
+                            <div class="news-card-items-2">
+                                <?php if (has_post_thumbnail() && 'yes' === $settings['show_thumbnail']): ?>
+                                    <div class="news-image">
+                                        <?php echo get_the_post_thumbnail($idd, $settings['post_thumbnail_size']); ?>
+                                        <div class="box">
+                                            <h3><?php the_time('d'); ?></h3>
+                                            <h6><?php the_time('F'); ?></h6>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                                <div class="news-content">
+                                    <?php
+                                    if (has_category()) :
+                                        $categories = get_the_category();
+                                    ?>
+                                        <span><?php echo esc_html($categories[0]->name); ?></span>
+                                    <?php endif; ?>
+                                    <<?php echo rt_escape_tags($settings['title_tag'], 'h3'); ?>>
+                                        <a href="<?php the_permalink(); ?>">
+                                            <?php echo esc_html($the_title); ?>
+                                        </a>
+                                    </<?php echo rt_escape_tags($settings['title_tag'], 'h3'); ?>>
+                                    <?php if ('yes' === $settings['show_read_more'] && ! empty($settings['read_more_text'])) : ?>
+                                        <a href="<?php the_permalink(); ?>" class="link-btn"><?php echo esc_html($settings['read_more_text']); ?> <i class="fa-solid fa-chevron-right"></i></a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                    endwhile;
+                    wp_reset_postdata();
+
+                    if ('yes' === $settings['show_pagination']) {
+                        Roavio_Post_Helper::pagination($wp_query);
+                    }
+                    ?>
+                <?php endif; ?>
+                <?php if ('elementor-field' == $settings['post_type']) : ?>
+                    <?php
+                    if (is_array($settings['layout_one_post_list'])) :
+                        foreach ($settings['layout_one_post_list'] as $post) :
+
+                            $custom_post_post_query_args = array(
+                                'post_type' => 'post',
+                                'post_status' => 'publish',
+                                'posts_per_page'      => 1,
+                                'post__in' => array($post['select_post']),
+                            );
+                            $custom_post_post_query = new \WP_Query($custom_post_post_query_args);
+                    ?>
+                            <?php while ($custom_post_post_query->have_posts()) :
+                                $custom_post_post_query->the_post();
+                                $idd             = get_the_ID();
+                                if ($settings['title_word']) {
+                                    $the_title = wp_trim_words(get_the_title(), $settings['title_word'], '..');
+                                } else {
+                                    $the_title = get_the_title();
+                                }
+                                $categories_list = get_the_terms($idd, 'category', '', '', '');
+
+                            ?>
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="news-card-items-2">
+                                        <div class="news-image">
+                                            <?php rt_elementor_rendered_image($post, 'image'); ?>
+                                            <div class="box">
+                                                <h3><?php the_time('d'); ?></h3>
+                                                <h6><?php the_time('F'); ?></h6>
+                                            </div>
+                                        </div>
+                                        <div class="news-content">
+                                            <?php
+                                            if (has_category()) :
+                                                $categories = get_the_category();
+                                            ?>
+                                                <span><?php echo esc_html($categories_list[0]->name); ?></span>
+                                            <?php endif; ?>
+                                            <<?php echo rt_escape_tags($settings['title_tag'], 'h3'); ?>>
+                                                <a href="<?php the_permalink(); ?>">
+                                                    <?php
+                                                    if (!empty($post['title'])):
+                                                        echo rt_kses_basic($post['title']);
+                                                    else:
+                                                        echo rt_kses_basic($the_title);
+                                                    endif;
+                                                    ?>
+                                                </a>
+                                            </<?php echo rt_escape_tags($settings['title_tag'], 'h3'); ?>>
+                                            <?php if ('yes' === $settings['show_read_more'] && ! empty($settings['read_more_text'])) : ?>
+                                                <a href="<?php the_permalink(); ?>" class="link-btn"><?php echo esc_html($settings['read_more_text']); ?> <i class="fa-solid fa-chevron-right"></i></a>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                    <?php
+                            endwhile;
+                            wp_reset_postdata();
+                        endforeach;
+                    endif; ?>
+                <?php endif; ?>
             </div>
         </div>
     </section>

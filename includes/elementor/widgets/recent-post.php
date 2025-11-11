@@ -58,7 +58,7 @@ class Recent_Post extends Widget_Base
 		$this->start_controls_section(
 			'layout_section',
 			[
-				'label' => __('Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Layout', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -66,14 +66,15 @@ class Recent_Post extends Widget_Base
 		$this->add_control(
 			'layout_type',
 			[
-				'label' => __('Select Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Select Layout', 'roavio-toolkit'),
 				'type' => \Elementor\Controls_Manager::SELECT2,
 				'default' => 'layout_one',
 				'options' => [
-					'layout_one' => __('Layout One', 'roavio-toolkit'),
-					'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					'layout_three' => __('Layout Three', 'roavio-toolkit'),
-					'layout_four' => __('Layout Four', 'roavio-toolkit'),
+					'layout_one' => esc_html__('Layout One', 'roavio-toolkit'),
+					'layout_two' => esc_html__('Layout Two', 'roavio-toolkit'),
+					'layout_three' => esc_html__('Layout Three', 'roavio-toolkit'),
+					'layout_four' => esc_html__('Layout Four', 'roavio-toolkit'),
+					'layout_five' => esc_html__('Layout Five', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -90,7 +91,7 @@ class Recent_Post extends Widget_Base
 				],
 				'default'     => 'cpt',
 				'condition' => [
-					'layout_type!' => ['layout_three', 'layout_five']
+					'layout_type!' => ['layout_three']
 				]
 
 			]
@@ -104,7 +105,7 @@ class Recent_Post extends Widget_Base
 				'label' => __('Header Section', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 				'condition' => [
-					'layout_type' => ['layout_one', 'layout_two', 'layout_three'],
+					'layout_type' => ['layout_one', 'layout_two', 'layout_three', 'layout_five'],
 				]
 			]
 		);
@@ -146,6 +147,9 @@ class Recent_Post extends Widget_Base
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'placeholder' => esc_html__('Add Sub title', 'roavio-toolkit'),
 				'default' => esc_html__('Default Sub Title', 'roavio-toolkit'),
+				'condition' => [
+					'layout_type!' => ['layout_five']
+				]
 			]
 		);
 
@@ -165,10 +169,26 @@ class Recent_Post extends Widget_Base
 					'div' => esc_html__('div', 'roavio-toolkit'),
 					'span' => esc_html__('span', 'roavio-toolkit'),
 					'p' => esc_html__('p', 'roavio-toolkit'),
+					'condition' => [
+						'layout_type!' => ['layout_five']
+					]
 				],
 			]
 		);
 
+
+		$this->add_control(
+			'layout_one_summary_text',
+			[
+				'label' => esc_html__('Summary Text', 'roavio-toolkit'),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'placeholder' => esc_html__('Add Summary Text', 'roavio-toolkit'),
+				'default' => esc_html__('Default Summary Text', 'roavio-toolkit'),
+				'condition' => [
+					'layout_type' => 'layout_five'
+				]
+			]
+		);
 
 		$this->end_controls_section();
 
@@ -504,7 +524,7 @@ class Recent_Post extends Widget_Base
 				'fields' => $layout_one_post_list->get_controls(),
 				'prevent_empty' => false,
 				'condition' => [
-					'layout_type' => ['layout_one', 'layout_four'],
+					'layout_type' => ['layout_one', 'layout_four', 'layout_five'],
 				],
 				'title_field' => '{{{ title }}}',
 			]
@@ -692,5 +712,6 @@ class Recent_Post extends Widget_Base
 		include rt_get_elementor_template('recent-post-two.php');
 		include rt_get_elementor_template('recent-post-three.php');
 		include rt_get_elementor_template('recent-post-four.php');
+		include rt_get_elementor_template('recent-post-five.php');
 	}
 }

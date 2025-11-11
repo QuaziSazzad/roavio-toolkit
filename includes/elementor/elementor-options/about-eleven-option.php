@@ -165,9 +165,7 @@ $this->add_control(
 	[
 		'label' => esc_html__('Group Image', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [
-			'url' => \Elementor\Utils::get_placeholder_image_src(),
-		],
+		'default' => [],
 	]
 );
 
@@ -249,9 +247,7 @@ $this->add_control(
 	[
 		'label' => esc_html__('Small Image', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [
-			'url' => \Elementor\Utils::get_placeholder_image_src(),
-		],
+		'default' => [],
 	]
 );
 
@@ -270,9 +266,7 @@ $this->add_control(
 	[
 		'label' => esc_html__('Rating Image', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [
-			'url' => \Elementor\Utils::get_placeholder_image_src(),
-		],
+		'default' => [],
 	]
 );
 
