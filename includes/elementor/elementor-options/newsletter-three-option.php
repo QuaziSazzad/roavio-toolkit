@@ -2,12 +2,12 @@
 
 //content
 $this->start_controls_section(
-	'layout_two_content',
+	'layout_three_content',
 	[
 		'label' => esc_html__('Content', 'roavio-toolkit'),
 		'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 		'condition' => [
-			'layout_type' => 'layout_two'
+			'layout_type' => 'layout_three'
 		]
 	]
 );

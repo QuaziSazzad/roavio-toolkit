@@ -41,7 +41,7 @@ class Header extends Widget_Base
 		$this->start_controls_section(
 			'layout_section',
 			[
-				'label' => __('Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Layout', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -49,13 +49,14 @@ class Header extends Widget_Base
 		$this->add_control(
 			'layout_type',
 			[
-				'label' => __('Select Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Select Layout', 'roavio-toolkit'),
 				'type' => \Elementor\Controls_Manager::SELECT2,
 				'default' => 'layout_one',
 				'options' => [
-					'layout_one' => __('Layout One', 'roavio-toolkit'),
-					'layout_two' => __('Layout Two', 'roavio-toolkit'),
-					'layout_three' => __('Layout Three', 'roavio-toolkit'),
+					'layout_one' => esc_html__('Layout One', 'roavio-toolkit'),
+					'layout_two' => esc_html__('Layout Two', 'roavio-toolkit'),
+					'layout_three' => esc_html__('Layout Three', 'roavio-toolkit'),
+					'layout_four' => esc_html__('Layout Four', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -175,5 +176,6 @@ class Header extends Widget_Base
 		include rt_get_elementor_template('header-one.php');
 		include rt_get_elementor_template('header-two.php');
 		include rt_get_elementor_template('header-three.php');
+		include rt_get_elementor_template('header-four.php');
 	}
 }

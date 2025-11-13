@@ -22,13 +22,13 @@ $this->add_control(
 $this->add_control(
 	'sticky_logo',
 	[
-		'label' => esc_html__('Stikcy Logo', 'roavio-toolkit'),
+		'label' => esc_html__('Sticky Logo', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
 		'default' => [
 			'url' => \Elementor\Utils::get_placeholder_image_src(),
 		],
 		'condition' => [
-			'layout_type' => ['layout_two']
+			'layout_type' => ['layout_two', 'layout_four']
 		]
 	]
 );

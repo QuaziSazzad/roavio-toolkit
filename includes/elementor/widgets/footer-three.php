@@ -21,7 +21,7 @@ class Footer_Three extends Widget_Base
 
 	public function get_title()
 	{
-		return esc_html__('Footer Three', 'roavio-toolkit');
+		return esc_html__('Full Footer Section', 'roavio-toolkit');
 	}
 
 	public function get_icon()
@@ -45,7 +45,7 @@ class Footer_Three extends Widget_Base
 		$this->start_controls_section(
 			'layout_section',
 			[
-				'label' => __('Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Layout', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -53,11 +53,12 @@ class Footer_Three extends Widget_Base
 		$this->add_control(
 			'layout_type',
 			[
-				'label' => __('Select Layout', 'roavio-toolkit'),
+				'label' => esc_html__('Select Layout', 'roavio-toolkit'),
 				'type' => \Elementor\Controls_Manager::SELECT2,
 				'default' => 'layout_one',
 				'options' => [
-					'layout_one' => __('Layout One', 'roavio-toolkit'),
+					'layout_one' => esc_html__('Layout One', 'roavio-toolkit'),
+					'layout_two' => esc_html__('Layout Two', 'roavio-toolkit'),
 				]
 			]
 		);
@@ -65,6 +66,7 @@ class Footer_Three extends Widget_Base
 		$this->end_controls_section();
 
 		include rt_get_elementor_option('footer-three-option.php');
+		include rt_get_elementor_option('footer-three-two-option.php');
 
 
 		//Content style
@@ -95,5 +97,6 @@ class Footer_Three extends Widget_Base
 		$settings = $this->get_settings_for_display();
 
 		include rt_get_elementor_template('footer-three.php');
+		include rt_get_elementor_template('footer-three-two.php');
 	}
 }
