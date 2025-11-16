@@ -72,10 +72,14 @@ class Search_Form extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}}  .contact-right h3,{{WRAPPER}} .section-title', ['layout_one', 'layout_two']);
+		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}}  .contact-right h3,{{WRAPPER}} .section-title', ['layout_one', 'layout_two', 'layout_three']);
 		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .contact-right p,{{WRAPPER}} .section-sub-title', ['layout_one', 'layout_two']);
 
 		roavio_elementor_style_options($this, 'Search Title', '{{WRAPPER}} .hero-2 .from-box h3', ['layout_two']);
+
+		roavio_elementor_style_options($this, 'Search Description', '{{WRAPPER}} .desc', ['layout_three']);
+
+		roavio_elementor_style_options($this, 'Form Title', '{{WRAPPER}} .form-title', ['layout_three']);
 
 		roavio_elementor_style_options($this, 'Count Title', '{{WRAPPER}} .contact-content h6', ['layout_one']);
 		roavio_elementor_style_options($this, 'Count Number', '{{WRAPPER}} .contact-content h2', ['layout_one']);
@@ -89,7 +93,7 @@ class Search_Form extends Widget_Base
 				'label' => esc_html__('Button Style', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 				'condition' => [
-					'layout_type' => ['layout_one', 'layout_two'],
+					'layout_type' => ['layout_one', 'layout_two', 'layout_three'],
 				],
 			]
 		);

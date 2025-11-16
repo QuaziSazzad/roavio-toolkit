@@ -8,10 +8,10 @@ if ('layout_five' == $settings['layout_type']) : ?>
         <div class="container custom-container-2">
             <div class="section-title text-center">
                 <?php if (!empty($settings['layout_one_title'])) : ?>
-                    <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="text-anim"><?php echo rt_kses_basic($settings['layout_one_title']); ?></<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
+                    <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="text-anim sec-title"><?php echo rt_kses_basic($settings['layout_one_title']); ?></<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
                 <?php endif; ?>
                 <?php if (!empty($settings['layout_one_summary_text'])) : ?>
-                    <p class="wow fadeInUp" data-wow-delay=".5s"><?php echo wp_kses_post($settings['layout_one_summary_text']); ?></p>
+                    <p class="wow fadeInUp sec-sub-title" data-wow-delay=".5s"><?php echo wp_kses_post($settings['layout_one_summary_text']); ?></p>
                 <?php endif; ?>
             </div>
             <div class="row">

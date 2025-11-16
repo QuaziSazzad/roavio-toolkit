@@ -419,6 +419,44 @@
             });
         }
 
+         //>> Destination Slider-4 Start <<//
+         if ($scope.find('.destination-slider-4').length > 0) {
+        const destinationSlider4 = new Swiper(".destination-slider-4", {
+            spaceBetween: 20,
+            speed: 1300,
+            loop: true,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+              nextEl: ".array-prev",
+              prevEl: ".array-next",
+          },
+          pagination: {
+              el: ".dot2",
+              clickable: true,
+          },
+            breakpoints: {
+                1199: {
+                    slidesPerView: 4,
+                },
+                991: {
+                    slidesPerView: 3,
+                },
+                767: {
+                    slidesPerView: 2,
+                },
+                575: {
+                    slidesPerView: 2,
+                },
+                0: {
+                    slidesPerView: 1,
+                },
+            },
+        });
+        }
+
         // Swiper init
         if ($scope.find('.team-slider-4').length > 0) {
             new Swiper(".team-slider-4", {

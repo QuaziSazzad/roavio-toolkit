@@ -6,13 +6,13 @@
                 <div class="section-title text-center">
                     <?php if (!empty($settings['layout_one_section_title'])) :
                     ?>
-                        <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="text-anim">
+                        <<?php echo esc_attr($settings['layout_one_title_tag']); ?> class="text-anim sec-title">
                             <?php echo rt_kses_basic($settings['layout_one_section_title']); ?>
                         </<?php echo esc_attr($settings['layout_one_title_tag']); ?>>
                     <?php endif; ?>
 
                     <?php if (!empty($settings['layout_one_section_description'])) : ?>
-                        <p class="wow fadeInUp" data-wow-delay=".5s">
+                        <p class="wow fadeInUp sec-desc" data-wow-delay=".5s">
                             <?php echo rt_kses_basic($settings['layout_one_section_description']); ?>
                         </p>
                     <?php endif; ?>
@@ -51,7 +51,7 @@
                                     <?php endif; ?>
 
                                     <?php if (!empty($item['layout_one_box_description'])) : ?>
-                                        <p>
+                                        <p class="feat-desc">
                                             <?php echo rt_kses_basic($item['layout_one_box_description']); ?>
                                         </p>
                                     <?php endif; ?>

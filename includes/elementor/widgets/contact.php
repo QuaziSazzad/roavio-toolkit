@@ -70,11 +70,11 @@ class Contact extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one']);
-		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .description', ['layout_one']);
+		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one', 'layout_two']);
+		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .description', ['layout_one', 'layout_two']);
 
 
-		roavio_elementor_style_options($this, 'Contact Label', '{{WRAPPER}} .content h5', ['layout_one']);
+		roavio_elementor_style_options($this, 'Contact Label', '{{WRAPPER}} .content h5,{{WRAPPER}} .label', ['layout_one', 'layout_two']);
 		roavio_elementor_style_options($this, 'Contact Content', '{{WRAPPER}} .content h6 a, {{WRAPPER}} .content h6', ['layout_one']);
 
 		$this->end_controls_section();

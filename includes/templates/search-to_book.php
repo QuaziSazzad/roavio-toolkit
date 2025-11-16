@@ -16,11 +16,9 @@ $max_price = isset($_GET['max-price']) ? floatval($_GET['max-price']) : PHP_INT_
 $sort = isset($_GET['sort']) ? sanitize_text_field($_GET['sort']) : 'date'; // Default sorting by date
 $order = isset($_GET['order']) ? strtoupper(sanitize_text_field($_GET['order'])) : 'DESC'; // Default sorting order DESC
 
-$date_range = isset($_GET['date']) ? sanitize_text_field($_GET['date']) : '';
-
-$date_parts = explode(' - ', $date_range);
-$start_date = isset($date_parts[0]) ? $date_parts[0] : '';
-$end_date = isset($date_parts[1]) ? $date_parts[1] : '';
+// Handle date filtering - get dates from URL parameters
+$start_date = isset($_GET['start_date']) ? sanitize_text_field($_GET['start_date']) : '';
+$end_date = isset($_GET['end_date']) ? sanitize_text_field($_GET['end_date']) : '';
 
 $ratings = isset($_GET['reviews']) ? (array) $_GET['reviews'] : array();
 
@@ -125,20 +123,21 @@ if ($guests > 0) {
 
 // Handle date range filtering
 if (! empty($start_date) && ! empty($end_date)) {
-    $start_date = date('Y-m-d', strtotime(str_replace('/', '-', $start_date)));
-    $end_date = date('Y-m-d', strtotime(str_replace('/', '-', $end_date)));
+    // Validate and format dates
+    $start_date_formatted = date('Y-m-d', strtotime($start_date));
+    $end_date_formatted = date('Y-m-d', strtotime($end_date));
 
     $args['meta_query'][] = array(
         'relation' => 'AND',
         array(
             'key' => 'roavio_book_start_date',
-            'value' => $start_date,
+            'value' => $start_date_formatted,
             'compare' => '<=',
             'type' => 'DATE',
         ),
         array(
             'key' => 'roavio_book_end_date',
-            'value' => $end_date,
+            'value' => $end_date_formatted,
             'compare' => '>=',
             'type' => 'DATE',
         ),
@@ -526,6 +525,8 @@ if ($show_banner === 'yes') :
                             </div>
                             <input type="hidden" name="filter" value="yes">
                             <input type="hidden" name="guest" value="<?php echo esc_attr(isset($_GET['guest']) ? $_GET['guest'] : ''); ?>">
+                            <input type="hidden" name="start_date" value="<?php echo esc_attr($start_date); ?>">
+                            <input type="hidden" name="end_date" value="<?php echo esc_attr($end_date); ?>">
                         </form>
                         <?php
                         $sidebar_image = Helper::get_option('tour_filter_sidebar_image', '');
@@ -822,7 +823,8 @@ if ($show_banner === 'yes') :
                                         'type' => isset($_GET['type']) ? $_GET['type'] : '',
                                         'min-price' => $min_price > 0 ? $min_price : '',
                                         'max-price' => $max_price < PHP_INT_MAX ? $max_price : '',
-                                        'date' => $date_range,
+                                        'start_date' => $start_date,
+                                        'end_date' => $end_date,
                                         'reviews' => isset($_GET['reviews']) ? $_GET['reviews'] : '',
                                         'sort' => $sort,
                                         'order' => $order,

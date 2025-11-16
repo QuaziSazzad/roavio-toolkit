@@ -9,13 +9,13 @@
                             <div class="section-title">
                                 <?php if (!empty($settings['layout_two_section_title'])) :
                                 ?>
-                                    <<?php echo esc_attr($settings['layout_two_title_tag']); ?> class="text-anim">
+                                    <<?php echo esc_attr($settings['layout_two_title_tag']); ?> class="text-anim sec-title">
                                         <?php echo rt_kses_basic($settings['layout_two_section_title']); ?>
                                     </<?php echo esc_attr($settings['layout_two_title_tag']); ?>>
                                 <?php endif; ?>
 
                                 <?php if (!empty($settings['layout_two_description'])) : ?>
-                                    <p class="wow fadeInUp" data-wow-delay=".5s">
+                                    <p class="wow fadeInUp description" data-wow-delay=".5s">
                                         <?php echo rt_kses_basic($settings['layout_two_description']); ?>
                                     </p>
                                 <?php endif; ?>

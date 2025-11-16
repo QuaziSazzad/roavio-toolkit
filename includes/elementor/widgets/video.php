@@ -61,6 +61,20 @@ class Video extends Widget_Base
 
 		include rt_get_elementor_option('video-one-option.php');
 		include rt_get_elementor_option('video-two-option.php');
+
+		//Content style
+		$this->start_controls_section(
+			'content_style',
+			[
+				'label' => esc_html__('Content Style', 'roavio-toolkit'),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		roavio_elementor_style_options($this, 'Brand Section Title', '{{WRAPPER}} .sec-title', ['layout_two']);
+
+
+		$this->end_controls_section();
 	}
 
 	protected function render()

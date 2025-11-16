@@ -10,13 +10,13 @@
                                 <?php
                                 if (!empty($settings['layout_eleven_title'])) :
                                 ?>
-                                    <<?php echo esc_attr($settings['layout_eleven_title_tag']); ?> class="text-anim">
+                                    <<?php echo esc_attr($settings['layout_eleven_title_tag']); ?> class="text-anim sec-title">
                                         <?php echo rt_kses_basic($settings['layout_eleven_title']); ?>
                                     </<?php echo esc_attr($settings['layout_eleven_title_tag']); ?>>
                                 <?php endif; ?>
                             </div>
                             <?php if (!empty($settings['layout_eleven_description'])) : ?>
-                                <p class="text wow fadeInUp" data-wow-delay=".5s">
+                                <p class="text wow fadeInUp description" data-wow-delay=".5s">
                                     <?php echo rt_kses_basic($settings['layout_eleven_description']); ?>
                                 </p>
                             <?php endif; ?>

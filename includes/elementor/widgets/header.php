@@ -81,7 +81,7 @@ class Header extends Widget_Base
 
 		roavio_elementor_style_options($this, 'Social Icon', '{{WRAPPER}} .social-icon i', ['layout_three']);
 
-		roavio_elementor_style_options($this, 'Nav', '{{WRAPPER}} .main-menu ul li a', ['layout_one', 'layout_two', 'layout_three']);
+		roavio_elementor_style_options($this, 'Nav', '{{WRAPPER}} .main-menu ul li a', ['layout_one', 'layout_two', 'layout_three', 'layout_four']);
 
 		$this->end_controls_section();
 
@@ -91,7 +91,7 @@ class Header extends Widget_Base
 				'label' => esc_html__('Button Style', 'roavio-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 				'condition' => [
-					'layout_type' => ['layout_one', 'layout_three'],
+					'layout_type' => ['layout_one', 'layout_three', 'layout_four'],
 				],
 			]
 		);

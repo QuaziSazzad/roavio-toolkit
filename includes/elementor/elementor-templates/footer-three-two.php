@@ -16,7 +16,7 @@
                                 <div class="content">
                                     <?php if (!empty($settings['layout_two_main_title'])) :
                                     ?>
-                                        <<?php echo esc_attr($settings['layout_two_main_title_tag']); ?> class="text-anim">
+                                        <<?php echo esc_attr($settings['layout_two_main_title_tag']); ?> class="text-anim main-title">
                                             <?php echo rt_kses_basic($settings['layout_two_main_title']); ?>
                                         </<?php echo esc_attr($settings['layout_two_main_title_tag']); ?>>
                                     <?php endif; ?>

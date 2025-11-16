@@ -14,20 +14,60 @@ $this->start_controls_section(
 
 
 $this->add_control(
-	'layout_two_summary_text',
+	'layout_two_section_title',
 	[
-		'label' => esc_html__('Summary Text', 'roavio-toolkit'),
+		'label' => esc_html__('Section Title', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXTAREA,
-		'placeholder' => esc_html__('Add Summary Text', 'roavio-toolkit'),
-		'default' => esc_html__('Default Text', 'roavio-toolkit'),
+		'placeholder' => esc_html__('Add Section Title', 'roavio-toolkit'),
+		'default' => esc_html__('Subscribe Our Newsletter To Get More Offer & Tips', 'roavio-toolkit'),
+		'label_block' => true,
 	]
 );
 
+$this->add_control(
+	'layout_two_title_tag',
+	[
+		'label' => esc_html__('Section Title Tag', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::SELECT,
+		'default' => 'h2',
+		'options' => [
+			'h1' => esc_html__('H1', 'roavio-toolkit'),
+			'h2' => esc_html__('H2', 'roavio-toolkit'),
+			'h3' => esc_html__('H3', 'roavio-toolkit'),
+			'h4' => esc_html__('H4', 'roavio-toolkit'),
+			'h5' => esc_html__('H5', 'roavio-toolkit'),
+			'h6' => esc_html__('H6', 'roavio-toolkit'),
+			'div' => esc_html__('div', 'roavio-toolkit'),
+			'span' => esc_html__('span', 'roavio-toolkit'),
+			'p' => esc_html__('p', 'roavio-toolkit'),
+		],
+	]
+);
+
+$this->add_control(
+	'layout_two_description_text',
+	[
+		'label' => esc_html__('Description Text', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::TEXTAREA,
+		'placeholder' => esc_html__('Add Description Text', 'roavio-toolkit'),
+		'default' => esc_html__('Stay connected & never miss a deal! subscribe to our newsletter and get travel offers', 'roavio-toolkit'),
+		'label_block' => true,
+	]
+);
+
+$this->add_control(
+	'layout_two_image',
+	[
+		'label' => esc_html__('Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [],
+	]
+);
 
 $this->add_control(
 	'layout_two_input_placeholder',
 	[
-		'label' => esc_html__('Placeholder', 'roavio-toolkit'),
+		'label' => esc_html__('Input Placeholder', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::TEXT,
 		'default' => esc_html__('Email Address', 'roavio-toolkit'),
 		'label_block' => true,
@@ -45,27 +85,29 @@ $this->add_control(
 );
 
 $this->add_control(
-	'logo',
+	'layout_two_shape_one',
 	[
-		'label' => __('Logo', 'roavio-toolkit'),
+		'label' => esc_html__('Right Shape Image', 'roavio-toolkit'),
 		'type' => \Elementor\Controls_Manager::MEDIA,
-		'default' => [
-			'url' => \Elementor\Utils::get_placeholder_image_src(),
-		],
+		'default' => [],
 	]
 );
 
 $this->add_control(
-	'logo_size',
+	'layout_two_shape_two',
 	[
-		'label' => __('Logo Size', 'roavio-toolkit'),
-		'type' => \Elementor\Controls_Manager::IMAGE_DIMENSIONS,
-		'description' => __('Set Logo Size.', 'roavio-toolkit'),
-		'default' => [
-			'width' => '123',
-			'height' => '35',
-		],
+		'label' => esc_html__('Top Shape Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [],
 	]
 );
 
+$this->add_control(
+	'layout_two_shape_three',
+	[
+		'label' => esc_html__('Bottom Shape Image', 'roavio-toolkit'),
+		'type' => \Elementor\Controls_Manager::MEDIA,
+		'default' => [],
+	]
+);
 $this->end_controls_section();

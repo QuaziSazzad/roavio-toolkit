@@ -91,7 +91,7 @@ if ('layout_four' == $settings['layout_type']) : ?>
                         <?php endif; ?>
                         <?php if (!empty($settings['button_label'])) : ?>
                             <div class="header-button">
-                                <a href="<?php echo esc_url($settings['button_url']['url']); ?>" <?php if (!empty($settings['button_url']['is_external'])) : ?> target="_blank" <?php endif; ?> class="theme-btn color"><?php echo esc_html($settings['button_label']); ?></a>
+                                <a href="<?php echo esc_url($settings['button_url']['url']); ?>" <?php if (!empty($settings['button_url']['is_external'])) : ?> target="_blank" <?php endif; ?> class="theme-btn"><?php echo esc_html($settings['button_label']); ?></a>
                             </div>
                         <?php endif; ?>
                         <div class="header__hamburger d-xl-none my-auto">

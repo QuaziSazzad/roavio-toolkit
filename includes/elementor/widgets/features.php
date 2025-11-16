@@ -67,14 +67,12 @@ class Features extends Widget_Base
 			]
 		);
 
-		// roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title a,{{WRAPPER}} .sec-title', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
-		// roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one', 'layout_three', 'layout_four', 'layout_six']);
+		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one']);
+		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-desc', ['layout_one']);
 
-		// roavio_elementor_style_options($this, 'Price Text', '{{WRAPPER}} .price-item .price h6', ['layout_two',]);
-		// roavio_elementor_style_options($this, 'Price', '{{WRAPPER}} .price-item .price h2', ['layout_two',]);
-		// roavio_elementor_style_options($this, 'Bottom Text', '{{WRAPPER}} .price-box-item h6', ['layout_two',]);
-
-		// roavio_elementor_style_options($this, 'Contact Items', '{{WRAPPER}} .list-style-one li a', ['layout_five']);
+		roavio_elementor_style_options($this, 'Features Title', '{{WRAPPER}} .content h5 a', ['layout_one']);
+		roavio_elementor_style_options($this, 'Features Description', '{{WRAPPER}} .feat-desc', ['layout_one']);
+		roavio_elementor_style_options($this, 'Features Icon', '{{WRAPPER}} .icon i', ['layout_one']);
 
 		$this->end_controls_section();
 	}

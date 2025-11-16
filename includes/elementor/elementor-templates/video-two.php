@@ -20,7 +20,7 @@
         <div class="container custom-container-6">
             <div class="brand-wrapper-4">
                 <?php if (!empty($settings['layout_two_brand_title'])) : ?>
-                    <h6><?php echo rt_kses_basic($settings['layout_two_brand_title']); ?></h6>
+                    <h6 class="sec-title"><?php echo rt_kses_basic($settings['layout_two_brand_title']); ?></h6>
                 <?php endif; ?>
                 <?php if (!empty($settings['layout_two_brand_logos'])) : ?>
                     <div class="swiper brand-slider">

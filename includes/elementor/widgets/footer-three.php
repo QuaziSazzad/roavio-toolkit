@@ -78,15 +78,23 @@ class Footer_Three extends Widget_Base
 			]
 		);
 
-		roavio_elementor_style_options($this, 'Summary Text', '{{WRAPPER}} .footer-item .footer-content p', ['layout_one', 'layout_two', 'layout_three']);
+		roavio_elementor_style_options($this, 'Main Title', '{{WRAPPER}} .main-title', ['layout_two']);
+		roavio_elementor_style_options($this, 'Info Label', '{{WRAPPER}} .icon-item h5', ['layout_two']);
+		roavio_elementor_style_options($this, 'Info Text', '{{WRAPPER}} .icon-item h6, {{WRAPPER}} .icon-item h6 a', ['layout_two']);
+
+		roavio_elementor_style_options($this, 'Gallery Title', '{{WRAPPER}} .photo-gallery h5', ['layout_two']);
+
+		roavio_elementor_style_options($this, 'Summary Text', '{{WRAPPER}} .footer-item .footer-content p', ['layout_one']);
 		roavio_elementor_style_options($this, 'ALl Widget Title', '{{WRAPPER}} h4', ['layout_one']);
-		roavio_elementor_style_options($this, 'Nav Text', '{{WRAPPER}} .single-footer-widget .list-area li a', ['layout_one']);
+		roavio_elementor_style_options($this, 'Nav Text', '{{WRAPPER}} .single-footer-widget .list-area li a, {{WRAPPER}} .left-list li a', ['layout_one', 'layout_two']);
 		roavio_elementor_style_options($this, 'Contact Content', '{{WRAPPER}} .content h6 a', ['layout_one']);
 		roavio_elementor_style_options($this, 'Destination', '{{WRAPPER}} .footer-right-content .area-list a', ['layout_one']);
 		roavio_elementor_style_options($this, 'Social Text', '{{WRAPPER}} .social-list li a', ['layout_one']);
 		roavio_elementor_style_options($this, 'Social Icon', '{{WRAPPER}} .social-list li a i', ['layout_one']);
-		roavio_elementor_style_options($this, 'Copyright Text', '{{WRAPPER}} .footer-bottom-3 .footer-wrapper-3 p', ['layout_one']);
+		roavio_elementor_style_options($this, 'Copyright Text', '{{WRAPPER}} .footer-bottom-3 .footer-wrapper-3 p', ['layout_one', 'layout_two']);
 		roavio_elementor_style_options($this, 'Footer Link', '{{WRAPPER}} .left-list  li a', ['layout_one']);
+
+
 
 
 		$this->end_controls_section();
