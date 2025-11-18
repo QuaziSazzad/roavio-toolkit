@@ -190,10 +190,10 @@ class Tour extends Widget_Base
 		);
 
 		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six', 'layout_seven', 'layout_eight', 'layout_nine', 'layout_ten']);
-		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
+		roavio_elementor_style_options($this, 'Section Sub Title', '{{WRAPPER}} .sec-sub-title', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six', 'layout_seven']);
 
-		roavio_elementor_style_options($this, 'Tour Title', '{{WRAPPER}} .tour-place-content h3 a, {{WRAPPER}} h4.tour-title a', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
-		roavio_elementor_style_options($this, 'Tour Features', '{{WRAPPER}} .tour-list li', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six']);
+		roavio_elementor_style_options($this, 'Tour Title', '{{WRAPPER}} .tour-place-content h3 a, {{WRAPPER}} h4.tour-title a,{{WRAPPER}} .tour-place-content h4 a', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six', 'layout_seven']);
+		roavio_elementor_style_options($this, 'Tour Features', '{{WRAPPER}} .tour-list li', ['layout_one', 'layout_two', 'layout_three', 'layout_four', 'layout_five', 'layout_six', 'layout_seven']);
 		roavio_elementor_style_options($this, 'Excerpt', '{{WRAPPER}} .tour-place-content.style-2 p', ['layout_three']);
 
 		$this->end_controls_section();

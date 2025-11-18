@@ -75,10 +75,15 @@ class FunFact extends Widget_Base
 		roavio_elementor_style_options($this, 'Section Title', '{{WRAPPER}} .sec-title', ['layout_one',]);
 		roavio_elementor_style_options($this, 'Description', '{{WRAPPER}} .description', ['layout_one',]);
 
-		roavio_elementor_style_options($this, 'Funfact Title', '{{WRAPPER}} .counter-item .content p', ['layout_one']);
-		roavio_elementor_style_options($this, 'Funfact Description', '{{WRAPPER}} .content p', ['layout_three']);
-		roavio_elementor_style_options($this, 'Count Number', '{{WRAPPER}} .counter-item .content h3,{{WRAPPER}} .content h2', ['layout_one', 'layout_three']);
-		roavio_elementor_style_options($this, 'Icon', '{{WRAPPER}} .counter-item .icon i, {{WRAPPER}} .icon i', ['layout_one', 'layout_three']);
+		roavio_elementor_style_options($this, 'Funfact Title', '{{WRAPPER}} .counter-item .content p,{{WRAPPER}} .content h6', ['layout_one', 'layout_two']);
+		roavio_elementor_style_options($this, 'Funfact Description', '{{WRAPPER}} .content p,{{WRAPPER}} .counter-box p', ['layout_three', 'layout_two']);
+		roavio_elementor_style_options($this, 'Count Number', '{{WRAPPER}} .counter-item .content h3,{{WRAPPER}} .content h2,{{WRAPPER}} .content h3', ['layout_one', 'layout_three', 'layout_two']);
+		roavio_elementor_style_options($this, 'Icon', '{{WRAPPER}} .counter-item .icon i, {{WRAPPER}} .icon i', ['layout_one', 'layout_three', 'layout_two']);
+
+
+		roavio_elementor_style_options($this, 'Adventure Title', '{{WRAPPER}} .left-content h2', ['layout_two']);
+		roavio_elementor_style_options($this, 'Adventure Subtitle', '{{WRAPPER}} .left-content h6', ['layout_two']);
+		roavio_elementor_style_options($this, 'Button Label', '{{WRAPPER}} .theme-btn', ['layout_two']);
 
 		$this->end_controls_section();
 	}
