@@ -6,7 +6,7 @@
  * Plugin URI: #
  * Author: Webtend
  * Author URI: http://webtend.net/
- * Version: 1.0.0
+ * Version: 1.0.1
  * Text Domain: roavio-toolkit
  * License: GPL2 or later
  * License URI: http://www.gnu.org/licences/gpl-2.0.html
