@@ -240,6 +240,7 @@ class Roavio_Demo_Config
 			["id" => 1, "name" => 'Home One', "file" => "home-one", "preview" => "https://wp.webtend.net/roavio/"],
 			["id" => 2, "name" => 'Home Two', "file" => "home-two", "preview" => "https://wp.webtend.net/roavio/home-two/"],
 			["id" => 3, "name" => 'Home Three', "file" => "home-three", "preview" => "https://wp.webtend.net/roavio/home-three/"],
+			["id" => 4, "name" => 'Home Four', "file" => "home-four", "preview" => "https://wp.webtend.net/roavio/home-four/"],
 		];
 	}
 }

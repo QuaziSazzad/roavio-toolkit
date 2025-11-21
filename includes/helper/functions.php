@@ -831,3 +831,43 @@ if (!function_exists('roavio_core_get_pages_for_select')) :
 		return $options;
 	}
 endif;
+
+
+/**
+ * Automatically add product to cart on visit
+ */
+if (!function_exists('roavio_auto_add_product_to_cart')) {
+	function roavio_auto_add_product_to_cart()
+	{
+
+		if (!function_exists('is_woocommerce') || !function_exists('is_cart') || !function_exists('is_checkout')) {
+			return;
+		}
+
+		$auto_cart_status = isset($_GET['cart']) ? $_GET['cart'] : '';
+
+		if (!is_admin() && !empty($auto_cart_status)) {
+			$get_product = get_posts([
+				'title'     => $auto_cart_status,
+				'post_type' => 'product',
+			]);
+			$product_id = $get_product[0]->ID;
+			$found = false;
+			//check if product already in cart
+			if (sizeof(WC()->cart->get_cart()) > 0) {
+				foreach (WC()->cart->get_cart() as $cart_item_key => $values) {
+					$_product = $values['data'];
+					if ($_product->get_id() == $product_id)
+						$found = true;
+				}
+				// if product not found, add it
+				if (!$found)
+					WC()->cart->add_to_cart($product_id);
+			} else {
+				// if no products in cart, add it
+				WC()->cart->add_to_cart($product_id);
+			}
+		}
+	}
+	add_action('template_redirect', 'roavio_auto_add_product_to_cart');
+}

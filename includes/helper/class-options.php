@@ -41,7 +41,7 @@ class Roavio_Options
 		$this->page_title_section();
 		$this->blog_section();
 		$this->tour_filter();
-		//$this->shop_section();
+		$this->shop_section();
 		$this->color_scheme_section();
 		$this->typography_section();
 		$this->error_section();
