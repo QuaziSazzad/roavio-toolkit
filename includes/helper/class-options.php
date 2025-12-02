@@ -41,6 +41,7 @@ class Roavio_Options
 		$this->page_title_section();
 		$this->blog_section();
 		$this->tour_filter();
+		$this->wishlist_section();
 		$this->shop_section();
 		$this->color_scheme_section();
 		$this->typography_section();
@@ -1167,6 +1168,57 @@ class Roavio_Options
 					'default'  => 'yes',
 					'dependency' => ['filter_page_show_banner', '==', 'yes'],
 				]
+			],
+		]);
+	}
+	public function wishlist_section()
+	{
+		CSF::createSection($this->options_prefix, [
+			'id'     => 'wishlist_options',
+			'title'  => esc_html__('Wishlist', 'roavio-toolkit'),
+			'fields' => [
+				[
+					'type'    => 'heading',
+					'content' => esc_html__('Wishlist Settings', 'roavio-toolkit'),
+				],
+				[
+					'id'       => 'wishlist_enable',
+					'type'     => 'switcher',
+					'title'    => esc_html__('Enable Wishlist', 'roavio-toolkit'),
+					'subtitle' => esc_html__('Enable or disable wishlist functionality', 'roavio-toolkit'),
+					'default'  => true,
+				],
+				[
+					'type'    => 'subheading',
+					'content' => esc_html__('Popup Messages', 'roavio-toolkit'),
+				],
+				[
+					'id'          => 'wishlist_login_message',
+					'type'        => 'text',
+					'title'       => esc_html__('Login Required Message', 'roavio-toolkit'),
+					'subtitle'    => esc_html__('Message shown when user is not logged in', 'roavio-toolkit'),
+					'placeholder' => esc_html__('Please Sign In To Add Wishlist', 'roavio-toolkit'),
+					'default'     => esc_html__('Please Sign In To Add Wishlist', 'roavio-toolkit'),
+					'dependency'  => ['wishlist_enable', '==', 'true'],
+				],
+				[
+					'id'          => 'wishlist_added_message',
+					'type'        => 'text',
+					'title'       => esc_html__('Added to Wishlist Message', 'roavio-toolkit'),
+					'subtitle'    => esc_html__('Message shown when item is added to wishlist', 'roavio-toolkit'),
+					'placeholder' => esc_html__('Added Wishlist', 'roavio-toolkit'),
+					'default'     => esc_html__('Added Wishlist', 'roavio-toolkit'),
+					'dependency'  => ['wishlist_enable', '==', 'true'],
+				],
+				[
+					'id'          => 'wishlist_removed_message',
+					'type'        => 'text',
+					'title'       => esc_html__('Removed from Wishlist Message', 'roavio-toolkit'),
+					'subtitle'    => esc_html__('Message shown when item is removed from wishlist', 'roavio-toolkit'),
+					'placeholder' => esc_html__('Removed From Wishlist', 'roavio-toolkit'),
+					'default'     => esc_html__('Removed From Wishlist', 'roavio-toolkit'),
+					'dependency'  => ['wishlist_enable', '==', 'true'],
+				],
 			],
 		]);
 	}

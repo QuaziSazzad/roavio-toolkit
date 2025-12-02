@@ -5,6 +5,7 @@
  */
 
 use RoavioTheme\Classes\Roavio_Helper;
+use RoavioTheme\Classes\Roavio_Helper as Helper;
 
 defined('ABSPATH') || exit;
 
@@ -732,11 +733,17 @@ function roavio_wishlist_notice()
 ?>
 	<div id="roavio-popup" class="roavio-popup">
 		<div class="popup-content">
+			<?php
+			// Get wishlist settings from theme options
+			$wishlist_login_message = Helper::get_option('wishlist_login_message', esc_html__('Please Sign In To Add Wishlist', 'roavio-toolkit'));
+			$wishlist_added_message = Helper::get_option('wishlist_added_message', esc_html__('Added Wishlist', 'roavio-toolkit'));
+			$wishlist_removed_message = Helper::get_option('wishlist_removed_message', esc_html__('Removed From Wishlist', 'roavio-toolkit'));
+			?>
 			<?php if (!is_user_logged_in()) : ?>
-				<p>Please Sign In</p>
+				<p><?php echo esc_html($wishlist_login_message); ?></p>
 			<?php else : ?>
-				<p class="roavio-added-wishlist">Added Wishlist</p>
-				<p class="roavio-removed-wishlist">Removed From Wishlist</p>
+				<p class="roavio-added-wishlist"><?php echo esc_html($wishlist_added_message); ?></p>
+				<p class="roavio-removed-wishlist"><?php echo esc_html($wishlist_removed_message); ?></p>
 			<?php endif; ?>
 		</div>
 	</div>
