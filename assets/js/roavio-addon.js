@@ -806,7 +806,16 @@
             }, 3000);
           } else if (response.success && !response.data.logged_in) {
             // User not logged in - show login message
-            alert(response.data.message || "Please log in to add items to your wishlist.");
+            $addedWishlist.css("display", "none");
+            $removedWishlist.css("display", "block");
+            
+            // Show the popup with login message
+            $roavioPopup.fadeIn();
+
+            // Hide the popup after 3 seconds
+            setTimeout(function () {
+              $roavioPopup.fadeOut();
+            }, 3000);
           } else {
             // Error response
             console.error("Wishlist error:", response.data);

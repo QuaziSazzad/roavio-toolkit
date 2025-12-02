@@ -53,7 +53,7 @@ class Wishlist
 
 		// Check if user is logged in
 		if (!is_user_logged_in()) {
-			wp_send_json_error(array(
+			wp_send_json_success(array(
 				'logged_in' => false,
 				'message' => esc_html__('Please log in to add items to your wishlist.', 'roavio-toolkit')
 			));
