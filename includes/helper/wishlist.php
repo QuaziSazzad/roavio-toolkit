@@ -23,14 +23,6 @@ class Wishlist
 
 	function wishlist_add()
 	{
-		// Verify nonce for security
-		if (!check_ajax_referer('roavio-ajax-security-nonce', 'security', false)) {
-			wp_send_json_error(array(
-				'message' => esc_html__('Security check failed. Please refresh the page and try again.', 'roavio-toolkit')
-			));
-			wp_die(); // Ensure execution stops
-		}
-
 		// Validate required parameters
 		if (!isset($_POST['status']) || !isset($_POST['post_id'])) {
 			wp_send_json_error(array(
@@ -41,7 +33,6 @@ class Wishlist
 
 		$status = sanitize_text_field($_POST['status']);
 		$post_id = intval($_POST['post_id']);
-		$user_id = get_current_user_id();
 
 		// Validate post ID
 		if ($post_id <= 0) {
@@ -51,7 +42,7 @@ class Wishlist
 			wp_die(); // Ensure execution stops
 		}
 
-		// Check if user is logged in
+		// Check if user is logged in first
 		if (!is_user_logged_in()) {
 			wp_send_json_success(array(
 				'logged_in' => false,
@@ -59,6 +50,16 @@ class Wishlist
 			));
 			wp_die(); // Ensure execution stops
 		}
+
+		// Verify nonce for security (only for logged-in users)
+		if (!check_ajax_referer('roavio-ajax-security-nonce', 'security', false)) {
+			wp_send_json_error(array(
+				'message' => esc_html__('Security check failed. Please refresh the page and try again.', 'roavio-toolkit')
+			));
+			wp_die(); // Ensure execution stops
+		}
+
+		$user_id = get_current_user_id();
 
 		if ($status == 'add') {
 			$wishlist = get_user_meta($user_id, 'roavio_wishlist', true);
